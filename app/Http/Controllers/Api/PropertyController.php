@@ -27,10 +27,24 @@ class PropertyController extends Controller
                     ->orWhere('description', 'like', '%' . $request->search . '%');
             });
         }
-        if ($request->filled('type')) {
+        // Types multiples (CSV) ou unique
+        if ($request->filled('types')) {
+            $types = array_filter(array_map('trim', explode(',', $request->types)));
+            if (!empty($types)) $query->whereIn('category', $types);
+        } elseif ($request->filled('type')) {
             $query->where('category', $request->type);
         }
-        if ($request->filled('city')) {
+        // Villes multiples (CSV) ou unique
+        if ($request->filled('cities')) {
+            $citiesArr = array_filter(array_map('trim', explode(',', $request->cities)));
+            if (!empty($citiesArr)) {
+                $query->where(function ($q) use ($citiesArr) {
+                    foreach ($citiesArr as $c) {
+                        $q->orWhere('city', 'like', '%' . $c . '%');
+                    }
+                });
+            }
+        } elseif ($request->filled('city')) {
             $query->where('city', 'like', '%' . $request->city . '%');
         }
         if ($request->filled('min_price')) {
@@ -41,6 +55,24 @@ class PropertyController extends Controller
         }
         if ($request->filled('min_rooms') && $request->min_rooms > 0) {
             $query->where('bedrooms', '>=', $request->min_rooms);
+        }
+        // Filtre état du bien (CSV ou unique)
+        if ($request->filled('etats')) {
+            $etats = array_filter(array_map('trim', explode(',', $request->etats)));
+            if (!empty($etats)) $query->whereIn('etat', $etats);
+        } elseif ($request->filled('etat')) {
+            $query->where('etat', $request->etat);
+        }
+        // Filtre commodités (JSON contains) — OR logique : au moins une
+        if ($request->filled('amenities')) {
+            $amens = array_filter(array_map('trim', explode(',', $request->amenities)));
+            if (!empty($amens)) {
+                $query->where(function ($q) use ($amens) {
+                    foreach ($amens as $a) {
+                        $q->orWhere('amenities', 'like', '%' . $a . '%');
+                    }
+                });
+            }
         }
 
         // Sort
@@ -59,38 +91,76 @@ class PropertyController extends Controller
                 break;
         }
 
-        $properties = $query->paginate(8);
+        $properties = $query->paginate(15);
+
+        $user = auth('sanctum')->user();
+        $favoriteIds = $user ? $user->favorites()->pluck('property_id')->toArray() : [];
 
         // Normalize image URL for each property
-        $properties->getCollection()->transform(function ($p) {
+        $properties->getCollection()->transform(function ($p) use ($favoriteIds) {
             $primaryImage = $p->primaryImage;
-            $p->image = $primaryImage
-                ? asset('storage/' . $primaryImage->path)
-                : asset('images/categoriebien/villa.jfif');
-            $p->rooms    = $p->bedrooms ?? 0;
-            $p->owner    = $p->owner;
+            if ($primaryImage) {
+                $path = $primaryImage->path;
+                // Si c'est déjà une URL absolue (Unsplash etc.), on la garde
+                $p->image = str_starts_with($path, 'http') ? $path : asset('storage/' . $path);
+            } else {
+                $p->image = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
+            }
+            $p->rooms       = $p->bedrooms ?? 0;
+            $p->owner       = $p->owner;
+            $p->is_favorite = in_array($p->id, $favoriteIds);
             return $p;
         });
 
         // Sidebar aggregates
-        $typeAggregates = Property::where('status', 'active')
+        $baseQuery = Property::where('status', 'active');
+
+        $typeAggregates = (clone $baseQuery)
             ->selectRaw('category as value, count(*) as count')
-            ->groupBy('category')
+            ->groupBy('category')->orderBy('count', 'desc')
             ->get()
             ->map(fn($t) => ['label' => $t->value, 'value' => $t->value, 'count' => $t->count]);
 
-        $cityAggregates = Property::where('status', 'active')
+        $cityAggregates = (clone $baseQuery)
             ->selectRaw('city as value, count(*) as count')
-            ->groupBy('city')
+            ->groupBy('city')->orderBy('count', 'desc')
             ->get()
             ->map(fn($c) => ['label' => $c->value, 'value' => $c->value, 'count' => $c->count]);
+
+        $etatAggregates = (clone $baseQuery)
+            ->whereNotNull('etat')
+            ->selectRaw('etat as value, count(*) as count')
+            ->groupBy('etat')
+            ->get()
+            ->map(fn($e) => ['label' => $e->value, 'value' => $e->value, 'count' => $e->count]);
+
+        // Commodités : on agrège depuis le JSON amenities
+        $allAmenities = [
+            'Climatisation',
+            'Parking',
+            'Sécurité 24/7',
+            'Wi-Fi',
+            'Eau courante',
+            'Électricité permanente',
+            'Gardiennage',
+            'Groupe électrogène',
+            'Balcon',
+            'Jardin',
+            'Cuisine équipée',
+        ];
+        $amenityAggregates = collect($allAmenities)->map(function ($a) use ($baseQuery) {
+            $count = (clone $baseQuery)->where('amenities', 'like', '%' . $a . '%')->count();
+            return ['label' => $a, 'value' => $a, 'count' => $count];
+        })->filter(fn($a) => $a['count'] > 0)->values();
 
         return response()->json([
             'success'    => true,
             'data'       => $properties,
             'aggregates' => [
-                'types'  => $typeAggregates,
-                'cities' => $cityAggregates,
+                'types'     => $typeAggregates,
+                'cities'    => $cityAggregates,
+                'etats'     => $etatAggregates,
+                'amenities' => $amenityAggregates,
             ],
         ]);
     }
@@ -148,9 +218,52 @@ class PropertyController extends Controller
 
         $property->increment('views_count');
 
+        // Normaliser toutes les images
+        $allImages = $property->images->map(function ($img) {
+            $path = $img->path;
+            return [
+                'id'         => $img->id,
+                'url'        => str_starts_with($path, 'http') ? $path : asset('storage/' . $path),
+                'is_primary' => $img->is_primary,
+                'order'      => $img->order,
+            ];
+        })->sortBy('order')->values();
+
+        // Image principale
+        $primary = $allImages->firstWhere('is_primary', true) ?? $allImages->first();
+        $property->image = $primary['url'] ?? 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
+        $property->all_images = $allImages->pluck('url')->all();
+
+        $user = auth('sanctum')->user();
+        $favoriteIds = $user ? $user->favorites()->pluck('property_id')->toArray() : [];
+        $property->is_favorite = in_array($property->id, $favoriteIds);
+
+        // Biens similaires ...
+        $similar = Property::with(['primaryImage'])
+            ->where('status', 'active')
+            ->where('id', '!=', $property->id)
+            ->where(function ($q) use ($property) {
+                $q->where('category', $property->category)
+                    ->orWhere('city', $property->city);
+            })
+            ->inRandomOrder()
+            ->limit(4)
+            ->get()
+            ->map(function ($p) use ($favoriteIds) {
+                $pi   = $p->primaryImage;
+                $path = $pi ? $pi->path : null;
+                $p->image = $path
+                    ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
+                    : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
+                $p->rooms = $p->bedrooms ?? 0;
+                $p->is_favorite = in_array($p->id, $favoriteIds);
+                return $p;
+            });
+
         return response()->json([
-            'success' => true,
-            'data' => $property,
+            'success'  => true,
+            'data'     => $property,
+            'similar'  => $similar,
         ]);
     }
 

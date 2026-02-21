@@ -12,11 +12,37 @@ class Property extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'features' => 'array',
-        'price' => 'decimal:2',
-        'area' => 'decimal:2',
-        'is_featured' => 'boolean', // Assuming future feature
+        'price'     => 'decimal:2',
+        'area'      => 'decimal:2',
     ];
+
+    /**
+     * Stocker les commodités en JSON lisible (sans \uXXXX) pour les recherches LIKE
+     */
+    public function setAmenitiesAttribute($value): void
+    {
+        $this->attributes['amenities'] = is_array($value)
+            ? json_encode($value, JSON_UNESCAPED_UNICODE)
+            : $value;
+    }
+
+    public function getAmenitiesAttribute($value): array
+    {
+        return $value ? json_decode($value, true) ?? [] : [];
+    }
+
+    public function setFeaturesAttribute($value): void
+    {
+        $this->attributes['features'] = is_array($value)
+            ? json_encode($value, JSON_UNESCAPED_UNICODE)
+            : $value;
+    }
+
+    public function getFeaturesAttribute($value): array
+    {
+        return $value ? json_decode($value, true) ?? [] : [];
+    }
+
 
     public function owner()
     {

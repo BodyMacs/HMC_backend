@@ -21,6 +21,11 @@ class Intervention extends Model
         return $this->belongsTo(User::class, 'requester_id');
     }
 
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
+
     public function provider()
     {
         return $this->hasOneThrough(User::class, Service::class, 'id', 'id', 'service_id', 'provider_id');
