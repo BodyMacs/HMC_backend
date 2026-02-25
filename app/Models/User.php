@@ -64,4 +64,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wallet::class);
     }
+
+    public function formations()
+    {
+        return $this->belongsToMany(Formation::class, 'user_formations')
+            ->withPivot('status', 'progress', 'completed_at')
+            ->withTimestamps();
+    }
 }

@@ -172,21 +172,25 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'type' => 'required|in:rent,sale',
-            'price' => 'required|numeric',
-            'location' => 'required|string',
-            'city' => 'required|string',
+            'title'       => 'required|string|max:255',
+            'type'        => 'required|in:rent,sale',
+            'category'    => 'required|string',
+            'price'       => 'required|numeric',
+            'location'    => 'required|string',
+            'city'        => 'required|string',
             'description' => 'nullable|string',
-            'bedrooms' => 'nullable|integer',
-            'bathrooms' => 'nullable|integer',
-            'area' => 'nullable|numeric',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'bedrooms'    => 'nullable|integer',
+            'bathrooms'   => 'nullable|integer',
+            'area'        => 'nullable|numeric',
+            'etat'        => 'nullable|string',
+            'amenities'   => 'nullable', // Can be CSV string or array
+            'images'      => 'nullable|array',
+            'images.*'    => 'image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
         $validated['user_id'] = $request->user()->id;
-        $validated['slug'] = Str::slug($request->title) . '-' . Str::random(6);
-        $validated['status'] = 'pending'; // Default moderation status
+        $validated['slug']    = Str::slug($request->title) . '-' . Str::random(6);
+        $validated['status']  = 'pending'; // Default moderation status
 
         $property = Property::create($validated);
 
@@ -194,9 +198,9 @@ class PropertyController extends Controller
             foreach ($request->file('images') as $index => $image) {
                 $path = $image->store('properties', 'public');
                 $property->images()->create([
-                    'path' => $path,
+                    'path'       => $path,
                     'is_primary' => $index === 0,
-                    'order' => $index,
+                    'order'      => $index,
                 ]);
             }
         }
@@ -204,7 +208,7 @@ class PropertyController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Propriété créée avec succès. En attente de modération.',
-            'data' => $property->load('images'),
+            'data'    => $property->load('images'),
         ], 201);
     }
 
@@ -281,6 +285,7 @@ class PropertyController extends Controller
         $property->update($request->only([
             'title',
             'type',
+            'category',
             'price',
             'location',
             'city',
@@ -288,6 +293,8 @@ class PropertyController extends Controller
             'bedrooms',
             'bathrooms',
             'area',
+            'etat',
+            'amenities',
             'features'
         ]));
 

@@ -67,7 +67,10 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->decimal('price', 12, 2);
-            $table->enum('status', ['active', 'finished', 'cancelled'])->default('active');
+            $table->decimal('monthly_rent', 12, 2)->nullable();
+            $table->string('payment_status')->default('unpaid');
+            $table->enum('status', ['pending', 'active', 'finished', 'cancelled'])->default('pending');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

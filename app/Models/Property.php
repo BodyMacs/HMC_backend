@@ -14,6 +14,8 @@ class Property extends Model
     protected $casts = [
         'price'     => 'decimal:2',
         'area'      => 'decimal:2',
+        'amenities' => 'array',
+        'features'  => 'array',
     ];
 
     /**
@@ -21,26 +23,30 @@ class Property extends Model
      */
     public function setAmenitiesAttribute($value): void
     {
-        $this->attributes['amenities'] = is_array($value)
-            ? json_encode($value, JSON_UNESCAPED_UNICODE)
-            : $value;
+        if (is_string($value)) {
+            $value = array_filter(array_map('trim', explode(',', $value)));
+        }
+
+        $this->attributes['amenities'] = json_encode($value ?: [], JSON_UNESCAPED_UNICODE);
     }
 
     public function getAmenitiesAttribute($value): array
     {
-        return $value ? json_decode($value, true) ?? [] : [];
+        return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
     }
 
     public function setFeaturesAttribute($value): void
     {
-        $this->attributes['features'] = is_array($value)
-            ? json_encode($value, JSON_UNESCAPED_UNICODE)
-            : $value;
+        if (is_string($value)) {
+            $value = array_filter(array_map('trim', explode(',', $value)));
+        }
+
+        $this->attributes['features'] = json_encode($value ?: [], JSON_UNESCAPED_UNICODE);
     }
 
     public function getFeaturesAttribute($value): array
     {
-        return $value ? json_decode($value, true) ?? [] : [];
+        return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
     }
 
 

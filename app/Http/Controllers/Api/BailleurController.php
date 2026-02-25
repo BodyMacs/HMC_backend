@@ -192,9 +192,11 @@ class BailleurController extends Controller
         $user = $request->user();
 
         $applications = Rental::with(['property.primaryImage', 'tenant'])
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
-            ->where('status', 'pending')
-            ->latest()
+            ->select('rentals.*')
+            ->join('properties', 'properties.id', '=', 'rentals.property_id')
+            ->where('properties.user_id', $user->id)
+            ->where('rentals.status', 'pending')
+            ->latest('rentals.created_at')
             ->get();
 
         return response()->json([
@@ -214,9 +216,14 @@ class BailleurController extends Controller
             'status' => 'required|in:active,rejected,cancelled'
         ]);
 
-        $application = Rental::where('id', $id)
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
-            ->firstOrFail();
+        $application = Rental::with('property')->findOrFail($id);
+
+        if ($application->property->user_id !== $user->id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Vous n\'êtes pas autorisé à gérer cette candidature.'
+            ], 403);
+        }
 
         $application->status = $request->status;
 
@@ -314,6 +321,44 @@ class BailleurController extends Controller
             'success' => true,
             'message' => 'Statut de l\'intervention mis à jour.',
             'data'    => $intervention->load('service')
+        ]);
+    }
+
+    /**
+     * Rapport financier du bailleur
+     * GET /api/bailleur/finances
+     */
+    public function finances(Request $request)
+    {
+        $user = $request->user();
+
+        // Stats financières de base
+        $monthlyRevenue = Rental::whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->where('status', 'active')
+            ->sum('monthly_rent');
+
+        // Total collecté (simulé via transactions réussies de type payment)
+        $totalCollected = \App\Models\Transaction::where('user_id', $user->id)
+            ->where('type', 'payment')
+            ->where('status', 'successful')
+            ->sum('amount');
+
+        // Recent Transactions
+        $transactions = \App\Models\Transaction::where('user_id', $user->id)
+            ->latest()
+            ->take(20)
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'stats' => [
+                    'monthly_revenue' => (float) $monthlyRevenue,
+                    'total_collected' => (float) $totalCollected,
+                    'balance'         => (float) ($user->wallet?->balance ?? 0),
+                ],
+                'transactions' => $transactions,
+            ],
         ]);
     }
 }

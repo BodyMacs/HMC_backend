@@ -67,11 +67,13 @@ class TenantController extends Controller
     public function rentals()
     {
         $user = Auth::user();
+        $statusOrder = ['pending' => 0, 'active' => 1, 'finished' => 2, 'cancelled' => 3];
         $rentals = Rental::with(['property.primaryImage', 'property.owner'])
             ->where('tenant_id', $user->id)
-            ->orderByRaw("FIELD(status, 'active', 'finished', 'cancelled')")
             ->latest()
-            ->get();
+            ->get()
+            ->sortBy(fn($r) => $statusOrder[$r->status] ?? 99)
+            ->values();
 
         return response()->json([
             'success' => true,
@@ -306,7 +308,7 @@ class TenantController extends Controller
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
-        
+
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
             'phone' => 'sometimes|string|max:20',
