@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use NotchPay\Payment;
-use NotchPay\NotchPay;
 use Illuminate\Support\Facades\Log;
+use NotchPay\NotchPay;
+use NotchPay\Payment;
 
 class NotchPayService
 {
@@ -32,7 +34,8 @@ class NotchPayService
 
             return $response;
         } catch (\Exception $e) {
-            Log::error('NotchPay Initialize Exception: ' . $e->getMessage());
+            Log::error('NotchPay Initialize Exception: '.$e->getMessage());
+
             throw $e;
         }
     }
@@ -45,7 +48,8 @@ class NotchPayService
         try {
             return Payment::verify($reference);
         } catch (\Exception $e) {
-            Log::error('NotchPay Verify Exception: ' . $e->getMessage());
+            Log::error('NotchPay Verify Exception: '.$e->getMessage());
+
             throw $e;
         }
     }

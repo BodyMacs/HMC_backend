@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Location;
 
 use App\Models\Property;
@@ -35,12 +37,13 @@ class ProcessusLocationTest extends TestCase
     private function createBailleurWithProperty(): array
     {
         $bailleur = User::factory()->create(['role' => 'bailleur']);
-        $property  = Property::factory()->create([
+        $property = Property::factory()->create([
             'user_id' => $bailleur->id,
-            'type'    => 'rent',
-            'status'  => 'active',
-            'price'   => 100000,
+            'type' => 'rent',
+            'status' => 'active',
+            'price' => 100000,
         ]);
+
         return [$bailleur, $property];
     }
 
@@ -48,7 +51,8 @@ class ProcessusLocationTest extends TestCase
     private function createTenant(): array
     {
         $tenant = User::factory()->create(['role' => 'locataire']);
-        $token  = $tenant->createToken('test')->plainTextToken;
+        $token = $tenant->createToken('test')->plainTextToken;
+
         return [$tenant, $token];
     }
 
@@ -56,10 +60,10 @@ class ProcessusLocationTest extends TestCase
     private function validPayload(int $propertyId): array
     {
         return [
-            'property_id'     => $propertyId,
-            'start_date'      => now()->addDays(5)->format('Y-m-d'),
+            'property_id' => $propertyId,
+            'start_date' => now()->addDays(5)->format('Y-m-d'),
             'duration_months' => 12,
-            'notes'           => 'Test de demande de location.',
+            'notes' => 'Test de demande de location.',
         ];
     }
 
@@ -83,10 +87,10 @@ class ProcessusLocationTest extends TestCase
             ]);
 
         $this->assertDatabaseHas('rentals', [
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
-            'status'      => 'pending',
-            'price'       => 100000,
+            'status' => 'pending',
+            'price' => 100000,
         ]);
     }
 
@@ -99,8 +103,8 @@ class ProcessusLocationTest extends TestCase
         $startDate = now()->addDays(10)->format('Y-m-d');
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'property_id'     => $property->id,
-            'start_date'      => $startDate,
+            'property_id' => $property->id,
+            'start_date' => $startDate,
             'duration_months' => 6,
         ]);
 
@@ -114,7 +118,7 @@ class ProcessusLocationTest extends TestCase
     public function le_prix_de_la_location_correspond_au_loyer_du_bien(): void
     {
         [, $property] = $this->createBailleurWithProperty(); // price = 100000
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', $this->validPayload($property->id));
 
@@ -157,7 +161,7 @@ class ProcessusLocationTest extends TestCase
 
         // Ancienne demande annulée
         Rental::factory()->cancelled()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -204,7 +208,7 @@ class ProcessusLocationTest extends TestCase
         [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'start_date'      => now()->addDays(2)->format('Y-m-d'),
+            'start_date' => now()->addDays(2)->format('Y-m-d'),
             'duration_months' => 12,
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['property_id']);
@@ -216,8 +220,8 @@ class ProcessusLocationTest extends TestCase
         [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'property_id'     => 99999,
-            'start_date'      => now()->addDays(2)->format('Y-m-d'),
+            'property_id' => 99999,
+            'start_date' => now()->addDays(2)->format('Y-m-d'),
             'duration_months' => 12,
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['property_id']);
@@ -227,10 +231,10 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_sans_start_date(): void
     {
         [, $property] = $this->createBailleurWithProperty();
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'property_id'     => $property->id,
+            'property_id' => $property->id,
             'duration_months' => 12,
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['start_date']);
@@ -240,11 +244,11 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_avec_une_date_dans_le_passe(): void
     {
         [, $property] = $this->createBailleurWithProperty();
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'property_id'     => $property->id,
-            'start_date'      => now()->subDays(1)->format('Y-m-d'),
+            'property_id' => $property->id,
+            'start_date' => now()->subDays(1)->format('Y-m-d'),
             'duration_months' => 12,
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['start_date']);
@@ -254,11 +258,11 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_sans_duration_months(): void
     {
         [, $property] = $this->createBailleurWithProperty();
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
             'property_id' => $property->id,
-            'start_date'  => now()->addDays(5)->format('Y-m-d'),
+            'start_date' => now()->addDays(5)->format('Y-m-d'),
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['duration_months']);
     }
@@ -267,11 +271,11 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_avec_duration_months_negatif(): void
     {
         [, $property] = $this->createBailleurWithProperty();
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $this->withToken($token)->postJson('/api/tenant/apply', [
-            'property_id'     => $property->id,
-            'start_date'      => now()->addDays(5)->format('Y-m-d'),
+            'property_id' => $property->id,
+            'start_date' => now()->addDays(5)->format('Y-m-d'),
             'duration_months' => -1,
         ])->assertStatus(422)
             ->assertJsonValidationErrors(['duration_months']);
@@ -286,7 +290,7 @@ class ProcessusLocationTest extends TestCase
     {
         [, $property] = $this->createBailleurWithProperty();
         [$tenant, $token] = $this->createTenant();
-        [$otherTenant]    = $this->createTenant();
+        [$otherTenant] = $this->createTenant();
 
         Rental::factory()->active()->create(['tenant_id' => $tenant->id,      'property_id' => $property->id]);
         Rental::factory()->pending()->create(['tenant_id' => $tenant->id,     'property_id' => $property->id]);
@@ -317,7 +321,7 @@ class ProcessusLocationTest extends TestCase
         [$tenant, $token] = $this->createTenant();
 
         Rental::factory()->active()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -346,7 +350,7 @@ class ProcessusLocationTest extends TestCase
         $response->assertStatus(200)
             ->assertJson([
                 'success' => true,
-                'data'    => [
+                'data' => [
                     'stats' => ['active_rentals_count' => 1],
                 ],
             ]);
@@ -359,7 +363,7 @@ class ProcessusLocationTest extends TestCase
         [$tenant, $token] = $this->createTenant();
 
         $rental = Rental::factory()->active()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -392,7 +396,7 @@ class ProcessusLocationTest extends TestCase
 
         [$tenant] = $this->createTenant();
         Rental::factory()->pending()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -413,7 +417,7 @@ class ProcessusLocationTest extends TestCase
 
         // Candidature uniquement pour le bien du bailleur 1
         Rental::factory()->pending()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property1->id,
         ]);
 
@@ -437,7 +441,7 @@ class ProcessusLocationTest extends TestCase
         [$tenant] = $this->createTenant();
 
         $rental = Rental::factory()->pending()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -458,7 +462,7 @@ class ProcessusLocationTest extends TestCase
         [$tenant] = $this->createTenant();
 
         $rental = Rental::factory()->pending()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -478,16 +482,16 @@ class ProcessusLocationTest extends TestCase
         [$tenant, $tenantToken] = $this->createTenant();
 
         $rental = Rental::factory()->pending()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
-        // Un locataire tente d'accéder à l'API bailleur. 
-        // Comme il est authentifié mais n'est pas le bailleur du bien, 
-        // le contrôleur retourne 404 (firstOrFail sur une requête filtrée par user_id).
+        // Un locataire tente d'accéder à l'API bailleur.
+        // Comme il est authentifié mais n'est pas le bailleur du bien,
+        // le contrôleur retourne 403 (vérification explicite de l'ID du propriétaire).
         $this->withToken($tenantToken)
             ->postJson("/api/bailleur/applications/{$rental->id}/status", ['status' => 'active'])
-            ->assertStatus(404);
+            ->assertStatus(403);
     }
 
     /** @test */
@@ -507,7 +511,7 @@ class ProcessusLocationTest extends TestCase
         [$tenant, $token] = $this->createTenant();
 
         Rental::factory()->active()->create([
-            'tenant_id'   => $tenant->id,
+            'tenant_id' => $tenant->id,
             'property_id' => $property->id,
         ]);
 
@@ -534,7 +538,7 @@ class ProcessusLocationTest extends TestCase
     public function la_reponse_api_apply_retourne_les_donnees_de_la_location(): void
     {
         [, $property] = $this->createBailleurWithProperty();
-        [, $token]    = $this->createTenant();
+        [, $token] = $this->createTenant();
 
         $response = $this->withToken($token)->postJson('/api/tenant/apply', $this->validPayload($property->id));
 
@@ -572,10 +576,10 @@ class ProcessusLocationTest extends TestCase
         // 4. Le locataire soumet sa demande
         $applyResponse = $this->withToken($tenantToken)
             ->postJson('/api/tenant/apply', [
-                'property_id'     => $property->id,
-                'start_date'      => now()->addDays(7)->format('Y-m-d'),
+                'property_id' => $property->id,
+                'start_date' => now()->addDays(10)->format('Y-m-d'),
                 'duration_months' => 12,
-                'notes'           => 'Scénario bout-en-bout.',
+                'notes' => 'Scénario bout-en-bout.',
             ]);
         $applyResponse->assertStatus(200)->assertJson(['success' => true]);
         $rentalId = $applyResponse->json('data.id');
@@ -589,10 +593,11 @@ class ProcessusLocationTest extends TestCase
         $appsResponse->assertStatus(200);
 
         if (count($appsResponse->json('data')) === 0) {
-            dump("WARNING: Bailleur sees 0 applications!");
-            dump("Bailleur ID: " . $bailleur->id);
-            dump("Property Owner ID: " . $property->user_id);
-            dump("Applications in DB: ", Rental::all()->toArray());
+            dump('WARNING: Bailleur sees 0 applications!');
+            dump('Bailleur ID: ' . $bailleur->id);
+            dump('Property Owner ID: ' . $property->user_id);
+            dump('Applications in DB: ', Rental::all()->toArray());
+            dump('Full Response: ', $appsResponse->json());
         }
 
         $appsResponse->assertJsonCount(1, 'data');
@@ -602,11 +607,11 @@ class ProcessusLocationTest extends TestCase
             ->postJson("/api/bailleur/applications/{$rentalId}/status", ['status' => 'active']);
 
         if ($response->status() !== 200) {
-            dump("Bailleur ID: " . $bailleur->id);
-            dump("Rental ID: " . $rentalId);
-            dump("Rental from DB: ", Rental::find($rentalId)?->toArray());
-            dump("Property from DB: ", Property::find($property->id)?->toArray());
-            dump("Response body: ", $response->json());
+            dump('Bailleur ID: ' . $bailleur->id);
+            dump('Rental ID: ' . $rentalId);
+            dump('Rental from DB: ', Rental::find($rentalId)?->toArray());
+            dump('Property from DB: ', Property::find($property->id)?->toArray());
+            dump('Response body: ', $response->json());
         }
 
         $response->assertStatus(200)->assertJson(['success' => true]);

@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Property;
 use App\Models\PropertyImage;
-use Illuminate\Support\Str;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class PropertySeeder extends Seeder
 {
@@ -431,13 +433,13 @@ class PropertySeeder extends Seeder
         if ($agents->isEmpty()) {
             $agents = collect([
                 User::firstOrCreate(['email' => 'bailleur@home.cm'], [
-                    'name'              => 'Pierre Ndoumbe',
-                    'password'          => Hash::make('password'),
-                    'role'              => 'bailleur',
-                    'status'            => 'active',
+                    'name' => 'Pierre Ndoumbe',
+                    'password' => Hash::make('password'),
+                    'role' => 'bailleur',
+                    'status' => 'active',
                     'email_verified_at' => now(),
-                    'city'              => 'Douala',
-                    'phone'             => '+237 699 000 001',
+                    'city' => 'Douala',
+                    'phone' => '+237 699 000 001',
                 ]),
             ]);
         }
@@ -447,43 +449,43 @@ class PropertySeeder extends Seeder
 
         foreach ($this->properties as $data) {
             $agent = $agents->random();
-            $slug  = Str::slug($data['title']) . '-' . Str::random(6);
+            $slug = Str::slug($data['title']).'-'.Str::random(6);
 
             $property = Property::create([
-                'user_id'           => $agent->id,
-                'title'             => $data['title'],
-                'slug'              => $slug,
-                'type'              => 'rent',
-                'status'            => 'active',
-                'category'          => $data['category'],
-                'etat'              => $data['etat'],
-                'amenities'         => json_encode($data['amenities'], JSON_UNESCAPED_UNICODE),
-                'features'          => json_encode($data['amenities'], JSON_UNESCAPED_UNICODE),
-                'price'             => $data['price'],
-                'currency'          => 'XAF',
-                'description'       => $data['description'],
-                'location'          => $data['location'],
-                'city'              => $data['city'],
-                'region'            => $data['region'],
-                'bedrooms'          => $data['bedrooms'],
-                'bathrooms'         => $data['bathrooms'],
-                'area'              => $data['area'],
+                'user_id' => $agent->id,
+                'title' => $data['title'],
+                'slug' => $slug,
+                'type' => 'rent',
+                'status' => 'active',
+                'category' => $data['category'],
+                'etat' => $data['etat'],
+                'amenities' => json_encode($data['amenities'], JSON_UNESCAPED_UNICODE),
+                'features' => json_encode($data['amenities'], JSON_UNESCAPED_UNICODE),
+                'price' => $data['price'],
+                'currency' => 'XAF',
+                'description' => $data['description'],
+                'location' => $data['location'],
+                'city' => $data['city'],
+                'region' => $data['region'],
+                'bedrooms' => $data['bedrooms'],
+                'bathrooms' => $data['bathrooms'],
+                'area' => $data['area'],
                 'construction_year' => rand(2010, 2024),
-                'views_count'       => rand(10, 800),
+                'views_count' => rand(10, 800),
             ]);
 
             // Image réaliste par catégorie
-            $images  = $this->imagesByCategory[$data['category']];
-            $imgUrl  = $images[array_rand($images)];
+            $images = $this->imagesByCategory[$data['category']];
+            $imgUrl = $images[array_rand($images)];
 
             PropertyImage::create([
                 'property_id' => $property->id,
-                'path'        => $imgUrl,
-                'is_primary'  => true,
-                'order'       => 0,
+                'path' => $imgUrl,
+                'is_primary' => true,
+                'order' => 0,
             ]);
         }
 
-        $this->command->info('✅ ' . count($this->properties) . ' annonces camerounaises créées avec succès !');
+        $this->command->info('✅ '.count($this->properties).' annonces camerounaises créées avec succès !');
     }
 }

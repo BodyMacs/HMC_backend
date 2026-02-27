@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\User;
@@ -61,45 +63,45 @@ class UserSeeder extends Seeder
         // Agents immobiliers (x4)
         $agents = [
             [
-                'name'   => 'Jean-Baptiste Mbarga',
-                'email'  => 'agent@home.cm',
-                'city'   => 'Yaoundé',
-                'bio'    => 'Expert en immobilier résidentiel à Yaoundé depuis 8 ans.',
+                'name' => 'Jean-Baptiste Mbarga',
+                'email' => 'agent@home.cm',
+                'city' => 'Yaoundé',
+                'bio' => 'Expert en immobilier résidentiel à Yaoundé depuis 8 ans.',
                 'avatar' => 'https://i.pravatar.cc/150?img=11',
             ],
             [
-                'name'   => 'Marie-Claire Ngo Biyong',
-                'email'  => 'agent2@home.cm',
-                'city'   => 'Douala',
-                'bio'    => 'Spécialiste des biens de prestige à Bonanjo et Akwa.',
+                'name' => 'Marie-Claire Ngo Biyong',
+                'email' => 'agent2@home.cm',
+                'city' => 'Douala',
+                'bio' => 'Spécialiste des biens de prestige à Bonanjo et Akwa.',
                 'avatar' => 'https://i.pravatar.cc/150?img=21',
             ],
             [
-                'name'   => 'Patrick Essomba',
-                'email'  => 'agent3@home.cm',
-                'city'   => 'Bafoussam',
-                'bio'    => 'Agent certifié pour la région Ouest du Cameroun.',
+                'name' => 'Patrick Essomba',
+                'email' => 'agent3@home.cm',
+                'city' => 'Bafoussam',
+                'bio' => 'Agent certifié pour la région Ouest du Cameroun.',
                 'avatar' => 'https://i.pravatar.cc/150?img=33',
             ],
             [
-                'name'   => 'Aïcha Aboubakar',
-                'email'  => 'agent4@home.cm',
-                'city'   => 'Garoua',
-                'bio'    => 'Première agente immobilière du Grand Nord, 5 ans d\'expérience.',
+                'name' => 'Aïcha Aboubakar',
+                'email' => 'agent4@home.cm',
+                'city' => 'Garoua',
+                'bio' => 'Première agente immobilière du Grand Nord, 5 ans d\'expérience.',
                 'avatar' => 'https://i.pravatar.cc/150?img=47',
             ],
         ];
 
         foreach ($agents as $agentData) {
             User::create([
-                'name'              => $agentData['name'],
-                'email'             => $agentData['email'],
+                'name' => $agentData['name'],
+                'email' => $agentData['email'],
                 'email_verified_at' => now(),
-                'password'          => Hash::make('password'),
-                'role'              => 'agent',
-                'status'            => 'active',
-                'avatar'            => $agentData['avatar'],
-                'remember_token'    => Str::random(10),
+                'password' => Hash::make('password'),
+                'role' => 'agent',
+                'status' => 'active',
+                'avatar' => $agentData['avatar'],
+                'remember_token' => Str::random(10),
             ]);
         }
     }

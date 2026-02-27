@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Property;
-use App\Models\User;
-use App\Models\Transaction;
-use App\Models\Service;
 use App\Models\Intervention;
+use App\Models\Property;
+use App\Models\Service;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +43,7 @@ class AdminController extends Controller
                 'recent_users' => $recentUsers,
                 'recent_properties' => $recentProperties,
                 'recent_transactions' => $recentTransactions,
-            ]
+            ],
         ]);
     }
 
@@ -57,9 +59,9 @@ class AdminController extends Controller
         }
 
         if ($request->has('search')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('name', 'like', '%' . $request->search . '%')
-                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            $query->where(function ($q) use ($request): void {
+                $q->where('name', 'like', '%'.$request->search.'%')
+                    ->orWhere('email', 'like', '%'.$request->search.'%');
             });
         }
 
@@ -67,7 +69,7 @@ class AdminController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $users
+            'data' => $users,
         ]);
     }
 
@@ -77,14 +79,14 @@ class AdminController extends Controller
     public function updateUserStatus(Request $request, User $user)
     {
         $request->validate([
-            'status' => 'required|string|in:active,inactive,pending'
+            'status' => 'required|string|in:active,inactive,pending',
         ]);
 
         $user->update(['status' => $request->status]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Statut de l\'utilisateur mis à jour.'
+            'message' => 'Statut de l\'utilisateur mis à jour.',
         ]);
     }
 
@@ -103,7 +105,7 @@ class AdminController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $properties
+            'data' => $properties,
         ]);
     }
 
@@ -113,14 +115,14 @@ class AdminController extends Controller
     public function updatePropertyStatus(Request $request, Property $property)
     {
         $request->validate([
-            'status' => 'required|string|in:active,rejected,rented,sold,pending'
+            'status' => 'required|string|in:active,rejected,rented,sold,pending',
         ]);
 
         $property->update(['status' => $request->status]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Statut du bien mis à jour.'
+            'message' => 'Statut du bien mis à jour.',
         ]);
     }
 
@@ -148,8 +150,8 @@ class AdminController extends Controller
             'data' => [
                 'transactions' => $transactions,
                 'total_revenue' => $totalRevenue,
-                'monthly_breakdown' => $monthlyRevenue
-            ]
+                'monthly_breakdown' => $monthlyRevenue,
+            ],
         ]);
     }
 
@@ -165,8 +167,8 @@ class AdminController extends Controller
             'success' => true,
             'data' => [
                 'services' => $services,
-                'recent_interventions' => $interventions
-            ]
+                'recent_interventions' => $interventions,
+            ],
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -8,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('formations', function (Blueprint $blueprint) {
+        Schema::create('formations', function (Blueprint $blueprint): void {
             $blueprint->id();
             $blueprint->string('title');
             $blueprint->text('description');
@@ -19,7 +21,7 @@ return new class extends Migration
             $blueprint->timestamps();
         });
 
-        Schema::create('user_formations', function (Blueprint $blueprint) {
+        Schema::create('user_formations', function (Blueprint $blueprint): void {
             $blueprint->id();
             $blueprint->foreignId('user_id')->constrained()->onDelete('cascade');
             $blueprint->foreignId('formation_id')->constrained()->onDelete('cascade');

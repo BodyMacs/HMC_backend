@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,10 +14,10 @@ class Property extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'price'     => 'decimal:2',
-        'area'      => 'decimal:2',
+        'price' => 'decimal:2',
+        'area' => 'decimal:2',
         'amenities' => 'array',
-        'features'  => 'array',
+        'features' => 'array',
     ];
 
     /**
@@ -48,7 +50,6 @@ class Property extends Model
     {
         return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
     }
-
 
     public function owner()
     {

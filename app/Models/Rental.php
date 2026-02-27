@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +12,7 @@ class Rental extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    
+
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',

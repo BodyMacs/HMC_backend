@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('properties', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Owner (Bailleur/Agent)
             $table->string('title');
@@ -33,7 +35,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('property_images', function (Blueprint $table) {
+        Schema::create('property_images', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('path');
@@ -42,7 +44,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
@@ -50,7 +52,7 @@ return new class extends Migration
             $table->unique(['user_id', 'property_id']);
         });
 
-        Schema::create('visits', function (Blueprint $table) {
+        Schema::create('visits', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Visitor
@@ -60,7 +62,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('rentals', function (Blueprint $table) {
+        Schema::create('rentals', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->foreignId('tenant_id')->constrained('users')->onDelete('cascade'); // Locataire

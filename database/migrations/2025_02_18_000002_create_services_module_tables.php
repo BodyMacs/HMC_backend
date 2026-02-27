@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_categories', function (Blueprint $table) {
+        Schema::create('service_categories', function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
@@ -19,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('provider_id')->constrained('users')->onDelete('cascade'); // Prestataire
             $table->foreignId('category_id')->constrained('service_categories')->onDelete('cascade');
@@ -30,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('interventions', function (Blueprint $table) {
+        Schema::create('interventions', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->foreignId('requester_id')->constrained('users')->onDelete('cascade'); // Client

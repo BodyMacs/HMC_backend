@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
+use App\Models\Intervention;
+use App\Models\Property;
 use App\Models\Rental;
 use App\Models\Transaction;
-use App\Models\Intervention;
-use App\Models\Favorite;
-use App\Models\Property;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +59,7 @@ class TenantController extends Controller
                     ->latest()
                     ->take(3)
                     ->get(),
-            ]
+            ],
         ]);
     }
 
@@ -77,7 +79,7 @@ class TenantController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $rentals
+            'data' => $rentals,
         ]);
     }
 
@@ -93,7 +95,7 @@ class TenantController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $transactions
+            'data' => $transactions,
         ]);
     }
 
@@ -110,7 +112,7 @@ class TenantController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $interventions
+            'data' => $interventions,
         ]);
     }
 
@@ -127,7 +129,7 @@ class TenantController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $favorites
+            'data' => $favorites,
         ]);
     }
 
@@ -149,14 +151,14 @@ class TenantController extends Controller
         } else {
             Favorite::create([
                 'user_id' => $user->id,
-                'property_id' => $request->property_id
+                'property_id' => $request->property_id,
             ]);
             $status = 'added';
         }
 
         return response()->json([
             'success' => true,
-            'status' => $status
+            'status' => $status,
         ]);
     }
 
@@ -169,7 +171,7 @@ class TenantController extends Controller
             'property_id' => 'required|exists:properties,id',
             'start_date' => 'required|date|after:today',
             'duration_months' => 'required|integer|min:1',
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
         ]);
 
         $user = Auth::user();
@@ -183,7 +185,7 @@ class TenantController extends Controller
         if ($existing) {
             return response()->json([
                 'success' => false,
-                'message' => 'Vous avez déjà une demande en cours pour ce bien.'
+                'message' => 'Vous avez déjà une demande en cours pour ce bien.',
             ], 422);
         }
 
@@ -196,13 +198,13 @@ class TenantController extends Controller
             'status' => 'pending',
             'start_date' => $request->start_date,
             'end_date' => date('Y-m-d', strtotime($request->start_date . " + {$request->duration_months} months")),
-            'notes' => $request->notes
+            'notes' => $request->notes,
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Votre demande de location a été envoyée avec succès.',
-            'data' => $rental
+            'data' => $rental->fresh(),
         ]);
     }
 
@@ -214,7 +216,7 @@ class TenantController extends Controller
         $request->validate([
             'property_id' => 'required|exists:properties,id',
             'scheduled_at' => 'required|date|after:now',
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
         ]);
 
         $user = Auth::user();
@@ -228,7 +230,7 @@ class TenantController extends Controller
         if ($existing) {
             return response()->json([
                 'success' => false,
-                'message' => 'Vous avez déjà une visite programmée ou en attente pour ce bien.'
+                'message' => 'Vous avez déjà une visite programmée ou en attente pour ce bien.',
             ], 422);
         }
 
@@ -237,12 +239,12 @@ class TenantController extends Controller
             'user_id' => $user->id,
             'scheduled_at' => $request->scheduled_at,
             'status' => 'pending',
-            'notes' => $request->notes
+            'notes' => $request->notes,
         ]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Votre demande de visite a été enregistrée.'
+            'message' => 'Votre demande de visite a été enregistrée.',
         ]);
     }
 
@@ -255,7 +257,7 @@ class TenantController extends Controller
             'property_id' => 'required|exists:properties,id',
             'service_id' => 'required|exists:services,id',
             'scheduled_at' => 'required|date|after:now',
-            'notes' => 'required|string'
+            'notes' => 'required|string',
         ]);
 
         $user = Auth::user();
@@ -266,10 +268,10 @@ class TenantController extends Controller
             ->whereIn('status', ['active', 'pending']) // Allowing pending for demo or specific flow
             ->exists();
 
-        if (!$isTenant) {
+        if (! $isTenant) {
             return response()->json([
                 'success' => false,
-                'message' => "Vous n'êtes pas autorisé à demander une intervention pour ce bien."
+                'message' => "Vous n'êtes pas autorisé à demander une intervention pour ce bien.",
             ], 403);
         }
 
@@ -281,13 +283,13 @@ class TenantController extends Controller
             'service_id' => $request->service_id,
             'scheduled_at' => $request->scheduled_at,
             'status' => 'pending',
-            'notes' => $request->notes
+            'notes' => $request->notes,
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Votre demande d\'intervention a été soumise.',
-            'data' => $intervention
+            'data' => $intervention,
         ]);
     }
 
@@ -298,7 +300,7 @@ class TenantController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Auth::user()
+            'data' => Auth::user(),
         ]);
     }
 
@@ -320,7 +322,7 @@ class TenantController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Profil mis à jour avec succès.',
-            'data' => $user->fresh()
+            'data' => $user->fresh(),
         ]);
     }
 }

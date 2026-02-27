@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Transaction;
-use App\Models\Formation;
 use App\Services\NotchPayService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
@@ -25,18 +26,18 @@ class PaymentController extends Controller
     {
         $reference = $request->query('reference');
         $frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
-        
-        if (!$reference) {
-            return redirect($frontendUrl . '/payment?status=error&message=reference_missing');
+
+        if (! $reference) {
+            return redirect($frontendUrl.'/payment?status=error&message=reference_missing');
         }
 
         try {
             $payment = $this->notchPayService->verifyPayment($reference);
 
             $transaction = Transaction::where('reference', $reference)->first();
-            
-            if (!$transaction) {
-                return redirect($frontendUrl . '/payment?status=error&message=transaction_not_found');
+
+            if (! $transaction) {
+                return redirect($frontendUrl.'/payment?status=error&message=transaction_not_found');
             }
 
             $user = $transaction->user;
@@ -53,33 +54,33 @@ class PaymentController extends Controller
                     $this->fulfillOrder($transaction);
                 }
 
-                return redirect($frontendUrl . '/payment?status=success&reference=' . $reference);
+                return redirect($frontendUrl.'/payment?status=success&reference='.$reference);
             } else {
                 $transaction->update([
                     'status' => 'failed',
                 ]);
 
-                return redirect($frontendUrl . '/payment?status=failed&reference=' . $reference);
+                return redirect($frontendUrl.'/payment?status=failed&reference='.$reference);
             }
 
         } catch (\Exception $e) {
             Log::error('Erreur callback NotchPay:', [
                 'reference' => $reference,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
 
-            return redirect($frontendUrl . '/payment?status=error&message=processing_error');
+            return redirect($frontendUrl.'/payment?status=error&message=processing_error');
         }
     }
 
     /**
      * Action to perform when order is successful
      */
-    private function fulfillOrder(Transaction $transaction)
+    private function fulfillOrder(Transaction $transaction): void
     {
         $metadata = $transaction->metadata;
 
-        if (!$metadata || !isset($metadata['action'])) {
+        if (! $metadata || ! isset($metadata['action'])) {
             return;
         }
 
@@ -90,18 +91,19 @@ class PaymentController extends Controller
                     $user = $transaction->user;
 
                     // Avoid duplicate attachment
-                    if (!$user->formations()->where('formation_id', $formationId)->exists()) {
+                    if (! $user->formations()->where('formation_id', $formationId)->exists()) {
                         $user->formations()->attach($formationId, [
                             'status' => 'purchased',
-                            'progress' => 0
+                            'progress' => 0,
                         ]);
                     }
+
                     break;
 
-                // Add other switch cases for rentals, marketplace, etc.
+                    // Add other switch cases for rentals, marketplace, etc.
             }
         } catch (\Exception $e) {
-            Log::error('Fulfill order error: ' . $e->getMessage());
+            Log::error('Fulfill order error: '.$e->getMessage());
         }
     }
 }

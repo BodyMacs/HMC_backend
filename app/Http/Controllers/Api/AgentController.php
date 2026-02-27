@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\Rental;
-use App\Models\Visit;
 use App\Models\User;
+use App\Models\Visit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
@@ -22,17 +23,17 @@ class AgentController extends Controller
         // Stats
         $managedPropertiesCount = Property::where('user_id', $user->id)->count();
 
-        $activeRentalsCount = Rental::whereHas('property', function ($query) use ($user) {
+        $activeRentalsCount = Rental::whereHas('property', function ($query) use ($user): void {
             $query->where('user_id', $user->id);
         })->where('status', 'active')->count();
 
-        $pendingVisitsCount = Visit::whereHas('property', function ($query) use ($user) {
+        $pendingVisitsCount = Visit::whereHas('property', function ($query) use ($user): void {
             $query->where('user_id', $user->id);
         })->where('status', 'pending')->count();
 
         // Recent Missions (simplified as visits and rental applications)
         $missions = Visit::with(['property', 'visitor'])
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->whereHas('property', fn ($q) => $q->where('user_id', $user->id))
             ->where('status', 'pending')
             ->latest()
             ->take(5)
@@ -40,7 +41,7 @@ class AgentController extends Controller
 
         // Agenda (today's visits)
         $agenda = Visit::with(['property', 'visitor'])
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->whereHas('property', fn ($q) => $q->where('user_id', $user->id))
             ->whereDate('scheduled_at', now()->toDateString())
             ->orderBy('scheduled_at')
             ->get();
@@ -57,7 +58,7 @@ class AgentController extends Controller
                 ],
                 'missions' => $missions,
                 'agenda' => $agenda,
-            ]
+            ],
         ]);
     }
 
@@ -75,7 +76,7 @@ class AgentController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $properties
+            'data' => $properties,
         ]);
     }
 
@@ -87,15 +88,15 @@ class AgentController extends Controller
         $user = $request->user();
 
         // Clients are users who have active rentals on properties managed by this agent
-        $clients = User::whereHas('rentals', function ($query) use ($user) {
-            $query->whereHas('property', function ($q) use ($user) {
+        $clients = User::whereHas('rentals', function ($query) use ($user): void {
+            $query->whereHas('property', function ($q) use ($user): void {
                 $q->where('user_id', $user->id);
             })->where('status', 'active');
         })->get();
 
         return response()->json([
             'success' => true,
-            'data' => $clients
+            'data' => $clients,
         ]);
     }
 
@@ -106,13 +107,13 @@ class AgentController extends Controller
     {
         $user = $request->user();
         $missions = Visit::with(['property', 'visitor'])
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->whereHas('property', fn ($q) => $q->where('user_id', $user->id))
             ->latest()
             ->paginate(20);
 
         return response()->json([
             'success' => true,
-            'data' => $missions
+            'data' => $missions,
         ]);
     }
 
@@ -123,14 +124,14 @@ class AgentController extends Controller
     {
         $user = $request->user();
         $agenda = Visit::with(['property', 'visitor'])
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->whereHas('property', fn ($q) => $q->where('user_id', $user->id))
             ->where('status', 'confirmed')
             ->orderBy('scheduled_at')
             ->get();
 
         return response()->json([
             'success' => true,
-            'data' => $agenda
+            'data' => $agenda,
         ]);
     }
 }

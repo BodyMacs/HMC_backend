@@ -1,24 +1,24 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+declare(strict_types=1);
+
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\PropertyController;
+use App\Http\Controllers\Api\BailleurController;
+use App\Http\Controllers\Api\FormationController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\MarketplaceController;
-use App\Http\Controllers\Api\BailleurController;
-use App\Http\Controllers\Api\TenantController;
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\PrestataireController;
-use App\Http\Controllers\Api\AdminController;
-use App\Http\Controllers\Api\FormationController;
-
+use App\Http\Controllers\Api\PropertyController;
+use App\Http\Controllers\Api\TenantController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 */
 
-use App\Http\Controllers\Api\PaymentController;
+use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -35,7 +35,7 @@ Route::get('/marketplace/categories', [MarketplaceController::class, 'categories
 Route::get('/notchpay/callback', [PaymentController::class, 'callback'])->name('notchpay.callback');
 
 // Protected Routes
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function (): void {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
 
@@ -45,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/properties/{id}', [PropertyController::class, 'destroy']);
 
     // ── Bailleur ────────────────────────────────────────────────────────
-    Route::prefix('bailleur')->name('bailleur.')->group(function () {
+    Route::prefix('bailleur')->name('bailleur.')->group(function (): void {
         Route::get('/dashboard',   [BailleurController::class, 'dashboard']);
         Route::get('/properties',  [BailleurController::class, 'properties']);
         Route::get('/profile',     [BailleurController::class, 'profile']);
@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // ── Locataire (Tenant) ──────────────────────────────────────────────
-    Route::prefix('tenant')->name('tenant.')->group(function () {
+    Route::prefix('tenant')->name('tenant.')->group(function (): void {
         Route::get('/dashboard',     [TenantController::class, 'dashboard']);
         Route::get('/rentals',       [TenantController::class, 'rentals']);
         Route::get('/payments',      [TenantController::class, 'payments']);
@@ -76,7 +76,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // ── Agent ───────────────────────────────────────────────────────────
-    Route::prefix('agent')->name('agent.')->group(function () {
+    Route::prefix('agent')->name('agent.')->group(function (): void {
         Route::get('/dashboard',   [App\Http\Controllers\Api\AgentController::class, 'dashboard']);
         Route::get('/properties',  [App\Http\Controllers\Api\AgentController::class, 'properties']);
         Route::get('/clients',     [App\Http\Controllers\Api\AgentController::class, 'clients']);
@@ -92,7 +92,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/formations/{formation}', [FormationController::class, 'show']);
 
     // ── Prestataire ─────────────────────────────────────────────────────
-    Route::prefix('prestataire')->name('prestataire.')->group(function () {
+    Route::prefix('prestataire')->name('prestataire.')->group(function (): void {
         Route::get('/dashboard',     [PrestataireController::class, 'dashboard']);
         Route::get('/services',      [PrestataireController::class, 'services']);
         Route::get('/interventions', [PrestataireController::class, 'interventions']);
@@ -101,7 +101,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // ── Admin ───────────────────────────────────────────────────────────
-    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::get('/dashboard',    [AdminController::class, 'dashboard']);
         Route::get('/users',        [AdminController::class, 'users']);
         Route::put('/users/{user}', [AdminController::class, 'updateUserStatus']);

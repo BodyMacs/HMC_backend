@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -19,7 +21,7 @@ class MarketplaceController extends Controller
         $productsQuery = Product::where('status', 'active');
 
         if ($search) {
-            $productsQuery->where(function ($q) use ($search) {
+            $productsQuery->where(function ($q) use ($search): void {
                 $q->where('name', 'like', "%{$search}%")
                     ->orWhere('description', 'like', "%{$search}%");
             });
@@ -29,22 +31,20 @@ class MarketplaceController extends Controller
             $productsQuery->where('category', $category);
         }
 
-        $products = $productsQuery->latest()->get()->map(function ($p) {
-            return [
-                'id' => $p->id,
-                'name' => $p->name,
-                'price' => $p->price,
-                'oldPrice' => $p->old_price,
-                'image' => $p->image,
-                'category' => $p->category,
-                'rating' => $p->rating,
-                'reviews' => $p->reviews_count,
-                'location' => $p->location,
-                'isNew' => $p->is_new,
-                'discount' => $p->old_price ? round((($p->old_price - $p->price) / $p->old_price) * 100) : null,
-                'type' => 'product'
-            ];
-        });
+        $products = $productsQuery->latest()->get()->map(fn ($p) => [
+            'id' => $p->id,
+            'name' => $p->name,
+            'price' => $p->price,
+            'oldPrice' => $p->old_price,
+            'image' => $p->image,
+            'category' => $p->category,
+            'rating' => $p->rating,
+            'reviews' => $p->reviews_count,
+            'location' => $p->location,
+            'isNew' => $p->is_new,
+            'discount' => $p->old_price ? round((($p->old_price - $p->price) / $p->old_price) * 100) : null,
+            'type' => 'product',
+        ]);
 
         // Services query
         $services = collect();
@@ -52,28 +52,26 @@ class MarketplaceController extends Controller
             $servicesQuery = Service::with('category', 'provider')->where('status', 'active');
 
             if ($search) {
-                $servicesQuery->where(function ($q) use ($search) {
+                $servicesQuery->where(function ($q) use ($search): void {
                     $q->where('title', 'like', "%{$search}%")
                         ->orWhere('description', 'like', "%{$search}%");
                 });
             }
 
-            $services = $servicesQuery->latest()->get()->map(function ($s) {
-                return [
-                    'id' => $s->id,
-                    'name' => $s->title,
-                    'price' => $s->base_price,
-                    'oldPrice' => null,
-                    'image' => $s->category ? $s->category->icon : 'fas fa-tools', // UI uses image or icon
-                    'category' => $s->category ? $s->category->name : 'Services',
-                    'rating' => 5.0, // Placeholder
-                    'reviews' => 0, // Placeholder
-                    'location' => $s->provider ? $s->provider->city : 'Cameroun',
-                    'isNew' => false,
-                    'discount' => null,
-                    'type' => 'service'
-                ];
-            });
+            $services = $servicesQuery->latest()->get()->map(fn ($s) => [
+                'id' => $s->id,
+                'name' => $s->title,
+                'price' => $s->base_price,
+                'oldPrice' => null,
+                'image' => $s->category ? $s->category->icon : 'fas fa-tools', // UI uses image or icon
+                'category' => $s->category ? $s->category->name : 'Services',
+                'rating' => 5.0, // Placeholder
+                'reviews' => 0, // Placeholder
+                'location' => $s->provider ? $s->provider->city : 'Cameroun',
+                'isNew' => false,
+                'discount' => null,
+                'type' => 'service',
+            ]);
         }
 
         // Merge and sort if necessary, or just return both
@@ -82,7 +80,7 @@ class MarketplaceController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $allItems->values()
+            'data' => $allItems->values(),
         ]);
     }
 
@@ -92,7 +90,9 @@ class MarketplaceController extends Controller
 
         if ($type === 'service') {
             $item = Service::with('category', 'provider')->find($id);
-            if (!$item) return response()->json(['success' => false, 'message' => 'Service non trouvé'], 404);
+            if (! $item) {
+                return response()->json(['success' => false, 'message' => 'Service non trouvé'], 404);
+            }
 
             $data = [
                 'id' => $item->id,
@@ -105,11 +105,13 @@ class MarketplaceController extends Controller
                 'provider' => $item->provider,
                 'type' => 'service',
                 'rating' => 5.0,
-                'reviews' => []
+                'reviews' => [],
             ];
         } else {
             $item = Product::find($id);
-            if (!$item) return response()->json(['success' => false, 'message' => 'Produit non trouvé'], 404);
+            if (! $item) {
+                return response()->json(['success' => false, 'message' => 'Produit non trouvé'], 404);
+            }
 
             $data = [
                 'id' => $item->id,
@@ -123,26 +125,24 @@ class MarketplaceController extends Controller
                 'isNew' => $item->is_new,
                 'type' => 'product',
                 'rating' => $item->rating,
-                'reviews' => []
+                'reviews' => [],
             ];
         }
 
         return response()->json([
             'success' => true,
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
     public function categories()
     {
         // Get unique product categories
-        $productCats = Product::select('category')->distinct()->pluck('category')->map(function ($c) {
-            return [
-                'id' => $c,
-                'name' => ucfirst($c),
-                'icon' => $this->getIconForCategory($c)
-            ];
-        });
+        $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
+            'id' => $c,
+            'name' => ucfirst($c),
+            'icon' => $this->getIconForCategory($c),
+        ]);
 
         // Add services special category
         $cats = collect([
@@ -150,20 +150,18 @@ class MarketplaceController extends Controller
         ])->concat($productCats);
 
         // Add service categories from table if any
-        $serviceCats = ServiceCategory::all()->map(function ($sc) {
-            return [
-                'id' => 'services', // Map all services to 'services' tab or keep them separate
-                'name' => $sc->name,
-                'icon' => $sc->icon ?: 'fas fa-tools'
-            ];
-        });
+        $serviceCats = ServiceCategory::all()->map(fn ($sc) => [
+            'id' => 'services', // Map all services to 'services' tab or keep them separate
+            'name' => $sc->name,
+            'icon' => $sc->icon ?: 'fas fa-tools',
+        ]);
 
         // Let's keep it simple for now as requested by the UI
         $cats->push(['id' => 'services', 'name' => 'Services', 'icon' => 'fas fa-tools']);
 
         return response()->json([
             'success' => true,
-            'data' => $cats->unique('id')->values()
+            'data' => $cats->unique('id')->values(),
         ]);
     }
 
@@ -181,7 +179,9 @@ class MarketplaceController extends Controller
         ];
 
         foreach ($map as $key => $icon) {
-            if (stripos($c, $key) !== false) return $icon;
+            if (stripos($c, $key) !== false) {
+                return $icon;
+            }
         }
 
         return 'fas fa-tag';

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Formation;
-use App\Models\UserFormation;
 use App\Models\Transaction;
+use App\Models\UserFormation;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -13,9 +15,10 @@ class FormationController extends Controller
     public function index()
     {
         $formations = Formation::where('status', 'active')->get();
+
         return response()->json([
             'success' => true,
-            'data' => $formations
+            'data' => $formations,
         ]);
     }
 
@@ -26,7 +29,7 @@ class FormationController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $formations
+            'data' => $formations,
         ]);
     }
 
@@ -38,13 +41,13 @@ class FormationController extends Controller
         if ($user->formations()->where('formation_id', $formation->id)->exists()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Formation déjà achetée.'
+                'message' => 'Formation déjà achetée.',
             ], 422);
         }
 
         // Initialize NotchPay payment
         $notchPayService = app(\App\Services\NotchPayService::class);
-        $reference = 'FM_' . $user->id . '_' . time();
+        $reference = 'FM_'.$user->id.'_'.time();
 
         $transaction = Transaction::create([
             'user_id' => $user->id,
@@ -57,8 +60,8 @@ class FormationController extends Controller
             'metadata' => [
                 'action' => 'buy_formation',
                 'formation_id' => $formation->id,
-                'description' => "Achat de la formation: {$formation->title}"
-            ]
+                'description' => "Achat de la formation: {$formation->title}",
+            ],
         ]);
 
         try {
@@ -69,22 +72,23 @@ class FormationController extends Controller
                 'description' => "Achat de la formation: {$formation->title}",
                 'metadata' => [
                     'action' => 'buy_formation',
-                    'formation_id' => $formation->id
-                ]
+                    'formation_id' => $formation->id,
+                ],
             ]);
 
             return response()->json([
                 'success' => true,
                 'redirect_url' => $payment->authorization_url,
                 'reference' => $reference,
-                'message' => 'Paiement initialisé avec succès.'
+                'message' => 'Paiement initialisé avec succès.',
             ]);
         } catch (\Exception $e) {
             // Delete pending transaction if init fails
             $transaction->delete();
+
             return response()->json([
                 'success' => false,
-                'message' => 'Erreur lors de l\'initialisation du paiement'
+                'message' => 'Erreur lors de l\'initialisation du paiement',
             ], 500);
         }
     }
@@ -100,8 +104,8 @@ class FormationController extends Controller
             'success' => true,
             'data' => [
                 'formation' => $formation,
-                'user_progress' => $userFormation
-            ]
+                'user_progress' => $userFormation,
+            ],
         ]);
     }
 }

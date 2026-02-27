@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -19,22 +21,22 @@ class PrestataireController extends Controller
 
         // Count interventions by status
         $stats = [
-            'pending'   => Intervention::whereHas('service', fn($q) => $q->where('provider_id', $user->id))->where('status', 'pending')->count(),
-            'active'    => Intervention::whereHas('service', fn($q) => $q->where('provider_id', $user->id))->where('status', 'accepted')->count(),
-            'completed' => Intervention::whereHas('service', fn($q) => $q->where('provider_id', $user->id))->where('status', 'completed')->count(),
-            'earnings'  => Transaction::where('user_id', $user->id)->where('type', 'credit')->sum('amount'),
+            'pending' => Intervention::whereHas('service', fn ($q) => $q->where('provider_id', $user->id))->where('status', 'pending')->count(),
+            'active' => Intervention::whereHas('service', fn ($q) => $q->where('provider_id', $user->id))->where('status', 'accepted')->count(),
+            'completed' => Intervention::whereHas('service', fn ($q) => $q->where('provider_id', $user->id))->where('status', 'completed')->count(),
+            'earnings' => Transaction::where('user_id', $user->id)->where('type', 'credit')->sum('amount'),
         ];
 
         // Recent interventions
         $recentInterventions = Intervention::with(['service', 'requester', 'property'])
-            ->whereHas('service', fn($q) => $q->where('provider_id', $user->id))
+            ->whereHas('service', fn ($q) => $q->where('provider_id', $user->id))
             ->latest()
             ->take(5)
             ->get();
 
         // Today's schedule
         $todaySchedule = Intervention::with(['service', 'requester', 'property'])
-            ->whereHas('service', fn($q) => $q->where('provider_id', $user->id))
+            ->whereHas('service', fn ($q) => $q->where('provider_id', $user->id))
             ->whereDate('scheduled_at', now()->toDateString())
             ->orderBy('scheduled_at')
             ->get();
@@ -45,7 +47,7 @@ class PrestataireController extends Controller
                 'stats' => $stats,
                 'recent_interventions' => $recentInterventions,
                 'today_schedule' => $todaySchedule,
-            ]
+            ],
         ]);
     }
 
@@ -60,7 +62,7 @@ class PrestataireController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $services
+            'data' => $services,
         ]);
     }
 
@@ -70,13 +72,13 @@ class PrestataireController extends Controller
     public function interventions(Request $request)
     {
         $interventions = Intervention::with(['service', 'requester', 'property'])
-            ->whereHas('service', fn($q) => $q->where('provider_id', $request->user()->id))
+            ->whereHas('service', fn ($q) => $q->where('provider_id', $request->user()->id))
             ->latest()
             ->paginate(15);
 
         return response()->json([
             'success' => true,
-            'data' => $interventions
+            'data' => $interventions,
         ]);
     }
 
@@ -86,14 +88,14 @@ class PrestataireController extends Controller
     public function agenda(Request $request)
     {
         $agenda = Intervention::with(['service', 'requester', 'property'])
-            ->whereHas('service', fn($q) => $q->where('provider_id', $request->user()->id))
+            ->whereHas('service', fn ($q) => $q->where('provider_id', $request->user()->id))
             ->where('scheduled_at', '>=', now()->startOfDay())
             ->orderBy('scheduled_at')
             ->get();
 
         return response()->json([
             'success' => true,
-            'data' => $agenda
+            'data' => $agenda,
         ]);
     }
 
@@ -108,7 +110,7 @@ class PrestataireController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $transactions
+            'data' => $transactions,
         ]);
     }
 }

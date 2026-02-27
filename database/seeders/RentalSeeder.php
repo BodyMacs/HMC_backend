@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use App\Models\Rental;
-use App\Models\Property;
-use App\Models\User;
-use App\Models\Transaction;
-use App\Models\Intervention;
-use App\Models\Service;
 use App\Models\Favorite;
+use App\Models\Intervention;
+use App\Models\Property;
+use App\Models\Rental;
+use App\Models\Service;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -17,7 +19,9 @@ class RentalSeeder extends Seeder
     public function run(): void
     {
         $tenant = User::where('email', 'locataire@home.cm')->first();
-        if (!$tenant) return;
+        if (! $tenant) {
+            return;
+        }
 
         // 1. Favoris
         $properties = Property::inRandomOrder()->take(5)->get();
@@ -30,7 +34,9 @@ class RentalSeeder extends Seeder
 
         // 2. Locations Active & Passée
         $allProps = Property::where('status', 'active')->get();
-        if ($allProps->count() < 2) return;
+        if ($allProps->count() < 2) {
+            return;
+        }
 
         // Location Active
         $activeProp = $allProps[0];
@@ -59,7 +65,7 @@ class RentalSeeder extends Seeder
         for ($i = 0; $i < 3; $i++) {
             Transaction::create([
                 'user_id' => $tenant->id,
-                'reference' => 'PAY-' . strtoupper(Str::random(10)),
+                'reference' => 'PAY-'.strtoupper(Str::random(10)),
                 'type' => 'payment',
                 'amount' => $activeProp->price,
                 'currency' => 'XAF',
@@ -67,9 +73,9 @@ class RentalSeeder extends Seeder
                 'payment_method' => 'momo',
                 'metadata' => [
                     'rental_id' => $rentalActive->id,
-                    'month' => now()->subMonths($i)->format('F Y')
+                    'month' => now()->subMonths($i)->format('F Y'),
                 ],
-                'created_at' => now()->subMonths($i)
+                'created_at' => now()->subMonths($i),
             ]);
         }
 
@@ -92,7 +98,7 @@ class RentalSeeder extends Seeder
                 'notes' => 'Réparation climatisation salon.',
                 'completed_at' => now()->subDays(15),
                 'rating' => 5,
-                'review' => 'Excellent travail, prestataire ponctuel.'
+                'review' => 'Excellent travail, prestataire ponctuel.',
             ]);
         }
     }

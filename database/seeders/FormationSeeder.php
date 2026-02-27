@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Formation;
+use Illuminate\Database\Seeder;
 
 class FormationSeeder extends Seeder
 {
@@ -22,8 +24,8 @@ class FormationSeeder extends Seeder
                         'Secteurs clés (Douala, Yaoundé, etc.)',
                         'Analyse de la concurrence',
                         'Tendances 2024-2025',
-                        'Stratégies de positionnement'
-                    ]
+                        'Stratégies de positionnement',
+                    ],
                 ],
                 [
                     'title' => 'Module 2: Techniques de Vente et Négociation',
@@ -32,8 +34,8 @@ class FormationSeeder extends Seeder
                         'Prospecter efficacement',
                         'Arguments de vente',
                         'Gestion des objections',
-                        'Clôture de contrats'
-                    ]
+                        'Clôture de contrats',
+                    ],
                 ],
                 [
                     'title' => 'Module 3: Aspects Juridiques et Contrats',
@@ -42,11 +44,11 @@ class FormationSeeder extends Seeder
                         'Législation immobilière Cam.',
                         'Rédaction de baux',
                         'Mandats de vente',
-                        'Fiscalité immobilière'
-                    ]
-                ]
+                        'Fiscalité immobilière',
+                    ],
+                ],
             ],
-            'status' => 'active'
+            'status' => 'active',
         ]);
     }
 }

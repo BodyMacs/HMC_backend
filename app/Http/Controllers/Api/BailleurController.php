@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Intervention;
 use App\Models\Property;
 use App\Models\Rental;
-use App\Models\Intervention;
-use App\Models\PropertyImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BailleurController extends Controller
 {
@@ -47,7 +47,7 @@ class BailleurController extends Controller
             ->where('payment_status', 'unpaid')
             ->get();
 
-        $unpaidCount  = $unpaidRentals->count();
+        $unpaidCount = $unpaidRentals->count();
         $unpaidAmount = $unpaidRentals->sum('monthly_rent');
 
         // ── Interventions en attente ────────────────────────────────────
@@ -58,40 +58,40 @@ class BailleurController extends Controller
 
         // ── Top 5 biens pour la liste du dashboard ─────────────────────
         $featuredProperties = $properties->map(function ($p) {
-            $pi   = $p->primaryImage;
+            $pi = $p->primaryImage;
             $path = $pi ? $pi->path : null;
-            $img  = $path
+            $img = $path
                 ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
                 : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=300';
 
             $activeRental = $p->rentals->first();
 
             return [
-                'id'       => $p->id,
-                'title'    => $p->title,
+                'id' => $p->id,
+                'title' => $p->title,
                 'location' => $p->location,
-                'city'     => $p->city,
+                'city' => $p->city,
                 'category' => $p->category,
-                'price'    => (float) $p->price,
-                'image'    => $img,
-                'status'   => $activeRental ? 'occupied' : 'available',
-                'tenant'   => $activeRental?->tenant?->name,
+                'price' => (float) $p->price,
+                'image' => $img,
+                'status' => $activeRental ? 'occupied' : 'available',
+                'tenant' => $activeRental?->tenant?->name,
                 'payment_status' => $activeRental?->payment_status ?? null,
             ];
         })->sortByDesc(fn($p) => $p['status'] === 'occupied')->values()->take(6);
 
         return response()->json([
             'success' => true,
-            'data'    => [
+            'data' => [
                 'stats' => [
-                    'monthly_revenue'   => (float) $monthlyRevenue,
-                    'total_properties'  => $totalProperties,
-                    'occupied_count'    => $occupiedCount,
-                    'available_count'   => $totalProperties - $occupiedCount,
-                    'occupancy_rate'    => $occupancyRate,
-                    'unpaid_count'      => $unpaidCount,
-                    'unpaid_amount'     => (float) $unpaidAmount,
-                    'interventions'     => $interventionCount,
+                    'monthly_revenue' => (float) $monthlyRevenue,
+                    'total_properties' => $totalProperties,
+                    'occupied_count' => $occupiedCount,
+                    'available_count' => $totalProperties - $occupiedCount,
+                    'occupancy_rate' => $occupancyRate,
+                    'unpaid_count' => $unpaidCount,
+                    'unpaid_amount' => (float) $unpaidAmount,
+                    'interventions' => $interventionCount,
                 ],
                 'properties' => $featuredProperties,
             ],
@@ -126,23 +126,24 @@ class BailleurController extends Controller
         $properties = $query->latest()->paginate(12);
 
         $properties->getCollection()->transform(function ($p) {
-            $pi   = $p->primaryImage;
+            $pi = $p->primaryImage;
             $path = $pi ? $pi->path : null;
             $p->image = $path
                 ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
                 : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=400';
 
             $activeRental = $p->rentals->first();
-            $p->rental_status  = $activeRental ? 'occupied' : 'available';
-            $p->tenant         = $activeRental?->tenant;
-            $p->monthly_rent   = $activeRental?->monthly_rent ?? $p->price;
+            $p->rental_status = $activeRental ? 'occupied' : 'available';
+            $p->tenant = $activeRental?->tenant;
+            $p->monthly_rent = $activeRental?->monthly_rent ?? $p->price;
             $p->payment_status = $activeRental?->payment_status;
+
             return $p;
         });
 
         return response()->json([
             'success' => true,
-            'data'    => $properties,
+            'data' => $properties,
         ]);
     }
 
@@ -156,7 +157,7 @@ class BailleurController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => $user,
+            'data' => $user,
         ]);
     }
 
@@ -169,17 +170,17 @@ class BailleurController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'name'  => 'sometimes|string|max:255',
+            'name' => 'sometimes|string|max:255',
             'phone' => 'sometimes|string|max:20',
-            'city'  => 'sometimes|string|max:100',
-            'bio'   => 'sometimes|string|max:500',
+            'city' => 'sometimes|string|max:100',
+            'bio' => 'sometimes|string|max:500',
         ]);
 
         $user->update($validated);
 
         return response()->json([
             'success' => true,
-            'data'    => $user->fresh(),
+            'data' => $user->fresh(),
             'message' => 'Profil mis à jour avec succès.',
         ]);
     }
@@ -191,17 +192,15 @@ class BailleurController extends Controller
     {
         $user = $request->user();
 
-        $applications = Rental::with(['property.primaryImage', 'tenant'])
-            ->select('rentals.*')
-            ->join('properties', 'properties.id', '=', 'rentals.property_id')
-            ->where('properties.user_id', $user->id)
-            ->where('rentals.status', 'pending')
-            ->latest('rentals.created_at')
-            ->get();
+        $applications = Rental::with(['property.primaryImage', 'tenant'])->get()
+            ->filter(function ($r) use ($user) {
+                return (int)$r->property->user_id === (int)$user->id && $r->status === 'pending';
+            })
+            ->values();
 
         return response()->json([
             'success' => true,
-            'data'    => $applications,
+            'data' => $applications,
         ]);
     }
 
@@ -213,15 +212,15 @@ class BailleurController extends Controller
         $user = $request->user();
 
         $request->validate([
-            'status' => 'required|in:active,rejected,cancelled'
+            'status' => 'required|in:active,rejected,cancelled',
         ]);
 
         $application = Rental::with('property')->findOrFail($id);
 
-        if ($application->property->user_id !== $user->id) {
+        if ((int) $application->property->user_id !== (int) $user->id) {
             return response()->json([
                 'success' => false,
-                'message' => 'Vous n\'êtes pas autorisé à gérer cette candidature.'
+                'message' => 'Vous n\'êtes pas autorisé à gérer cette candidature.',
             ], 403);
         }
 
@@ -236,7 +235,7 @@ class BailleurController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Statut de la candidature mis à jour.',
-            'data'    => $application->load('tenant')
+            'data' => $application->load('tenant'),
         ]);
     }
 
@@ -254,7 +253,7 @@ class BailleurController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => $visits,
+            'data' => $visits,
         ]);
     }
 
@@ -266,7 +265,7 @@ class BailleurController extends Controller
         $user = $request->user();
 
         $request->validate([
-            'status' => 'required|in:confirmed,cancelled,completed'
+            'status' => 'required|in:confirmed,cancelled,completed',
         ]);
 
         $visit = \App\Models\Visit::where('id', $id)
@@ -278,7 +277,7 @@ class BailleurController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Statut de la visite mis à jour.',
-            'data'    => $visit->load('user')
+            'data' => $visit->load('user'),
         ]);
     }
 
@@ -296,7 +295,7 @@ class BailleurController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => $interventions,
+            'data' => $interventions,
         ]);
     }
 
@@ -308,7 +307,7 @@ class BailleurController extends Controller
         $user = $request->user();
 
         $request->validate([
-            'status' => 'required|in:in_progress,completed,cancelled'
+            'status' => 'required|in:in_progress,completed,cancelled',
         ]);
 
         $intervention = Intervention::where('id', $id)
@@ -320,7 +319,7 @@ class BailleurController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Statut de l\'intervention mis à jour.',
-            'data'    => $intervention->load('service')
+            'data' => $intervention->load('service'),
         ]);
     }
 
@@ -351,11 +350,11 @@ class BailleurController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => [
+            'data' => [
                 'stats' => [
                     'monthly_revenue' => (float) $monthlyRevenue,
                     'total_collected' => (float) $totalCollected,
-                    'balance'         => (float) ($user->wallet?->balance ?? 0),
+                    'balance' => (float) ($user->wallet?->balance ?? 0),
                 ],
                 'transactions' => $transactions,
             ],

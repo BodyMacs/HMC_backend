@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Service;
@@ -16,8 +18,8 @@ class ServiceSeeder extends Seeder
     {
         // Ensure we have a provider
         $provider = User::where('role', 'prestataire')->first();
-        
-        if (!$provider) {
+
+        if (! $provider) {
             $provider = User::create([
                 'name' => 'Prestataire Pro',
                 'email' => 'pro@home.cm',
@@ -74,9 +76,9 @@ class ServiceSeeder extends Seeder
 
         foreach ($services as $serviceData) {
             $category = $categories->where('slug', $serviceData['category_slug'])->first();
-            
+
             // Fallback if slug not found
-            if (!$category) {
+            if (! $category) {
                 $category = $categories->first();
             }
 
