@@ -22,8 +22,13 @@ return [
     'allowed_methods' => ['*'],
 
     // 74,75,76,77
-    'allowed_origins' => ['http://localhost:5173', 'http://127.0.0.1:5174', 'http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:5174', 'http://127.0.0.1:5175', 'https://hmcam.espacecameroun.com/',
-
+    'allowed_origins' => [
+        'http://localhost:5173',
+        'http://127.0.0.1:5174',
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+        'http://127.0.0.1:5175',
+        'https://hmcam.espacecameroun.com'
     ],
 
     'allowed_origins_patterns' => [],

@@ -206,7 +206,7 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_sans_property_id(): void
     {
         [, $token] = $this->createTenant();
-
+        
         $this->withToken($token)->postJson('/api/tenant/apply', [
             'start_date' => now()->addDays(2)->format('Y-m-d'),
             'duration_months' => 12,
