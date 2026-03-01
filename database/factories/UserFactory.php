@@ -26,12 +26,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'role' => 'locataire',
-            'remember_token' => Str::random(10),
+            'password'          => static::$password ??= Hash::make('password'),
+            'role'              => 'client',
+            'roles'             => ['client'],
+            'remember_token'    => Str::random(10),
         ];
     }
 
@@ -42,6 +43,42 @@ class UserFactory extends Factory
     {
         return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /** Agent HMC */
+    public function agent(): static
+    {
+        return $this->state(fn() => [
+            'role'  => 'agent',
+            'roles' => ['agent'],
+        ]);
+    }
+
+    /** Propriétaire bailleur */
+    public function bailleur(): static
+    {
+        return $this->state(fn() => [
+            'role'  => 'bailleur',
+            'roles' => ['bailleur'],
+        ]);
+    }
+
+    /** Client (sans rôle locataire) */
+    public function client(): static
+    {
+        return $this->state(fn() => [
+            'role'  => 'client',
+            'roles' => ['client'],
+        ]);
+    }
+
+    /** Locataire (rôle attribué après location confirmée) */
+    public function tenant(): static
+    {
+        return $this->state(fn() => [
+            'role'  => 'locataire',
+            'roles' => ['locataire'],
         ]);
     }
 }

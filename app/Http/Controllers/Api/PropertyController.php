@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use App\Models\RentalApplication;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -23,10 +25,10 @@ class PropertyController extends Controller
         // Filters
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request): void {
-                $q->where('title', 'like', '%'.$request->search.'%')
-                    ->orWhere('location', 'like', '%'.$request->search.'%')
-                    ->orWhere('city', 'like', '%'.$request->search.'%')
-                    ->orWhere('description', 'like', '%'.$request->search.'%');
+                $q->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('location', 'like', '%' . $request->search . '%')
+                    ->orWhere('city', 'like', '%' . $request->search . '%')
+                    ->orWhere('description', 'like', '%' . $request->search . '%');
             });
         }
         // Types multiples (CSV) ou unique
@@ -44,12 +46,12 @@ class PropertyController extends Controller
             if (! empty($citiesArr)) {
                 $query->where(function ($q) use ($citiesArr): void {
                     foreach ($citiesArr as $c) {
-                        $q->orWhere('city', 'like', '%'.$c.'%');
+                        $q->orWhere('city', 'like', '%' . $c . '%');
                     }
                 });
             }
         } elseif ($request->filled('city')) {
-            $query->where('city', 'like', '%'.$request->city.'%');
+            $query->where('city', 'like', '%' . $request->city . '%');
         }
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
@@ -75,7 +77,7 @@ class PropertyController extends Controller
             if (! empty($amens)) {
                 $query->where(function ($q) use ($amens): void {
                     foreach ($amens as $a) {
-                        $q->orWhere('amenities', 'like', '%'.$a.'%');
+                        $q->orWhere('amenities', 'like', '%' . $a . '%');
                     }
                 });
             }
@@ -103,22 +105,31 @@ class PropertyController extends Controller
 
         $properties = $query->paginate(15);
 
+        /** @var \App\Models\User $user */
         $user = auth('sanctum')->user();
         $favoriteIds = $user ? $user->favorites()->pluck('property_id')->toArray() : [];
 
+        // Procédures locatives en cours par l'user pour chaque bien
+        $activeVisits       = $user ? Visit::where('user_id', $user->id)->whereIn('status', ['pending', 'confirmed', 'completed'])->get()->keyBy('property_id') : collect();
+        $activeApplications = $user ? RentalApplication::where('user_id', $user->id)->whereNotIn('status', ['rejected'])->get()->keyBy('property_id') : collect();
+
         // Normalize image URL for each property
-        $properties->getCollection()->transform(function ($p) use ($favoriteIds) {
+        $properties->getCollection()->transform(function ($p) use ($favoriteIds, $activeVisits, $activeApplications) {
             $primaryImage = $p->primaryImage;
             if ($primaryImage) {
                 $path = $primaryImage->path;
                 // Si c'est déjà une URL absolue (Unsplash etc.), on la garde
-                $p->image = str_starts_with($path, 'http') ? $path : asset('storage/'.$path);
+                $p->image = str_starts_with($path, 'http') ? $path : asset('storage/' . $path);
             } else {
                 $p->image = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
             }
             $p->rooms = $p->bedrooms ?? 0;
             $p->owner = $p->owner;
             $p->is_favorite = in_array($p->id, $favoriteIds);
+            $p->my_rental_process = self::buildRentalProcess(
+                $activeVisits->get($p->id),
+                $activeApplications->get($p->id),
+            );
 
             return $p;
         });
@@ -130,20 +141,20 @@ class PropertyController extends Controller
             ->selectRaw('category as value, count(*) as count')
             ->groupBy('category')->orderBy('count', 'desc')
             ->get()
-            ->map(fn ($t) => ['label' => $t->value, 'value' => $t->value, 'count' => $t->count]);
+            ->map(fn($t) => ['label' => $t->value, 'value' => $t->value, 'count' => $t->count]);
 
         $cityAggregates = (clone $baseQuery)
             ->selectRaw('city as value, count(*) as count')
             ->groupBy('city')->orderBy('count', 'desc')
             ->get()
-            ->map(fn ($c) => ['label' => $c->value, 'value' => $c->value, 'count' => $c->count]);
+            ->map(fn($c) => ['label' => $c->value, 'value' => $c->value, 'count' => $c->count]);
 
         $etatAggregates = (clone $baseQuery)
             ->whereNotNull('etat')
             ->selectRaw('etat as value, count(*) as count')
             ->groupBy('etat')
             ->get()
-            ->map(fn ($e) => ['label' => $e->value, 'value' => $e->value, 'count' => $e->count]);
+            ->map(fn($e) => ['label' => $e->value, 'value' => $e->value, 'count' => $e->count]);
 
         // Commodités : on agrège depuis le JSON amenities
         $allAmenities = [
@@ -160,10 +171,10 @@ class PropertyController extends Controller
             'Cuisine équipée',
         ];
         $amenityAggregates = collect($allAmenities)->map(function ($a) use ($baseQuery) {
-            $count = (clone $baseQuery)->where('amenities', 'like', '%'.$a.'%')->count();
+            $count = (clone $baseQuery)->where('amenities', 'like', '%' . $a . '%')->count();
 
             return ['label' => $a, 'value' => $a, 'count' => $count];
-        })->filter(fn ($a) => $a['count'] > 0)->values();
+        })->filter(fn($a) => $a['count'] > 0)->values();
 
         return response()->json([
             'success' => true,
@@ -199,9 +210,15 @@ class PropertyController extends Controller
             'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
-        $validated['user_id'] = $request->user()->id;
-        $validated['slug'] = Str::slug($request->title).'-'.Str::random(6);
+        $user = $request->user();
+        $validated['user_id'] = $user->id;
+        $validated['slug'] = Str::slug($request->title) . '-' . Str::random(6);
         $validated['status'] = 'pending'; // Default moderation status
+
+        // Fulfilling: "si un locataire decide de poster un bien on l'attribut automatiquement le role bailleur"
+        if (!$user->hasRole('bailleur')) {
+            $user->addRole('bailleur');
+        }
 
         $property = Property::create($validated);
 
@@ -239,7 +256,7 @@ class PropertyController extends Controller
 
             return [
                 'id' => $img->id,
-                'url' => str_starts_with($path, 'http') ? $path : asset('storage/'.$path),
+                'url' => str_starts_with($path, 'http') ? $path : asset('storage/' . $path),
                 'is_primary' => $img->is_primary,
                 'order' => $img->order,
             ];
@@ -250,9 +267,26 @@ class PropertyController extends Controller
         $property->image = $primary['url'] ?? 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
         $property->all_images = $allImages->pluck('url')->all();
 
+        /** @var \App\Models\User $user */
         $user = auth('sanctum')->user();
         $favoriteIds = $user ? $user->favorites()->pluck('property_id')->toArray() : [];
         $property->is_favorite = in_array($property->id, $favoriteIds);
+
+        // Procédure locative en cours pour CE bien
+        $activeVisit = $user
+            ? Visit::where('user_id', $user->id)
+            ->where('property_id', $property->id)
+            ->whereIn('status', ['pending', 'confirmed', 'completed'])
+            ->latest()->first()
+            : null;
+        $activeApplication = $user
+            ? RentalApplication::where('user_id', $user->id)
+            ->where('property_id', $property->id)
+            ->whereNotIn('status', ['rejected'])
+            ->latest()->first()
+            : null;
+
+        $property->my_rental_process = self::buildRentalProcess($activeVisit, $activeApplication);
 
         // Biens similaires ...
         $similar = Property::with(['primaryImage'])
@@ -269,7 +303,7 @@ class PropertyController extends Controller
                 $pi = $p->primaryImage;
                 $path = $pi ? $pi->path : null;
                 $p->image = $path
-                    ? (str_starts_with($path, 'http') ? $path : asset('storage/'.$path))
+                    ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
                     : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
                 $p->rooms = $p->bedrooms ?? 0;
                 $p->is_favorite = in_array($p->id, $favoriteIds);
@@ -336,5 +370,58 @@ class PropertyController extends Controller
             'success' => true,
             'message' => 'Propriété supprimée',
         ]);
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // HELPERS
+    // ══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Construit le résumé de procédure locative pour un user sur un bien donné.
+     *
+     * Retourne null si aucune procédure en cours.
+     * Sinon :
+     *   step    : 'visit' | 'dossier' | 'payment' | 'active'
+     *   label   : libellé lisible
+     *   percent : 0-100 pour la barre de progression
+     *   visit   : objet visite ou null
+     *   application : objet dossier ou null
+     */
+    public static function buildRentalProcess(?object $visit, ?object $application): ?array
+    {
+        if (! $visit && ! $application) {
+            return null;
+        }
+
+        // Étape active basée sur ce qu'on a trouvé
+        if ($application) {
+            if ($application->status === 'validated') {
+                return [
+                    'step'        => 'payment',
+                    'label'       => 'En attente de paiement',
+                    'percent'     => 75,
+                    'visit'       => $visit,
+                    'application' => $application,
+                ];
+            }
+
+            return [
+                'step'        => 'dossier',
+                'label'       => 'Dossier en examen',
+                'percent'     => 50,
+                'visit'       => $visit,
+                'application' => $application,
+            ];
+        }
+
+        // Visite seule
+        $step = match ($visit->status ?? '') {
+            'pending'   => ['step' => 'visit', 'label' => 'Visite programmée',  'percent' => 15],
+            'confirmed' => ['step' => 'visit', 'label' => 'Visite confirmée',   'percent' => 30],
+            'completed' => ['step' => 'dossier', 'label' => 'Visite terminée — dossier à soumettre', 'percent' => 40],
+            default     => ['step' => 'visit', 'label' => 'Visite en cours',    'percent' => 20],
+        };
+
+        return array_merge($step, ['visit' => $visit, 'application' => null]);
     }
 }

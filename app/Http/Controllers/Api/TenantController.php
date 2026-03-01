@@ -174,6 +174,7 @@ class TenantController extends Controller
             'notes' => 'nullable|string',
         ]);
 
+        /** @var \App\Models\User $user */
         $user = Auth::user();
 
         // Check if application already exists
@@ -201,6 +202,7 @@ class TenantController extends Controller
             'notes' => $request->notes,
         ]);
 
+        /** @var \App\Models\Rental $rental */
         return response()->json([
             'success' => true,
             'message' => 'Votre demande de location a été envoyée avec succès.',
@@ -309,6 +311,7 @@ class TenantController extends Controller
      */
     public function updateProfile(Request $request)
     {
+        /** @var \App\Models\User $user */
         $user = Auth::user();
 
         $validated = $request->validate([

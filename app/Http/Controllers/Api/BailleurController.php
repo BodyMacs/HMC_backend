@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Intervention;
 use App\Models\Property;
 use App\Models\Rental;
+use App\Models\RentalApplication;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 
 class BailleurController extends Controller
@@ -185,99 +187,147 @@ class BailleurController extends Controller
         ]);
     }
 
+    // ══════════════════════════════════════════════════════════════════════════
+    // SUIVI DU PROCESSUS LOCATIF (lecture seule)
+    // ══════════════════════════════════════════════════════════════════════════
+
     /**
-     * Liste des candidatures (rentals en attente)
+     * Statut du processus locatif pour un bien donné — LECTURE SEULE.
+     * Le bailleur observe l'avancement sans pouvoir intervenir.
+     * GET /api/bailleur/properties/{id}/rental-status
      */
-    public function applications(Request $request)
+    public function propertyRentalStatus(Request $request, int $propertyId)
     {
         $user = $request->user();
 
-        $applications = Rental::with(['property.primaryImage', 'tenant'])->get()
-            ->filter(function ($r) use ($user) {
-                return (int)$r->property->user_id === (int)$user->id && $r->status === 'pending';
-            })
-            ->values();
+        // Vérifier que ce bien appartient bien au bailleur
+        $property = Property::where('id', $propertyId)
+            ->where('user_id', $user->id)
+            ->with(['agent:id,name,phone'])
+            ->firstOrFail();
+
+        // Phase 1 : Visite la plus récente
+        $latestVisit = Visit::where('property_id', $propertyId)
+            ->with('visitor:id,name')
+            ->latest()
+            ->first();
+
+        // Phase 2 : Dossier de candidature le plus récent
+        $latestApplication = RentalApplication::where('property_id', $propertyId)
+            ->latest()
+            ->first();
+
+        // Phase 3 : Location (contrat final)
+        $activeRental = Rental::where('property_id', $propertyId)
+            ->whereIn('status', ['pending', 'active'])
+            ->with('tenant:id,name,phone')
+            ->first();
+
+        // Calculer la phase actuelle et le % d'avancement
+        [$phase, $percent, $phaseLabel] = $this->computeRentalPhase(
+            $latestVisit,
+            $latestApplication,
+            $activeRental
+        );
 
         return response()->json([
             'success' => true,
-            'data' => $applications,
+            'data' => [
+                'property' => [
+                    'id'     => $property->id,
+                    'title'  => $property->title,
+                    'status' => $property->status,
+                    'agent'  => $property->agent,
+                ],
+                'current_phase'   => $phase,
+                'phase_label'     => $phaseLabel,
+                'progress_percent' => $percent,
+                // Phase 1 — info visite (sans identité du prospect)
+                'visit' => $latestVisit ? [
+                    'id'                 => $latestVisit->id,
+                    'status'             => $latestVisit->status,
+                    'scheduled_at'       => $latestVisit->scheduled_at,
+                    'confirmed_by_agent' => $latestVisit->confirmed_by_agent,
+                    'confirmed_by_user'  => $latestVisit->confirmed_by_user,
+                ] : null,
+                // Phase 2 — info dossier (sans données sensibles)
+                'application' => $latestApplication ? [
+                    'id'         => $latestApplication->id,
+                    'status'     => $latestApplication->status,
+                    'created_at' => $latestApplication->created_at,
+                ] : null,
+                // Phase 3 — info contrat (avec identité locataire une fois actif)
+                'rental' => $activeRental ? [
+                    'id'          => $activeRental->id,
+                    'status'      => $activeRental->status,
+                    'start_date'  => $activeRental->start_date,
+                    'end_date'    => $activeRental->end_date,
+                    'price'       => $activeRental->price,
+                    'tenant'      => $activeRental->status === 'active' ? $activeRental->tenant : null,
+                    'payment_status' => $activeRental->payment_status,
+                ] : null,
+            ],
         ]);
     }
 
     /**
-     * Mettre à jour le statut d'une candidature
+     * Calcule la phase courante et le % d'avancement du processus locatif.
      */
-    public function updateApplicationStatus(Request $request, $id)
+    private function computeRentalPhase(?Visit $visit, ?RentalApplication $app, ?Rental $rental): array
     {
-        $user = $request->user();
-
-        $request->validate([
-            'status' => 'required|in:active,rejected,cancelled',
-        ]);
-
-        $application = Rental::with('property')->findOrFail($id);
-
-        if ((int) $application->property->user_id !== (int) $user->id) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Vous n\'êtes pas autorisé à gérer cette candidature.',
-            ], 403);
+        if ($rental?->status === 'active') {
+            return [3, 100, 'Location active'];
         }
-
-        $application->status = $request->status;
-
-        if ($request->status === 'active') {
-            $application->start_date = now();
+        if ($rental?->status === 'pending') {
+            return [3, 75, 'Paiement initial en attente'];
         }
-
-        $application->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Statut de la candidature mis à jour.',
-            'data' => $application->load('tenant'),
-        ]);
+        if ($app?->status === 'validated') {
+            return [3, 60, 'Dossier validé — en attente de paiement'];
+        }
+        if (in_array($app?->status, ['pending', 'under_review'], true)) {
+            return [2, 40, 'Dossier de candidature en cours'];
+        }
+        if ($visit?->status === 'completed') {
+            return [2, 25, 'Visite confirmée — dossier à soumettre'];
+        }
+        if ($visit?->status === 'confirmed') {
+            return [1, 15, 'Visite planifiée'];
+        }
+        if ($visit?->status === 'pending') {
+            return [1, 10, 'Visite en attente de paiement'];
+        }
+        return [0, 0, 'Aucun processus en cours'];
     }
 
     /**
-     * Liste des visites pour le bailleur
+     * Liste des visites pour le bailleur — LECTURE SEULE (sans identité prospect).
+     * GET /api/bailleur/visits
      */
     public function visits(Request $request)
     {
         $user = $request->user();
 
-        $visits = \App\Models\Visit::with(['property.primaryImage', 'visitor'])
+        $visits = Visit::with(['property:id,title,city', 'agent:id,name,phone'])
             ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
+            ->select([
+                'id',
+                'property_id',
+                'agent_id',
+                'scheduled_at',
+                'visited_at',
+                'status',
+                'confirmed_by_user',
+                'confirmed_by_agent',
+                'visit_fee',
+                'fee_payment_status',
+                'created_at'
+            ])
             ->latest()
             ->get();
 
         return response()->json([
             'success' => true,
-            'data' => $visits,
-        ]);
-    }
-
-    /**
-     * Mettre à jour le statut d'une visite
-     */
-    public function updateVisitStatus(Request $request, $id)
-    {
-        $user = $request->user();
-
-        $request->validate([
-            'status' => 'required|in:confirmed,cancelled,completed',
-        ]);
-
-        $visit = \App\Models\Visit::where('id', $id)
-            ->whereHas('property', fn($q) => $q->where('user_id', $user->id))
-            ->firstOrFail();
-
-        $visit->update(['status' => $request->status]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Statut de la visite mis à jour.',
-            'data' => $visit->load('user'),
+            'data'    => $visits,
         ]);
     }
 

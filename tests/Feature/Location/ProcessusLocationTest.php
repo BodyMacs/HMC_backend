@@ -12,19 +12,20 @@ use Tests\TestCase;
 
 /**
  * =====================================================================
- * SUITE DE TESTS — Processus complet de location
+ * SUITE DE TESTS — Ancien processus (conservée pour non-régression)
  * =====================================================================
- * Couvre :
+ * IMPORTANT : Cette suite teste l'ANCIEN flux (pre-refactoring).
+ * Les routes bailleur/applications ont été SUPPRIMÉES intentionnellement
+ * car le bailleur ne doit pas modifier le processus locatif.
+ *
+ * Couvre toujours:
  *  1. Soumission d'une demande (apply)           → POST /api/tenant/apply
  *  2. Doublons de demande                        → 422 si déjà en cours
  *  3. Accès non authentifié                      → 401
  *  4. Validation des champs requis               → 422
  *  5. Liste des locations locataire              → GET /api/tenant/rentals
  *  6. Dashboard locataire                        → GET /api/tenant/dashboard
- *  7. Dashboard bailleur (candidatures reçues)   → GET /api/bailleur/applications
- *  8. Mise à jour du statut par le bailleur      → POST /api/bailleur/applications/{id}/status
- *  9. Accès aux candidatures par un non-bailleur → 403/401
- * 10. Scénario bout-en-bout (happy path)         → End-to-end
+ *  7-10. Routes bailleur/applications            → 404 (route supprimée)
  * =====================================================================
  */
 class ProcessusLocationTest extends TestCase
@@ -206,7 +207,7 @@ class ProcessusLocationTest extends TestCase
     public function la_demande_echoue_sans_property_id(): void
     {
         [, $token] = $this->createTenant();
-        
+
         $this->withToken($token)->postJson('/api/tenant/apply', [
             'start_date' => now()->addDays(2)->format('Y-m-d'),
             'duration_months' => 12,
@@ -385,119 +386,83 @@ class ProcessusLocationTest extends TestCase
     }
 
     // ═══════════════════════════════════════════════════════════════════
-    // 7. CANDIDATURES CÔTÉ BAILLEUR
+    // 7. ROUTE BAILLEUR/APPLICATIONS — SUPPRIMÉE (régression)
+    // La route a été retirée : le bailleur ne peut plus accéder ni
+    // modifier le processus locatif directement.
     // ═══════════════════════════════════════════════════════════════════
 
     /** @test */
-    public function un_bailleur_voit_les_candidatures_pour_ses_biens(): void
+    public function la_route_bailleur_applications_nexiste_plus_404(): void
     {
-        [$bailleur, $property] = $this->createBailleurWithProperty();
-        $bailleurToken = $bailleur->createToken('test')->plainTextToken;
+        [$bailleur] = $this->createBailleurWithProperty();
+        $token = $bailleur->createToken('test')->plainTextToken;
 
-        [$tenant] = $this->createTenant();
-        Rental::factory()->pending()->create([
-            'tenant_id' => $tenant->id,
-            'property_id' => $property->id,
-        ]);
-
-        $response = $this->withToken($bailleurToken)->getJson('/api/bailleur/applications');
-
-        $response->assertStatus(200)->assertJson(['success' => true]);
-        $this->assertGreaterThanOrEqual(1, count($response->json('data')));
+        // Route supprimée → 404
+        $this->withToken($token)
+            ->getJson('/api/bailleur/applications')
+            ->assertStatus(404);
     }
 
     /** @test */
-    public function un_bailleur_ne_voit_pas_les_candidatures_des_autres_bailleurs(): void
+    public function le_bailleur_peut_voir_le_statut_locatif_de_son_bien(): void
     {
-        [$bailleur1, $property1] = $this->createBailleurWithProperty();
-        [$bailleur2, $property2] = $this->createBailleurWithProperty();
-        $token2 = $bailleur2->createToken('test')->plainTextToken;
+        [$bailleur, $property] = $this->createBailleurWithProperty();
+        $token = $bailleur->createToken('test')->plainTextToken;
 
-        [$tenant] = $this->createTenant();
-
-        // Candidature uniquement pour le bien du bailleur 1
-        Rental::factory()->pending()->create([
-            'tenant_id' => $tenant->id,
-            'property_id' => $property1->id,
-        ]);
-
-        $response = $this->withToken($token2)->getJson('/api/bailleur/applications');
-
-        $response->assertStatus(200);
-        // Bailleur 2 ne doit pas voir les candidatures du bailleur 1
-        $applicationPropertyIds = collect($response->json('data'))->pluck('property_id')->toArray();
-        $this->assertNotContains($property1->id, $applicationPropertyIds);
+        // Route de remplacement : lecture seule du statut
+        $this->withToken($token)
+            ->getJson("/api/bailleur/properties/{$property->id}/rental-status")
+            ->assertStatus(200)
+            ->assertJsonStructure(['data' => ['current_phase', 'progress_percent']]);
     }
 
     // ═══════════════════════════════════════════════════════════════════
-    // 8. MISE À JOUR DU STATUT PAR LE BAILLEUR
+    // 8. ROUTE UPDATE STATUS BAILLEUR — SUPPRIMÉE (régression)
     // ═══════════════════════════════════════════════════════════════════
 
     /** @test */
-    public function un_bailleur_peut_accepter_une_candidature(): void
+    public function un_bailleur_ne_peut_plus_accepter_de_candidature_directement(): void
     {
         [$bailleur, $property] = $this->createBailleurWithProperty();
-        $bailleurToken = $bailleur->createToken('test')->plainTextToken;
+        $token = $bailleur->createToken('test')->plainTextToken;
         [$tenant] = $this->createTenant();
 
         $rental = Rental::factory()->pending()->create([
-            'tenant_id' => $tenant->id,
+            'tenant_id'   => $tenant->id,
             'property_id' => $property->id,
         ]);
 
-        $response = $this->withToken($bailleurToken)
-            ->postJson("/api/bailleur/applications/{$rental->id}/status", [
-                'status' => 'active',
-            ]);
+        // Route supprimée → 404
+        $this->withToken($token)
+            ->postJson("/api/bailleur/applications/{$rental->id}/status", ['status' => 'active'])
+            ->assertStatus(404);
 
-        $response->assertStatus(200)->assertJson(['success' => true]);
-        $this->assertDatabaseHas('rentals', ['id' => $rental->id, 'status' => 'active']);
+        // Statut inchangé
+        $this->assertDatabaseHas('rentals', ['id' => $rental->id, 'status' => 'pending']);
     }
 
     /** @test */
-    public function un_bailleur_peut_rejeter_une_candidature(): void
-    {
-        [$bailleur, $property] = $this->createBailleurWithProperty();
-        $bailleurToken = $bailleur->createToken('test')->plainTextToken;
-        [$tenant] = $this->createTenant();
-
-        $rental = Rental::factory()->pending()->create([
-            'tenant_id' => $tenant->id,
-            'property_id' => $property->id,
-        ]);
-
-        $response = $this->withToken($bailleurToken)
-            ->postJson("/api/bailleur/applications/{$rental->id}/status", [
-                'status' => 'cancelled',
-            ]);
-
-        $response->assertStatus(200)->assertJson(['success' => true]);
-        $this->assertDatabaseHas('rentals', ['id' => $rental->id, 'status' => 'cancelled']);
-    }
-
-    /** @test */
-    public function un_locataire_ne_peut_pas_modifier_le_statut_dune_candidature(): void
+    public function un_locataire_obtient_404_sur_la_route_supprimee(): void
     {
         [, $property] = $this->createBailleurWithProperty();
         [$tenant, $tenantToken] = $this->createTenant();
 
         $rental = Rental::factory()->pending()->create([
-            'tenant_id' => $tenant->id,
+            'tenant_id'   => $tenant->id,
             'property_id' => $property->id,
         ]);
 
-        // Un locataire tente d'accéder à l'API bailleur.
-        // Comme il est authentifié mais n'est pas le bailleur du bien,
-        // le contrôleur retourne 403 (vérification explicite de l'ID du propriétaire).
+        // Route supprimée → 404 pour tout le monde
         $this->withToken($tenantToken)
             ->postJson("/api/bailleur/applications/{$rental->id}/status", ['status' => 'active'])
-            ->assertStatus(403);
+            ->assertStatus(404);
     }
 
     /** @test */
-    public function un_invité_ne_peut_pas_accéder_aux_applications_bailleur(): void
+    public function un_invite_obtient_404_sur_la_route_supprimee(): void
     {
-        $this->getJson('/api/bailleur/applications')->assertStatus(401);
+        // Route supprimée → 404 même sans authentification
+        $this->getJson('/api/bailleur/applications')->assertStatus(404);
     }
 
     // ═══════════════════════════════════════════════════════════════════
@@ -556,9 +521,10 @@ class ProcessusLocationTest extends TestCase
 
     /**
      * @test
-     * Simule le parcours complet :
-     *   Locataire voit le bien → soumet un dossier → bailleur l'accepte
-     *   → la location apparaît active dans le dashboard locataire.
+     * Scénario adapté au nouveau processus :
+     *   - Bailleur ne peut plus voir ni modifier les candidatures directement
+     *   - Il observe uniquement via /rental-status (lecture seule)
+     *   - Le tenant peut toujours apply via l'ancienne route /tenant/apply
      */
     public function scenario_complet_de_location(): void
     {
@@ -573,58 +539,36 @@ class ProcessusLocationTest extends TestCase
         $this->getJson('/api/properties')->assertStatus(200);
         $this->getJson("/api/properties/{$property->id}")->assertStatus(200);
 
-        // 4. Le locataire soumet sa demande
-        $applyResponse = $this->withToken($tenantToken)
-            ->postJson('/api/tenant/apply', [
-                'property_id' => $property->id,
-                'start_date' => now()->addDays(10)->format('Y-m-d'),
-                'duration_months' => 12,
-                'notes' => 'Scénario bout-en-bout.',
-            ]);
+        // 4. Le locataire soumet sa demande via l'ancienne route
+        \Laravel\Sanctum\Sanctum::actingAs($tenant);
+        $applyResponse = $this->postJson('/api/tenant/apply', [
+            'property_id'     => $property->id,
+            'start_date'      => now()->addDays(10)->format('Y-m-d'),
+            'duration_months' => 12,
+            'notes'           => 'Scénario bout-en-bout.',
+        ]);
         $applyResponse->assertStatus(200)->assertJson(['success' => true]);
         $rentalId = $applyResponse->json('data.id');
 
-        // 5. Le dashboard locataire montre 0 location active (encore pending)
-        $this->withToken($tenantToken)->getJson('/api/tenant/dashboard')
+        // 5. Dashboard locataire : 0 location active (encore pending)
+        $this->getJson('/api/tenant/dashboard')
             ->assertJsonPath('data.stats.active_rentals_count', 0);
 
-        // 6. Le bailleur voit la candidature
-        $appsResponse = $this->withToken($bailleurToken)->getJson('/api/bailleur/applications');
-        $appsResponse->assertStatus(200);
+        // 6. Le bailleur NE PEUT PLUS accéder à /bailleur/applications (route supprimée)
+        \Laravel\Sanctum\Sanctum::actingAs($bailleur);
+        $this->getJson('/api/bailleur/applications')->assertStatus(404);
 
-        if (count($appsResponse->json('data')) === 0) {
-            dump('WARNING: Bailleur sees 0 applications!');
-            dump('Bailleur ID: ' . $bailleur->id);
-            dump('Property Owner ID: ' . $property->user_id);
-            dump('Applications in DB: ', Rental::all()->toArray());
-            dump('Full Response: ', $appsResponse->json());
-        }
+        // 7. Le bailleur observe via rental-status (lecture seule)
+        // Note : tenant/apply crée directement une Rental (pending) = phase 3 (75%)
+        $statusRes = $this->getJson("/api/bailleur/properties/{$property->id}/rental-status")
+            ->assertStatus(200);
 
-        $appsResponse->assertJsonCount(1, 'data');
+        // La phase doit être >= 1 (peut être 3 si /apply crée directement une Rental)
+        $this->assertGreaterThanOrEqual(1, $statusRes->json('data.current_phase'));
 
-        // 7. Le bailleur accepte la candidature
-        $response = $this->withToken($bailleurToken)
-            ->postJson("/api/bailleur/applications/{$rentalId}/status", ['status' => 'active']);
-
-        if ($response->status() !== 200) {
-            dump('Bailleur ID: ' . $bailleur->id);
-            dump('Rental ID: ' . $rentalId);
-            dump('Rental from DB: ', Rental::find($rentalId)?->toArray());
-            dump('Property from DB: ', Property::find($property->id)?->toArray());
-            dump('Response body: ', $response->json());
-        }
-
-        $response->assertStatus(200)->assertJson(['success' => true]);
-
-        // 8. La BDD reflète l'acceptation
-        $this->assertDatabaseHas('rentals', ['id' => $rentalId, 'status' => 'active']);
-
-        // 9. Le dashboard locataire montre maintenant 1 location active
-        $this->withToken($tenantToken)->getJson('/api/tenant/dashboard')
-            ->assertJsonPath('data.stats.active_rentals_count', 1);
-
-        // 10. La liste des locations du locataire contient 1 entrée
-        $this->withToken($tenantToken)->getJson('/api/tenant/rentals')
+        // 8. La liste des locations du locataire contient 1 entrée (pending)
+        \Laravel\Sanctum\Sanctum::actingAs($tenant);
+        $this->getJson('/api/tenant/rentals')
             ->assertStatus(200)
             ->assertJsonCount(1, 'data');
     }

@@ -14,10 +14,10 @@ class Property extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'price' => 'decimal:2',
-        'area' => 'decimal:2',
+        'price'     => 'decimal:2',
+        'area'      => 'decimal:2',
         'amenities' => 'array',
-        'features' => 'array',
+        'features'  => 'array',
     ];
 
     /**
@@ -51,9 +51,18 @@ class Property extends Model
         return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
     }
 
+    // ─── Relations ────────────────────────────────────────────────────────────
+
+    /** Bailleur propriétaire du bien */
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /** Agent HMC qui gère ce bien physiquement */
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'agent_id');
     }
 
     public function images()
@@ -81,8 +90,25 @@ class Property extends Model
         return $this->hasMany(Visit::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(RentalApplication::class);
+    }
+
     public function rentals()
     {
         return $this->hasMany(Rental::class);
+    }
+
+    // ─── Helpers ──────────────────────────────────────────────────────────────
+
+    public function isAvailable(): bool
+    {
+        return in_array($this->status, ['active']);
+    }
+
+    public function isRented(): bool
+    {
+        return $this->status === 'rented';
     }
 }

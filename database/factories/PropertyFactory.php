@@ -163,24 +163,24 @@ class PropertyFactory extends Factory
             $titlePatterns[$category]
         );
 
-        $slug = Str::slug($title.'-'.$this->faker->unique()->numberBetween(1000, 9999));
+        $slug = Str::slug($title . '-' . $this->faker->unique()->numberBetween(1000, 9999));
 
         return [
-            'user_id' => User::factory(),
+            'user_id' => fn() => User::factory(),
             'title' => $title,
             'slug' => $slug,
             'type' => 'rent',
             'status' => 'active',
             'category' => $category,
             'etat' => $etat,
-            'amenities' => json_encode($amenities),
+            'amenities' => $amenities,
             'price' => $price,
             'currency' => 'XAF',
             'description' => $description,
-            'location' => $quarter.', '.$city,
+            'location' => $quarter . ', ' . $city,
             'city' => $city,
             'region' => $this->camRegion($city),
-            'features' => json_encode($amenities),
+            'features' => $amenities,
             'bedrooms' => $bedrooms,
             'bathrooms' => $this->faker->numberBetween(1, max(1, intdiv($bedrooms, 2))),
             'area' => $area,
