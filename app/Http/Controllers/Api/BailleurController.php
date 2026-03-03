@@ -10,7 +10,9 @@ use App\Models\Property;
 use App\Models\Rental;
 use App\Models\RentalApplication;
 use App\Models\Visit;
+use App\Models\PropertyRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BailleurController extends Controller
 {
@@ -409,5 +411,81 @@ class BailleurController extends Controller
                 'transactions' => $transactions,
             ],
         ]);
+    }
+
+    /**
+     * Mes demandes de publication (audit terrain)
+     * GET /api/bailleur/publication-requests
+     */
+    public function myPublicationRequests(Request $request)
+    {
+        $user = $request->user();
+        $requests = PropertyRequest::with(['agent:id,name,phone'])
+            ->where('user_id', $user->id)
+            ->latest()
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data'    => $requests,
+        ]);
+    }
+
+    /**
+     * Soumettre une demande de publication (Phase 0 Audit)
+     * POST /api/bailleur/publication-requests
+     */
+    public function submitPublicationRequest(Request $request)
+    {
+        $validated = $request->validate([
+            'title'          => 'required|string|max:255',
+            'type'           => 'required|in:rent,sale',
+            'category'       => 'required|string',
+            'price_estimate' => 'nullable|numeric',
+            'city'           => 'required|string',
+            'location'       => 'required|string',
+            'description'    => 'nullable|string',
+            'bedrooms'       => 'nullable|integer',
+            'bathrooms'      => 'nullable|integer',
+            'area'           => 'nullable|numeric',
+            'documents'      => 'required|array',
+            'documents.*'    => 'file|mimes:pdf,jpg,jpeg,png|max:10240',
+        ]);
+
+        $user = $request->user();
+
+        // Si c'est un locataire, on lui attribue le rôle bailleur
+        if (!$user->hasRole('bailleur')) {
+            $user->addRole('bailleur');
+        }
+
+        $paths = [];
+        if ($request->hasFile('documents')) {
+            foreach ($request->file('documents') as $file) {
+                $paths[] = $file->store('audit_documents', 'public');
+            }
+        }
+
+        $propertyRequest = PropertyRequest::create([
+            'user_id'        => $user->id,
+            'title'          => $validated['title'],
+            'type'           => $validated['type'],
+            'category'       => $validated['category'],
+            'price_estimate' => $validated['price_estimate'],
+            'city'           => $validated['city'],
+            'location'       => $validated['location'],
+            'description'    => $validated['description'],
+            'bedrooms'       => $validated['bedrooms'],
+            'bathrooms'      => $validated['bathrooms'],
+            'area'           => $validated['area'],
+            'documents'      => $paths,
+            'status'         => 'pending',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Demande de publication soumise avec succès. Un administrateur va assigner un agent pour l\'audit.',
+            'data'    => $propertyRequest,
+        ], 201);
     }
 }

@@ -98,6 +98,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         // Phase 3 : Suivi paiement
         Route::get('/rentals',               [ProspectController::class, 'myRentals']);
         Route::get('/rentals/{id}',          [ProspectController::class, 'showRental']);
+        Route::post('/rentals/{id}/pay-initial', [ProspectController::class, 'payInitial']);
     });
 
     // ════════════════════════════════════════════════════════════════════════
@@ -116,6 +117,10 @@ Route::middleware('auth:sanctum')->group(function (): void {
         // Suivi du processus locatif — LECTURE SEULE
         // Le bailleur ne peut QUE consulter, pas agir
         Route::get('/properties/{id}/rental-status', [BailleurController::class, 'propertyRentalStatus']);
+
+        // — Demandes de publication (Audit)
+        Route::get('/publication-requests',  [BailleurController::class, 'myPublicationRequests']);
+        Route::post('/publication-requests', [BailleurController::class, 'submitPublicationRequest']);
     });
 
     // ════════════════════════════════════════════════════════════════════════
@@ -164,6 +169,11 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
         // Formations agent
         Route::get('/formations', [FormationController::class, 'myFormations']);
+
+        // Missions d'audit (Publication)
+        Route::get('/publication-missions',             [AgentController::class, 'publicationMissions']);
+        Route::get('/publication-missions/{id}',        [AgentController::class, 'showPublicationMission']);
+        Route::post('/publication-missions/{id}/complete', [AgentController::class, 'completePublication']);
     });
 
     // ════════════════════════════════════════════════════════════════════════
@@ -201,6 +211,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/rental-procedures',                         [AdminController::class, 'rentalProcedures']);
         Route::get('/rental-procedures/{id}',                    [AdminController::class, 'rentalProcedureDetail']);
         Route::post('/rental-procedures/{id}/status',            [AdminController::class, 'updateRentalStatus']);
+        Route::get('/agents',                                    [AdminController::class, 'listAgents']);
+        Route::post('/properties/{property}/assign-agent',       [AdminController::class, 'assignAgentToProperty']);
         Route::post('/rental-procedures/{visitId}/assign-agent', [AdminController::class, 'assignAgent']);
+
+        // — Gestion des demandes de publication
+        Route::get('/publication-requests',              [AdminController::class, 'listPublicationRequests']);
+        Route::post('/publication-requests/{id}/assign', [AdminController::class, 'assignAgentToPublicationRequest']);
     });
 });

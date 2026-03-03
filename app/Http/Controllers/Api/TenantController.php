@@ -236,9 +236,12 @@ class TenantController extends Controller
             ], 422);
         }
 
+        $property = Property::findOrFail($request->property_id);
+
         Visit::create([
             'property_id' => $request->property_id,
             'user_id' => $user->id,
+            'agent_id' => $property->agent_id,
             'scheduled_at' => $request->scheduled_at,
             'status' => 'pending',
             'notes' => $request->notes,

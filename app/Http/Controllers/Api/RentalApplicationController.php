@@ -26,12 +26,15 @@ class RentalApplicationController extends Controller
     public function submit(Request $request): JsonResponse
     {
         $request->validate([
-            'property_id'              => 'required|exists:properties,id',
-            'visit_id'                 => 'required|exists:visits,id',
+            'property_id'               => 'required|exists:properties,id',
+            'visit_id'                  => 'required|exists:visits,id',
             'situation_professionnelle' => 'nullable|string',
-            'revenus_mensuels'         => 'nullable|numeric|min:0',
-            'has_garant'               => 'nullable|boolean',
-            'notes'                    => 'nullable|string',
+            'revenus_mensuels'          => 'nullable|numeric|min:0',
+            'has_garant'                => 'nullable|boolean',
+            'notes'                     => 'nullable|string',
+            'documents'                 => 'nullable|array',
+            'documents.*.type'          => 'required_with:documents|string',
+            'documents.*.file'          => 'required_with:documents|file|mimes:pdf,jpg,jpeg,png|max:5120',
         ]);
 
         $user = Auth::user();
@@ -63,6 +66,25 @@ class RentalApplicationController extends Controller
             ], 422);
         }
 
+        // --- Sauvegarder les documents soumis ---
+        $uploadedDocs = [];
+        if ($request->has('documents')) {
+            foreach ($request->file('documents', []) as $index => $docFile) {
+                // Le fichier peut être sous l'index de document ou directement passé selon la manière dont PHP parse la requête multipart.
+                // En multipart, ça peut être request()->file("documents.$index.file");
+                $file = $docFile['file'] ?? null;
+                $type = $request->input("documents.$index.type");
+
+                if ($file && $type) {
+                    $path = $file->store('applications_docs', 'public');
+                    $uploadedDocs[] = [
+                        'type' => $type,
+                        'path' => Storage::url($path),
+                    ];
+                }
+            }
+        }
+
         $application = RentalApplication::create([
             'property_id'               => $request->property_id,
             'user_id'                   => $user->id,
@@ -72,6 +94,7 @@ class RentalApplicationController extends Controller
             'revenus_mensuels'          => $request->revenus_mensuels,
             'has_garant'                => $request->boolean('has_garant'),
             'notes'                     => $request->notes,
+            'documents'                 => $uploadedDocs,
             'status'                    => 'pending',
         ]);
 

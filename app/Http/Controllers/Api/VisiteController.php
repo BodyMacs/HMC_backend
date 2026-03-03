@@ -45,9 +45,12 @@ class VisiteController extends Controller
             ], 422);
         }
 
+        $property = \App\Models\Property::findOrFail($request->property_id);
+
         $visit = Visit::create([
             'property_id'        => $request->property_id,
             'user_id'            => $user->id,
+            'agent_id'           => $property->agent_id,
             'scheduled_at'       => $request->scheduled_at,
             'status'             => 'pending',
             'notes'              => $request->notes,
@@ -55,6 +58,7 @@ class VisiteController extends Controller
             'fee_payment_status' => $request->fee_payment_method ? 'paid' : 'pending',
             'fee_payment_method' => $request->fee_payment_method,
         ]);
+
 
         return response()->json([
             'success' => true,

@@ -360,6 +360,37 @@ class ProspectController extends Controller
         return response()->json(['success' => true, 'data' => $rentals]);
     }
 
+    /**
+     * Effectuer/Signaler le paiement initial.
+     * POST /api/prospect/rentals/{id}/pay-initial
+     */
+    public function payInitial(Request $request, int $rentalId): JsonResponse
+    {
+        $user = $request->user();
+
+        $rental = Rental::where('tenant_id', $user->id)
+            ->where('payment_phase_status', 'pending')
+            ->findOrFail($rentalId);
+
+        $request->validate([
+            'payment_method' => 'required|string|in:om,momo,card,transfer',
+            'phone'          => 'nullable|string',
+        ]);
+
+        // Simuler la transaction
+        $rental->update([
+            'payment_phase_status' => 'paid',
+        ]);
+
+        // Optionnel : Enregistrer la transaction dans la table payments si elle existe
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiement soumis avec succès. L\'agent validera votre paiement sous peu.',
+            'data'    => $rental->fresh()
+        ]);
+    }
+
     // ══════════════════════════════════════════════════════════════════════════
     // HELPERS
     // ══════════════════════════════════════════════════════════════════════════

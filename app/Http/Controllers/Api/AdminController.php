@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Intervention;
 use App\Models\Property;
+use App\Models\PropertyRequest;
 use App\Models\Rental;
 use App\Models\Service;
 use App\Models\Transaction;
@@ -104,7 +105,7 @@ class AdminController extends Controller
      */
     public function properties(Request $request)
     {
-        $query = Property::with(['owner', 'images']);
+        $query = Property::with(['owner', 'images', 'agent:id,name,email,phone']);
 
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -359,6 +360,103 @@ class AdminController extends Controller
                 'visit_id'   => $visit->id,
                 'agent_name' => $agent->name,
             ],
+        ]);
+    }
+
+    /**
+     * List all users with 'agent' role
+     */
+    public function listAgents()
+    {
+        $agents = User::where('role', 'agent')
+            ->where('status', 'active')
+            ->select('id', 'name', 'email', 'phone')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'data'    => $agents,
+        ]);
+    }
+
+    /**
+     * Assign an agent to a property
+     */
+    public function assignAgentToProperty(Request $request, Property $property)
+    {
+        $validated = $request->validate([
+            'agent_id' => 'required|exists:users,id',
+        ]);
+
+        $agent = User::where('id', $validated['agent_id'])
+            ->where('role', 'agent')
+            ->first();
+
+        if (!$agent) {
+            return response()->json([
+                'success' => false,
+                'message' => 'L\'utilisateur sélectionné n\'est pas un agent.',
+            ], 422);
+        }
+
+        $property->update(['agent_id' => $agent->id]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Agent assigné à la propriété avec succès.',
+            'data'    => $property->load('agent:id,name,email,phone'),
+        ]);
+    }
+
+    /**
+     * Liste des demandes de publication des bailleurs
+     * GET /api/admin/publication-requests
+     */
+    public function listPublicationRequests(Request $request)
+    {
+        $query = PropertyRequest::with(['bailleur:id,name,email,phone', 'agent:id,name,phone']);
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $requests = $query->latest()->paginate(20);
+
+        return response()->json([
+            'success' => true,
+            'data'    => $requests,
+        ]);
+    }
+
+    /**
+     * Assigner un agent à une demande de publication
+     * POST /api/admin/publication-requests/{id}/assign
+     */
+    public function assignAgentToPublicationRequest(Request $request, int $id)
+    {
+        $request->validate([
+            'agent_id' => 'required|exists:users,id',
+        ]);
+
+        $propRequest = PropertyRequest::findOrFail($id);
+
+        $agent = User::where('id', $request->agent_id)
+            ->where('role', 'agent')
+            ->first();
+
+        if (!$agent) {
+            return response()->json(['success' => false, 'message' => 'L\'utilisateur n\'est pas un agent.'], 422);
+        }
+
+        $propRequest->update([
+            'agent_id' => $agent->id,
+            'status'   => 'assigned',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Agent assigné à la demande de publication.',
+            'data'    => $propRequest->load(['bailleur', 'agent']),
         ]);
     }
 }

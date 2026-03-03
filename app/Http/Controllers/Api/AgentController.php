@@ -10,8 +10,10 @@ use App\Models\Rental;
 use App\Models\RentalApplication;
 use App\Models\User;
 use App\Models\Visit;
+use App\Models\PropertyRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -35,6 +37,7 @@ class AgentController extends Controller
             'managed_properties'      => Property::where('agent_id', $agent->id)->count(),
             'pending_visits'          => Visit::where('agent_id', $agent->id)->where('status', 'pending')->count(),
             'pending_applications'    => RentalApplication::where('agent_id', $agent->id)->where('status', 'pending')->count(),
+            'pending_publication_missions' => PropertyRequest::where('agent_id', $agent->id)->where('status', 'assigned')->count(),
             'pending_payment_confirm' => Rental::where('agent_id', $agent->id)->where('status', 'pending')->count(),
             'active_rentals'          => Rental::where('agent_id', $agent->id)->where('status', 'active')->count(),
             'rating'                  => 4.9,
@@ -153,8 +156,107 @@ class AgentController extends Controller
                 'pending_visits'       => $pendingVisits,
                 'pending_applications' => $pendingApplications,
                 'pending_payments'     => $pendingPayments,
+                'publication_missions' => PropertyRequest::with('bailleur')->where('agent_id', $agent->id)->where('status', 'assigned')->latest()->get(),
             ],
         ]);
+    }
+
+    /**
+     * Liste des missions d'audit/publication assignées à l'agent
+     */
+    public function publicationMissions(Request $request): JsonResponse
+    {
+        $agent = $request->user();
+        $missions = PropertyRequest::with('bailleur')->where('agent_id', $agent->id)->latest()->paginate(15);
+        return response()->json(['success' => true, 'data' => $missions]);
+    }
+
+    /**
+     * Détails d'une mission d'audit spécifique
+     */
+    public function showPublicationMission(Request $request, int $id): JsonResponse
+    {
+        $agent = $request->user();
+        $mission = PropertyRequest::with('bailleur')->where('agent_id', $agent->id)->findOrFail($id);
+        return response()->json(['success' => true, 'data' => $mission]);
+    }
+
+    /**
+     * Finaliser la publication d'un bien après audit terrain
+     * POST /api/agent/publication-missions/{id}/complete
+     */
+    public function completePublication(Request $request, int $id): JsonResponse
+    {
+        $validated = $request->validate([
+            'title'       => 'required|string|max:255',
+            'category'    => 'required|string',
+            'type'        => 'required|in:rent,sale',
+            'price'       => 'required|numeric',
+            'city'        => 'required|string',
+            'location'    => 'required|string',
+            'description' => 'required|string',
+            'bedrooms'    => 'nullable|integer',
+            'bathrooms'   => 'nullable|integer',
+            'area'        => 'nullable|numeric',
+            'etat'        => 'required|string',
+            'amenities'   => 'nullable|string',
+            'images'      => 'required|array|min:1',
+            'images.*'    => 'image|mimes:jpeg,png,jpg,webp|max:5120',
+        ]);
+
+        $agent = $request->user();
+        $propRequest = PropertyRequest::where('agent_id', $agent->id)->findOrFail($id);
+
+        if ($propRequest->status === 'published') {
+            return response()->json(['success' => false, 'message' => 'Ce bien est déjà publié.'], 422);
+        }
+
+        return DB::transaction(function () use ($validated, $propRequest, $request, $agent) {
+            // 1. Créer le bien réel
+            $property = Property::create([
+                'user_id'     => $propRequest->user_id, // Le bailleur
+                'agent_id'    => $agent->id,            // L'agent qui gère
+                'title'       => $validated['title'],
+                'slug'        => Str::slug($validated['title']) . '-' . Str::random(6),
+                'type'        => $validated['type'],
+                'category'    => $validated['category'],
+                'status'      => 'active', // Immédiatement actif car posté par l'agent
+                'price'       => $validated['price'],
+                'city'        => $validated['city'],
+                'location'    => $validated['location'],
+                'description' => $validated['description'],
+                'bedrooms'    => $validated['bedrooms']  ?? null,
+                'bathrooms'   => $validated['bathrooms'] ?? null,
+                'area'        => $validated['area']      ?? null,
+                'etat'        => $validated['etat'],
+                'amenities'   => $validated['amenities'] ?? null,
+            ]);
+
+            // 2. Gérer les photos
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $index => $image) {
+                    $path = $image->store('properties', 'public');
+                    $property->images()->create([
+                        'path'       => $path,
+                        'is_primary' => $index === 0,
+                        'order'      => $index,
+                    ]);
+                }
+            }
+
+            // 3. Mettre à jour la demande
+            $propRequest->update([
+                'status'       => 'published',
+                'published_at' => now(),
+                'visited_at'   => now(), // On considère la visite faite
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Le bien a été publié avec succès sous le compte du bailleur.',
+                'data'    => $property->load('images'),
+            ]);
+        });
     }
 
     /**
