@@ -81,7 +81,7 @@ class ProspectController extends Controller
             'agent_id'     => $property->agent_id,
             'scheduled_at' => $request->scheduled_at,
             'status'       => 'pending',
-            'visit_fee'    => 15000,
+            'visit_fee'    => 100,
             'fee_payment_status' => 'pending',
         ]);
 
