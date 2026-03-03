@@ -12,6 +12,7 @@ class PropertyRequest extends Model
         'documents' => 'array',
         'price_estimate' => 'decimal:2',
         'visited_at' => 'datetime',
+        'scheduled_at' => 'datetime',
         'published_at' => 'datetime',
     ];
 

@@ -182,6 +182,32 @@ class AgentController extends Controller
     }
 
     /**
+     * Programmer la date de visite/audit pour une mission.
+     */
+    public function schedulePublicationMission(Request $request, int $id): JsonResponse
+    {
+        $validated = $request->validate([
+            'scheduled_at' => 'required|date|after:now',
+            'agent_notes'  => 'nullable|string|max:500',
+        ]);
+
+        $agent = $request->user();
+        $mission = PropertyRequest::where('agent_id', $agent->id)->findOrFail($id);
+
+        $mission->update([
+            'scheduled_at' => $validated['scheduled_at'],
+            'agent_notes'  => $validated['agent_notes'],
+            'status'       => 'assigned', // Ensure status is assigned
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'L\'audit a été programmé pour le ' . $mission->scheduled_at->format('d/m/Y H:i'),
+            'data'    => $mission
+        ]);
+    }
+
+    /**
      * Finaliser la publication d'un bien après audit terrain
      * POST /api/agent/publication-missions/{id}/complete
      */

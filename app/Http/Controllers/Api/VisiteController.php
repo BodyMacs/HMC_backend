@@ -54,7 +54,7 @@ class VisiteController extends Controller
             'scheduled_at'       => $request->scheduled_at,
             'status'             => 'pending',
             'notes'              => $request->notes,
-            'visit_fee'          => 15000, // Montant fixe — à rendre configurable plus tard
+            'visit_fee'          => 50, // Montant fixe — à rendre configurable plus tard
             'fee_payment_status' => $request->fee_payment_method ? 'paid' : 'pending',
             'fee_payment_method' => $request->fee_payment_method,
         ]);

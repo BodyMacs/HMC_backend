@@ -172,8 +172,9 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/formations', [FormationController::class, 'myFormations']);
 
         // Missions d'audit (Publication)
-        Route::get('/publication-missions',             [AgentController::class, 'publicationMissions']);
-        Route::get('/publication-missions/{id}',        [AgentController::class, 'showPublicationMission']);
+        Route::get('/publication-missions',              [AgentController::class, 'publicationMissions']);
+        Route::get('/publication-missions/{id}',         [AgentController::class, 'showPublicationMission']);
+        Route::post('/publication-missions/{id}/schedule', [AgentController::class, 'schedulePublicationMission']);
         Route::post('/publication-missions/{id}/complete', [AgentController::class, 'completePublication']);
     });
 
