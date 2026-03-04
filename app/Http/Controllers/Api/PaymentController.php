@@ -20,111 +20,72 @@ class PaymentController extends Controller
     }
 
     /**
-     * Gère le retour de NotchPay après une tentative de paiement
+     * Gère le retour de NotchPay après une tentative de paiement (GET redirect)
      */
     public function callback(Request $request)
     {
-        $reference = $request->query('reference');
+        $reference = $request->query('reference') ?? $request->query('trx_reference');
         $frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
 
         if (! $reference) {
+            Log::warning('Callback NotchPay: Référence manquante', ['query' => $request->all()]);
             return redirect($frontendUrl . '/payment?status=error&message=reference_missing');
         }
 
-        try {
-            $payment = $this->notchPayService->verifyPayment($reference);
+        $status = $this->notchPayService->checkAndFulfillTransaction($reference);
 
-            $transaction = Transaction::where('reference', $reference)->first();
-
-            if (! $transaction) {
-                return redirect($frontendUrl . '/payment?status=error&message=transaction_not_found');
-            }
-
-            $user = $transaction->user;
-            $status = strtolower($payment->transaction->status ?? '');
-
-            if (in_array($status, ['complete', 'success', 'completed'])) {
-                if ($transaction->status !== 'successful') {
-                    // Update Transaction
-                    $transaction->update([
-                        'status' => 'successful',
-                    ]);
-
-                    // Perform action based on transaction metadata
-                    $this->fulfillOrder($transaction);
-                }
-
-                return redirect($frontendUrl . '/payment?status=success&reference=' . $reference);
-            } else {
-                $transaction->update([
-                    'status' => 'failed',
-                ]);
-
-                return redirect($frontendUrl . '/payment?status=failed&reference=' . $reference);
-            }
-        } catch (\Exception $e) {
-            Log::error('Erreur callback NotchPay:', [
-                'reference' => $reference,
-                'error' => $e->getMessage(),
-            ]);
-
-            return redirect($frontendUrl . '/payment?status=error&message=processing_error');
+        if ($status === 'successful') {
+            return redirect($frontendUrl . '/payment?status=success&reference=' . $reference);
+        } elseif ($status === 'failed') {
+            return redirect($frontendUrl . '/payment?status=failed&reference=' . $reference);
+        } elseif ($status === 'not_found' || $status === 'error') {
+            return redirect($frontendUrl . '/payment?status=error&message=' . $status);
         }
+
+        // Sinon on est sans doute encore en "pending" ou "processing"
+        return redirect($frontendUrl . '/payment?status=' . $status . '&reference=' . $reference);
     }
 
     /**
-     * Action to perform when order is successful
+     * Gère les notifications asynchrones de NotchPay (POST Webhook)
      */
-    private function fulfillOrder(Transaction $transaction): void
+    public function webhook(Request $request)
     {
-        $metadata = $transaction->metadata;
+        $payload = $request->all();
+        Log::info('Webhook NotchPay reçu:', $payload);
 
-        if (! $metadata || ! isset($metadata['action'])) {
-            return;
+        $reference = $payload['data']['reference'] ?? $payload['reference'] ?? null;
+
+        if (! $reference) {
+            return response()->json(['message' => 'No reference found'], 400);
         }
 
-        try {
-            switch ($metadata['action']) {
-                case 'buy_formation':
-                    $formationId = $metadata['formation_id'];
-                    $user = $transaction->user;
+        $result = $this->notchPayService->checkAndFulfillTransaction($reference);
 
-                    // Avoid duplicate attachment
-                    if (! $user->formations()->where('formation_id', $formationId)->exists()) {
-                        $user->formations()->attach($formationId, [
-                            'status' => 'purchased',
-                            'progress' => 0,
-                        ]);
-                    }
+        return response()->json(['message' => 'Processed', 'status' => $result]);
+    }
 
-                    break;
+    /**
+     * Récupère le statut d'une transaction locale
+     */
+    public function getTransactionStatus($reference)
+    {
+        $transaction = Transaction::where('reference', $reference)->first();
 
-                case 'visit_fee':
-                    $visitId = $metadata['visit_id'];
-                    $visit = \App\Models\Visit::find($visitId);
-                    if ($visit) {
-                        $visit->update([
-                            'fee_payment_status' => 'paid',
-                            'fee_payment_method' => 'notchpay',
-                        ]);
-                    }
-                    break;
-
-                case 'rental_payment':
-                    $rentalId = $metadata['rental_id'];
-                    $rental = \App\Models\Rental::find($rentalId);
-                    if ($rental) {
-                        $rental->update([
-                            'payment_phase_status' => 'paid',
-                            'payment_method' => 'notchpay',
-                        ]);
-                    }
-                    break;
-
-                    // Add other switch cases for marketplace, etc.
-            }
-        } catch (\Exception $e) {
-            Log::error('Fulfill order error: ' . $e->getMessage());
+        if (! $transaction) {
+            return response()->json(['success' => false, 'message' => 'Transaction introuvable'], 404);
         }
+
+        // Si pas réussi localement, on re-tente un check complet
+        if ($transaction->status !== 'successful') {
+            $this->notchPayService->checkAndFulfillTransaction($reference);
+            $transaction->refresh();
+        }
+
+        return response()->json([
+            'success' => true,
+            'status' => $transaction->status,
+            'reference' => $reference,
+        ]);
     }
 }

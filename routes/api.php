@@ -39,6 +39,8 @@ Route::get('/marketplace/categories', [MarketplaceController::class, 'categories
 
 // NotchPay Callback
 Route::get('/notchpay/callback', [PaymentController::class, 'callback'])->name('notchpay.callback');
+Route::post('/notchpay/webhook', [PaymentController::class, 'webhook'])->name('notchpay.webhook');
+Route::get('/transactions/{reference}/status', [PaymentController::class, 'getTransactionStatus']);
 
 // ── Routes Protégées (auth:sanctum) ───────────────────────────────────────────
 Route::middleware('auth:sanctum')->group(function (): void {
@@ -114,6 +116,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/interventions', [BailleurController::class, 'interventions']);
         Route::post('/interventions/{id}/status', [BailleurController::class, 'updateInterventionStatus']);
         Route::get('/finances',     [BailleurController::class, 'finances']);
+        Route::post('/rentals',     [BailleurController::class, 'createRental']);
 
         // Suivi du processus locatif — LECTURE SEULE
         // Le bailleur ne peut QUE consulter, pas agir

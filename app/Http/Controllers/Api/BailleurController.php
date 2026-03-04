@@ -11,7 +11,9 @@ use App\Models\Rental;
 use App\Models\RentalApplication;
 use App\Models\Visit;
 use App\Models\PropertyRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class BailleurController extends Controller
@@ -148,6 +150,79 @@ class BailleurController extends Controller
         return response()->json([
             'success' => true,
             'data' => $properties,
+        ]);
+    }
+
+    /**
+     * Create a new rental manualy by the landlord
+     * POST /api/bailleur/rentals
+     */
+    public function createRental(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'property_id' => 'required|exists:properties,id',
+            'tenant_name' => 'required|string|max:255',
+            'tenant_email' => 'required|email',
+            'tenant_phone' => 'nullable|string',
+            'rent' => 'required|numeric',
+            'start_date' => 'required|date',
+            'caution_months' => 'nullable|integer',
+            'advance_months' => 'nullable|integer',
+        ]);
+
+        // Check ownership
+        $property = Property::where('id', $validated['property_id'])
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$property) {
+            return response()->json(['success' => false, 'message' => 'Bien introuvable ou vous n\'en êtes pas le propriétaire.'], 403);
+        }
+
+        if ($property->status !== 'active' && $property->status !== 'vacant' && $property->status !== 'pending') {
+            return response()->json(['success' => false, 'message' => 'Ce bien n\'est pas disponible pour la location.'], 400);
+        }
+
+        // Find or create tenant
+        $tenant = User::where('email', $validated['tenant_email'])->first();
+        if (!$tenant) {
+            $tenant = User::create([
+                'name' => $validated['tenant_name'],
+                'email' => $validated['tenant_email'],
+                'phone' => $validated['tenant_phone'],
+                'password' => Hash::make(str()->random(10)), // random password
+            ]);
+        }
+
+        if (!$tenant->hasRole('locataire')) {
+            $tenant->addRole('locataire');
+        }
+
+        // Create the Rental
+        $caution = ($validated['caution_months'] ?? 0) * $validated['rent'];
+        $advance = ($validated['advance_months'] ?? 0) * $validated['rent'];
+
+        $rental = Rental::create([
+            'property_id' => $property->id,
+            'tenant_id' => $tenant->id,
+            'start_date' => $validated['start_date'],
+            'price' => $validated['rent'],
+            'monthly_rent' => $validated['rent'],
+            'caution_amount' => $caution,
+            'advance_amount' => $advance,
+            'status' => 'active',
+            'payment_status' => 'paid',
+            'payment_confirmed_at' => now(),
+        ]);
+
+        $property->update(['status' => 'occupied']);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Bail créé avec succès',
+            'data' => $rental
         ]);
     }
 

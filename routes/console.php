@@ -8,3 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function (): void {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::command('app:check-pending-transactions')->everyThreeMinutes();
