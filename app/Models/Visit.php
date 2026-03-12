@@ -11,6 +11,8 @@ class Visit extends Model
 {
     use HasFactory;
 
+    public const VISIT_FEE = 10;
+
     protected $guarded = ['id'];
 
     protected $casts = [

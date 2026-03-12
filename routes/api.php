@@ -32,7 +32,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/properties', [PropertyController::class, 'index']);
-Route::get('/properties/{id}', [PropertyController::class, 'show']);
+Route::get('/properties/{slug}', [PropertyController::class, 'show']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
 Route::get('/marketplace/items/{id}', [MarketplaceController::class, 'show']);
@@ -133,6 +133,8 @@ Route::middleware('auth:sanctum')->group(function (): void {
         // — Demandes de publication (Audit)
         Route::get('/publication-requests',  [BailleurController::class, 'myPublicationRequests']);
         Route::post('/publication-requests', [BailleurController::class, 'submitPublicationRequest']);
+        Route::put('/publication-requests/{id}', [BailleurController::class, 'updatePublicationRequest']);
+        Route::delete('/publication-requests/{id}', [BailleurController::class, 'deletePublicationRequest']);
     });
 
     // ════════════════════════════════════════════════════════════════════════

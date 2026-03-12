@@ -243,10 +243,11 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($slug)
     {
         $property = Property::with(['owner:id,name,email,avatar,phone', 'images'])
-            ->findOrFail($id);
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         $property->increment('views_count');
 

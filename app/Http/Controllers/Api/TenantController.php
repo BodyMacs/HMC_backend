@@ -319,8 +319,8 @@ class TenantController extends Controller
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city' => 'sometimes|string|max:100',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city' => 'sometimes|nullable|string|max:100',
         ]);
 
         $user->update($validated);

@@ -250,9 +250,9 @@ class BailleurController extends Controller
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city' => 'sometimes|string|max:100',
-            'bio' => 'sometimes|string|max:500',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city' => 'sometimes|nullable|string|max:100',
+            'bio' => 'sometimes|nullable|string|max:500',
         ]);
 
         $user->update($validated);
@@ -562,5 +562,82 @@ class BailleurController extends Controller
             'message' => 'Demande de publication soumise avec succès. Un administrateur va assigner un agent pour l\'audit.',
             'data'    => $propertyRequest,
         ], 201);
+    }
+
+    /**
+     * Mettre à jour une demande de publication existante
+     * PUT /api/bailleur/publication-requests/{id}
+     */
+    public function updatePublicationRequest(Request $request, int $id)
+    {
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        // On ne peut modifier que si ce n'est pas encore audité ou rejeté
+        if (!in_array($propertyRequest->status, ['pending', 'assigned'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cette demande ne peut plus être modifiée car elle est déjà en cours d\'audit ou traitée.'
+            ], 403);
+        }
+
+        $validated = $request->validate([
+            'title'          => 'sometimes|string|max:255',
+            'type'           => 'sometimes|in:rent,sale',
+            'category'       => 'sometimes|string',
+            'price_estimate' => 'sometimes|nullable|numeric',
+            'city'           => 'sometimes|string',
+            'location'       => 'sometimes|string',
+            'description'    => 'sometimes|nullable|string',
+            'bedrooms'       => 'sometimes|nullable|integer',
+            'bathrooms'      => 'sometimes|nullable|integer',
+            'area'           => 'sometimes|nullable|numeric',
+        ]);
+
+        $propertyRequest->update($validated);
+
+        // Gestion optionnelle des nouveaux documents
+        if ($request->hasFile('documents')) {
+            $paths = $propertyRequest->documents ?? [];
+            foreach ($request->file('documents') as $file) {
+                $paths[] = $file->store('audit_documents', 'public');
+            }
+            $propertyRequest->update(['documents' => $paths]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Demande de publication mise à jour avec succès.',
+            'data'    => $propertyRequest->fresh(),
+        ]);
+    }
+
+    /**
+     * Supprimer une demande de publication
+     * DELETE /api/bailleur/publication-requests/{id}
+     */
+    public function deletePublicationRequest(Request $request, int $id)
+    {
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        // Sécurité: Ne pas autoriser la suppression si déjà publié
+        if ($propertyRequest->status === 'published') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une demande déjà publiée.'
+            ], 403);
+        }
+
+        $propertyRequest->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'La demande de publication a été supprimée.'
+        ]);
     }
 }

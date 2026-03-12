@@ -54,6 +54,7 @@ class HomeController extends Controller
             ->get()
             ->map(fn($property) => [
                 'id' => $property->id,
+                'slug' => $property->slug,
                 'title' => $property->title,
                 'price' => $property->price,
                 'owner' => $property->owner ? $property->owner->name : 'Home Cameroon',

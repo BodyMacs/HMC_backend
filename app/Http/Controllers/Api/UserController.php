@@ -21,9 +21,9 @@ class UserController extends Controller
 
         $validated = $request->validate([
             'name'  => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city'  => 'sometimes|string|max:100',
-            'bio'   => 'sometimes|string|max:1000',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city'  => 'sometimes|nullable|string|max:100',
+            'bio'   => 'sometimes|nullable|string|max:1000',
         ]);
 
         $user->update($validated);
