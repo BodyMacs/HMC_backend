@@ -669,12 +669,13 @@ class BailleurController extends Controller
         ]);
     }
 
-    /**
-     * Décliner/Demander le report de l'audit terrain
-     * POST /api/bailleur/publication-requests/{id}/decline-audit
-     */
     public function declineAudit(Request $request, int $id)
     {
+        $request->validate([
+            'suggested_at' => 'required|date|after:now',
+            'notes' => 'nullable|string'
+        ]);
+
         $user = $request->user();
         $propertyRequest = PropertyRequest::where('id', $id)
             ->where('user_id', $user->id)
@@ -687,12 +688,13 @@ class BailleurController extends Controller
         $propertyRequest->update([
             'bailleur_confirmed_at' => null,
             'bailleur_declined_at' => now(),
+            'bailleur_suggested_at' => $request->suggested_at,
             'bailleur_notes' => $request->notes,
         ]);
 
         return response()->json([
             'success' => true,
-            'message' => "Le report de l'audit a été demandé. L'agent sera notifié.",
+            'message' => "Le report de l'audit a été demandé avec une proposition d'heure. L'agent sera notifié.",
             'data' => $propertyRequest->fresh(['agent'])
         ]);
     }

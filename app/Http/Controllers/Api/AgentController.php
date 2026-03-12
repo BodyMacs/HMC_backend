@@ -197,7 +197,11 @@ class AgentController extends Controller
         $mission->update([
             'scheduled_at' => $validated['scheduled_at'],
             'agent_notes'  => $validated['agent_notes'],
-            'status'       => 'assigned', // Ensure status is assigned
+            'status'       => 'assigned',
+            'bailleur_confirmed_at' => null,
+            'bailleur_declined_at' => null,
+            'bailleur_suggested_at' => null,
+            'bailleur_notes' => null,
         ]);
 
         return response()->json([
