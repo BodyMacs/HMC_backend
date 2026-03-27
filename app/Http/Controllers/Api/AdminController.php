@@ -13,6 +13,7 @@ use App\Models\Service;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Visit;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class AdminController extends Controller
     /**
      * Global dashboard statistics
      */
-    public function dashboard()
+    public function dashboard(): JsonResponse
     {
         $stats = [
             'total_users'          => User::count(),
@@ -60,7 +61,7 @@ class AdminController extends Controller
     /**
      * List all users
      */
-    public function users(Request $request)
+    public function users(Request $request): JsonResponse
     {
         $query = User::query();
 
@@ -86,7 +87,7 @@ class AdminController extends Controller
     /**
      * Update user status (active/inactive)
      */
-    public function updateUserStatus(Request $request, User $user)
+    public function updateUserStatus(Request $request, User $user): JsonResponse
     {
         $request->validate([
             'status' => 'required|string|in:active,inactive,pending',
@@ -103,7 +104,7 @@ class AdminController extends Controller
     /**
      * List all properties
      */
-    public function properties(Request $request)
+    public function properties(Request $request): JsonResponse
     {
         $query = Property::with(['owner', 'images', 'agent:id,name,email,phone']);
 
@@ -122,7 +123,7 @@ class AdminController extends Controller
     /**
      * Approve or reject a property
      */
-    public function updatePropertyStatus(Request $request, Property $property)
+    public function updatePropertyStatus(Request $request, Property $property): JsonResponse
     {
         $request->validate([
             'status' => 'required|string|in:active,rejected,rented,sold,pending',
@@ -139,7 +140,7 @@ class AdminController extends Controller
     /**
      * Financial reports
      */
-    public function finances()
+    public function finances(): JsonResponse
     {
         $transactions = Transaction::with('user')->latest()->paginate(20);
         $totalRevenue = Transaction::where('status', 'completed')->sum('amount');
@@ -168,7 +169,7 @@ class AdminController extends Controller
     /**
      * List all services and categories
      */
-    public function services()
+    public function services(): JsonResponse
     {
         $services = Service::with(['category', 'provider'])->latest()->paginate(20);
         $interventions = Intervention::with(['service', 'requester'])->latest()->take(10)->get();
@@ -190,7 +191,7 @@ class AdminController extends Controller
      * KPIs de supervision des locations pour l'admin
      * GET /api/admin/rental-stats
      */
-    public function rentalStats()
+    public function rentalStats(): JsonResponse
     {
         $stats = [
             'total'     => Rental::count(),
@@ -226,7 +227,7 @@ class AdminController extends Controller
      * Liste paginée de toutes les demandes de location (admin view)
      * GET /api/admin/rental-procedures
      */
-    public function rentalProcedures(Request $request)
+    public function rentalProcedures(Request $request): JsonResponse
     {
         $query = Rental::with([
             'tenant:id,name,email,phone',
@@ -286,7 +287,7 @@ class AdminController extends Controller
      * Détail complet d'une demande de location
      * GET /api/admin/rental-procedures/{id}
      */
-    public function rentalProcedureDetail(int $rentalId)
+    public function rentalProcedureDetail(int $rentalId): JsonResponse
     {
         $rental = Rental::with([
             'tenant:id,name,email,phone,avatar,city,role',
@@ -304,7 +305,7 @@ class AdminController extends Controller
      * Mettre à jour le statut d'une location (action admin)
      * POST /api/admin/rental-procedures/{id}/status
      */
-    public function updateRentalStatus(Request $request, int $rentalId)
+    public function updateRentalStatus(Request $request, int $rentalId): JsonResponse
     {
         $request->validate([
             'status' => 'required|in:pending,active,finished,cancelled',
@@ -333,7 +334,7 @@ class AdminController extends Controller
      * Assigner un agent à une visite (gardé pour compatibilité)
      * POST /api/admin/rental-procedures/{visitId}/assign-agent
      */
-    public function assignAgent(Request $request, int $visitId)
+    public function assignAgent(Request $request, int $visitId): JsonResponse
     {
         $request->validate([
             'agent_id' => 'required|integer|exists:users,id',
@@ -363,7 +364,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function listAgents()
+    public function listAgents(): JsonResponse
     {
         $agents = User::whereJsonContains('roles', 'agent')
             ->where('status', 'active')
@@ -385,7 +386,7 @@ class AdminController extends Controller
     /**
      * Voir l'agenda d'un agent spécifique (utilisé lors de l'assignation par l'admin)
      */
-    public function agentAgenda($agentId)
+    public function agentAgenda($agentId): JsonResponse
     {
         $agent = User::whereJsonContains('roles', 'agent')->findOrFail($agentId);
 
@@ -424,7 +425,7 @@ class AdminController extends Controller
     /**
      * Assign an agent to a property
      */
-    public function assignAgentToProperty(Request $request, Property $property)
+    public function assignAgentToProperty(Request $request, Property $property): JsonResponse
     {
         $validated = $request->validate([
             'agent_id' => 'required|exists:users,id',
@@ -454,7 +455,7 @@ class AdminController extends Controller
      * Liste des demandes de publication des bailleurs
      * GET /api/admin/publication-requests
      */
-    public function listPublicationRequests(Request $request)
+    public function listPublicationRequests(Request $request): JsonResponse
     {
         $query = PropertyRequest::with(['bailleur:id,name,email,phone', 'agent:id,name,phone']);
 
@@ -474,7 +475,7 @@ class AdminController extends Controller
      * Assigner un agent à une demande de publication
      * POST /api/admin/publication-requests/{id}/assign
      */
-    public function assignAgentToPublicationRequest(Request $request, int $id)
+    public function assignAgentToPublicationRequest(Request $request, int $id): JsonResponse
     {
         $request->validate([
             'agent_id' => 'required|exists:users,id',

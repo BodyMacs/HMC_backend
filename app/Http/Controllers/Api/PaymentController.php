@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Services\NotchPayService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +24,7 @@ class PaymentController extends Controller
     /**
      * Gère le retour de NotchPay après une tentative de paiement (GET redirect)
      */
-    public function callback(Request $request)
+    public function callback(Request $request): RedirectResponse
     {
         $reference = $request->query('reference') ?? $request->query('trx_reference');
         $frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
@@ -49,7 +51,7 @@ class PaymentController extends Controller
     /**
      * Gère les notifications asynchrones de NotchPay (POST Webhook)
      */
-    public function webhook(Request $request)
+    public function webhook(Request $request): JsonResponse
     {
         $payload = $request->all();
         Log::info('Webhook NotchPay reçu:', $payload);
@@ -68,7 +70,7 @@ class PaymentController extends Controller
     /**
      * Récupère le statut d'une transaction locale
      */
-    public function getTransactionStatus($reference)
+    public function getTransactionStatus($reference): JsonResponse
     {
         $transaction = Transaction::where('reference', $reference)->first();
 

@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Contrat de location final.
@@ -34,37 +36,37 @@ class Rental extends Model
 
     // ─── Relations ────────────────────────────────────────────────────────────
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
 
     /** Locataire officiel (rôle attribué après confirmation du paiement) */
-    public function tenant()
+    public function tenant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'tenant_id');
     }
 
     /** Agent HMC responsable de ce dossier */
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
     /** Dossier de candidature qui a abouti à ce contrat */
-    public function application()
+    public function application(): BelongsTo
     {
         return $this->belongsTo(RentalApplication::class, 'application_id');
     }
 
     /** Agent qui a confirmé la réception du paiement initial */
-    public function paymentConfirmedBy()
+    public function paymentConfirmedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'payment_confirmed_by');
     }
 
     /** Paiements liés à cette location */
-    public function transactions()
+    public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
     }

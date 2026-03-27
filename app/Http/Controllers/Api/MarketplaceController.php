@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class MarketplaceController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $category = $request->query('category', 'all');
         $search = $request->query('search');
@@ -84,7 +85,7 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    public function show($id, Request $request)
+    public function show($id, Request $request): JsonResponse
     {
         $type = $request->query('type', 'product');
 
@@ -135,7 +136,7 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    public function categories()
+    public function categories(): JsonResponse
     {
         // Get unique product categories
         $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [

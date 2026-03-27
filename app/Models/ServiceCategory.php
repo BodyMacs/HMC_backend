@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ServiceCategory extends Model
 {
@@ -13,8 +14,8 @@ class ServiceCategory extends Model
 
     protected $guarded = ['id']; // Fillable attributes
 
-    public function services() // Renamed to services for convention but was 'services' in design
+    public function services(): HasMany
     {
-        return $this->hasMany(Service::class); // Changed from Service::class to Service::class
+        return $this->hasMany(Service::class);
     }
 }

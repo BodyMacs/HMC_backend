@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PropertyReview extends Model
 {
@@ -20,24 +22,24 @@ class PropertyReview extends Model
 
     // ─── Relations ────────────────────────────────────────────────────────────
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class)->select(['id', 'name', 'avatar']);
     }
 
-    public function visit()
+    public function visit(): BelongsTo
     {
         return $this->belongsTo(Visit::class);
     }
 
     // ─── Scopes ───────────────────────────────────────────────────────────────
 
-    public function scopeApproved($query)
+    public function scopeApproved(Builder $query): Builder
     {
         return $query->where('status', 'approved');
     }

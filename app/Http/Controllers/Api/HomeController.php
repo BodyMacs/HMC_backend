@@ -9,10 +9,11 @@ use App\Models\Product;
 use App\Models\Property;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
 
         // 0. Categories
@@ -50,7 +51,9 @@ class HomeController extends Controller
         // Note: Using 'owner' relationship from Property model (belongsTo User)
         // Adjust fields based on actual database columns
         $newProperties = Property::latest()
-            ->with(['owner', 'primaryImage'])
+            ->with(['owner', 'primaryImage', 'images'])
+            ->withAvg('reviews', 'rating')
+            ->withCount(['favorites', 'reviews'])
             ->take(10)
             ->get()
             ->map(fn($property) => [
@@ -64,7 +67,12 @@ class HomeController extends Controller
                 'bathrooms' => $property->bathrooms ?? 0,
                 'area' => $property->area ?? 0,
                 'image' => $property->primaryImage ? $property->primaryImage->path : '/images/categoriebien/appart.jfif',
+                'all_images' => $property->images->map(fn($img) => $img->path)->toArray(),
                 'city' => $property->city,
+                'favorites_count' => $property->favorites_count ?? 0,
+                'review_count' => $property->reviews_count ?? 0,
+                'shares_count' => $property->shares_count ?? 0,
+                'avg_rating' => round((float) ($property->reviews_avg_rating ?? 0), 1),
             ]);
 
         // 2. Agents

@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Intervention extends Model
 {
@@ -13,22 +15,22 @@ class Intervention extends Model
 
     protected $guarded = ['id'];
 
-    public function service()
+    public function service(): BelongsTo
     {
         return $this->belongsTo(Service::class);
     }
 
-    public function requester()
+    public function requester(): BelongsTo
     {
         return $this->belongsTo(User::class, 'requester_id');
     }
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
 
-    public function provider()
+    public function provider(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Service::class, 'id', 'id', 'service_id', 'provider_id');
     }

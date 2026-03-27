@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -12,7 +13,7 @@ class RoleController extends Controller
     /**
      * Get user roles.
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -28,7 +29,7 @@ class RoleController extends Controller
     /**
      * Switch current active role.
      */
-    public function switch(Request $request)
+    public function switch(Request $request): JsonResponse
     {
         $request->validate([
             'role' => 'required|string',
@@ -57,7 +58,7 @@ class RoleController extends Controller
     /**
      * Acquire a new role.
      */
-    public function acquire(Request $request)
+    public function acquire(Request $request): JsonResponse
     {
         $request->validate([
             'role' => 'required|string|in:bailleur,locataire,prestataire,agent',

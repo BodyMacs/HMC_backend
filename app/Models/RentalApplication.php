@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Dossier de candidature locative.
@@ -34,37 +36,37 @@ class RentalApplication extends Model
 
     // ─── Relations ────────────────────────────────────────────────────────────
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
 
     /** Futur locataire qui a soumis le dossier */
-    public function applicant()
+    public function applicant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     /** Visite qui a déclenché cette candidature */
-    public function visit()
+    public function visit(): BelongsTo
     {
         return $this->belongsTo(Visit::class, 'visit_id');
     }
 
     /** Agent HMC responsable */
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
     /** Qui a examiné le dossier */
-    public function reviewer()
+    public function reviewer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'reviewed_by');
     }
 
     /** Contrat de location final (créé après validation + paiement) */
-    public function rental()
+    public function rental(): HasOne
     {
         return $this->hasOne(Rental::class, 'application_id');
     }

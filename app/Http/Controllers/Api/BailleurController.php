@@ -12,6 +12,7 @@ use App\Models\RentalApplication;
 use App\Models\Visit;
 use App\Models\PropertyRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,7 @@ class BailleurController extends Controller
      * Dashboard stats du bailleur connecté
      * GET /api/bailleur/dashboard
      */
-    public function dashboard(Request $request)
+    public function dashboard(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -108,7 +109,7 @@ class BailleurController extends Controller
      * Liste complète des biens du bailleur (avec pagination)
      * GET /api/bailleur/properties
      */
-    public function properties(Request $request)
+    public function properties(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -157,7 +158,7 @@ class BailleurController extends Controller
      * Create a new rental manualy by the landlord
      * POST /api/bailleur/rentals
      */
-    public function createRental(Request $request)
+    public function createRental(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -230,7 +231,7 @@ class BailleurController extends Controller
      * Profil du bailleur connecté
      * GET /api/bailleur/profile
      */
-    public function profile(Request $request)
+    public function profile(Request $request): JsonResponse
     {
         $user = $request->user()->loadCount('properties');
 
@@ -244,7 +245,7 @@ class BailleurController extends Controller
      * Mise à jour du profil
      * PUT /api/bailleur/profile
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -273,7 +274,7 @@ class BailleurController extends Controller
      * Le bailleur observe l'avancement sans pouvoir intervenir.
      * GET /api/bailleur/properties/{id}/rental-status
      */
-    public function propertyRentalStatus(Request $request, int $propertyId)
+    public function propertyRentalStatus(Request $request, int $propertyId): JsonResponse
     {
         $user = $request->user();
 
@@ -380,7 +381,7 @@ class BailleurController extends Controller
      * Liste des visites pour le bailleur — LECTURE SEULE (sans identité prospect).
      * GET /api/bailleur/visits
      */
-    public function visits(Request $request)
+    public function visits(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -411,7 +412,7 @@ class BailleurController extends Controller
     /**
      * Liste des interventions pour le bailleur
      */
-    public function interventions(Request $request)
+    public function interventions(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -429,7 +430,7 @@ class BailleurController extends Controller
     /**
      * Mettre à jour le statut d'une intervention
      */
-    public function updateInterventionStatus(Request $request, $id)
+    public function updateInterventionStatus(Request $request, $id): JsonResponse
     {
         $user = $request->user();
 
@@ -454,7 +455,7 @@ class BailleurController extends Controller
      * Rapport financier du bailleur
      * GET /api/bailleur/finances
      */
-    public function finances(Request $request)
+    public function finances(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -492,7 +493,7 @@ class BailleurController extends Controller
      * Mes demandes de publication (audit terrain)
      * GET /api/bailleur/publication-requests
      */
-    public function myPublicationRequests(Request $request)
+    public function myPublicationRequests(Request $request): JsonResponse
     {
         $user = $request->user();
         $requests = PropertyRequest::with(['agent:id,name,phone'])
@@ -510,7 +511,7 @@ class BailleurController extends Controller
      * Soumettre une demande de publication (Phase 0 Audit)
      * POST /api/bailleur/publication-requests
      */
-    public function submitPublicationRequest(Request $request)
+    public function submitPublicationRequest(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'title'          => 'required|string|max:255',
@@ -568,7 +569,7 @@ class BailleurController extends Controller
      * Mettre à jour une demande de publication existante
      * PUT /api/bailleur/publication-requests/{id}
      */
-    public function updatePublicationRequest(Request $request, int $id)
+    public function updatePublicationRequest(Request $request, int $id): JsonResponse
     {
         $user = $request->user();
         $propertyRequest = PropertyRequest::where('id', $id)
@@ -618,7 +619,7 @@ class BailleurController extends Controller
      * Supprimer une demande de publication
      * DELETE /api/bailleur/publication-requests/{id}
      */
-    public function deletePublicationRequest(Request $request, int $id)
+    public function deletePublicationRequest(Request $request, int $id): JsonResponse
     {
         $user = $request->user();
         $propertyRequest = PropertyRequest::where('id', $id)
@@ -645,7 +646,7 @@ class BailleurController extends Controller
      * Confirmer la présence à l'audit terrain
      * POST /api/bailleur/publication-requests/{id}/confirm-audit
      */
-    public function confirmAudit(Request $request, int $id)
+    public function confirmAudit(Request $request, int $id): JsonResponse
     {
         $user = $request->user();
         $propertyRequest = PropertyRequest::where('id', $id)
@@ -669,7 +670,7 @@ class BailleurController extends Controller
         ]);
     }
 
-    public function declineAudit(Request $request, int $id)
+    public function declineAudit(Request $request, int $id): JsonResponse
     {
         $request->validate([
             'suggested_at' => 'required|date|after:now',

@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Formation;
 use App\Models\Transaction;
 use App\Models\UserFormation;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
         $formations = Formation::where('status', 'active')->get();
 
@@ -22,7 +23,7 @@ class FormationController extends Controller
         ]);
     }
 
-    public function myFormations(Request $request)
+    public function myFormations(Request $request): JsonResponse
     {
         $user = $request->user();
         $formations = $user->formations()->get();
@@ -33,7 +34,7 @@ class FormationController extends Controller
         ]);
     }
 
-    public function purchase(Request $request, Formation $formation)
+    public function purchase(Request $request, Formation $formation): JsonResponse
     {
         $user = $request->user();
 
@@ -93,7 +94,7 @@ class FormationController extends Controller
         }
     }
 
-    public function show(Request $request, Formation $formation)
+    public function show(Request $request, Formation $formation): JsonResponse
     {
         $user = $request->user();
         $userFormation = UserFormation::where('user_id', $user->id)

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Intervention;
 use App\Models\Service;
 use App\Models\Transaction;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PrestataireController extends Controller
@@ -15,7 +16,7 @@ class PrestataireController extends Controller
     /**
      * Get dashboard data for the prestataire
      */
-    public function dashboard(Request $request)
+    public function dashboard(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -54,7 +55,7 @@ class PrestataireController extends Controller
     /**
      * List of services offered by the provider
      */
-    public function services(Request $request)
+    public function services(Request $request): JsonResponse
     {
         $services = Service::with('category')
             ->where('provider_id', $request->user()->id)
@@ -69,7 +70,7 @@ class PrestataireController extends Controller
     /**
      * List of interventions assigned to the provider
      */
-    public function interventions(Request $request)
+    public function interventions(Request $request): JsonResponse
     {
         $interventions = Intervention::with(['service', 'requester', 'property'])
             ->whereHas('service', fn ($q) => $q->where('provider_id', $request->user()->id))
@@ -85,7 +86,7 @@ class PrestataireController extends Controller
     /**
      * Upcoming interventions
      */
-    public function agenda(Request $request)
+    public function agenda(Request $request): JsonResponse
     {
         $agenda = Intervention::with(['service', 'requester', 'property'])
             ->whereHas('service', fn ($q) => $q->where('provider_id', $request->user()->id))
@@ -102,7 +103,7 @@ class PrestataireController extends Controller
     /**
      * Earnings and transactions
      */
-    public function finances(Request $request)
+    public function finances(Request $request): JsonResponse
     {
         $transactions = Transaction::where('user_id', $request->user()->id)
             ->latest()

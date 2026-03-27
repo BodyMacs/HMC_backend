@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PropertyRequest extends Model
 {
@@ -20,13 +23,13 @@ class PropertyRequest extends Model
     ];
 
     /** Bailleur who requested the publication */
-    public function bailleur()
+    public function bailleur(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     /** Agent HMC assigned to the request */
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }

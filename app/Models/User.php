@@ -9,14 +9,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasApiTokens, HasFactory, Notifiable;
-    protected static function booted()
+    protected static function booted(): void
     {
-        static::creating(function ($user) {
+        static::creating(function (User $user) {
             if ($user->role && empty($user->roles)) {
                 $user->roles = [$user->role];
             }
@@ -119,7 +122,7 @@ class User extends Authenticatable
     // ─── Relations Bailleur / Propriétaire ────────────────────────────────────
 
     /** Biens dont cet utilisateur est le propriétaire (bailleur) */
-    public function properties()
+    public function properties(): HasMany
     {
         return $this->hasMany(Property::class, 'user_id');
     }
@@ -127,25 +130,25 @@ class User extends Authenticatable
     // ─── Relations Agent HMC ──────────────────────────────────────────────────
 
     /** Biens dont cet agent est responsable */
-    public function managedProperties()
+    public function managedProperties(): HasMany
     {
         return $this->hasMany(Property::class, 'agent_id');
     }
 
     /** Visites assignées à cet agent */
-    public function assignedVisits()
+    public function assignedVisits(): HasMany
     {
         return $this->hasMany(Visit::class, 'agent_id');
     }
 
     /** Dossiers assignés à cet agent */
-    public function assignedApplications()
+    public function assignedApplications(): HasMany
     {
         return $this->hasMany(RentalApplication::class, 'agent_id');
     }
 
     /** Locations dont cet agent est responsable */
-    public function managedRentals()
+    public function managedRentals(): HasMany
     {
         return $this->hasMany(Rental::class, 'agent_id');
     }
@@ -153,36 +156,36 @@ class User extends Authenticatable
     // ─── Relations Locataire ──────────────────────────────────────────────────
 
     /** Locations actives en tant que locataire */
-    public function rentals()
+    public function rentals(): HasMany
     {
         return $this->hasMany(Rental::class, 'tenant_id');
     }
 
     /** Candidatures de location soumises */
-    public function rentalApplications()
+    public function rentalApplications(): HasMany
     {
         return $this->hasMany(RentalApplication::class, 'user_id');
     }
 
     /** Visites programmées */
-    public function visits()
+    public function visits(): HasMany
     {
         return $this->hasMany(Visit::class, 'user_id');
     }
 
     // ─── Relations génériques ─────────────────────────────────────────────────
 
-    public function favorites()
+    public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'favorites', 'user_id', 'property_id');
     }
 
-    public function wallet()
+    public function wallet(): HasOne
     {
         return $this->hasOne(Wallet::class);
     }
 
-    public function formations()
+    public function formations(): BelongsToMany
     {
         return $this->belongsToMany(Formation::class, 'user_formations')
             ->withPivot('status', 'progress', 'completed_at')

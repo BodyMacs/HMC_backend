@@ -36,6 +36,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/properties', [PropertyController::class, 'index']);
 Route::get('/properties/{slug}', [PropertyController::class, 'show']);
+Route::post('/properties/{id}/share', [PropertyController::class, 'incrementShare']);
 // Avis publics (lecture seule sans auth)
 Route::get('/properties/{identifier}/reviews', [PropertyReviewController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);

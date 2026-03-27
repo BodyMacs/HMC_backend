@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -38,12 +39,12 @@ class Notification extends Model
 
     // ── Scopes ────────────────────────────────────────────────────────────────
 
-    public function scopeUnread($query)
+    public function scopeUnread(Builder $query): Builder
     {
         return $query->where('is_read', false);
     }
 
-    public function scopeOfType($query, string $type)
+    public function scopeOfType(Builder $query, string $type): Builder
     {
         return $query->where('type', $type);
     }
