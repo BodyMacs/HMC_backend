@@ -6,10 +6,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Visit extends Model
 {
     use HasFactory;
+
+    public static function getVisitFee(): float
+    {
+        return (float) env('VISIT_FEE', 10);
+    }
 
     protected $guarded = ['id'];
 
@@ -23,22 +30,22 @@ class Visit extends Model
 
     // ─── Relations ────────────────────────────────────────────────────────────
 
-    public function property()
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
 
-    public function visitor()
+    public function visitor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
-    public function application()
+    public function application(): HasOne
     {
         return $this->hasOne(RentalApplication::class, 'visit_id');
     }

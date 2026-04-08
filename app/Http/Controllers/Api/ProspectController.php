@@ -81,7 +81,7 @@ class ProspectController extends Controller
             'agent_id'     => $property->agent_id,
             'scheduled_at' => $request->scheduled_at,
             'status'       => 'pending',
-            'visit_fee'    => 100,
+            'visit_fee'    => Visit::getVisitFee(),
             'fee_payment_status' => 'pending',
         ]);
 
@@ -169,6 +169,7 @@ class ProspectController extends Controller
             'amount' => $visit->visit_fee,
             'currency' => 'XAF',
             'status' => 'pending',
+            'payment_method' => 'momo',
             'metadata' => [
                 'action' => 'visit_fee',
                 'visit_id' => $visit->id,
@@ -439,6 +440,7 @@ class ProspectController extends Controller
             'amount' => $totalAmount,
             'currency' => 'XAF',
             'status' => 'pending',
+            'payment_method' => 'momo',
             'metadata' => [
                 'action' => 'rental_payment',
                 'rental_id' => $rental->id,

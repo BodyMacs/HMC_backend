@@ -29,7 +29,7 @@ return new class extends Migration
             $table->json('features')->nullable(); // JSON Features
             $table->integer('bedrooms')->nullable();
             $table->integer('bathrooms')->nullable();
-            $table->decimal('area', 8, 2)->nullable(); // m2
+            $table->decimal('area', 8, 0)->nullable(); // m2
             $table->integer('construction_year')->nullable();
             $table->integer('views_count')->default(0);
             $table->timestamps();

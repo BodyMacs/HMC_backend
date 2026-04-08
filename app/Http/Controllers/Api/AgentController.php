@@ -11,6 +11,7 @@ use App\Models\RentalApplication;
 use App\Models\User;
 use App\Models\Visit;
 use App\Models\PropertyRequest;
+use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -124,19 +125,23 @@ class AgentController extends Controller
     }
 
     /**
-     * Agenda de l'agent (visites confirmées à venir)
+     * Agenda de l'agent : liste des visites confirmées ou prévues
      */
     public function agenda(Request $request): JsonResponse
     {
         $agent = $request->user();
 
-        $agenda = Visit::with(['property', 'visitor'])
+        // On récupère toutes les visites de l'agent, confirmées ou en attente,
+        // à partir du début du mois courant jusqu'à 3 mois dans le futur
+        $visits = Visit::with(['property:id,title,city', 'visitor:id,name,phone'])
             ->where('agent_id', $agent->id)
-            ->whereIn('status', ['pending', 'confirmed'])
-            ->orderBy('scheduled_at')
+            ->whereIn('status', ['pending', 'confirmed', 'completed'])
+            ->where('scheduled_at', '>=', now()->startOfMonth())
+            ->where('scheduled_at', '<=', now()->addMonths(3))
+            ->orderBy('scheduled_at', 'asc')
             ->get();
 
-        return response()->json(['success' => true, 'data' => $agenda]);
+        return response()->json(['success' => true, 'data' => $visits]);
     }
 
     /**
@@ -197,7 +202,11 @@ class AgentController extends Controller
         $mission->update([
             'scheduled_at' => $validated['scheduled_at'],
             'agent_notes'  => $validated['agent_notes'],
-            'status'       => 'assigned', // Ensure status is assigned
+            'status'       => 'assigned',
+            'bailleur_confirmed_at' => null,
+            'bailleur_declined_at' => null,
+            'bailleur_suggested_at' => null,
+            'bailleur_notes' => null,
         ]);
 
         return response()->json([
@@ -312,6 +321,14 @@ class AgentController extends Controller
             return response()->json(['success' => false, 'message' => 'Cette visite a été annulée.'], 422);
         }
 
+        // --- NOUVEAU : Bloquer si pas payé ---
+        if ($visit->fee_payment_status !== 'paid' && $visit->fee_payment_status !== 'waived') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Veuillez patienter car l\'utilisateur n\'a pas encore réglé les frais de visite (' . Visit::getVisitFee() . ' FCFA).',
+            ], 422);
+        }
+
         $visit->update([
             'confirmed_by_agent' => true,
             'visited_at'         => now(),
@@ -320,6 +337,17 @@ class AgentController extends Controller
 
         $visit->checkAndComplete();
         $visit->refresh();
+
+        // ── Notification au client ──
+        $scheduledAt = $visit->scheduled_at
+            ? \Carbon\Carbon::parse($visit->scheduled_at)->format('d/m/Y à H\hi')
+            : '';
+        NotificationService::visitConfirmed(
+            $visit->user_id,
+            $visit->property->title ?? 'votre bien',
+            $scheduledAt,
+            $visit->id
+        );
 
         return response()->json([
             'success'        => true,
@@ -419,6 +447,13 @@ class AgentController extends Controller
                 'payment_status'       => 'unpaid',
                 'notes'                => $request->notes,
             ]);
+
+            // ── Notification au prospect ──
+            NotificationService::applicationValidated(
+                $application->user_id,
+                $property->title,
+                $application->id
+            );
         });
 
         return response()->json([
@@ -447,6 +482,14 @@ class AgentController extends Controller
             'reviewed_at'      => now(),
             'reviewed_by'      => $agent->id,
         ]);
+
+        // ── Notification au prospect ──
+        NotificationService::applicationRejected(
+            $application->user_id,
+            $application->property->title ?? 'le bien',
+            $request->reason,
+            $application->id
+        );
 
         return response()->json(['success' => true, 'message' => 'Dossier rejeté.']);
     }
@@ -510,12 +553,47 @@ class AgentController extends Controller
             if ($tenant && $tenant->role !== 'locataire') {
                 $tenant->update(['role' => 'locataire']);
             }
+
+            // ── Notification au locataire ──
+            if ($tenant) {
+                NotificationService::rentalActivated(
+                    $tenant->id,
+                    $rental->property->title ?? 'votre logement',
+                    $rental->id
+                );
+            }
         });
 
         return response()->json([
             'success' => true,
             'message' => 'Paiement confirmé. La location est active. Le rôle locataire a été attribué.',
             'data'    => $rental->fresh()->load(['property', 'tenant']),
+        ]);
+    }
+
+    /**
+     * Mettre à jour les disponibilités (horaires de travail) de l'agent.
+     */
+    public function updateAvailabilities(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'availabilities' => 'required|array',
+            'availabilities.*.off' => 'required|boolean',
+            'availabilities.*.start' => 'nullable|date_format:H:i',
+            'availabilities.*.end' => 'nullable|date_format:H:i',
+        ]);
+
+        /** @var \App\Models\User $agent */
+        $agent = Auth::user();
+
+        $agent->update([
+            'availabilities' => $validated['availabilities']
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Disponibilités mises à jour avec succès.',
+            'data'    => $agent->availabilities,
         ]);
     }
 }

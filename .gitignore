@@ -21,3 +21,13 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Images
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+*.jfif
+*.ico

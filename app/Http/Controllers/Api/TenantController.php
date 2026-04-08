@@ -11,6 +11,7 @@ use App\Models\Property;
 use App\Models\Rental;
 use App\Models\Transaction;
 use App\Models\Visit;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,7 @@ class TenantController extends Controller
     /**
      * Dashboard Statistics
      */
-    public function dashboard()
+    public function dashboard(): JsonResponse
     {
         $user = Auth::user();
 
@@ -66,7 +67,7 @@ class TenantController extends Controller
     /**
      * List all rentals
      */
-    public function rentals()
+    public function rentals(): JsonResponse
     {
         $user = Auth::user();
         $statusOrder = ['pending' => 0, 'active' => 1, 'finished' => 2, 'cancelled' => 3];
@@ -86,7 +87,7 @@ class TenantController extends Controller
     /**
      * List all payments/transactions
      */
-    public function payments()
+    public function payments(): JsonResponse
     {
         $user = Auth::user();
         $transactions = Transaction::where('user_id', $user->id)
@@ -102,7 +103,7 @@ class TenantController extends Controller
     /**
      * Get list of interventions
      */
-    public function interventions()
+    public function interventions(): JsonResponse
     {
         $user = Auth::user();
         $interventions = Intervention::with('service.category')
@@ -119,7 +120,7 @@ class TenantController extends Controller
     /**
      * Get list of favorites
      */
-    public function favorites()
+    public function favorites(): JsonResponse
     {
         $user = Auth::user();
         $favorites = Favorite::with('property.primaryImage')
@@ -136,7 +137,7 @@ class TenantController extends Controller
     /**
      * Toggle favorite
      */
-    public function toggleFavorite(Request $request)
+    public function toggleFavorite(Request $request): JsonResponse
     {
         $request->validate(['property_id' => 'required|exists:properties,id']);
         $user = Auth::user();
@@ -165,7 +166,7 @@ class TenantController extends Controller
     /**
      * Apply for a rental
      */
-    public function apply(Request $request)
+    public function apply(Request $request): JsonResponse
     {
         $request->validate([
             'property_id' => 'required|exists:properties,id',
@@ -213,7 +214,7 @@ class TenantController extends Controller
     /**
      * Book a property visit
      */
-    public function bookVisit(Request $request)
+    public function bookVisit(Request $request): JsonResponse
     {
         $request->validate([
             'property_id' => 'required|exists:properties,id',
@@ -256,7 +257,7 @@ class TenantController extends Controller
     /**
      * Create a new intervention request
      */
-    public function createIntervention(Request $request)
+    public function createIntervention(Request $request): JsonResponse
     {
         $request->validate([
             'property_id' => 'required|exists:properties,id',
@@ -301,7 +302,7 @@ class TenantController extends Controller
     /**
      * Get tenant profile
      */
-    public function profile()
+    public function profile(): JsonResponse
     {
         return response()->json([
             'success' => true,
@@ -312,15 +313,15 @@ class TenantController extends Controller
     /**
      * Update tenant profile
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): JsonResponse
     {
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city' => 'sometimes|string|max:100',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city' => 'sometimes|nullable|string|max:100',
         ]);
 
         $user->update($validated);

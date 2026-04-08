@@ -18,6 +18,11 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TenantController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\VisiteController;
+use App\Http\Controllers\Api\MetaController;
+use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\PropertyReviewController;
+use App\Http\Controllers\Api\ServiceRequestController;
+use App\Http\Controllers\Api\ProviderDirectoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +37,23 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/properties', [PropertyController::class, 'index']);
-Route::get('/properties/{id}', [PropertyController::class, 'show']);
+Route::get('/properties/{slug}', [PropertyController::class, 'show']);
+Route::post('/properties/{id}/share', [PropertyController::class, 'incrementShare']);
+// Avis publics (lecture seule sans auth)
+Route::get('/properties/{identifier}/reviews', [PropertyReviewController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
 Route::get('/marketplace/items/{id}', [MarketplaceController::class, 'show']);
 Route::get('/marketplace/categories', [MarketplaceController::class, 'categories']);
+Route::get('/settings', [MetaController::class, 'settings']);
+
+// ── Service Marketplace (Public) ─────────────────────────────────────────────
+Route::group(['prefix' => 'marketplace/services'], function (): void {
+    Route::get('/posts', [ServiceRequestController::class, 'index']);
+    Route::get('/posts/{id}', [ServiceRequestController::class, 'show']);
+    Route::get('/providers', [ProviderDirectoryController::class, 'index']);
+    Route::get('/providers/{id}', [ProviderDirectoryController::class, 'show']);
+});
 
 // NotchPay Callback
 Route::get('/notchpay/callback', [PaymentController::class, 'callback'])->name('notchpay.callback');
@@ -48,6 +65,17 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::get('/user/sidebar-stats', [MetaController::class, 'sidebarStats']);
+
+    // ── Notifications ─────────────────────────────────────────────────────────
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::get('/',              [NotificationController::class, 'index']);
+        Route::get('/unread-count', [NotificationController::class, 'unreadCount']);
+        Route::post('/read-all',    [NotificationController::class, 'markAllRead']);
+        Route::delete('/clear-all', [NotificationController::class, 'clearAll']);
+        Route::post('/{id}/read',   [NotificationController::class, 'markRead']);
+        Route::delete('/{id}',      [NotificationController::class, 'destroy']);
+    });
 
     // ── Gestion du Profil Utilisateur (Centralisé) ───────────────────────────
     Route::prefix('profile')->group(function () {
@@ -65,6 +93,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::post('/properties', [PropertyController::class, 'store']);
     Route::put('/properties/{id}', [PropertyController::class, 'update']);
     Route::delete('/properties/{id}', [PropertyController::class, 'destroy']);
+
+    // ── Avis sur les biens ───────────────────────────────────────────────────
+    Route::post('/properties/{identifier}/reviews', [PropertyReviewController::class, 'store']);
+    Route::get('/properties/{identifier}/reviews/my', [PropertyReviewController::class, 'myReview']);
+    Route::put('/reviews/{id}', [PropertyReviewController::class, 'update']);
+    Route::delete('/reviews/{id}', [PropertyReviewController::class, 'destroy']);
 
     // ════════════════════════════════════════════════════════════════════════
     // PROCESSUS LOCATIF — VISITES (accessible à tout user authentifié)
@@ -133,6 +167,10 @@ Route::middleware('auth:sanctum')->group(function (): void {
         // — Demandes de publication (Audit)
         Route::get('/publication-requests',  [BailleurController::class, 'myPublicationRequests']);
         Route::post('/publication-requests', [BailleurController::class, 'submitPublicationRequest']);
+        Route::put('/publication-requests/{id}', [BailleurController::class, 'updatePublicationRequest']);
+        Route::delete('/publication-requests/{id}', [BailleurController::class, 'deletePublicationRequest']);
+        Route::post('/publication-requests/{id}/confirm-audit', [BailleurController::class, 'confirmAudit']);
+        Route::post('/publication-requests/{id}/decline-audit', [BailleurController::class, 'declineAudit']);
     });
 
     // ════════════════════════════════════════════════════════════════════════
@@ -163,6 +201,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/clients',      [AgentController::class, 'clients']);
         Route::get('/missions',     [AgentController::class, 'missions']);
         Route::get('/agenda',       [AgentController::class, 'agenda']);
+        Route::post('/agenda/availabilities', [AgentController::class, 'updateAvailabilities']);
 
         // Phase 1 : Visites
         Route::get('/visits',                     [AgentController::class, 'visits']);
@@ -225,11 +264,27 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/rental-procedures/{id}',                    [AdminController::class, 'rentalProcedureDetail']);
         Route::post('/rental-procedures/{id}/status',            [AdminController::class, 'updateRentalStatus']);
         Route::get('/agents',                                    [AdminController::class, 'listAgents']);
+        Route::get('/agents/{id}/agenda',                        [AdminController::class, 'agentAgenda']);
         Route::post('/properties/{property}/assign-agent',       [AdminController::class, 'assignAgentToProperty']);
         Route::post('/rental-procedures/{visitId}/assign-agent', [AdminController::class, 'assignAgent']);
-
         // — Gestion des demandes de publication
         Route::get('/publication-requests',              [AdminController::class, 'listPublicationRequests']);
         Route::post('/publication-requests/{id}/assign', [AdminController::class, 'assignAgentToPublicationRequest']);
+    });
+
+    // ── Service Marketplace (Protected) ──────────────────────────────────────
+    Route::group(['prefix' => 'marketplace/services'], function (): void {
+        Route::post('/posts', [ServiceRequestController::class, 'store']);
+        Route::post('/posts/{id}/respond', [ServiceRequestController::class, 'respond']);
+        Route::post('/posts/{id}/responses/{responseId}/accept', [ServiceRequestController::class, 'acceptResponse']);
+        Route::post('/providers/{id}/contact', [App\Http\Controllers\Api\ProviderContactController::class, 'contact']);
+    });
+
+    // ── Chat / Messagerie ───────────────────────────────────────────────────
+    Route::group(['prefix' => 'chat'], function (): void {
+        Route::get('/conversations', [App\Http\Controllers\Api\ChatController::class, 'index']);
+        Route::get('/conversations/{id}', [App\Http\Controllers\Api\ChatController::class, 'show']);
+        Route::post('/conversations/{id}/messages', [App\Http\Controllers\Api\ChatController::class, 'sendMessage']);
+        Route::post('/conversations/{id}/read', [App\Http\Controllers\Api\ChatController::class, 'markAsRead']);
     });
 });

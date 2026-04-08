@@ -12,6 +12,7 @@ use App\Models\RentalApplication;
 use App\Models\Visit;
 use App\Models\PropertyRequest;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,7 @@ class BailleurController extends Controller
      * Dashboard stats du bailleur connecté
      * GET /api/bailleur/dashboard
      */
-    public function dashboard(Request $request)
+    public function dashboard(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -108,7 +109,7 @@ class BailleurController extends Controller
      * Liste complète des biens du bailleur (avec pagination)
      * GET /api/bailleur/properties
      */
-    public function properties(Request $request)
+    public function properties(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -157,7 +158,7 @@ class BailleurController extends Controller
      * Create a new rental manualy by the landlord
      * POST /api/bailleur/rentals
      */
-    public function createRental(Request $request)
+    public function createRental(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -230,7 +231,7 @@ class BailleurController extends Controller
      * Profil du bailleur connecté
      * GET /api/bailleur/profile
      */
-    public function profile(Request $request)
+    public function profile(Request $request): JsonResponse
     {
         $user = $request->user()->loadCount('properties');
 
@@ -244,15 +245,15 @@ class BailleurController extends Controller
      * Mise à jour du profil
      * PUT /api/bailleur/profile
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): JsonResponse
     {
         $user = $request->user();
 
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city' => 'sometimes|string|max:100',
-            'bio' => 'sometimes|string|max:500',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city' => 'sometimes|nullable|string|max:100',
+            'bio' => 'sometimes|nullable|string|max:500',
         ]);
 
         $user->update($validated);
@@ -273,7 +274,7 @@ class BailleurController extends Controller
      * Le bailleur observe l'avancement sans pouvoir intervenir.
      * GET /api/bailleur/properties/{id}/rental-status
      */
-    public function propertyRentalStatus(Request $request, int $propertyId)
+    public function propertyRentalStatus(Request $request, int $propertyId): JsonResponse
     {
         $user = $request->user();
 
@@ -380,7 +381,7 @@ class BailleurController extends Controller
      * Liste des visites pour le bailleur — LECTURE SEULE (sans identité prospect).
      * GET /api/bailleur/visits
      */
-    public function visits(Request $request)
+    public function visits(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -411,7 +412,7 @@ class BailleurController extends Controller
     /**
      * Liste des interventions pour le bailleur
      */
-    public function interventions(Request $request)
+    public function interventions(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -429,7 +430,7 @@ class BailleurController extends Controller
     /**
      * Mettre à jour le statut d'une intervention
      */
-    public function updateInterventionStatus(Request $request, $id)
+    public function updateInterventionStatus(Request $request, $id): JsonResponse
     {
         $user = $request->user();
 
@@ -454,7 +455,7 @@ class BailleurController extends Controller
      * Rapport financier du bailleur
      * GET /api/bailleur/finances
      */
-    public function finances(Request $request)
+    public function finances(Request $request): JsonResponse
     {
         $user = $request->user();
 
@@ -492,7 +493,7 @@ class BailleurController extends Controller
      * Mes demandes de publication (audit terrain)
      * GET /api/bailleur/publication-requests
      */
-    public function myPublicationRequests(Request $request)
+    public function myPublicationRequests(Request $request): JsonResponse
     {
         $user = $request->user();
         $requests = PropertyRequest::with(['agent:id,name,phone'])
@@ -510,7 +511,7 @@ class BailleurController extends Controller
      * Soumettre une demande de publication (Phase 0 Audit)
      * POST /api/bailleur/publication-requests
      */
-    public function submitPublicationRequest(Request $request)
+    public function submitPublicationRequest(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'title'          => 'required|string|max:255',
@@ -562,5 +563,140 @@ class BailleurController extends Controller
             'message' => 'Demande de publication soumise avec succès. Un administrateur va assigner un agent pour l\'audit.',
             'data'    => $propertyRequest,
         ], 201);
+    }
+
+    /**
+     * Mettre à jour une demande de publication existante
+     * PUT /api/bailleur/publication-requests/{id}
+     */
+    public function updatePublicationRequest(Request $request, int $id): JsonResponse
+    {
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        // On ne peut modifier que si ce n'est pas encore audité ou rejeté
+        if (!in_array($propertyRequest->status, ['pending', 'assigned'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Cette demande ne peut plus être modifiée car elle est déjà en cours d\'audit ou traitée.'
+            ], 403);
+        }
+
+        $validated = $request->validate([
+            'title'          => 'sometimes|string|max:255',
+            'type'           => 'sometimes|in:rent,sale',
+            'category'       => 'sometimes|string',
+            'price_estimate' => 'sometimes|nullable|numeric',
+            'city'           => 'sometimes|string',
+            'location'       => 'sometimes|string',
+            'description'    => 'sometimes|nullable|string',
+            'bedrooms'       => 'sometimes|nullable|integer',
+            'bathrooms'      => 'sometimes|nullable|integer',
+            'area'           => 'sometimes|nullable|numeric',
+        ]);
+
+        $propertyRequest->update($validated);
+
+        // Gestion optionnelle des nouveaux documents
+        if ($request->hasFile('documents')) {
+            $paths = $propertyRequest->documents ?? [];
+            foreach ($request->file('documents') as $file) {
+                $paths[] = $file->store('audit_documents', 'public');
+            }
+            $propertyRequest->update(['documents' => $paths]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Demande de publication mise à jour avec succès.',
+            'data'    => $propertyRequest->fresh(),
+        ]);
+    }
+
+    /**
+     * Supprimer une demande de publication
+     * DELETE /api/bailleur/publication-requests/{id}
+     */
+    public function deletePublicationRequest(Request $request, int $id): JsonResponse
+    {
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        // Sécurité: Ne pas autoriser la suppression si déjà publié
+        if ($propertyRequest->status === 'published') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une demande déjà publiée.'
+            ], 403);
+        }
+
+        $propertyRequest->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'La demande de publication a été supprimée.'
+        ]);
+    }
+
+    /**
+     * Confirmer la présence à l'audit terrain
+     * POST /api/bailleur/publication-requests/{id}/confirm-audit
+     */
+    public function confirmAudit(Request $request, int $id): JsonResponse
+    {
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        if (!$propertyRequest->scheduled_at) {
+            return response()->json(['success' => false, 'message' => "Aucun audit n'est programmé pour cette demande."], 400);
+        }
+
+        $propertyRequest->update([
+            'bailleur_confirmed_at' => now(),
+            'bailleur_declined_at' => null,
+            'bailleur_notes' => $request->notes,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => "Rendez-vous d'audit confirmé avec succès.",
+            'data' => $propertyRequest->fresh(['agent'])
+        ]);
+    }
+
+    public function declineAudit(Request $request, int $id): JsonResponse
+    {
+        $request->validate([
+            'suggested_at' => 'required|date|after:now',
+            'notes' => 'nullable|string'
+        ]);
+
+        $user = $request->user();
+        $propertyRequest = PropertyRequest::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        if (!$propertyRequest->scheduled_at) {
+            return response()->json(['success' => false, 'message' => "Aucun audit n'est programmé pour cette demande."], 400);
+        }
+
+        $propertyRequest->update([
+            'bailleur_confirmed_at' => null,
+            'bailleur_declined_at' => now(),
+            'bailleur_suggested_at' => $request->suggested_at,
+            'bailleur_notes' => $request->notes,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => "Le report de l'audit a été demandé avec une proposition d'heure. L'agent sera notifié.",
+            'data' => $propertyRequest->fresh(['agent'])
+        ]);
     }
 }

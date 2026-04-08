@@ -1,11 +1,18 @@
 <?php
 
+<<<<<<< HEAD
 use Knuckles\Scribe\Config\AuthIn;
 use Knuckles\Scribe\Config\Defaults;
 use Knuckles\Scribe\Extracting\Strategies;
 
 use function Knuckles\Scribe\Config\configureStrategy;
 use function Knuckles\Scribe\Config\removeStrategies;
+=======
+use Knuckles\Scribe\Extracting\Strategies;
+use Knuckles\Scribe\Config\Defaults;
+use Knuckles\Scribe\Config\AuthIn;
+use function Knuckles\Scribe\Config\{removeStrategies, configureStrategy};
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 // Only the most common configs are shown. See the https://scribe.knuckles.wtf/laravel/reference/config for all.
 
@@ -16,6 +23,7 @@ return [
     // A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
     'description' => '',
 
+<<<<<<< HEAD
     // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
     'intro_text' => <<<'INTRO'
             This documentation aims to provide all the information you need to work with our API.
@@ -27,6 +35,11 @@ return [
     // The base URL displayed in the docs.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
     'base_url' => config('app.url'),
+=======
+    // The base URL displayed in the docs.
+    // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
+    'base_url' => config("app.url"),
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
     // Routes to include in the docs
     'routes' => [
@@ -84,7 +97,11 @@ return [
     ],
 
     'external' => [
+<<<<<<< HEAD
         'html_attributes' => [],
+=======
+        'html_attributes' => []
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     ],
 
     'try_it_out' => [
@@ -129,6 +146,17 @@ return [
         'extra_info' => 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.',
     ],
 
+<<<<<<< HEAD
+=======
+    // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
+    'intro_text' => <<<INTRO
+        This documentation aims to provide all the information you need to work with our API.
+
+        <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+        You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+    INTRO,
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     // Example requests for each endpoint will be shown in each of these languages.
     // Supported options are: bash, javascript, php, python
     // To add a language of your own, see https://scribe.knuckles.wtf/laravel/advanced/example-requests
@@ -150,18 +178,25 @@ return [
         ],
     ],
 
+<<<<<<< HEAD
     // Generate an OpenAPI spec in addition to docs webpage.
+=======
+    // Generate an OpenAPI spec (v3.0.1) in addition to docs webpage.
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     // For 'static' docs, the collection will be generated to public/docs/openapi.yaml.
     // For 'laravel' docs, it will be generated to storage/app/scribe/openapi.yaml.
     // Setting `laravel.add_routes` to true (above) will also add a route for the spec.
     'openapi' => [
         'enabled' => true,
 
+<<<<<<< HEAD
         // The OpenAPI spec version to generate. Supported versions: '3.0.3', '3.1.0'.
         // OpenAPI 3.1 is more compatible with JSON Schema and is becoming the dominant version.
         // See https://spec.openapis.org/oas/v3.1.0 for details on 3.1 changes.
         'version' => '3.0.3',
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         'overrides' => [
             // 'info.version' => '2.0.0',
         ],
@@ -244,7 +279,11 @@ return [
         ),
         'responseFields' => [
             ...Defaults::RESPONSE_FIELDS_STRATEGIES,
+<<<<<<< HEAD
         ],
+=======
+        ]
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     ],
 
     // For response calls, API resource responses and transformer responses,

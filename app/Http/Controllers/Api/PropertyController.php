@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use App\Models\PropertyReview;
 use App\Models\RentalApplication;
 use App\Models\Visit;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,9 +19,11 @@ class PropertyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
-        $query = Property::with(['owner:id,name,avatar', 'primaryImage'])
+        $query = Property::with(['owner:id,name,avatar', 'primaryImage', 'images'])
+            ->withAvg('reviews', 'rating')
+            ->withCount(['reviews', 'favorites'])
             ->where('status', 'active');
 
         // Filters
@@ -118,14 +122,17 @@ class PropertyController extends Controller
             $primaryImage = $p->primaryImage;
             if ($primaryImage) {
                 $path = $primaryImage->path;
-                // Si c'est déjà une URL absolue (Unsplash etc.), on la garde
                 $p->image = str_starts_with($path, 'http') ? $path : asset('storage/' . $path);
             } else {
                 $p->image = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
             }
-            $p->rooms = $p->bedrooms ?? 0;
-            $p->owner = $p->owner;
-            $p->is_favorite = in_array($p->id, $favoriteIds);
+            $p->rooms        = $p->bedrooms ?? 0;
+            $p->avg_rating   = round((float) ($p->reviews_avg_rating ?? 0), 1);
+            $p->review_count = (int) ($p->reviews_count ?? 0);
+            $p->favorites_count = (int) ($p->favorites_count ?? 0);
+            $p->shares_count = (int) ($p->shares_count ?? 0);
+            $p->all_images   = $p->images->map(fn($img) => $img->path)->toArray();
+            $p->is_favorite  = in_array($p->id, $favoriteIds);
             $p->my_rental_process = self::buildRentalProcess(
                 $activeVisits->get($p->id),
                 $activeApplications->get($p->id),
@@ -133,6 +140,7 @@ class PropertyController extends Controller
 
             return $p;
         });
+
 
         // Sidebar aggregates
         $baseQuery = Property::where('status', 'active');
@@ -191,7 +199,7 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -243,10 +251,19 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($identifier): JsonResponse
     {
         $property = Property::with(['owner:id,name,email,avatar,phone', 'images'])
-            ->findOrFail($id);
+            ->withAvg('reviews', 'rating')
+            ->withCount(['reviews', 'favorites'])
+            ->where(function ($query) use ($identifier) {
+                if (is_numeric($identifier)) {
+                    $query->where('id', $identifier);
+                } else {
+                    $query->where('slug', $identifier);
+                }
+            })
+            ->firstOrFail();
 
         $property->increment('views_count');
 
@@ -288,8 +305,25 @@ class PropertyController extends Controller
 
         $property->my_rental_process = self::buildRentalProcess($activeVisit, $activeApplication);
 
+        // Agrégats d'avis
+        $reviewStats = \App\Models\PropertyReview::where('property_id', $property->id)
+            ->where('status', 'approved')
+            ->selectRaw('
+                COUNT(*) as total,
+                ROUND(AVG(rating), 1) as average,
+                SUM(rating = 5) as five,
+                SUM(rating = 4) as four,
+                SUM(rating = 3) as three,
+                SUM(rating = 2) as two,
+                SUM(rating = 1) as one
+            ')
+            ->first();
+
+        $property->review_stats = $reviewStats;
+
         // Biens similaires ...
         $similar = Property::with(['primaryImage'])
+            ->withCount(['reviews', 'favorites'])
             ->where('status', 'active')
             ->where('id', '!=', $property->id)
             ->where(function ($q) use ($property): void {
@@ -306,6 +340,9 @@ class PropertyController extends Controller
                     ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
                     : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
                 $p->rooms = $p->bedrooms ?? 0;
+                $p->favorites_count = (int) ($p->favorites_count ?? 0);
+                $p->review_count = (int) ($p->reviews_count ?? 0);
+                $p->shares_count = (int) ($p->shares_count ?? 0);
                 $p->is_favorite = in_array($p->id, $favoriteIds);
 
                 return $p;
@@ -313,7 +350,7 @@ class PropertyController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $property,
+            'data'    => $property,
             'similar' => $similar,
         ]);
     }
@@ -321,7 +358,7 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): JsonResponse
     {
         $property = Property::findOrFail($id);
 
@@ -355,7 +392,7 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $id): JsonResponse
     {
         $property = Property::findOrFail($id);
 
@@ -423,5 +460,19 @@ class PropertyController extends Controller
         };
 
         return array_merge($step, ['visit' => $visit, 'application' => null]);
+    }
+
+    /**
+     * Increment share count for a property
+     */
+    public function incrementShare($id): JsonResponse
+    {
+        $property = Property::findOrFail($id);
+        $property->increment('shares_count');
+
+        return response()->json([
+            'success' => true,
+            'shares_count' => $property->shares_count,
+        ]);
     }
 }

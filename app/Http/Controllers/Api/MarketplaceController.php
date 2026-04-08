@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class MarketplaceController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $category = $request->query('category', 'all');
         $search = $request->query('search');
@@ -84,7 +85,7 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    public function show($id, Request $request)
+    public function show($id, Request $request): JsonResponse
     {
         $type = $request->query('type', 'product');
 
@@ -135,7 +136,7 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    public function categories()
+    public function categories(): JsonResponse
     {
         // Get unique product categories
         $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
@@ -149,19 +150,16 @@ class MarketplaceController extends Controller
             ['id' => 'all', 'name' => 'Tout', 'icon' => 'fas fa-th-large'],
         ])->concat($productCats);
 
-        // Add service categories from table if any
+        // Add real service categories from database
         $serviceCats = ServiceCategory::all()->map(fn ($sc) => [
-            'id' => 'services', // Map all services to 'services' tab or keep them separate
+            'id' => $sc->id,
             'name' => $sc->name,
             'icon' => $sc->icon ?: 'fas fa-tools',
         ]);
 
-        // Let's keep it simple for now as requested by the UI
-        $cats->push(['id' => 'services', 'name' => 'Services', 'icon' => 'fas fa-tools']);
-
         return response()->json([
             'success' => true,
-            'data' => $cats->unique('id')->values(),
+            'data' => $cats->concat($serviceCats)->unique('id')->values(),
         ]);
     }
 

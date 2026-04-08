@@ -259,8 +259,9 @@ class NouveauProcessusLocationTest extends TestCase
         [$user, $userToken] = $this->createUser();
 
         $visit = Visit::factory()->confirmedByUser()->withAgent($agent)->create([
-            'user_id'     => $user->id,
-            'property_id' => $property->id,
+            'user_id'            => $user->id,
+            'property_id'        => $property->id,
+            'fee_payment_status' => 'paid',
         ]);
 
         // L'agent confirme → la visite doit passer à "completed"
@@ -281,9 +282,10 @@ class NouveauProcessusLocationTest extends TestCase
         [$user]     = $this->createUser();
 
         $visit = Visit::factory()->pending()->withAgent($agent)->create([
-            'user_id'     => $user->id,
-            'property_id' => $property->id,
-            'confirmed_by_user' => false, // user n'a pas encore confirmé
+            'user_id'            => $user->id,
+            'property_id'        => $property->id,
+            'confirmed_by_user'  => false, // user n'a pas encore confirmé
+            'fee_payment_status' => 'paid',
         ]);
 
         $this->withToken($agentToken)

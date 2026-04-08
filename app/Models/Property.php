@@ -6,6 +6,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Property extends Model
 {
@@ -15,7 +19,7 @@ class Property extends Model
 
     protected $casts = [
         'price'     => 'decimal:2',
-        'area'      => 'decimal:2',
+        'area'      => 'integer',
         'amenities' => 'array',
         'features'  => 'array',
     ];
@@ -54,50 +58,55 @@ class Property extends Model
     // ─── Relations ────────────────────────────────────────────────────────────
 
     /** Bailleur propriétaire du bien */
-    public function owner()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     /** Agent HMC qui gère ce bien physiquement */
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(PropertyImage::class)->orderBy('order');
     }
 
-    public function primaryImage()
+    public function primaryImage(): HasOne
     {
         return $this->hasOne(PropertyImage::class)->where('is_primary', true);
     }
 
-    public function favorites()
+    public function favorites(): HasMany
     {
         return $this->hasMany(Favorite::class);
     }
 
-    public function favoritedBy()
+    public function favoritedBy(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites', 'property_id', 'user_id');
     }
 
-    public function visits()
+    public function visits(): HasMany
     {
         return $this->hasMany(Visit::class);
     }
 
-    public function applications()
+    public function applications(): HasMany
     {
         return $this->hasMany(RentalApplication::class);
     }
 
-    public function rentals()
+    public function rentals(): HasMany
     {
         return $this->hasMany(Rental::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(PropertyReview::class)->where('status', 'approved');
     }
 
     // ─── Helpers ──────────────────────────────────────────────────────────────

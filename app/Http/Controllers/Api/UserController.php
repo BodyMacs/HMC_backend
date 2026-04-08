@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -15,15 +16,15 @@ class UserController extends Controller
     /**
      * Mettre à jour les informations de base du profil
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): JsonResponse
     {
         $user = $request->user();
 
         $validated = $request->validate([
             'name'  => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'city'  => 'sometimes|string|max:100',
-            'bio'   => 'sometimes|string|max:1000',
+            'phone' => 'sometimes|nullable|string|max:20',
+            'city'  => 'sometimes|nullable|string|max:100',
+            'bio'   => 'sometimes|nullable|string|max:1000',
         ]);
 
         $user->update($validated);
@@ -38,7 +39,7 @@ class UserController extends Controller
     /**
      * Mettre à jour l'avatar
      */
-    public function updateAvatar(Request $request)
+    public function updateAvatar(Request $request): JsonResponse
     {
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB max
@@ -72,7 +73,7 @@ class UserController extends Controller
     /**
      * Changer le mot de passe
      */
-    public function changePassword(Request $request)
+    public function changePassword(Request $request): JsonResponse
     {
         $request->validate([
             'current_password' => 'required',

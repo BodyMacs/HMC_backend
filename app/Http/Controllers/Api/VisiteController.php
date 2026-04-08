@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\RentalApplication;
 use App\Models\Visit;
+use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,11 +55,28 @@ class VisiteController extends Controller
             'scheduled_at'       => $request->scheduled_at,
             'status'             => 'pending',
             'notes'              => $request->notes,
-            'visit_fee'          => 50, // Montant fixe — à rendre configurable plus tard
+            'visit_fee'          => Visit::getVisitFee(),
             'fee_payment_status' => $request->fee_payment_method ? 'paid' : 'pending',
             'fee_payment_method' => $request->fee_payment_method,
         ]);
 
+        // ── Notification client ──
+        NotificationService::visitBooked(
+            $user->id,
+            $property->title,
+            $visit->id
+        );
+
+        // ── Notification agent si assigné ──
+        if ($property->agent_id) {
+            $scheduledAt = \Carbon\Carbon::parse($request->scheduled_at)->format('d/m/Y à H\hi');
+            NotificationService::visitAssignedToAgent(
+                $property->agent_id,
+                $property->title,
+                $scheduledAt,
+                $visit->id
+            );
+        }
 
         return response()->json([
             'success' => true,
@@ -120,7 +138,11 @@ class VisiteController extends Controller
             ->where('status', 'pending')
             ->findOrFail($visitId);
 
+        $propertyTitle = $visit->property->title ?? 'ce bien';
         $visit->update(['status' => 'cancelled']);
+
+        // ── Notification ──
+        NotificationService::visitCancelled($user->id, $propertyTitle, $visit->id);
 
         return response()->json(['success' => true, 'message' => 'Visite annulée.']);
     }

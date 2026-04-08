@@ -16,14 +16,14 @@ class ServiceCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Plomberie', 'icon' => 'wrench'],
-            ['name' => 'Électricité', 'icon' => 'bolt'],
-            ['name' => 'Maçonnerie', 'icon' => 'hard-hat'],
-            ['name' => 'Menuiserie', 'icon' => 'hammer'],
-            ['name' => 'Peinture', 'icon' => 'paint-roller'],
-            ['name' => 'Nettoyage', 'icon' => 'broom'],
-            ['name' => 'Jardinage', 'icon' => 'seedling'],
-            ['name' => 'Climatisation', 'icon' => 'snowflake'],
+            ['name' => 'Plomberie', 'icon' => 'fas fa-wrench'],
+            ['name' => 'Électricité', 'icon' => 'fas fa-bolt'],
+            ['name' => 'Maçonnerie', 'icon' => 'fas fa-hard-hat'],
+            ['name' => 'Menuiserie', 'icon' => 'fas fa-hammer'],
+            ['name' => 'Peinture', 'icon' => 'fas fa-paint-roller'],
+            ['name' => 'Nettoyage', 'icon' => 'fas fa-broom'],
+            ['name' => 'Jardinage', 'icon' => 'fas fa-seedling'],
+            ['name' => 'Climatisation', 'icon' => 'fas fa-snowflake'],
         ];
 
         foreach ($categories as $category) {

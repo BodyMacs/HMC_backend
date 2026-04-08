@@ -26,6 +26,7 @@
             </style>
 
     <script>
+<<<<<<< HEAD
         var tryItOutBaseUrl = "http://localhost";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
@@ -33,6 +34,15 @@
     <script src="{{ asset("/vendor/scribe/js/tryitout-5.9.0.js") }}"></script>
 
     <script src="{{ asset("/vendor/scribe/js/theme-default-5.9.0.js") }}"></script>
+=======
+        var tryItOutBaseUrl = "http://localhost:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.1.0.js") }}"></script>
+
+    <script src="{{ asset("/vendor/scribe/js/theme-default-5.1.0.js") }}"></script>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 </head>
 
@@ -80,8 +90,20 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-properties">
                                 <a href="#endpoints-GETapi-properties">Display a listing of the resource.</a>
                             </li>
+<<<<<<< HEAD
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-properties--id-">
                                 <a href="#endpoints-GETapi-properties--id-">Display the specified resource.</a>
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-properties--slug-">
+                                <a href="#endpoints-GETapi-properties--slug-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-properties--id--share">
+                                <a href="#endpoints-POSTapi-properties--id--share">Increment share count for a property</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-properties--identifier--reviews">
+                                <a href="#endpoints-GETapi-properties--identifier--reviews">GET /api/properties/{identifier}/reviews
+Liste les avis approuvés d'un bien, avec les agrégats de notation.</a>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-home">
                                 <a href="#endpoints-GETapi-home">GET api/home</a>
@@ -95,6 +117,24 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-marketplace-categories">
                                 <a href="#endpoints-GETapi-marketplace-categories">GET api/marketplace/categories</a>
                             </li>
+<<<<<<< HEAD
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-settings">
+                                <a href="#endpoints-GETapi-settings">GET api/settings</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-marketplace-services-posts">
+                                <a href="#endpoints-GETapi-marketplace-services-posts">List all open service requests (The Job Board)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-marketplace-services-posts--id-">
+                                <a href="#endpoints-GETapi-marketplace-services-posts--id-">Get details of a service request</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-marketplace-services-providers">
+                                <a href="#endpoints-GETapi-marketplace-services-providers">List all service providers with filters</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-marketplace-services-providers--id-">
+                                <a href="#endpoints-GETapi-marketplace-services-providers--id-">Get detail of a specific provider (Public profile)</a>
+                            </li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-notchpay-callback">
                                 <a href="#endpoints-GETapi-notchpay-callback">Gère le retour de NotchPay après une tentative de paiement (GET redirect)</a>
                             </li>
@@ -110,6 +150,36 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
                             </li>
+<<<<<<< HEAD
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user-sidebar-stats">
+                                <a href="#endpoints-GETapi-user-sidebar-stats">Retourne les compteurs pour les badges de la sidebar en fonction du rôle actuel.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications">
+                                <a href="#endpoints-GETapi-notifications">GET /api/notifications
+Retourne les notifications de l'utilisateur authentifié, paginées.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-notifications-unread-count">
+                                <a href="#endpoints-GETapi-notifications-unread-count">GET /api/notifications/unread-count
+Retourne uniquement le compteur de non-lus (utilisé par la sidebar).</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-notifications-read-all">
+                                <a href="#endpoints-POSTapi-notifications-read-all">POST /api/notifications/read-all
+Marque toutes les notifications de l'utilisateur comme lues.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-notifications-clear-all">
+                                <a href="#endpoints-DELETEapi-notifications-clear-all">DELETE /api/notifications/clear-all
+Supprime toutes les notifications de l'utilisateur.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-notifications--id--read">
+                                <a href="#endpoints-POSTapi-notifications--id--read">POST /api/notifications/{id}/read
+Marque une notification comme lue.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-notifications--id-">
+                                <a href="#endpoints-DELETEapi-notifications--id-">DELETE /api/notifications/{id}
+Supprime une notification.</a>
+                            </li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-profile">
                                 <a href="#endpoints-PUTapi-profile">Mettre à jour les informations de base du profil</a>
                             </li>
@@ -137,6 +207,25 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-properties--id-">
                                 <a href="#endpoints-DELETEapi-properties--id-">Remove the specified resource from storage.</a>
                             </li>
+<<<<<<< HEAD
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-properties--identifier--reviews">
+                                <a href="#endpoints-POSTapi-properties--identifier--reviews">POST /api/properties/{identifier}/reviews
+Soumettre un avis (authentifié).</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-properties--identifier--reviews-my">
+                                <a href="#endpoints-GETapi-properties--identifier--reviews-my">GET /api/reviews/my/{propertyId}
+Récupère l'avis de l'utilisateur connecté pour un bien.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-reviews--id-">
+                                <a href="#endpoints-PUTapi-reviews--id-">PUT /api/reviews/{id}
+Modifier son propre avis.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-reviews--id-">
+                                <a href="#endpoints-DELETEapi-reviews--id-">DELETE /api/reviews/{id}
+Supprimer son propre avis (ou admin).</a>
+                            </li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-visits">
                                 <a href="#endpoints-GETapi-visits">Liste des visites de l'utilisateur connecté.</a>
                             </li>
@@ -241,6 +330,24 @@ GET /api/bailleur/publication-requests</a>
                                 <a href="#endpoints-POSTapi-bailleur-publication-requests">Soumettre une demande de publication (Phase 0 Audit)
 POST /api/bailleur/publication-requests</a>
                             </li>
+<<<<<<< HEAD
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-bailleur-publication-requests--id-">
+                                <a href="#endpoints-PUTapi-bailleur-publication-requests--id-">Mettre à jour une demande de publication existante
+PUT /api/bailleur/publication-requests/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-bailleur-publication-requests--id-">
+                                <a href="#endpoints-DELETEapi-bailleur-publication-requests--id-">Supprimer une demande de publication
+DELETE /api/bailleur/publication-requests/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-bailleur-publication-requests--id--confirm-audit">
+                                <a href="#endpoints-POSTapi-bailleur-publication-requests--id--confirm-audit">Confirmer la présence à l'audit terrain
+POST /api/bailleur/publication-requests/{id}/confirm-audit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-bailleur-publication-requests--id--decline-audit">
+                                <a href="#endpoints-POSTapi-bailleur-publication-requests--id--decline-audit">POST api/bailleur/publication-requests/{id}/decline-audit</a>
+                            </li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-tenant-dashboard">
                                 <a href="#endpoints-GETapi-tenant-dashboard">Dashboard Statistics</a>
                             </li>
@@ -287,7 +394,14 @@ POST /api/bailleur/publication-requests</a>
                                 <a href="#endpoints-GETapi-agent-missions">Missions de l'agent (toutes les actions en attente)</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-agent-agenda">
+<<<<<<< HEAD
                                 <a href="#endpoints-GETapi-agent-agenda">Agenda de l'agent (visites confirmées à venir)</a>
+=======
+                                <a href="#endpoints-GETapi-agent-agenda">Agenda de l'agent : liste des visites confirmées ou prévues</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-agent-agenda-availabilities">
+                                <a href="#endpoints-POSTapi-agent-agenda-availabilities">Mettre à jour les disponibilités (horaires de travail) de l'agent.</a>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-agent-visits">
                                 <a href="#endpoints-GETapi-agent-visits">GET api/agent/visits</a>
@@ -394,7 +508,14 @@ GET /api/admin/rental-procedures/{id}</a>
 POST /api/admin/rental-procedures/{id}/status</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-admin-agents">
+<<<<<<< HEAD
                                 <a href="#endpoints-GETapi-admin-agents">List all users with 'agent' role</a>
+=======
+                                <a href="#endpoints-GETapi-admin-agents">GET api/admin/agents</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-admin-agents--id--agenda">
+                                <a href="#endpoints-GETapi-admin-agents--id--agenda">Voir l'agenda d'un agent spécifique (utilisé lors de l'assignation par l'admin)</a>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-admin-properties--property_id--assign-agent">
                                 <a href="#endpoints-POSTapi-admin-properties--property_id--assign-agent">Assign an agent to a property</a>
@@ -411,6 +532,15 @@ GET /api/admin/publication-requests</a>
                                 <a href="#endpoints-POSTapi-admin-publication-requests--id--assign">Assigner un agent à une demande de publication
 POST /api/admin/publication-requests/{id}/assign</a>
                             </li>
+<<<<<<< HEAD
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-marketplace-services-posts">
+                                <a href="#endpoints-POSTapi-marketplace-services-posts">Create a new service request (User post)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-marketplace-services-posts--id--respond">
+                                <a href="#endpoints-POSTapi-marketplace-services-posts--id--respond">Provider bids on a service request</a>
+                            </li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                                                                         </ul>
                             </ul>
             </div>
@@ -422,7 +552,11 @@ POST /api/admin/publication-requests/{id}/assign</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
+<<<<<<< HEAD
         <li>Last updated: March 27, 2026</li>
+=======
+        <li>Last updated: March 31, 2026</li>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     </ul>
 </div>
 
@@ -431,7 +565,11 @@ POST /api/admin/publication-requests/{id}/assign</a>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
+<<<<<<< HEAD
     <strong>Base URL</strong>: <code>http://localhost</code>
+=======
+    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -458,7 +596,11 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/register" \
+=======
+    "http://localhost:8000/api/register" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -473,7 +615,11 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/register"
+=======
+    "http://localhost:8000/api/register"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -550,7 +696,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-register"
                value="application/json"
@@ -562,7 +711,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-register"
                value="application/json"
@@ -575,7 +727,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-register"
                value="b"
@@ -587,7 +742,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-register"
                value="zbailey@example.net"
@@ -599,7 +757,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-register"
                value="-0pBNvYgxw"
@@ -611,7 +772,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="POSTapi-register"
                value="client"
@@ -625,7 +789,10 @@ Must be one of:
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-register"
                value="aykcmyuwpwlvqwrs"
@@ -648,7 +815,11 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/login" \
+=======
+    "http://localhost:8000/api/login" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -660,7 +831,11 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/login"
+=======
+    "http://localhost:8000/api/login"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -734,7 +909,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-login"
                value="application/json"
@@ -746,7 +924,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-login"
                value="application/json"
@@ -759,7 +940,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
                value="gbailey@example.net"
@@ -771,7 +955,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
                value="architecto"
@@ -794,14 +981,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/properties" \
+=======
+    --get "http://localhost:8000/api/properties" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/properties"
+=======
+    "http://localhost:8000/api/properties"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -809,7 +1004,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -837,6 +1035,7 @@ vary: Origin
         &quot;data&quot;: [
             {
                 &quot;id&quot;: 27,
+<<<<<<< HEAD
                 &quot;user_id&quot;: 2,
                 &quot;agent_id&quot;: 7,
                 &quot;title&quot;: &quot;Studio a bastos&quot;,
@@ -886,6 +1085,368 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Chambre Meubl&eacute;e - Akwa, Douala&quot;,
                 &quot;slug&quot;: &quot;chambre-meublee-akwa-douala-sucLU3&quot;,
+=======
+                &quot;user_id&quot;: 3,
+                &quot;agent_id&quot;: 3,
+                &quot;title&quot;: &quot;appartement meubl&eacute;&quot;,
+                &quot;slug&quot;: &quot;appartement-meuble-LFTG2J&quot;,
+                &quot;type&quot;: &quot;rent&quot;,
+                &quot;category&quot;: &quot;villa&quot;,
+                &quot;etat&quot;: &quot;bon&quot;,
+                &quot;amenities&quot;: [],
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;price&quot;: &quot;80000.00&quot;,
+                &quot;currency&quot;: &quot;XAF&quot;,
+                &quot;description&quot;: &quot;2 chambre , 2 douches , 1 salon&quot;,
+                &quot;location&quot;: &quot;messassi&quot;,
+                &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+                &quot;region&quot;: null,
+                &quot;features&quot;: [],
+                &quot;bedrooms&quot;: 5,
+                &quot;bathrooms&quot;: 2,
+                &quot;area&quot;: 25,
+                &quot;construction_year&quot;: null,
+                &quot;views_count&quot;: 44,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-23T14:53:08.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: &quot;4.0000&quot;,
+                &quot;reviews_count&quot;: 1,
+                &quot;favorites_count&quot;: 1,
+                &quot;image&quot;: &quot;http://localhost:8000/storage/properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+                &quot;rooms&quot;: 5,
+                &quot;avg_rating&quot;: 4,
+                &quot;review_count&quot;: 1,
+                &quot;all_images&quot;: [
+                    &quot;properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+                    &quot;properties/PFFN59KUCdLvdSh4wMzQr6pEdgKuHE3pzFdmfzw7.webp&quot;,
+                    &quot;properties/k4cxb2DzyCT9pX27T5r3VjZlvfqN8zYApckfaA5Y.webp&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 27,
+                    &quot;property_id&quot;: 27,
+                    &quot;path&quot;: &quot;properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 27,
+                        &quot;property_id&quot;: 27,
+                        &quot;path&quot;: &quot;properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 28,
+                        &quot;property_id&quot;: 27,
+                        &quot;path&quot;: &quot;properties/PFFN59KUCdLvdSh4wMzQr6pEdgKuHE3pzFdmfzw7.webp&quot;,
+                        &quot;is_primary&quot;: 0,
+                        &quot;order&quot;: 1,
+                        &quot;created_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 29,
+                        &quot;property_id&quot;: 27,
+                        &quot;path&quot;: &quot;properties/k4cxb2DzyCT9pX27T5r3VjZlvfqN8zYApckfaA5Y.webp&quot;,
+                        &quot;is_primary&quot;: 0,
+                        &quot;order&quot;: 2,
+                        &quot;created_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-12T10:44:34.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 24,
+                &quot;user_id&quot;: 6,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Villa Meubl&eacute;e - Centre-ville, Garoua&quot;,
+                &quot;slug&quot;: &quot;villa-meublee-centre-ville-garoua-qcfzam&quot;,
+                &quot;type&quot;: &quot;rent&quot;,
+                &quot;category&quot;: &quot;Villa&quot;,
+                &quot;etat&quot;: &quot;Meubl&eacute;&quot;,
+                &quot;amenities&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Groupe &eacute;lectrog&egrave;ne&quot;,
+                    &quot;Jardin&quot;,
+                    &quot;Parking&quot;,
+                    &quot;S&eacute;curit&eacute; 24/7&quot;,
+                    &quot;Gardiennage&quot;
+                ],
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;price&quot;: &quot;400000.00&quot;,
+                &quot;currency&quot;: &quot;XAF&quot;,
+                &quot;description&quot;: &quot;Grande villa meubl&eacute;e &agrave; Garoua. Enti&egrave;rement climatis&eacute;e, groupe &eacute;lectrog&egrave;ne, puits d&#039;eau, jardin. Id&eacute;ale famille ou expatri&eacute;s.&quot;,
+                &quot;location&quot;: &quot;Centre-ville, Garoua&quot;,
+                &quot;city&quot;: &quot;Garoua&quot;,
+                &quot;region&quot;: &quot;Nord&quot;,
+                &quot;features&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Groupe &eacute;lectrog&egrave;ne&quot;,
+                    &quot;Jardin&quot;,
+                    &quot;Parking&quot;,
+                    &quot;S&eacute;curit&eacute; 24/7&quot;,
+                    &quot;Gardiennage&quot;
+                ],
+                &quot;bedrooms&quot;: 4,
+                &quot;bathrooms&quot;: 3,
+                &quot;area&quot;: 220,
+                &quot;construction_year&quot;: 2024,
+                &quot;views_count&quot;: 387,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-24T08:14:30.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 4,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=21&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=21&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;property_id&quot;: 24,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 8,
+                        &quot;property_id&quot;: 24,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 12,
+                        &quot;property_id&quot;: 24,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 17,
+                        &quot;property_id&quot;: 24,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 21,
+                        &quot;property_id&quot;: 24,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    },
+                    {
+                        &quot;id&quot;: 24,
+                        &quot;property_id&quot;: 24,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 25,
+                &quot;user_id&quot;: 5,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Villa Bord de Mer - Kribi&quot;,
+                &quot;slug&quot;: &quot;villa-bord-de-mer-kribi-85Kuov&quot;,
+                &quot;type&quot;: &quot;rent&quot;,
+                &quot;category&quot;: &quot;Villa&quot;,
+                &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
+                &quot;amenities&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Jardin&quot;,
+                    &quot;Parking&quot;,
+                    &quot;Balcon&quot;,
+                    &quot;Groupe &eacute;lectrog&egrave;ne&quot;
+                ],
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;price&quot;: &quot;500000.00&quot;,
+                &quot;currency&quot;: &quot;XAF&quot;,
+                &quot;description&quot;: &quot;Magnifique villa en bord de mer &agrave; Kribi. Vue sur l&#039;oc&eacute;an Atlantique, grande terrasse, jardin cocotiers. Id&eacute;ale vacances ou r&eacute;sidence principale.&quot;,
+                &quot;location&quot;: &quot;Front de Mer, Kribi&quot;,
+                &quot;city&quot;: &quot;Kribi&quot;,
+                &quot;region&quot;: &quot;Sud&quot;,
+                &quot;features&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Jardin&quot;,
+                    &quot;Parking&quot;,
+                    &quot;Balcon&quot;,
+                    &quot;Groupe &eacute;lectrog&egrave;ne&quot;
+                ],
+                &quot;bedrooms&quot;: 4,
+                &quot;bathrooms&quot;: 3,
+                &quot;area&quot;: 250,
+                &quot;construction_year&quot;: 2012,
+                &quot;views_count&quot;: 386,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-23T15:23:01.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: &quot;5.0000&quot;,
+                &quot;reviews_count&quot;: 1,
+                &quot;favorites_count&quot;: 1,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 4,
+                &quot;avg_rating&quot;: 5,
+                &quot;review_count&quot;: 1,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Jean-Baptiste Mbarga&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=11&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=11&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 25,
+                    &quot;property_id&quot;: 25,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 25,
+                        &quot;property_id&quot;: 25,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 26,
+                &quot;user_id&quot;: 7,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Appartement Vue Mer - Limbe&quot;,
+                &quot;slug&quot;: &quot;appartement-vue-mer-limbe-SrjZoc&quot;,
+                &quot;type&quot;: &quot;rent&quot;,
+                &quot;category&quot;: &quot;Appartement&quot;,
+                &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
+                &quot;amenities&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Balcon&quot;,
+                    &quot;Parking&quot;,
+                    &quot;Eau courante&quot;
+                ],
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;price&quot;: &quot;120000.00&quot;,
+                &quot;currency&quot;: &quot;XAF&quot;,
+                &quot;description&quot;: &quot;Appartement avec vue sur la baie de Limbe. 2 chambres climatis&eacute;es, terrasse, parking. Proche de Limbe Wildlife Centre et plages.&quot;,
+                &quot;location&quot;: &quot;Down Beach, Limbe&quot;,
+                &quot;city&quot;: &quot;Limbe&quot;,
+                &quot;region&quot;: &quot;Sud-Ouest&quot;,
+                &quot;features&quot;: [
+                    &quot;Climatisation&quot;,
+                    &quot;Balcon&quot;,
+                    &quot;Parking&quot;,
+                    &quot;Eau courante&quot;
+                ],
+                &quot;bedrooms&quot;: 2,
+                &quot;bathrooms&quot;: 2,
+                &quot;area&quot;: 85,
+                &quot;construction_year&quot;: 2017,
+                &quot;views_count&quot;: 686,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-24T11:54:57.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 2,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Patrick Essomba&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=33&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=33&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 26,
+                    &quot;property_id&quot;: 26,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 26,
+                        &quot;property_id&quot;: 26,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;user_id&quot;: 2,
+                &quot;agent_id&quot;: 5,
+                &quot;title&quot;: &quot;Chambre Meubl&eacute;e - Akwa, Douala&quot;,
+                &quot;slug&quot;: &quot;chambre-meublee-akwa-douala-HHDhTi&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Chambre&quot;,
                 &quot;etat&quot;: &quot;Meubl&eacute;&quot;,
@@ -908,6 +1469,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 1,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;18.00&quot;,
                 &quot;construction_year&quot;: 2018,
                 &quot;views_count&quot;: 28,
@@ -939,6 +1501,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Studio Haut Standing - Bonanjo, Douala&quot;,
                 &quot;slug&quot;: &quot;studio-haut-standing-bonanjo-douala-cCXwol&quot;,
+=======
+                &quot;area&quot;: 18,
+                &quot;construction_year&quot;: 2015,
+                &quot;views_count&quot;: 525,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-05T12:30:13.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 1,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 1,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Bailleur Test&quot;,
+                    &quot;avatar&quot;: null,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;property_id&quot;: 2,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 2,
+                        &quot;property_id&quot;: 2,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;user_id&quot;: 6,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Studio Haut Standing - Bonanjo, Douala&quot;,
+                &quot;slug&quot;: &quot;studio-haut-standing-bonanjo-douala-7YD469&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Studio&quot;,
                 &quot;etat&quot;: &quot;Neuf&quot;,
@@ -963,6 +1578,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 1,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;40.00&quot;,
                 &quot;construction_year&quot;: 2021,
                 &quot;views_count&quot;: 758,
@@ -994,6 +1610,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Studio Climatis&eacute; 35m&sup2; - Deido, Douala&quot;,
                 &quot;slug&quot;: &quot;studio-climatise-35m2-deido-douala-Ploj9B&quot;,
+=======
+                &quot;area&quot;: 40,
+                &quot;construction_year&quot;: 2019,
+                &quot;views_count&quot;: 700,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-05T12:29:27.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 1,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=21&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=21&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;property_id&quot;: 3,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 3,
+                        &quot;property_id&quot;: 3,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;user_id&quot;: 7,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Studio Climatis&eacute; 35m&sup2; - Deido, Douala&quot;,
+                &quot;slug&quot;: &quot;studio-climatise-35m2-deido-douala-fdloE6&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Studio&quot;,
                 &quot;etat&quot;: &quot;R&eacute;nov&eacute;&quot;,
@@ -1016,6 +1685,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 1,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;35.00&quot;,
                 &quot;construction_year&quot;: 2015,
                 &quot;views_count&quot;: 572,
@@ -1047,6 +1717,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Appartement F3 - Bonapriso, Douala&quot;,
                 &quot;slug&quot;: &quot;appartement-f3-bonapriso-douala-mYGCiq&quot;,
+=======
+                &quot;area&quot;: 35,
+                &quot;construction_year&quot;: 2022,
+                &quot;views_count&quot;: 719,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-19T15:55:14.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: &quot;4.0000&quot;,
+                &quot;reviews_count&quot;: 1,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 1,
+                &quot;avg_rating&quot;: 4,
+                &quot;review_count&quot;: 1,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Patrick Essomba&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=33&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=33&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;property_id&quot;: 4,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 4,
+                        &quot;property_id&quot;: 4,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;user_id&quot;: 7,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Appartement F3 - Bonapriso, Douala&quot;,
+                &quot;slug&quot;: &quot;appartement-f3-bonapriso-douala-T29bfG&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Appartement&quot;,
                 &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -1073,6 +1796,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 3,
                 &quot;bathrooms&quot;: 2,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;110.00&quot;,
                 &quot;construction_year&quot;: 2011,
                 &quot;views_count&quot;: 754,
@@ -1104,6 +1828,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Appartement F2 - Makepe, Douala&quot;,
                 &quot;slug&quot;: &quot;appartement-f2-makepe-douala-ct92Po&quot;,
+=======
+                &quot;area&quot;: 110,
+                &quot;construction_year&quot;: 2017,
+                &quot;views_count&quot;: 245,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-15T11:07:42.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 3,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Patrick Essomba&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=33&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=33&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;property_id&quot;: 5,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 5,
+                        &quot;property_id&quot;: 5,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;user_id&quot;: 6,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Appartement F2 - Makepe, Douala&quot;,
+                &quot;slug&quot;: &quot;appartement-f2-makepe-douala-btwkM2&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Appartement&quot;,
                 &quot;etat&quot;: &quot;R&eacute;nov&eacute;&quot;,
@@ -1126,6 +1903,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 2,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;75.00&quot;,
                 &quot;construction_year&quot;: 2016,
                 &quot;views_count&quot;: 226,
@@ -1141,12 +1919,39 @@ vary: Origin
                 },
                 &quot;is_favorite&quot;: false,
                 &quot;my_rental_process&quot;: null,
+=======
+                &quot;area&quot;: 75,
+                &quot;construction_year&quot;: 2022,
+                &quot;views_count&quot;: 157,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-11T05:19:59.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 1,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 2,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=21&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=21&quot;
+                },
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;primary_image&quot;: {
                     &quot;id&quot;: 6,
                     &quot;property_id&quot;: 6,
                     &quot;path&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                     &quot;is_primary&quot;: 1,
                     &quot;order&quot;: 0,
+<<<<<<< HEAD
                     &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                     &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
                 }
@@ -1157,6 +1962,29 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Appartement Meubl&eacute; - Bali, Douala&quot;,
                 &quot;slug&quot;: &quot;appartement-meuble-bali-douala-JfHAo5&quot;,
+=======
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 6,
+                        &quot;property_id&quot;: 6,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 7,
+                &quot;user_id&quot;: 8,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Appartement Meubl&eacute; - Bali, Douala&quot;,
+                &quot;slug&quot;: &quot;appartement-meuble-bali-douala-bxAgsT&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Appartement&quot;,
                 &quot;etat&quot;: &quot;Meubl&eacute;&quot;,
@@ -1183,6 +2011,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 2,
                 &quot;bathrooms&quot;: 2,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;90.00&quot;,
                 &quot;construction_year&quot;: 2015,
                 &quot;views_count&quot;: 256,
@@ -1214,6 +2043,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Maison F4 avec Cour - Logbaba, Douala&quot;,
                 &quot;slug&quot;: &quot;maison-f4-avec-cour-logbaba-douala-po7coc&quot;,
+=======
+                &quot;area&quot;: 90,
+                &quot;construction_year&quot;: 2020,
+                &quot;views_count&quot;: 391,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 2,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;A&iuml;cha Aboubakar&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=47&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=47&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;property_id&quot;: 7,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 7,
+                        &quot;property_id&quot;: 7,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 8,
+                &quot;user_id&quot;: 5,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Maison F4 avec Cour - Logbaba, Douala&quot;,
+                &quot;slug&quot;: &quot;maison-f4-avec-cour-logbaba-douala-LVNJZO&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Maison&quot;,
                 &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -1240,6 +2122,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 4,
                 &quot;bathrooms&quot;: 2,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;140.00&quot;,
                 &quot;construction_year&quot;: 2013,
                 &quot;views_count&quot;: 301,
@@ -1271,6 +2154,39 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Villa de Prestige - Bonapriso, Douala&quot;,
                 &quot;slug&quot;: &quot;villa-de-prestige-bonapriso-douala-dFQv7z&quot;,
+=======
+                &quot;area&quot;: 140,
+                &quot;construction_year&quot;: 2022,
+                &quot;views_count&quot;: 92,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 4,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Jean-Baptiste Mbarga&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=11&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=11&quot;
+                },
+                &quot;primary_image&quot;: null,
+                &quot;images&quot;: []
+            },
+            {
+                &quot;id&quot;: 9,
+                &quot;user_id&quot;: 5,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Villa de Prestige - Bonapriso, Douala&quot;,
+                &quot;slug&quot;: &quot;villa-de-prestige-bonapriso-douala-DOXbhf&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Villa&quot;,
                 &quot;etat&quot;: &quot;Neuf&quot;,
@@ -1301,6 +2217,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 5,
                 &quot;bathrooms&quot;: 4,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;320.00&quot;,
                 &quot;construction_year&quot;: 2010,
                 &quot;views_count&quot;: 364,
@@ -1316,12 +2233,39 @@ vary: Origin
                 },
                 &quot;is_favorite&quot;: false,
                 &quot;my_rental_process&quot;: null,
+=======
+                &quot;area&quot;: 320,
+                &quot;construction_year&quot;: 2016,
+                &quot;views_count&quot;: 346,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 5,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Jean-Baptiste Mbarga&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=11&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=11&quot;
+                },
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;primary_image&quot;: {
                     &quot;id&quot;: 9,
                     &quot;property_id&quot;: 9,
                     &quot;path&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                     &quot;is_primary&quot;: 1,
                     &quot;order&quot;: 0,
+<<<<<<< HEAD
                     &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                     &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
                 }
@@ -1332,6 +2276,29 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Chambre Bon &eacute;tat - Mimboman, Yaound&eacute;&quot;,
                 &quot;slug&quot;: &quot;chambre-bon-etat-mimboman-yaounde-IqcTrR&quot;,
+=======
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 9,
+                        &quot;property_id&quot;: 9,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 10,
+                &quot;user_id&quot;: 5,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Chambre Bon &eacute;tat - Mimboman, Yaound&eacute;&quot;,
+                &quot;slug&quot;: &quot;chambre-bon-etat-mimboman-yaounde-IWFD12&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Chambre&quot;,
                 &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -1352,6 +2319,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 1,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;14.00&quot;,
                 &quot;construction_year&quot;: 2020,
                 &quot;views_count&quot;: 714,
@@ -1383,6 +2351,59 @@ vary: Origin
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Studio Meubl&eacute; - Bastos, Yaound&eacute;&quot;,
                 &quot;slug&quot;: &quot;studio-meuble-bastos-yaounde-spIseV&quot;,
+=======
+                &quot;area&quot;: 14,
+                &quot;construction_year&quot;: 2017,
+                &quot;views_count&quot;: 148,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 1,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Jean-Baptiste Mbarga&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=11&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=11&quot;
+                },
+                &quot;primary_image&quot;: {
+                    &quot;id&quot;: 10,
+                    &quot;property_id&quot;: 10,
+                    &quot;path&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                    &quot;is_primary&quot;: 1,
+                    &quot;order&quot;: 0,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 10,
+                        &quot;property_id&quot;: 10,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 11,
+                &quot;user_id&quot;: 8,
+                &quot;agent_id&quot;: null,
+                &quot;title&quot;: &quot;Studio Meubl&eacute; - Bastos, Yaound&eacute;&quot;,
+                &quot;slug&quot;: &quot;studio-meuble-bastos-yaounde-bweik6&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Studio&quot;,
                 &quot;etat&quot;: &quot;Meubl&eacute;&quot;,
@@ -1409,6 +2430,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 1,
                 &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;42.00&quot;,
                 &quot;construction_year&quot;: 2023,
                 &quot;views_count&quot;: 575,
@@ -1424,22 +2446,69 @@ vary: Origin
                 },
                 &quot;is_favorite&quot;: false,
                 &quot;my_rental_process&quot;: null,
+=======
+                &quot;area&quot;: 42,
+                &quot;construction_year&quot;: 2012,
+                &quot;views_count&quot;: 77,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 1,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [
+                    &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+                ],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+                &quot;owner&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;A&iuml;cha Aboubakar&quot;,
+                    &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=47&quot;,
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=47&quot;
+                },
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;primary_image&quot;: {
                     &quot;id&quot;: 11,
                     &quot;property_id&quot;: 11,
                     &quot;path&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                     &quot;is_primary&quot;: 1,
                     &quot;order&quot;: 0,
+<<<<<<< HEAD
                     &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                     &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
                 }
+=======
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                },
+                &quot;images&quot;: [
+                    {
+                        &quot;id&quot;: 11,
+                        &quot;property_id&quot;: 11,
+                        &quot;path&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                        &quot;is_primary&quot;: 1,
+                        &quot;order&quot;: 0,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+                    }
+                ]
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             },
             {
                 &quot;id&quot;: 12,
                 &quot;user_id&quot;: 2,
                 &quot;agent_id&quot;: null,
                 &quot;title&quot;: &quot;Appartement F3 - Omnisport, Yaound&eacute;&quot;,
+<<<<<<< HEAD
                 &quot;slug&quot;: &quot;appartement-f3-omnisport-yaounde-chj79X&quot;,
+=======
+                &quot;slug&quot;: &quot;appartement-f3-omnisport-yaounde-W4zMY8&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;type&quot;: &quot;rent&quot;,
                 &quot;category&quot;: &quot;Appartement&quot;,
                 &quot;etat&quot;: &quot;R&eacute;nov&eacute;&quot;,
@@ -1464,6 +2533,7 @@ vary: Origin
                 ],
                 &quot;bedrooms&quot;: 3,
                 &quot;bathrooms&quot;: 2,
+<<<<<<< HEAD
                 &quot;area&quot;: &quot;95.00&quot;,
                 &quot;construction_year&quot;: 2018,
                 &quot;views_count&quot;: 629,
@@ -1471,10 +2541,29 @@ vary: Origin
                 &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                 &quot;image&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                 &quot;rooms&quot;: 3,
+=======
+                &quot;area&quot;: 95,
+                &quot;construction_year&quot;: 2012,
+                &quot;views_count&quot;: 330,
+                &quot;shares_count&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;reviews_avg_rating&quot;: null,
+                &quot;reviews_count&quot;: 0,
+                &quot;favorites_count&quot;: 0,
+                &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;rooms&quot;: 3,
+                &quot;avg_rating&quot;: 0,
+                &quot;review_count&quot;: 0,
+                &quot;all_images&quot;: [],
+                &quot;is_favorite&quot;: false,
+                &quot;my_rental_process&quot;: null,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;owner&quot;: {
                     &quot;id&quot;: 2,
                     &quot;name&quot;: &quot;Bailleur Test&quot;,
                     &quot;avatar&quot;: null,
+<<<<<<< HEAD
                     &quot;avatar_url&quot;: &quot;http://localhost/images/avatar/default.png&quot;
                 },
                 &quot;is_favorite&quot;: false,
@@ -1665,6 +2754,18 @@ vary: Origin
         &quot;from&quot;: 1,
         &quot;last_page&quot;: 2,
         &quot;last_page_url&quot;: &quot;http://localhost/api/properties?page=2&quot;,
+=======
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;
+                },
+                &quot;primary_image&quot;: null,
+                &quot;images&quot;: []
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost:8000/api/properties?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 2,
+        &quot;last_page_url&quot;: &quot;http://localhost:8000/api/properties?page=2&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         &quot;links&quot;: [
             {
                 &quot;url&quot;: null,
@@ -1673,26 +2774,43 @@ vary: Origin
                 &quot;active&quot;: false
             },
             {
+<<<<<<< HEAD
                 &quot;url&quot;: &quot;http://localhost/api/properties?page=1&quot;,
+=======
+                &quot;url&quot;: &quot;http://localhost:8000/api/properties?page=1&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;label&quot;: &quot;1&quot;,
                 &quot;page&quot;: 1,
                 &quot;active&quot;: true
             },
             {
+<<<<<<< HEAD
                 &quot;url&quot;: &quot;http://localhost/api/properties?page=2&quot;,
+=======
+                &quot;url&quot;: &quot;http://localhost:8000/api/properties?page=2&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;label&quot;: &quot;2&quot;,
                 &quot;page&quot;: 2,
                 &quot;active&quot;: false
             },
             {
+<<<<<<< HEAD
                 &quot;url&quot;: &quot;http://localhost/api/properties?page=2&quot;,
+=======
+                &quot;url&quot;: &quot;http://localhost:8000/api/properties?page=2&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
                 &quot;page&quot;: 2,
                 &quot;active&quot;: false
             }
         ],
+<<<<<<< HEAD
         &quot;next_page_url&quot;: &quot;http://localhost/api/properties?page=2&quot;,
         &quot;path&quot;: &quot;http://localhost/api/properties&quot;,
+=======
+        &quot;next_page_url&quot;: &quot;http://localhost:8000/api/properties?page=2&quot;,
+        &quot;path&quot;: &quot;http://localhost:8000/api/properties&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         &quot;per_page&quot;: 15,
         &quot;prev_page_url&quot;: null,
         &quot;to&quot;: 15,
@@ -1703,7 +2821,11 @@ vary: Origin
             {
                 &quot;label&quot;: &quot;Appartement&quot;,
                 &quot;value&quot;: &quot;Appartement&quot;,
+<<<<<<< HEAD
                 &quot;count&quot;: 11
+=======
+                &quot;count&quot;: 10
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             },
             {
                 &quot;label&quot;: &quot;Studio&quot;,
@@ -1713,7 +2835,11 @@ vary: Origin
             {
                 &quot;label&quot;: &quot;Villa&quot;,
                 &quot;value&quot;: &quot;Villa&quot;,
+<<<<<<< HEAD
                 &quot;count&quot;: 4
+=======
+                &quot;count&quot;: 5
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             },
             {
                 &quot;label&quot;: &quot;Chambre&quot;,
@@ -1777,12 +2903,24 @@ vary: Origin
             {
                 &quot;label&quot;: &quot;R&eacute;nov&eacute;&quot;,
                 &quot;value&quot;: &quot;R&eacute;nov&eacute;&quot;,
+<<<<<<< HEAD
                 &quot;count&quot;: 5
+=======
+                &quot;count&quot;: 4
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             },
             {
                 &quot;label&quot;: &quot;Bon &eacute;tat&quot;,
                 &quot;value&quot;: &quot;Bon &eacute;tat&quot;,
                 &quot;count&quot;: 12
+<<<<<<< HEAD
+=======
+            },
+            {
+                &quot;label&quot;: &quot;bon&quot;,
+                &quot;value&quot;: &quot;bon&quot;,
+                &quot;count&quot;: 1
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             }
         ],
         &quot;amenities&quot;: [
@@ -1897,7 +3035,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-properties"
                value="application/json"
@@ -1909,7 +3050,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-properties"
                value="application/json"
@@ -1919,27 +3063,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETapi-properties--id-">Display the specified resource.</h2>
+=======
+                    <h2 id="endpoints-GETapi-properties--slug-">Display the specified resource.</h2>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <p>
 </p>
 
 
 
+<<<<<<< HEAD
 <span id="example-requests-GETapi-properties--id-">
+=======
+<span id="example-requests-GETapi-properties--slug-">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/properties/1" \
+=======
+    --get "http://localhost:8000/api/properties/1" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/properties/1"
+=======
+    "http://localhost:8000/api/properties/1"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -1947,7 +3107,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -1955,7 +3118,11 @@ fetch(url, {
 
 </span>
 
+<<<<<<< HEAD
 <span id="example-responses-GETapi-properties--id-">
+=======
+<span id="example-responses-GETapi-properties--slug-">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1972,10 +3139,17 @@ vary: Origin
     &quot;success&quot;: true,
     &quot;data&quot;: {
         &quot;id&quot;: 1,
+<<<<<<< HEAD
         &quot;user_id&quot;: 7,
         &quot;agent_id&quot;: null,
         &quot;title&quot;: &quot;Chambre Moderne - Makepe, Douala&quot;,
         &quot;slug&quot;: &quot;chambre-moderne-makepe-douala-0oI2aO&quot;,
+=======
+        &quot;user_id&quot;: 6,
+        &quot;agent_id&quot;: null,
+        &quot;title&quot;: &quot;Chambre Moderne - Makepe, Douala&quot;,
+        &quot;slug&quot;: &quot;chambre-moderne-makepe-douala-TR65OZ&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         &quot;type&quot;: &quot;rent&quot;,
         &quot;category&quot;: &quot;Chambre&quot;,
         &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -1998,17 +3172,30 @@ vary: Origin
         ],
         &quot;bedrooms&quot;: 1,
         &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
         &quot;area&quot;: &quot;15.00&quot;,
         &quot;construction_year&quot;: 2021,
         &quot;views_count&quot;: 415,
         &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2026-03-10T14:15:16.000000Z&quot;,
+=======
+        &quot;area&quot;: 15,
+        &quot;construction_year&quot;: 2013,
+        &quot;views_count&quot;: 57,
+        &quot;shares_count&quot;: 0,
+        &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2026-03-05T14:15:26.000000Z&quot;,
+        &quot;reviews_avg_rating&quot;: null,
+        &quot;reviews_count&quot;: 0,
+        &quot;favorites_count&quot;: 1,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         &quot;image&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
         &quot;all_images&quot;: [
             &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
         ],
         &quot;is_favorite&quot;: false,
         &quot;my_rental_process&quot;: null,
+<<<<<<< HEAD
         &quot;owner&quot;: {
             &quot;id&quot;: 7,
             &quot;name&quot;: &quot;Patrick Essomba&quot;,
@@ -2016,6 +3203,24 @@ vary: Origin
             &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=33&quot;,
             &quot;phone&quot;: null,
             &quot;avatar_url&quot;: &quot;http://localhost/storage/https://i.pravatar.cc/150?img=33&quot;
+=======
+        &quot;review_stats&quot;: {
+            &quot;total&quot;: 0,
+            &quot;average&quot;: null,
+            &quot;five&quot;: null,
+            &quot;four&quot;: null,
+            &quot;three&quot;: null,
+            &quot;two&quot;: null,
+            &quot;one&quot;: null
+        },
+        &quot;owner&quot;: {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+            &quot;email&quot;: &quot;agent2@home.cm&quot;,
+            &quot;avatar&quot;: &quot;https://i.pravatar.cc/150?img=21&quot;,
+            &quot;phone&quot;: null,
+            &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/https://i.pravatar.cc/150?img=21&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         },
         &quot;images&quot;: [
             {
@@ -2024,18 +3229,30 @@ vary: Origin
                 &quot;path&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                 &quot;is_primary&quot;: 1,
                 &quot;order&quot;: 0,
+<<<<<<< HEAD
                 &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                 &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
+=======
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             }
         ]
     },
     &quot;similar&quot;: [
         {
             &quot;id&quot;: 5,
+<<<<<<< HEAD
             &quot;user_id&quot;: 5,
             &quot;agent_id&quot;: null,
             &quot;title&quot;: &quot;Appartement F3 - Bonapriso, Douala&quot;,
             &quot;slug&quot;: &quot;appartement-f3-bonapriso-douala-mYGCiq&quot;,
+=======
+            &quot;user_id&quot;: 7,
+            &quot;agent_id&quot;: null,
+            &quot;title&quot;: &quot;Appartement F3 - Bonapriso, Douala&quot;,
+            &quot;slug&quot;: &quot;appartement-f3-bonapriso-douala-T29bfG&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;type&quot;: &quot;rent&quot;,
             &quot;category&quot;: &quot;Appartement&quot;,
             &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -2062,6 +3279,7 @@ vary: Origin
             ],
             &quot;bedrooms&quot;: 3,
             &quot;bathrooms&quot;: 2,
+<<<<<<< HEAD
             &quot;area&quot;: &quot;110.00&quot;,
             &quot;construction_year&quot;: 2011,
             &quot;views_count&quot;: 754,
@@ -2069,23 +3287,51 @@ vary: Origin
             &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
             &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
             &quot;rooms&quot;: 3,
+=======
+            &quot;area&quot;: 110,
+            &quot;construction_year&quot;: 2017,
+            &quot;views_count&quot;: 245,
+            &quot;shares_count&quot;: 0,
+            &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-03-15T11:07:42.000000Z&quot;,
+            &quot;reviews_count&quot;: 0,
+            &quot;favorites_count&quot;: 0,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;rooms&quot;: 3,
+            &quot;review_count&quot;: 0,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;is_favorite&quot;: false,
             &quot;primary_image&quot;: {
                 &quot;id&quot;: 5,
                 &quot;property_id&quot;: 5,
+<<<<<<< HEAD
                 &quot;path&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                 &quot;is_primary&quot;: 1,
                 &quot;order&quot;: 0,
                 &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                 &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
+=======
+                &quot;path&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;is_primary&quot;: 1,
+                &quot;order&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             }
         },
         {
             &quot;id&quot;: 10,
+<<<<<<< HEAD
             &quot;user_id&quot;: 8,
             &quot;agent_id&quot;: null,
             &quot;title&quot;: &quot;Chambre Bon &eacute;tat - Mimboman, Yaound&eacute;&quot;,
             &quot;slug&quot;: &quot;chambre-bon-etat-mimboman-yaounde-IqcTrR&quot;,
+=======
+            &quot;user_id&quot;: 5,
+            &quot;agent_id&quot;: null,
+            &quot;title&quot;: &quot;Chambre Bon &eacute;tat - Mimboman, Yaound&eacute;&quot;,
+            &quot;slug&quot;: &quot;chambre-bon-etat-mimboman-yaounde-IWFD12&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;type&quot;: &quot;rent&quot;,
             &quot;category&quot;: &quot;Chambre&quot;,
             &quot;etat&quot;: &quot;Bon &eacute;tat&quot;,
@@ -2106,6 +3352,7 @@ vary: Origin
             ],
             &quot;bedrooms&quot;: 1,
             &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
             &quot;area&quot;: &quot;14.00&quot;,
             &quot;construction_year&quot;: 2020,
             &quot;views_count&quot;: 714,
@@ -2113,10 +3360,24 @@ vary: Origin
             &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
             &quot;image&quot;: &quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
             &quot;rooms&quot;: 1,
+=======
+            &quot;area&quot;: 14,
+            &quot;construction_year&quot;: 2017,
+            &quot;views_count&quot;: 148,
+            &quot;shares_count&quot;: 0,
+            &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+            &quot;reviews_count&quot;: 0,
+            &quot;favorites_count&quot;: 0,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;rooms&quot;: 1,
+            &quot;review_count&quot;: 0,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;is_favorite&quot;: false,
             &quot;primary_image&quot;: {
                 &quot;id&quot;: 10,
                 &quot;property_id&quot;: 10,
+<<<<<<< HEAD
                 &quot;path&quot;: &quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
                 &quot;is_primary&quot;: 1,
                 &quot;order&quot;: 0,
@@ -2218,12 +3479,120 @@ vary: Origin
                 &quot;order&quot;: 0,
                 &quot;created_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;,
                 &quot;updated_at&quot;: &quot;2026-03-05T14:46:55.000000Z&quot;
+=======
+                &quot;path&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;is_primary&quot;: 1,
+                &quot;order&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;user_id&quot;: 7,
+            &quot;agent_id&quot;: null,
+            &quot;title&quot;: &quot;Studio Climatis&eacute; 35m&sup2; - Deido, Douala&quot;,
+            &quot;slug&quot;: &quot;studio-climatise-35m2-deido-douala-fdloE6&quot;,
+            &quot;type&quot;: &quot;rent&quot;,
+            &quot;category&quot;: &quot;Studio&quot;,
+            &quot;etat&quot;: &quot;R&eacute;nov&eacute;&quot;,
+            &quot;amenities&quot;: [
+                &quot;Climatisation&quot;,
+                &quot;Eau courante&quot;,
+                &quot;&Eacute;lectricit&eacute; permanente&quot;
+            ],
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;price&quot;: &quot;55000.00&quot;,
+            &quot;currency&quot;: &quot;XAF&quot;,
+            &quot;description&quot;: &quot;Studio r&eacute;nov&eacute; et lumineux &agrave; Deido. Cuisine int&eacute;gr&eacute;e, salle d&#039;eau moderne. Proximit&eacute; du port de Douala.&quot;,
+            &quot;location&quot;: &quot;Deido, Douala&quot;,
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;region&quot;: &quot;Littoral&quot;,
+            &quot;features&quot;: [
+                &quot;Climatisation&quot;,
+                &quot;Eau courante&quot;,
+                &quot;&Eacute;lectricit&eacute; permanente&quot;
+            ],
+            &quot;bedrooms&quot;: 1,
+            &quot;bathrooms&quot;: 1,
+            &quot;area&quot;: 35,
+            &quot;construction_year&quot;: 2022,
+            &quot;views_count&quot;: 719,
+            &quot;shares_count&quot;: 0,
+            &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-03-19T15:55:14.000000Z&quot;,
+            &quot;reviews_count&quot;: 1,
+            &quot;favorites_count&quot;: 0,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;rooms&quot;: 1,
+            &quot;review_count&quot;: 1,
+            &quot;is_favorite&quot;: false,
+            &quot;primary_image&quot;: {
+                &quot;id&quot;: 4,
+                &quot;property_id&quot;: 4,
+                &quot;path&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;is_primary&quot;: 1,
+                &quot;order&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;user_id&quot;: 6,
+            &quot;agent_id&quot;: null,
+            &quot;title&quot;: &quot;Appartement F2 - Makepe, Douala&quot;,
+            &quot;slug&quot;: &quot;appartement-f2-makepe-douala-btwkM2&quot;,
+            &quot;type&quot;: &quot;rent&quot;,
+            &quot;category&quot;: &quot;Appartement&quot;,
+            &quot;etat&quot;: &quot;R&eacute;nov&eacute;&quot;,
+            &quot;amenities&quot;: [
+                &quot;Eau courante&quot;,
+                &quot;&Eacute;lectricit&eacute; permanente&quot;,
+                &quot;Parking&quot;
+            ],
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;price&quot;: &quot;100000.00&quot;,
+            &quot;currency&quot;: &quot;XAF&quot;,
+            &quot;description&quot;: &quot;Appartement F2 enti&egrave;rement r&eacute;nov&eacute; &agrave; Makepe. Peinture fra&icirc;che, carrelage neuf, cuisine refaite. Acc&egrave;s facile depuis le boulevard...&quot;,
+            &quot;location&quot;: &quot;Makepe, Douala&quot;,
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;region&quot;: &quot;Littoral&quot;,
+            &quot;features&quot;: [
+                &quot;Eau courante&quot;,
+                &quot;&Eacute;lectricit&eacute; permanente&quot;,
+                &quot;Parking&quot;
+            ],
+            &quot;bedrooms&quot;: 2,
+            &quot;bathrooms&quot;: 1,
+            &quot;area&quot;: 75,
+            &quot;construction_year&quot;: 2022,
+            &quot;views_count&quot;: 157,
+            &quot;shares_count&quot;: 0,
+            &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-03-11T05:19:59.000000Z&quot;,
+            &quot;reviews_count&quot;: 0,
+            &quot;favorites_count&quot;: 1,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;rooms&quot;: 2,
+            &quot;review_count&quot;: 0,
+            &quot;is_favorite&quot;: false,
+            &quot;primary_image&quot;: {
+                &quot;id&quot;: 6,
+                &quot;property_id&quot;: 6,
+                &quot;path&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;is_primary&quot;: 1,
+                &quot;order&quot;: 0,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:47.000000Z&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             }
         }
     ]
 }</code>
  </pre>
     </span>
+<<<<<<< HEAD
 <span id="execution-results-GETapi-properties--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-GETapi-properties--id-"></span>:
@@ -2234,22 +3603,44 @@ vary: Origin
 <span id="execution-error-GETapi-properties--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETapi-properties--id-">
+=======
+<span id="execution-results-GETapi-properties--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-properties--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-properties--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-properties--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-properties--slug-">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
+<<<<<<< HEAD
 <form id="form-GETapi-properties--id-" data-method="GET"
       data-path="api/properties/{id}"
+=======
+<form id="form-GETapi-properties--slug-" data-method="GET"
+      data-path="api/properties/{slug}"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
+<<<<<<< HEAD
       onsubmit="event.preventDefault(); executeTryOut('GETapi-properties--id-', this);">
+=======
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-properties--slug-', this);">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+<<<<<<< HEAD
                     id="btn-tryout-GETapi-properties--id-"
                     onclick="tryItOut('GETapi-properties--id-');">Try it out ⚡
             </button>
@@ -2261,6 +3652,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-executetryout-GETapi-properties--id-"
+=======
+                    id="btn-tryout-GETapi-properties--slug-"
+                    onclick="tryItOut('GETapi-properties--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-properties--slug-"
+                    onclick="cancelTryOut('GETapi-properties--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-properties--slug-"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -2268,16 +3672,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
+<<<<<<< HEAD
             <b><code>api/properties/{id}</code></b>
+=======
+            <b><code>api/properties/{slug}</code></b>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-properties--id-"
+=======
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-properties--slug-"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                value="application/json"
                data-component="header">
     <br>
@@ -2287,9 +3700,134 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-properties--id-"
+=======
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-properties--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="slug"                data-endpoint="GETapi-properties--slug-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The slug of the property. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-properties--id--share">Increment share count for a property</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-properties--id--share">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/properties/1/share" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/properties/1/share"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-properties--id--share">
+</span>
+<span id="execution-results-POSTapi-properties--id--share" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-properties--id--share"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-properties--id--share"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-properties--id--share" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-properties--id--share">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-properties--id--share" data-method="POST"
+      data-path="api/properties/{id}/share"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-properties--id--share', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-properties--id--share"
+                    onclick="tryItOut('POSTapi-properties--id--share');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-properties--id--share"
+                    onclick="cancelTryOut('POSTapi-properties--id--share');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-properties--id--share"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/properties/{id}/share</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-properties--id--share"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-properties--id--share"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                value="application/json"
                data-component="header">
     <br>
@@ -2300,9 +3838,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-properties--id-"
+=======
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-properties--id--share"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                value="1"
                data-component="url">
     <br>
@@ -2310,6 +3853,189 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-GETapi-properties--identifier--reviews">GET /api/properties/{identifier}/reviews
+Liste les avis approuvés d&#039;un bien, avec les agrégats de notation.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-properties--identifier--reviews">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/properties/1/reviews" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/properties/1/reviews"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-properties--identifier--reviews">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost:8000/api/properties/1/reviews?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost:8000/api/properties/1/reviews?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:8000/api/properties/1/reviews?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost:8000/api/properties/1/reviews&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    },
+    &quot;stats&quot;: {
+        &quot;total&quot;: 0,
+        &quot;average&quot;: null,
+        &quot;five&quot;: null,
+        &quot;four&quot;: null,
+        &quot;three&quot;: null,
+        &quot;two&quot;: null,
+        &quot;one&quot;: null
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-properties--identifier--reviews" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-properties--identifier--reviews"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-properties--identifier--reviews"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-properties--identifier--reviews" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-properties--identifier--reviews">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-properties--identifier--reviews" data-method="GET"
+      data-path="api/properties/{identifier}/reviews"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-properties--identifier--reviews', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-properties--identifier--reviews"
+                    onclick="tryItOut('GETapi-properties--identifier--reviews');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-properties--identifier--reviews"
+                    onclick="cancelTryOut('GETapi-properties--identifier--reviews');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-properties--identifier--reviews"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/properties/{identifier}/reviews</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-properties--identifier--reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-properties--identifier--reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>identifier</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="identifier"                data-endpoint="GETapi-properties--identifier--reviews"
+               value="1"
+               data-component="url">
+    <br>
+<p>Example: <code>1</code></p>
+            </div>
+                    </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-GETapi-home">GET api/home</h2>
 
 <p>
@@ -2323,14 +4049,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/home" \
+=======
+    --get "http://localhost:8000/api/home" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/home"
+=======
+    "http://localhost:8000/api/home"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -2338,7 +4072,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -2377,7 +4114,11 @@ vary: Origin
             &quot;id&quot;: &quot;Appartement&quot;,
             &quot;name&quot;: &quot;Appartement&quot;,
             &quot;icon&quot;: &quot;building&quot;,
+<<<<<<< HEAD
             &quot;count&quot;: 11
+=======
+            &quot;count&quot;: 10
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         },
         {
             &quot;id&quot;: &quot;Maison&quot;,
@@ -2389,12 +4130,17 @@ vary: Origin
             &quot;id&quot;: &quot;Villa&quot;,
             &quot;name&quot;: &quot;Villa&quot;,
             &quot;icon&quot;: &quot;crown&quot;,
+<<<<<<< HEAD
             &quot;count&quot;: 4
+=======
+            &quot;count&quot;: 5
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         }
     ],
     &quot;newProperties&quot;: [
         {
             &quot;id&quot;: 27,
+<<<<<<< HEAD
             &quot;title&quot;: &quot;Studio a bastos&quot;,
             &quot;price&quot;: &quot;60000.00&quot;,
             &quot;owner&quot;: &quot;Bailleur Test&quot;,
@@ -2421,10 +4167,142 @@ vary: Origin
             &quot;id&quot;: 2,
             &quot;title&quot;: &quot;Chambre Meubl&eacute;e - Akwa, Douala&quot;,
             &quot;price&quot;: &quot;30000.00&quot;,
+=======
+            &quot;slug&quot;: &quot;appartement-meuble-LFTG2J&quot;,
+            &quot;title&quot;: &quot;appartement meubl&eacute;&quot;,
+            &quot;price&quot;: &quot;80000.00&quot;,
+            &quot;owner&quot;: &quot;Dominique&quot;,
+            &quot;date&quot;: &quot;2 weeks ago&quot;,
+            &quot;rooms&quot;: 5,
+            &quot;bathrooms&quot;: 2,
+            &quot;area&quot;: 25,
+            &quot;image&quot;: &quot;properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+            &quot;all_images&quot;: [
+                &quot;properties/weSU0xrz5TUzMDWbjHUHuudzZuiErPird4IoNwkS.webp&quot;,
+                &quot;properties/PFFN59KUCdLvdSh4wMzQr6pEdgKuHE3pzFdmfzw7.webp&quot;,
+                &quot;properties/k4cxb2DzyCT9pX27T5r3VjZlvfqN8zYApckfaA5Y.webp&quot;
+            ],
+            &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+            &quot;favorites_count&quot;: 1,
+            &quot;review_count&quot;: 1,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 4
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;slug&quot;: &quot;villa-meublee-centre-ville-garoua-qcfzam&quot;,
+            &quot;title&quot;: &quot;Villa Meubl&eacute;e - Centre-ville, Garoua&quot;,
+            &quot;price&quot;: &quot;400000.00&quot;,
+            &quot;owner&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 4,
+            &quot;bathrooms&quot;: 3,
+            &quot;area&quot;: 220,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+                &quot;https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Garoua&quot;,
+            &quot;favorites_count&quot;: 0,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 25,
+            &quot;slug&quot;: &quot;villa-bord-de-mer-kribi-85Kuov&quot;,
+            &quot;title&quot;: &quot;Villa Bord de Mer - Kribi&quot;,
+            &quot;price&quot;: &quot;500000.00&quot;,
+            &quot;owner&quot;: &quot;Jean-Baptiste Mbarga&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 4,
+            &quot;bathrooms&quot;: 3,
+            &quot;area&quot;: 250,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Kribi&quot;,
+            &quot;favorites_count&quot;: 1,
+            &quot;review_count&quot;: 1,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 5
+        },
+        {
+            &quot;id&quot;: 26,
+            &quot;slug&quot;: &quot;appartement-vue-mer-limbe-SrjZoc&quot;,
+            &quot;title&quot;: &quot;Appartement Vue Mer - Limbe&quot;,
+            &quot;price&quot;: &quot;120000.00&quot;,
+            &quot;owner&quot;: &quot;Patrick Essomba&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 2,
+            &quot;bathrooms&quot;: 2,
+            &quot;area&quot;: 85,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Limbe&quot;,
+            &quot;favorites_count&quot;: 0,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;slug&quot;: &quot;chambre-moderne-makepe-douala-TR65OZ&quot;,
+            &quot;title&quot;: &quot;Chambre Moderne - Makepe, Douala&quot;,
+            &quot;price&quot;: &quot;25000.00&quot;,
             &quot;owner&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
             &quot;date&quot;: &quot;3 weeks ago&quot;,
             &quot;rooms&quot;: 1,
             &quot;bathrooms&quot;: 1,
+            &quot;area&quot;: 15,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 1,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;slug&quot;: &quot;chambre-meublee-akwa-douala-HHDhTi&quot;,
+            &quot;title&quot;: &quot;Chambre Meubl&eacute;e - Akwa, Douala&quot;,
+            &quot;price&quot;: &quot;30000.00&quot;,
+            &quot;owner&quot;: &quot;Bailleur Test&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 1,
+            &quot;bathrooms&quot;: 1,
+            &quot;area&quot;: 18,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 1,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;slug&quot;: &quot;studio-haut-standing-bonanjo-douala-7YD469&quot;,
+            &quot;title&quot;: &quot;Studio Haut Standing - Bonanjo, Douala&quot;,
+            &quot;price&quot;: &quot;75000.00&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
+            &quot;owner&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 1,
+            &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
             &quot;area&quot;: &quot;18.00&quot;,
             &quot;image&quot;: &quot;https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
             &quot;city&quot;: &quot;Douala&quot;
@@ -2433,10 +4311,29 @@ vary: Origin
             &quot;id&quot;: 3,
             &quot;title&quot;: &quot;Studio Haut Standing - Bonanjo, Douala&quot;,
             &quot;price&quot;: &quot;75000.00&quot;,
+=======
+            &quot;area&quot;: 40,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 0,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;slug&quot;: &quot;studio-climatise-35m2-deido-douala-fdloE6&quot;,
+            &quot;title&quot;: &quot;Studio Climatis&eacute; 35m&sup2; - Deido, Douala&quot;,
+            &quot;price&quot;: &quot;55000.00&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;owner&quot;: &quot;Patrick Essomba&quot;,
             &quot;date&quot;: &quot;3 weeks ago&quot;,
             &quot;rooms&quot;: 1,
             &quot;bathrooms&quot;: 1,
+<<<<<<< HEAD
             &quot;area&quot;: &quot;40.00&quot;,
             &quot;image&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
             &quot;city&quot;: &quot;Douala&quot;
@@ -2512,19 +4409,92 @@ vary: Origin
             &quot;area&quot;: &quot;320.00&quot;,
             &quot;image&quot;: &quot;https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
             &quot;city&quot;: &quot;Douala&quot;
+=======
+            &quot;area&quot;: 35,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 0,
+            &quot;review_count&quot;: 1,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 4
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;slug&quot;: &quot;appartement-f3-bonapriso-douala-T29bfG&quot;,
+            &quot;title&quot;: &quot;Appartement F3 - Bonapriso, Douala&quot;,
+            &quot;price&quot;: &quot;180000.00&quot;,
+            &quot;owner&quot;: &quot;Patrick Essomba&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 3,
+            &quot;bathrooms&quot;: 2,
+            &quot;area&quot;: 110,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 0,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;slug&quot;: &quot;appartement-f2-makepe-douala-btwkM2&quot;,
+            &quot;title&quot;: &quot;Appartement F2 - Makepe, Douala&quot;,
+            &quot;price&quot;: &quot;100000.00&quot;,
+            &quot;owner&quot;: &quot;Marie-Claire Ngo Biyong&quot;,
+            &quot;date&quot;: &quot;3 weeks ago&quot;,
+            &quot;rooms&quot;: 2,
+            &quot;bathrooms&quot;: 1,
+            &quot;area&quot;: 75,
+            &quot;image&quot;: &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;,
+            &quot;all_images&quot;: [
+                &quot;https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800&quot;
+            ],
+            &quot;city&quot;: &quot;Douala&quot;,
+            &quot;favorites_count&quot;: 1,
+            &quot;review_count&quot;: 0,
+            &quot;shares_count&quot;: 0,
+            &quot;avg_rating&quot;: 0
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         }
     ],
     &quot;agents&quot;: [
         {
+<<<<<<< HEAD
+=======
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Dominique&quot;,
+            &quot;role&quot;: &quot;Agent Immobilier&quot;,
+            &quot;location&quot;: &quot;Cameroun&quot;,
+            &quot;description&quot;: &quot;Agent immobilier certifi&eacute; sur Home Cameroon.&quot;,
+            &quot;propertiesCount&quot;: 1,
+            &quot;rating&quot;: 4.9,
+            &quot;reviews&quot;: 10,
+            &quot;image&quot;: &quot;http://localhost:8000/storage/user_profil/agent1.jpg&quot;
+        },
+        {
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;id&quot;: 5,
             &quot;name&quot;: &quot;Jean-Baptiste Mbarga&quot;,
             &quot;role&quot;: &quot;Agent Immobilier&quot;,
             &quot;location&quot;: &quot;Cameroun&quot;,
             &quot;description&quot;: &quot;Agent immobilier certifi&eacute; sur Home Cameroon.&quot;,
+<<<<<<< HEAD
             &quot;propertiesCount&quot;: 3,
             &quot;rating&quot;: 4.9,
             &quot;reviews&quot;: 10,
             &quot;image&quot;: &quot;http://localhost/storage/user_profil/agent1.jpg&quot;
+=======
+            &quot;propertiesCount&quot;: 4,
+            &quot;rating&quot;: 4.9,
+            &quot;reviews&quot;: 10,
+            &quot;image&quot;: &quot;http://localhost:8000/storage/user_profil/agent2.jpg&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         },
         {
             &quot;id&quot;: 6,
@@ -2532,10 +4502,17 @@ vary: Origin
             &quot;role&quot;: &quot;Agent Immobilier&quot;,
             &quot;location&quot;: &quot;Cameroun&quot;,
             &quot;description&quot;: &quot;Agent immobilier certifi&eacute; sur Home Cameroon.&quot;,
+<<<<<<< HEAD
             &quot;propertiesCount&quot;: 4,
             &quot;rating&quot;: 4.9,
             &quot;reviews&quot;: 10,
             &quot;image&quot;: &quot;http://localhost/storage/user_profil/agent2.jpg&quot;
+=======
+            &quot;propertiesCount&quot;: 8,
+            &quot;rating&quot;: 4.9,
+            &quot;reviews&quot;: 10,
+            &quot;image&quot;: &quot;http://localhost:8000/storage/user_profil/agent3.jpg&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         },
         {
             &quot;id&quot;: 7,
@@ -2543,6 +4520,7 @@ vary: Origin
             &quot;role&quot;: &quot;Agent Immobilier&quot;,
             &quot;location&quot;: &quot;Cameroun&quot;,
             &quot;description&quot;: &quot;Agent immobilier certifi&eacute; sur Home Cameroon.&quot;,
+<<<<<<< HEAD
             &quot;propertiesCount&quot;: 5,
             &quot;rating&quot;: 4.9,
             &quot;reviews&quot;: 10,
@@ -2558,10 +4536,17 @@ vary: Origin
             &quot;rating&quot;: 4.9,
             &quot;reviews&quot;: 10,
             &quot;image&quot;: &quot;http://localhost/storage/user_profil/agent4.jpg&quot;
+=======
+            &quot;propertiesCount&quot;: 7,
+            &quot;rating&quot;: 4.9,
+            &quot;reviews&quot;: 10,
+            &quot;image&quot;: &quot;http://localhost:8000/storage/user_profil/agent4.jpg&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         }
     ],
     &quot;services&quot;: [
         {
+<<<<<<< HEAD
             &quot;id&quot;: 5,
             &quot;title&quot;: &quot;Installation Climatiseur&quot;,
             &quot;subtitle&quot;: &quot;Climatisation&quot;,
@@ -2588,6 +4573,12 @@ vary: Origin
             &quot;title&quot;: &quot;R&eacute;paration de Fuites&quot;,
             &quot;subtitle&quot;: &quot;Plomberie&quot;,
             &quot;description&quot;: &quot;Service rapide pour toutes fuites d&#039;eau : robinets, tuyaux, etc.&quot;,
+=======
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;Plomberie Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;Plomberie&quot;,
+            &quot;description&quot;: &quot;Service de Plomberie garanti 1 an. Intervention rapide.&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;icon&quot;: &quot;wrench&quot;,
             &quot;tags&quot;: [
                 &quot;Service&quot;,
@@ -2595,10 +4586,28 @@ vary: Origin
             ]
         },
         {
+<<<<<<< HEAD
             &quot;id&quot;: 2,
             &quot;title&quot;: &quot;Installation &Eacute;lectrique Compl&egrave;te&quot;,
             &quot;subtitle&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
             &quot;description&quot;: &quot;Installation s&eacute;curis&eacute;e pour nouvelles constructions ou r&eacute;novations.&quot;,
+=======
+            &quot;id&quot;: 14,
+            &quot;title&quot;: &quot;Ma&ccedil;onnerie Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;Ma&ccedil;onnerie&quot;,
+            &quot;description&quot;: &quot;Service de Ma&ccedil;onnerie garanti 1 an. Intervention rapide.&quot;,
+            &quot;icon&quot;: &quot;hard-hat&quot;,
+            &quot;tags&quot;: [
+                &quot;Service&quot;,
+                &quot;Pro&quot;
+            ]
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;title&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+            &quot;description&quot;: &quot;Service de &Eacute;lectricit&eacute; garanti 1 an. Intervention rapide.&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;icon&quot;: &quot;bolt&quot;,
             &quot;tags&quot;: [
                 &quot;Service&quot;,
@@ -2606,22 +4615,49 @@ vary: Origin
             ]
         },
         {
+<<<<<<< HEAD
             &quot;id&quot;: 3,
             &quot;title&quot;: &quot;Peinture Murale&quot;,
             &quot;subtitle&quot;: &quot;Peinture&quot;,
             &quot;description&quot;: &quot;Peinture de haute qualit&eacute; pour int&eacute;rieur et ext&eacute;rieur.&quot;,
             &quot;icon&quot;: &quot;paint-roller&quot;,
+=======
+            &quot;id&quot;: 12,
+            &quot;title&quot;: &quot;Climatisation Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;Climatisation&quot;,
+            &quot;description&quot;: &quot;Service de Climatisation garanti 1 an. Intervention rapide.&quot;,
+            &quot;icon&quot;: &quot;snowflake&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;tags&quot;: [
                 &quot;Service&quot;,
                 &quot;Pro&quot;
             ]
         },
         {
+<<<<<<< HEAD
             &quot;id&quot;: 4,
             &quot;title&quot;: &quot;Nettoyage de Printemps&quot;,
             &quot;subtitle&quot;: &quot;Nettoyage&quot;,
             &quot;description&quot;: &quot;Nettoyage complet de votre domicile du sol au plafond.&quot;,
             &quot;icon&quot;: &quot;broom&quot;,
+=======
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+            &quot;description&quot;: &quot;Service de &Eacute;lectricit&eacute; garanti 1 an. Intervention rapide.&quot;,
+            &quot;icon&quot;: &quot;bolt&quot;,
+            &quot;tags&quot;: [
+                &quot;Service&quot;,
+                &quot;Pro&quot;
+            ]
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Menuiserie Professionnelle&quot;,
+            &quot;subtitle&quot;: &quot;Menuiserie&quot;,
+            &quot;description&quot;: &quot;Service de Menuiserie garanti 1 an. Intervention rapide.&quot;,
+            &quot;icon&quot;: &quot;hammer&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;tags&quot;: [
                 &quot;Service&quot;,
                 &quot;Pro&quot;
@@ -2642,7 +4678,11 @@ vary: Origin
             &quot;name&quot;: &quot;Lampe Suspendue Industrielle&quot;,
             &quot;price&quot;: &quot;45000.00&quot;,
             &quot;description&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/lampe suspendu.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/lampe suspendu.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;badge&quot;: null
         },
         {
@@ -2650,7 +4690,11 @@ vary: Origin
             &quot;name&quot;: &quot;Kit Cam&eacute;ras de Surveillance&quot;,
             &quot;price&quot;: &quot;120000.00&quot;,
             &quot;description&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/kit camera.jfif&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/kit camera.jfif&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;badge&quot;: &quot;Promo&quot;
         },
         {
@@ -2658,7 +4702,11 @@ vary: Origin
             &quot;name&quot;: &quot;Table Basse en Verre&quot;,
             &quot;price&quot;: &quot;85000.00&quot;,
             &quot;description&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/table basse en verre.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/table basse en verre.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;badge&quot;: null
         },
         {
@@ -2666,7 +4714,11 @@ vary: Origin
             &quot;name&quot;: &quot;Vase C&eacute;ramique Artisanal&quot;,
             &quot;price&quot;: &quot;25000.00&quot;,
             &quot;description&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/vase ceramique.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/vase ceramique.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;badge&quot;: &quot;Nouveau&quot;
         }
     ]
@@ -2724,7 +4776,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-home"
                value="application/json"
@@ -2736,7 +4791,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-home"
                value="application/json"
@@ -2759,14 +4817,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/marketplace/items" \
+=======
+    --get "http://localhost:8000/api/marketplace/items" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/marketplace/items"
+=======
+    "http://localhost:8000/api/marketplace/items"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -2774,7 +4840,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -2799,6 +4868,121 @@ vary: Origin
     &quot;success&quot;: true,
     &quot;data&quot;: [
         {
+<<<<<<< HEAD
+=======
+            &quot;id&quot;: 14,
+            &quot;name&quot;: &quot;Ma&ccedil;onnerie Professionnelle&quot;,
+            &quot;price&quot;: &quot;43000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;hard-hat&quot;,
+            &quot;category&quot;: &quot;Ma&ccedil;onnerie&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Bafoussam&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;name&quot;: &quot;Plomberie Professionnelle&quot;,
+            &quot;price&quot;: &quot;45000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;wrench&quot;,
+            &quot;category&quot;: &quot;Plomberie&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Bafoussam&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;name&quot;: &quot;Climatisation Professionnelle&quot;,
+            &quot;price&quot;: &quot;49000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;snowflake&quot;,
+            &quot;category&quot;: &quot;Climatisation&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Kribi&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;name&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+            &quot;price&quot;: &quot;33000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;bolt&quot;,
+            &quot;category&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Kribi&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;Menuiserie Professionnelle&quot;,
+            &quot;price&quot;: &quot;6000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;hammer&quot;,
+            &quot;category&quot;: &quot;Menuiserie&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Yaound&eacute;&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;name&quot;: &quot;Plomberie Professionnelle&quot;,
+            &quot;price&quot;: &quot;31000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;wrench&quot;,
+            &quot;category&quot;: &quot;Plomberie&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Yaound&eacute;&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Menuiserie Professionnelle&quot;,
+            &quot;price&quot;: &quot;28000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;hammer&quot;,
+            &quot;category&quot;: &quot;Menuiserie&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Douala&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+            &quot;price&quot;: &quot;39000.00&quot;,
+            &quot;oldPrice&quot;: null,
+            &quot;image&quot;: &quot;bolt&quot;,
+            &quot;category&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+            &quot;rating&quot;: 5,
+            &quot;reviews&quot;: 0,
+            &quot;location&quot;: &quot;Douala&quot;,
+            &quot;isNew&quot;: false,
+            &quot;discount&quot;: null,
+            &quot;type&quot;: &quot;service&quot;
+        },
+        {
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;id&quot;: 6,
             &quot;name&quot;: &quot;Menuiserie sur Mesure&quot;,
             &quot;price&quot;: &quot;25000.00&quot;,
@@ -2817,7 +5001,11 @@ vary: Origin
             &quot;name&quot;: &quot;Vase C&eacute;ramique Artisanal&quot;,
             &quot;price&quot;: &quot;25000.00&quot;,
             &quot;oldPrice&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/vase ceramique.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/vase ceramique.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;category&quot;: &quot;D&eacute;coration&quot;,
             &quot;rating&quot;: 5,
             &quot;reviews&quot;: 67,
@@ -2845,7 +5033,11 @@ vary: Origin
             &quot;name&quot;: &quot;Table Basse en Verre&quot;,
             &quot;price&quot;: &quot;85000.00&quot;,
             &quot;oldPrice&quot;: &quot;95000.00&quot;,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/table basse en verre.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/table basse en verre.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;category&quot;: &quot;Meubles&quot;,
             &quot;rating&quot;: 4,
             &quot;reviews&quot;: 45,
@@ -2873,7 +5065,11 @@ vary: Origin
             &quot;name&quot;: &quot;Kit Cam&eacute;ras de Surveillance&quot;,
             &quot;price&quot;: &quot;120000.00&quot;,
             &quot;oldPrice&quot;: &quot;150000.00&quot;,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/kit camera.jfif&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/kit camera.jfif&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;category&quot;: &quot;S&eacute;curit&eacute;&quot;,
             &quot;rating&quot;: 5,
             &quot;reviews&quot;: 210,
@@ -2901,7 +5097,11 @@ vary: Origin
             &quot;name&quot;: &quot;Lampe Suspendue Industrielle&quot;,
             &quot;price&quot;: &quot;45000.00&quot;,
             &quot;oldPrice&quot;: null,
+<<<<<<< HEAD
             &quot;image&quot;: &quot;http://localhost/storage/meuble/lampe suspendu.webp&quot;,
+=======
+            &quot;image&quot;: &quot;http://localhost:8000/storage/meuble/lampe suspendu.webp&quot;,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             &quot;category&quot;: &quot;&Eacute;clairage&quot;,
             &quot;rating&quot;: 4,
             &quot;reviews&quot;: 89,
@@ -3007,7 +5207,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-marketplace-items"
                value="application/json"
@@ -3019,7 +5222,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-marketplace-items"
                value="application/json"
@@ -3042,14 +5248,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/marketplace/items/architecto" \
+=======
+    --get "http://localhost:8000/api/marketplace/items/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/marketplace/items/architecto"
+=======
+    "http://localhost:8000/api/marketplace/items/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3057,7 +5271,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -3135,7 +5352,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-marketplace-items--id-"
                value="application/json"
@@ -3147,7 +5367,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-marketplace-items--id-"
                value="application/json"
@@ -3160,7 +5383,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-marketplace-items--id-"
                value="architecto"
@@ -3183,14 +5409,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/marketplace/categories" \
+=======
+    --get "http://localhost:8000/api/marketplace/categories" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/marketplace/categories"
+=======
+    "http://localhost:8000/api/marketplace/categories"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3198,7 +5432,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -3248,9 +5485,50 @@ vary: Origin
             &quot;icon&quot;: &quot;fas fa-tag&quot;
         },
         {
+<<<<<<< HEAD
             &quot;id&quot;: &quot;services&quot;,
             &quot;name&quot;: &quot;Services&quot;,
             &quot;icon&quot;: &quot;fas fa-tools&quot;
+=======
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Plomberie&quot;,
+            &quot;icon&quot;: &quot;wrench&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+            &quot;icon&quot;: &quot;bolt&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Ma&ccedil;onnerie&quot;,
+            &quot;icon&quot;: &quot;hard-hat&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Menuiserie&quot;,
+            &quot;icon&quot;: &quot;hammer&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Peinture&quot;,
+            &quot;icon&quot;: &quot;paint-roller&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Nettoyage&quot;,
+            &quot;icon&quot;: &quot;broom&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Jardinage&quot;,
+            &quot;icon&quot;: &quot;seedling&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Climatisation&quot;,
+            &quot;icon&quot;: &quot;snowflake&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         }
     ]
 }</code>
@@ -3307,7 +5585,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-marketplace-categories"
                value="application/json"
@@ -3319,7 +5600,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-marketplace-categories"
                value="application/json"
@@ -3329,27 +5613,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETapi-notchpay-callback">Gère le retour de NotchPay après une tentative de paiement (GET redirect)</h2>
+=======
+                    <h2 id="endpoints-GETapi-settings">GET api/settings</h2>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <p>
 </p>
 
 
 
+<<<<<<< HEAD
 <span id="example-requests-GETapi-notchpay-callback">
+=======
+<span id="example-requests-GETapi-settings">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/notchpay/callback" \
+=======
+    --get "http://localhost:8000/api/settings" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/notchpay/callback"
+=======
+    "http://localhost:8000/api/settings"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3357,6 +5657,139 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<<<<<<< HEAD
+<span id="example-responses-GETapi-notchpay-callback">
+=======
+<span id="example-responses-GETapi-settings">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;visit_fee&quot;: 10
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-settings" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-settings"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-settings"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-settings" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-settings">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-settings" data-method="GET"
+      data-path="api/settings"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-settings', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-settings"
+                    onclick="tryItOut('GETapi-settings');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-settings"
+                    onclick="cancelTryOut('GETapi-settings');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-settings"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/settings</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-settings"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-settings"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-marketplace-services-posts">List all open service requests (The Job Board)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-marketplace-services-posts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/marketplace/services/posts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/posts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
 
 fetch(url, {
     method: "GET",
@@ -3365,7 +5798,839 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-notchpay-callback">
+<span id="example-responses-GETapi-marketplace-services-posts">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 8,
+                &quot;title&quot;: &quot;Fuite d&#039;eau sous l&#039;&eacute;vier&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : Fuite d&#039;eau sous l&#039;&eacute;vier. Le travail est &agrave; effectuer au quartier Bonapriso.&quot;,
+                &quot;city&quot;: &quot;Douala&quot;,
+                &quot;neighborhood&quot;: &quot;Akwa&quot;,
+                &quot;min_budget&quot;: &quot;10000.00&quot;,
+                &quot;max_budget&quot;: &quot;28000.00&quot;,
+                &quot;urgency&quot;: &quot;medium&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-10T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Climatisation&quot;,
+                    &quot;slug&quot;: &quot;climatisation&quot;,
+                    &quot;icon&quot;: &quot;snowflake&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 4,
+                &quot;title&quot;: &quot;Installation d&#039;un nouveau climatiseur&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : Installation d&#039;un nouveau climatiseur. Le travail est &agrave; effectuer au quartier Mairie.&quot;,
+                &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+                &quot;neighborhood&quot;: &quot;Akwa&quot;,
+                &quot;min_budget&quot;: &quot;8000.00&quot;,
+                &quot;max_budget&quot;: &quot;32000.00&quot;,
+                &quot;urgency&quot;: &quot;high&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-03T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Menuiserie&quot;,
+                    &quot;slug&quot;: &quot;menuiserie&quot;,
+                    &quot;icon&quot;: &quot;hammer&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 5,
+                &quot;title&quot;: &quot;Peinture compl&egrave;te salon 40m2&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : Peinture compl&egrave;te salon 40m2. Le travail est &agrave; effectuer au quartier Akwa.&quot;,
+                &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+                &quot;neighborhood&quot;: &quot;Mairie&quot;,
+                &quot;min_budget&quot;: &quot;13000.00&quot;,
+                &quot;max_budget&quot;: &quot;34000.00&quot;,
+                &quot;urgency&quot;: &quot;high&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-01T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Peinture&quot;,
+                    &quot;slug&quot;: &quot;peinture&quot;,
+                    &quot;icon&quot;: &quot;paint-roller&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 2,
+                &quot;title&quot;: &quot;Serrure bloqu&eacute;e porte principale&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : Serrure bloqu&eacute;e porte principale. Le travail est &agrave; effectuer au quartier Mairie.&quot;,
+                &quot;city&quot;: &quot;Bafoussam&quot;,
+                &quot;neighborhood&quot;: &quot;Bastos&quot;,
+                &quot;min_budget&quot;: &quot;14000.00&quot;,
+                &quot;max_budget&quot;: &quot;41000.00&quot;,
+                &quot;urgency&quot;: &quot;low&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-06T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+                    &quot;slug&quot;: &quot;electricite&quot;,
+                    &quot;icon&quot;: &quot;bolt&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 2,
+                &quot;title&quot;: &quot;C&acirc;blage r&eacute;seau bureau &agrave; domicile&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : C&acirc;blage r&eacute;seau bureau &agrave; domicile. Le travail est &agrave; effectuer au quartier Mairie.&quot;,
+                &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+                &quot;neighborhood&quot;: &quot;Bonapriso&quot;,
+                &quot;min_budget&quot;: &quot;9000.00&quot;,
+                &quot;max_budget&quot;: &quot;48000.00&quot;,
+                &quot;urgency&quot;: &quot;medium&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-02T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+                    &quot;slug&quot;: &quot;electricite&quot;,
+                    &quot;icon&quot;: &quot;bolt&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 7,
+                &quot;title&quot;: &quot;Remise aux normes tableau &eacute;lectrique&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : Remise aux normes tableau &eacute;lectrique. Le travail est &agrave; effectuer au quartier Mairie.&quot;,
+                &quot;city&quot;: &quot;Bafoussam&quot;,
+                &quot;neighborhood&quot;: &quot;Bastos&quot;,
+                &quot;min_budget&quot;: &quot;5000.00&quot;,
+                &quot;max_budget&quot;: &quot;21000.00&quot;,
+                &quot;urgency&quot;: &quot;high&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-08T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Jardinage&quot;,
+                    &quot;slug&quot;: &quot;jardinage&quot;,
+                    &quot;icon&quot;: &quot;seedling&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 7,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 3,
+                &quot;title&quot;: &quot;D&eacute;bouchage canalisations cuisine&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : D&eacute;bouchage canalisations cuisine. Le travail est &agrave; effectuer au quartier Bonapriso.&quot;,
+                &quot;city&quot;: &quot;Kribi&quot;,
+                &quot;neighborhood&quot;: &quot;Akwa&quot;,
+                &quot;min_budget&quot;: &quot;8000.00&quot;,
+                &quot;max_budget&quot;: &quot;22000.00&quot;,
+                &quot;urgency&quot;: &quot;medium&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-05T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Ma&ccedil;onnerie&quot;,
+                    &quot;slug&quot;: &quot;maconnerie&quot;,
+                    &quot;icon&quot;: &quot;hard-hat&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            },
+            {
+                &quot;id&quot;: 8,
+                &quot;client_id&quot;: 3,
+                &quot;category_id&quot;: 1,
+                &quot;title&quot;: &quot;R&eacute;paration toiture (tuiles)&quot;,
+                &quot;description&quot;: &quot;J&#039;ai besoin d&#039;un professionnel pour : R&eacute;paration toiture (tuiles). Le travail est &agrave; effectuer au quartier Mairie.&quot;,
+                &quot;city&quot;: &quot;Kribi&quot;,
+                &quot;neighborhood&quot;: &quot;Akwa&quot;,
+                &quot;min_budget&quot;: &quot;11000.00&quot;,
+                &quot;max_budget&quot;: &quot;26000.00&quot;,
+                &quot;urgency&quot;: &quot;low&quot;,
+                &quot;status&quot;: &quot;open&quot;,
+                &quot;preferred_date&quot;: &quot;2026-04-06T14:20:51.000000Z&quot;,
+                &quot;images&quot;: null,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;client&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Dominique&quot;,
+                    &quot;email&quot;: &quot;locataire@home.cm&quot;,
+                    &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;phone&quot;: null,
+                    &quot;city&quot;: null,
+                    &quot;bio&quot;: null,
+                    &quot;role&quot;: &quot;bailleur&quot;,
+                    &quot;roles&quot;: [
+                        &quot;bailleur&quot;,
+                        &quot;agent&quot;,
+                        &quot;client&quot;,
+                        &quot;locataire&quot;,
+                        &quot;admin&quot;
+                    ],
+                    &quot;avatar&quot;: &quot;avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-31T14:42:44.000000Z&quot;,
+                    &quot;availabilities&quot;: {
+                        &quot;friday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;monday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;sunday&quot;: {
+                            &quot;end&quot;: &quot;16:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;tuesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;11:01&quot;
+                        },
+                        &quot;saturday&quot;: {
+                            &quot;end&quot;: &quot;14:00&quot;,
+                            &quot;off&quot;: true,
+                            &quot;start&quot;: &quot;09:00&quot;
+                        },
+                        &quot;thursday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        },
+                        &quot;wednesday&quot;: {
+                            &quot;end&quot;: &quot;18:00&quot;,
+                            &quot;off&quot;: false,
+                            &quot;start&quot;: &quot;08:00&quot;
+                        }
+                    },
+                    &quot;avatar_url&quot;: &quot;http://localhost:8000/storage/avatars/HmQ1JePRA7dyWz8EhFFb4JuNty2gi93hVR5pZsB9.png&quot;
+                },
+                &quot;category&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Plomberie&quot;,
+                    &quot;slug&quot;: &quot;plomberie&quot;,
+                    &quot;icon&quot;: &quot;wrench&quot;,
+                    &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                }
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost:8000/api/marketplace/services/posts?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost:8000/api/marketplace/services/posts?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:8000/api/marketplace/services/posts?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost:8000/api/marketplace/services/posts&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 8,
+        &quot;total&quot;: 8
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-marketplace-services-posts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-marketplace-services-posts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-marketplace-services-posts"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-marketplace-services-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-marketplace-services-posts">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-marketplace-services-posts" data-method="GET"
+      data-path="api/marketplace/services/posts"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-marketplace-services-posts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-marketplace-services-posts"
+                    onclick="tryItOut('GETapi-marketplace-services-posts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-marketplace-services-posts"
+                    onclick="cancelTryOut('GETapi-marketplace-services-posts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-marketplace-services-posts"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/marketplace/services/posts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-marketplace-services-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-marketplace-services-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-marketplace-services-posts--id-">Get details of a service request</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-marketplace-services-posts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/marketplace/services/posts/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/posts/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-marketplace-services-posts--id-">
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             <blockquote>
             <p>Example response (500):</p>
         </blockquote>
@@ -3383,6 +6648,821 @@ vary: Origin
 }</code>
  </pre>
     </span>
+<<<<<<< HEAD
+=======
+<span id="execution-results-GETapi-marketplace-services-posts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-marketplace-services-posts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-marketplace-services-posts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-marketplace-services-posts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-marketplace-services-posts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-marketplace-services-posts--id-" data-method="GET"
+      data-path="api/marketplace/services/posts/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-marketplace-services-posts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-marketplace-services-posts--id-"
+                    onclick="tryItOut('GETapi-marketplace-services-posts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-marketplace-services-posts--id-"
+                    onclick="cancelTryOut('GETapi-marketplace-services-posts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-marketplace-services-posts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/marketplace/services/posts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-marketplace-services-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-marketplace-services-posts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-marketplace-services-posts--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the post. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-marketplace-services-providers">List all service providers with filters</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-marketplace-services-providers">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/marketplace/services/providers" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/providers"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-marketplace-services-providers">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 14,
+                &quot;name&quot;: &quot;Expert Expert Bafoussam&quot;,
+                &quot;email&quot;: &quot;bafoussam.pro@home.cm&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;phone&quot;: &quot;237660115773&quot;,
+                &quot;city&quot;: &quot;Bafoussam&quot;,
+                &quot;bio&quot;: &quot;Technicien professionnel bas&eacute; &agrave; Bafoussam. Je m&#039;occupe de vos travaux de maintenance avec rigueur et ponctualit&eacute;.&quot;,
+                &quot;role&quot;: &quot;prestataire&quot;,
+                &quot;roles&quot;: [
+                    &quot;prestataire&quot;
+                ],
+                &quot;avatar&quot;: null,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                &quot;availabilities&quot;: null,
+                &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;,
+                &quot;services&quot;: [
+                    {
+                        &quot;id&quot;: 13,
+                        &quot;provider_id&quot;: 14,
+                        &quot;category_id&quot;: 1,
+                        &quot;title&quot;: &quot;Plomberie Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Plomberie garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;45000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 1,
+                            &quot;name&quot;: &quot;Plomberie&quot;,
+                            &quot;slug&quot;: &quot;plomberie&quot;,
+                            &quot;icon&quot;: &quot;wrench&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 14,
+                        &quot;provider_id&quot;: 14,
+                        &quot;category_id&quot;: 3,
+                        &quot;title&quot;: &quot;Ma&ccedil;onnerie Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Ma&ccedil;onnerie garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;43000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:51.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 3,
+                            &quot;name&quot;: &quot;Ma&ccedil;onnerie&quot;,
+                            &quot;slug&quot;: &quot;maconnerie&quot;,
+                            &quot;icon&quot;: &quot;hard-hat&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 13,
+                &quot;name&quot;: &quot;Expert Expert Kribi&quot;,
+                &quot;email&quot;: &quot;kribi.pro@home.cm&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;phone&quot;: &quot;237613512720&quot;,
+                &quot;city&quot;: &quot;Kribi&quot;,
+                &quot;bio&quot;: &quot;Technicien professionnel bas&eacute; &agrave; Kribi. Je m&#039;occupe de vos travaux de maintenance avec rigueur et ponctualit&eacute;.&quot;,
+                &quot;role&quot;: &quot;prestataire&quot;,
+                &quot;roles&quot;: [
+                    &quot;prestataire&quot;
+                ],
+                &quot;avatar&quot;: null,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                &quot;availabilities&quot;: null,
+                &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;,
+                &quot;services&quot;: [
+                    {
+                        &quot;id&quot;: 11,
+                        &quot;provider_id&quot;: 13,
+                        &quot;category_id&quot;: 2,
+                        &quot;title&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de &Eacute;lectricit&eacute; garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;33000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 2,
+                            &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+                            &quot;slug&quot;: &quot;electricite&quot;,
+                            &quot;icon&quot;: &quot;bolt&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 12,
+                        &quot;provider_id&quot;: 13,
+                        &quot;category_id&quot;: 8,
+                        &quot;title&quot;: &quot;Climatisation Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Climatisation garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;49000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:50.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 8,
+                            &quot;name&quot;: &quot;Climatisation&quot;,
+                            &quot;slug&quot;: &quot;climatisation&quot;,
+                            &quot;icon&quot;: &quot;snowflake&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;Expert Expert Douala&quot;,
+                &quot;email&quot;: &quot;douala.pro@home.cm&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;phone&quot;: &quot;237624947085&quot;,
+                &quot;city&quot;: &quot;Douala&quot;,
+                &quot;bio&quot;: &quot;Technicien professionnel bas&eacute; &agrave; Douala. Je m&#039;occupe de vos travaux de maintenance avec rigueur et ponctualit&eacute;.&quot;,
+                &quot;role&quot;: &quot;prestataire&quot;,
+                &quot;roles&quot;: [
+                    &quot;prestataire&quot;
+                ],
+                &quot;avatar&quot;: null,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                &quot;availabilities&quot;: null,
+                &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;,
+                &quot;services&quot;: [
+                    {
+                        &quot;id&quot;: 7,
+                        &quot;provider_id&quot;: 11,
+                        &quot;category_id&quot;: 2,
+                        &quot;title&quot;: &quot;&Eacute;lectricit&eacute; Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de &Eacute;lectricit&eacute; garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;39000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 2,
+                            &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+                            &quot;slug&quot;: &quot;electricite&quot;,
+                            &quot;icon&quot;: &quot;bolt&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 8,
+                        &quot;provider_id&quot;: 11,
+                        &quot;category_id&quot;: 4,
+                        &quot;title&quot;: &quot;Menuiserie Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Menuiserie garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;28000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 4,
+                            &quot;name&quot;: &quot;Menuiserie&quot;,
+                            &quot;slug&quot;: &quot;menuiserie&quot;,
+                            &quot;icon&quot;: &quot;hammer&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 12,
+                &quot;name&quot;: &quot;Expert Expert Yaound&eacute;&quot;,
+                &quot;email&quot;: &quot;yaound&eacute;.pro@home.cm&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;phone&quot;: &quot;237693945559&quot;,
+                &quot;city&quot;: &quot;Yaound&eacute;&quot;,
+                &quot;bio&quot;: &quot;Technicien professionnel bas&eacute; &agrave; Yaound&eacute;. Je m&#039;occupe de vos travaux de maintenance avec rigueur et ponctualit&eacute;.&quot;,
+                &quot;role&quot;: &quot;prestataire&quot;,
+                &quot;roles&quot;: [
+                    &quot;prestataire&quot;
+                ],
+                &quot;avatar&quot;: null,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                &quot;availabilities&quot;: null,
+                &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;,
+                &quot;services&quot;: [
+                    {
+                        &quot;id&quot;: 9,
+                        &quot;provider_id&quot;: 12,
+                        &quot;category_id&quot;: 1,
+                        &quot;title&quot;: &quot;Plomberie Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Plomberie garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;31000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 1,
+                            &quot;name&quot;: &quot;Plomberie&quot;,
+                            &quot;slug&quot;: &quot;plomberie&quot;,
+                            &quot;icon&quot;: &quot;wrench&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 10,
+                        &quot;provider_id&quot;: 12,
+                        &quot;category_id&quot;: 4,
+                        &quot;title&quot;: &quot;Menuiserie Professionnelle&quot;,
+                        &quot;description&quot;: &quot;Service de Menuiserie garanti 1 an. Intervention rapide.&quot;,
+                        &quot;base_price&quot;: &quot;6000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-31T14:20:49.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 4,
+                            &quot;name&quot;: &quot;Menuiserie&quot;,
+                            &quot;slug&quot;: &quot;menuiserie&quot;,
+                            &quot;icon&quot;: &quot;hammer&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Prestataire Test&quot;,
+                &quot;email&quot;: &quot;prestataire@home.cm&quot;,
+                &quot;email_verified_at&quot;: &quot;2026-03-04T11:27:45.000000Z&quot;,
+                &quot;phone&quot;: null,
+                &quot;city&quot;: null,
+                &quot;bio&quot;: null,
+                &quot;role&quot;: &quot;prestataire&quot;,
+                &quot;roles&quot;: [
+                    &quot;prestataire&quot;
+                ],
+                &quot;avatar&quot;: null,
+                &quot;status&quot;: &quot;active&quot;,
+                &quot;created_at&quot;: &quot;2026-03-04T11:27:46.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2026-03-04T11:27:46.000000Z&quot;,
+                &quot;availabilities&quot;: null,
+                &quot;avatar_url&quot;: &quot;http://localhost:8000/images/avatar/default.png&quot;,
+                &quot;services&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 1,
+                        &quot;title&quot;: &quot;R&eacute;paration de Fuites&quot;,
+                        &quot;description&quot;: &quot;Service rapide pour toutes fuites d&#039;eau : robinets, tuyaux, etc.&quot;,
+                        &quot;base_price&quot;: &quot;5000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 1,
+                            &quot;name&quot;: &quot;Plomberie&quot;,
+                            &quot;slug&quot;: &quot;plomberie&quot;,
+                            &quot;icon&quot;: &quot;wrench&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 2,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 2,
+                        &quot;title&quot;: &quot;Installation &Eacute;lectrique Compl&egrave;te&quot;,
+                        &quot;description&quot;: &quot;Installation s&eacute;curis&eacute;e pour nouvelles constructions ou r&eacute;novations.&quot;,
+                        &quot;base_price&quot;: &quot;50000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 2,
+                            &quot;name&quot;: &quot;&Eacute;lectricit&eacute;&quot;,
+                            &quot;slug&quot;: &quot;electricite&quot;,
+                            &quot;icon&quot;: &quot;bolt&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 3,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 5,
+                        &quot;title&quot;: &quot;Peinture Murale&quot;,
+                        &quot;description&quot;: &quot;Peinture de haute qualit&eacute; pour int&eacute;rieur et ext&eacute;rieur.&quot;,
+                        &quot;base_price&quot;: &quot;1500.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 5,
+                            &quot;name&quot;: &quot;Peinture&quot;,
+                            &quot;slug&quot;: &quot;peinture&quot;,
+                            &quot;icon&quot;: &quot;paint-roller&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 4,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 6,
+                        &quot;title&quot;: &quot;Nettoyage de Printemps&quot;,
+                        &quot;description&quot;: &quot;Nettoyage complet de votre domicile du sol au plafond.&quot;,
+                        &quot;base_price&quot;: &quot;10000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 6,
+                            &quot;name&quot;: &quot;Nettoyage&quot;,
+                            &quot;slug&quot;: &quot;nettoyage&quot;,
+                            &quot;icon&quot;: &quot;broom&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 5,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 8,
+                        &quot;title&quot;: &quot;Installation Climatiseur&quot;,
+                        &quot;description&quot;: &quot;Pose et mise en service de votre syst&egrave;me de climatisation.&quot;,
+                        &quot;base_price&quot;: &quot;15000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 8,
+                            &quot;name&quot;: &quot;Climatisation&quot;,
+                            &quot;slug&quot;: &quot;climatisation&quot;,
+                            &quot;icon&quot;: &quot;snowflake&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    },
+                    {
+                        &quot;id&quot;: 6,
+                        &quot;provider_id&quot;: 4,
+                        &quot;category_id&quot;: 4,
+                        &quot;title&quot;: &quot;Menuiserie sur Mesure&quot;,
+                        &quot;description&quot;: &quot;Cr&eacute;ation de meubles et placards sur mesure.&quot;,
+                        &quot;base_price&quot;: &quot;25000.00&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                        &quot;category&quot;: {
+                            &quot;id&quot;: 4,
+                            &quot;name&quot;: &quot;Menuiserie&quot;,
+                            &quot;slug&quot;: &quot;menuiserie&quot;,
+                            &quot;icon&quot;: &quot;hammer&quot;,
+                            &quot;created_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;,
+                            &quot;updated_at&quot;: &quot;2026-03-04T11:27:48.000000Z&quot;
+                        }
+                    }
+                ]
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost:8000/api/marketplace/services/providers?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost:8000/api/marketplace/services/providers?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:8000/api/marketplace/services/providers?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost:8000/api/marketplace/services/providers&quot;,
+        &quot;per_page&quot;: 12,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 5,
+        &quot;total&quot;: 5
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-marketplace-services-providers" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-marketplace-services-providers"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-marketplace-services-providers"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-marketplace-services-providers" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-marketplace-services-providers">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-marketplace-services-providers" data-method="GET"
+      data-path="api/marketplace/services/providers"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-marketplace-services-providers', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-marketplace-services-providers"
+                    onclick="tryItOut('GETapi-marketplace-services-providers');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-marketplace-services-providers"
+                    onclick="cancelTryOut('GETapi-marketplace-services-providers');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-marketplace-services-providers"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/marketplace/services/providers</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-marketplace-services-providers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-marketplace-services-providers"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-marketplace-services-providers--id-">Get detail of a specific provider (Public profile)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-marketplace-services-providers--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/marketplace/services/providers/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/providers/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-marketplace-services-providers--id-">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-marketplace-services-providers--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-marketplace-services-providers--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-marketplace-services-providers--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-marketplace-services-providers--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-marketplace-services-providers--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-marketplace-services-providers--id-" data-method="GET"
+      data-path="api/marketplace/services/providers/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-marketplace-services-providers--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-marketplace-services-providers--id-"
+                    onclick="tryItOut('GETapi-marketplace-services-providers--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-marketplace-services-providers--id-"
+                    onclick="cancelTryOut('GETapi-marketplace-services-providers--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-marketplace-services-providers--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/marketplace/services/providers/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-marketplace-services-providers--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-marketplace-services-providers--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-marketplace-services-providers--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the provider. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-notchpay-callback">Gère le retour de NotchPay après une tentative de paiement (GET redirect)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-notchpay-callback">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/notchpay/callback" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notchpay/callback"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-notchpay-callback">
+            <blockquote>
+            <p>Example response (302):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+location: http://localhost:5173/payment?status=error&amp;message=reference_missing
+content-type: text/html; charset=utf-8
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&#039;http://localhost:5173/payment?status=error&amp;amp;message=reference_missing&#039;&quot; /&gt;
+
+        &lt;title&gt;Redirecting to http://localhost:5173/payment?status=error&amp;amp;message=reference_missing&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Redirecting to &lt;a href=&quot;http://localhost:5173/payment?status=error&amp;amp;message=reference_missing&quot;&gt;http://localhost:5173/payment?status=error&amp;amp;message=reference_missing&lt;/a&gt;.
+    &lt;/body&gt;
+&lt;/html&gt;</code>
+ </pre>
+    </span>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 <span id="execution-results-GETapi-notchpay-callback" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-GETapi-notchpay-callback"></span>:
@@ -3434,7 +7514,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-notchpay-callback"
                value="application/json"
@@ -3446,7 +7529,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-notchpay-callback"
                value="application/json"
@@ -3469,14 +7555,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/notchpay/webhook" \
+=======
+    "http://localhost:8000/api/notchpay/webhook" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/notchpay/webhook"
+=======
+    "http://localhost:8000/api/notchpay/webhook"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3484,7 +7578,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -3545,7 +7642,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-notchpay-webhook"
                value="application/json"
@@ -3557,7 +7657,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-notchpay-webhook"
                value="application/json"
@@ -3580,14 +7683,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/transactions/architecto/status" \
+=======
+    --get "http://localhost:8000/api/transactions/architecto/status" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/transactions/architecto/status"
+=======
+    "http://localhost:8000/api/transactions/architecto/status"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3595,7 +7706,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -3605,7 +7719,11 @@ fetch(url, {
 
 <span id="example-responses-GETapi-transactions--reference--status">
             <blockquote>
+<<<<<<< HEAD
             <p>Example response (500):</p>
+=======
+            <p>Example response (404):</p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3617,7 +7735,12 @@ vary: Origin
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+<<<<<<< HEAD
     &quot;message&quot;: &quot;Server Error&quot;
+=======
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Transaction introuvable&quot;
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }</code>
  </pre>
     </span>
@@ -3672,7 +7795,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-transactions--reference--status"
                value="application/json"
@@ -3684,7 +7810,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-transactions--reference--status"
                value="application/json"
@@ -3697,7 +7826,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>reference</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="reference"                data-endpoint="GETapi-transactions--reference--status"
                value="architecto"
@@ -3720,14 +7852,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/logout" \
+=======
+    "http://localhost:8000/api/logout" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/logout"
+=======
+    "http://localhost:8000/api/logout"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3735,7 +7875,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -3796,7 +7939,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-logout"
                value="application/json"
@@ -3808,7 +7954,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-logout"
                value="application/json"
@@ -3831,14 +7980,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/user" \
+=======
+    --get "http://localhost:8000/api/user" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/user"
+=======
+    "http://localhost:8000/api/user"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -3846,7 +8003,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -3923,7 +8083,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-user"
                value="application/json"
@@ -3935,7 +8098,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-user"
                value="application/json"
@@ -3945,6 +8111,843 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-GETapi-user-sidebar-stats">Retourne les compteurs pour les badges de la sidebar en fonction du rôle actuel.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-user-sidebar-stats">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/user/sidebar-stats" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/user/sidebar-stats"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-user-sidebar-stats">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-user-sidebar-stats" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user-sidebar-stats"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user-sidebar-stats"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-user-sidebar-stats" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user-sidebar-stats">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-user-sidebar-stats" data-method="GET"
+      data-path="api/user/sidebar-stats"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-sidebar-stats', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user-sidebar-stats"
+                    onclick="tryItOut('GETapi-user-sidebar-stats');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user-sidebar-stats"
+                    onclick="cancelTryOut('GETapi-user-sidebar-stats');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user-sidebar-stats"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user/sidebar-stats</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-user-sidebar-stats"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-user-sidebar-stats"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-notifications">GET /api/notifications
+Retourne les notifications de l&#039;utilisateur authentifié, paginées.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-notifications">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/notifications" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-notifications">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-notifications" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-notifications"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-notifications"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-notifications" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-notifications">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-notifications" data-method="GET"
+      data-path="api/notifications"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-notifications"
+                    onclick="tryItOut('GETapi-notifications');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-notifications"
+                    onclick="cancelTryOut('GETapi-notifications');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-notifications"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/notifications</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-notifications"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-notifications"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-notifications-unread-count">GET /api/notifications/unread-count
+Retourne uniquement le compteur de non-lus (utilisé par la sidebar).</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-notifications-unread-count">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/notifications/unread-count" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/unread-count"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-notifications-unread-count">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-notifications-unread-count" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-notifications-unread-count"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-notifications-unread-count"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-notifications-unread-count" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-notifications-unread-count">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-notifications-unread-count" data-method="GET"
+      data-path="api/notifications/unread-count"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-notifications-unread-count', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-notifications-unread-count"
+                    onclick="tryItOut('GETapi-notifications-unread-count');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-notifications-unread-count"
+                    onclick="cancelTryOut('GETapi-notifications-unread-count');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-notifications-unread-count"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/notifications/unread-count</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-notifications-unread-count"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-notifications-unread-count"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-notifications-read-all">POST /api/notifications/read-all
+Marque toutes les notifications de l&#039;utilisateur comme lues.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-notifications-read-all">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/notifications/read-all" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/read-all"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-notifications-read-all">
+</span>
+<span id="execution-results-POSTapi-notifications-read-all" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-notifications-read-all"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-notifications-read-all"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-notifications-read-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-notifications-read-all">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-notifications-read-all" data-method="POST"
+      data-path="api/notifications/read-all"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-notifications-read-all', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-notifications-read-all"
+                    onclick="tryItOut('POSTapi-notifications-read-all');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-notifications-read-all"
+                    onclick="cancelTryOut('POSTapi-notifications-read-all');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-notifications-read-all"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/notifications/read-all</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-notifications-read-all"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-notifications-read-all"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-DELETEapi-notifications-clear-all">DELETE /api/notifications/clear-all
+Supprime toutes les notifications de l&#039;utilisateur.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-notifications-clear-all">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/notifications/clear-all" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/clear-all"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-notifications-clear-all">
+</span>
+<span id="execution-results-DELETEapi-notifications-clear-all" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-notifications-clear-all"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-notifications-clear-all"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-notifications-clear-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-notifications-clear-all">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-notifications-clear-all" data-method="DELETE"
+      data-path="api/notifications/clear-all"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-notifications-clear-all', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-notifications-clear-all"
+                    onclick="tryItOut('DELETEapi-notifications-clear-all');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-notifications-clear-all"
+                    onclick="cancelTryOut('DELETEapi-notifications-clear-all');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-notifications-clear-all"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/notifications/clear-all</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-notifications-clear-all"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-notifications-clear-all"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-notifications--id--read">POST /api/notifications/{id}/read
+Marque une notification comme lue.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-notifications--id--read">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/notifications/architecto/read" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/architecto/read"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-notifications--id--read">
+</span>
+<span id="execution-results-POSTapi-notifications--id--read" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-notifications--id--read"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-notifications--id--read"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-notifications--id--read" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-notifications--id--read">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-notifications--id--read" data-method="POST"
+      data-path="api/notifications/{id}/read"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-notifications--id--read', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-notifications--id--read"
+                    onclick="tryItOut('POSTapi-notifications--id--read');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-notifications--id--read"
+                    onclick="cancelTryOut('POSTapi-notifications--id--read');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-notifications--id--read"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/notifications/{id}/read</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-notifications--id--read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-notifications--id--read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-notifications--id--read"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the notification. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-DELETEapi-notifications--id-">DELETE /api/notifications/{id}
+Supprime une notification.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-notifications--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/notifications/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/notifications/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-notifications--id-">
+</span>
+<span id="execution-results-DELETEapi-notifications--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-notifications--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-notifications--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-notifications--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-notifications--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-notifications--id-" data-method="DELETE"
+      data-path="api/notifications/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-notifications--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-notifications--id-"
+                    onclick="tryItOut('DELETEapi-notifications--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-notifications--id-"
+                    onclick="cancelTryOut('DELETEapi-notifications--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-notifications--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/notifications/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-notifications--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-notifications--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-notifications--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the notification. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-PUTapi-profile">Mettre à jour les informations de base du profil</h2>
 
 <p>
@@ -3958,7 +8961,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/profile" \
+=======
+    "http://localhost:8000/api/profile" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3972,7 +8979,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/profile"
+=======
+    "http://localhost:8000/api/profile"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4048,7 +9059,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-profile"
                value="application/json"
@@ -4060,7 +9074,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-profile"
                value="application/json"
@@ -4073,7 +9090,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-profile"
                value="b"
@@ -4085,7 +9105,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="PUTapi-profile"
                value="ngzmiyvdljnikhwa"
@@ -4097,7 +9120,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="PUTapi-profile"
                value="y"
@@ -4109,7 +9135,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>bio</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="bio"                data-endpoint="PUTapi-profile"
                value="k"
@@ -4132,15 +9161,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/profile/avatar" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "avatar=@C:\Users\DELL\AppData\Local\Temp\php3E1E.tmp" </code></pre></div>
+=======
+    "http://localhost:8000/api/profile/avatar" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "avatar=@C:\Users\Admin\AppData\Local\Temp\phpA528.tmp" </code></pre></div>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/profile/avatar"
+=======
+    "http://localhost:8000/api/profile/avatar"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4212,7 +9252,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-profile-avatar"
                value="multipart/form-data"
@@ -4224,7 +9267,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-profile-avatar"
                value="application/json"
@@ -4237,13 +9283,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>avatar</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="file" style="display: none"
                               name="avatar"                data-endpoint="POSTapi-profile-avatar"
                value=""
                data-component="body">
     <br>
+<<<<<<< HEAD
 <p>Must be an image. Must not be greater than 5120 kilobytes. Example: <code>C:\Users\DELL\AppData\Local\Temp\php3E1E.tmp</code></p>
+=======
+<p>Must be an image. Must not be greater than 5120 kilobytes. Example: <code>C:\Users\Admin\AppData\Local\Temp\phpA528.tmp</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
         </form>
 
@@ -4260,7 +9313,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/profile/password" \
+=======
+    "http://localhost:8000/api/profile/password" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4272,7 +9329,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/profile/password"
+=======
+    "http://localhost:8000/api/profile/password"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4346,7 +9407,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-profile-password"
                value="application/json"
@@ -4358,7 +9422,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-profile-password"
                value="application/json"
@@ -4371,7 +9438,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>current_password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="current_password"                data-endpoint="POSTapi-profile-password"
                value="architecto"
@@ -4383,7 +9453,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-profile-password"
                value="architecto"
@@ -4406,14 +9479,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/roles" \
+=======
+    --get "http://localhost:8000/api/roles" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/roles"
+=======
+    "http://localhost:8000/api/roles"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4421,7 +9502,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -4498,7 +9582,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-roles"
                value="application/json"
@@ -4510,7 +9597,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-roles"
                value="application/json"
@@ -4533,7 +9623,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/roles/switch" \
+=======
+    "http://localhost:8000/api/roles/switch" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4544,7 +9638,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/roles/switch"
+=======
+    "http://localhost:8000/api/roles/switch"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4617,7 +9715,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-roles-switch"
                value="application/json"
@@ -4629,7 +9730,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-roles-switch"
                value="application/json"
@@ -4642,7 +9746,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="POSTapi-roles-switch"
                value="architecto"
@@ -4665,18 +9772,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/roles/acquire" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"role\": \"prestataire\"
+=======
+    "http://localhost:8000/api/roles/acquire" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"role\": \"locataire\"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/roles/acquire"
+=======
+    "http://localhost:8000/api/roles/acquire"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4685,7 +9804,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "role": "prestataire"
+=======
+    "role": "locataire"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 };
 
 fetch(url, {
@@ -4749,7 +9872,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-roles-acquire"
                value="application/json"
@@ -4761,7 +9887,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-roles-acquire"
                value="application/json"
@@ -4774,6 +9903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="POSTapi-roles-acquire"
@@ -4781,6 +9911,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>prestataire</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="role"                data-endpoint="POSTapi-roles-acquire"
+               value="locataire"
+               data-component="body">
+    <br>
+<p>Example: <code>locataire</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>bailleur</code></li> <li><code>locataire</code></li> <li><code>prestataire</code></li> <li><code>agent</code></li></ul>
         </div>
@@ -4799,7 +9937,11 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/properties" \
+=======
+    "http://localhost:8000/api/properties" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "title=b"\
@@ -4813,12 +9955,20 @@ Must be one of:
     --form "bathrooms=16"\
     --form "area=4326.41688"\
     --form "etat=architecto"\
+<<<<<<< HEAD
     --form "images[]=@C:\Users\DELL\AppData\Local\Temp\php3E7D.tmp" </code></pre></div>
+=======
+    --form "images[]=@C:\Users\Admin\AppData\Local\Temp\phpA558.tmp" </code></pre></div>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/properties"
+=======
+    "http://localhost:8000/api/properties"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -4901,7 +10051,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-properties"
                value="multipart/form-data"
@@ -4913,7 +10066,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-properties"
                value="application/json"
@@ -4926,7 +10082,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-properties"
                value="b"
@@ -4938,7 +10097,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-properties"
                value="rent"
@@ -4952,7 +10114,10 @@ Must be one of:
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-properties"
                value="architecto"
@@ -4964,7 +10129,10 @@ Must be one of:
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="price"                data-endpoint="POSTapi-properties"
                value="4326.41688"
@@ -4976,7 +10144,10 @@ Must be one of:
             <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="location"                data-endpoint="POSTapi-properties"
                value="architecto"
@@ -4988,7 +10159,10 @@ Must be one of:
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTapi-properties"
                value="architecto"
@@ -5000,7 +10174,10 @@ Must be one of:
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-properties"
                value="Eius et animi quos velit et."
@@ -5012,7 +10189,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bedrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bedrooms"                data-endpoint="POSTapi-properties"
                value="16"
@@ -5024,7 +10204,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bathrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bathrooms"                data-endpoint="POSTapi-properties"
                value="16"
@@ -5036,7 +10219,10 @@ Must be one of:
             <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="area"                data-endpoint="POSTapi-properties"
                value="4326.41688"
@@ -5048,7 +10234,10 @@ Must be one of:
             <b style="line-height: 2;"><code>etat</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="etat"                data-endpoint="POSTapi-properties"
                value="architecto"
@@ -5060,7 +10249,10 @@ Must be one of:
             <b style="line-height: 2;"><code>amenities</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="amenities"                data-endpoint="POSTapi-properties"
                value=""
@@ -5072,7 +10264,10 @@ Must be one of:
             <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
 <small>file[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="file" style="display: none"
                               name="images[0]"                data-endpoint="POSTapi-properties"
                data-component="body">
@@ -5097,14 +10292,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/properties/1" \
+=======
+    "http://localhost:8000/api/properties/1" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/properties/1"
+=======
+    "http://localhost:8000/api/properties/1"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5112,7 +10315,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "PUT",
     headers,
@@ -5173,7 +10379,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-properties--id-"
                value="application/json"
@@ -5185,7 +10394,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-properties--id-"
                value="application/json"
@@ -5198,7 +10410,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="PUTapi-properties--id-"
                value="1"
@@ -5221,14 +10436,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
+<<<<<<< HEAD
     "http://localhost/api/properties/1" \
+=======
+    "http://localhost:8000/api/properties/1" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/properties/1"
+=======
+    "http://localhost:8000/api/properties/1"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5236,7 +10459,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "DELETE",
     headers,
@@ -5297,7 +10523,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="DELETEapi-properties--id-"
                value="application/json"
@@ -5309,7 +10538,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="DELETEapi-properties--id-"
                value="application/json"
@@ -5322,7 +10554,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="DELETEapi-properties--id-"
                value="1"
@@ -5332,6 +10567,603 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-POSTapi-properties--identifier--reviews">POST /api/properties/{identifier}/reviews
+Soumettre un avis (authentifié).</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-properties--identifier--reviews">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/properties/1/reviews" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"rating\": 1,
+    \"title\": \"n\",
+    \"comment\": \"g\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/properties/1/reviews"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "rating": 1,
+    "title": "n",
+    "comment": "g"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-properties--identifier--reviews">
+</span>
+<span id="execution-results-POSTapi-properties--identifier--reviews" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-properties--identifier--reviews"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-properties--identifier--reviews"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-properties--identifier--reviews" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-properties--identifier--reviews">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-properties--identifier--reviews" data-method="POST"
+      data-path="api/properties/{identifier}/reviews"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-properties--identifier--reviews', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-properties--identifier--reviews"
+                    onclick="tryItOut('POSTapi-properties--identifier--reviews');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-properties--identifier--reviews"
+                    onclick="cancelTryOut('POSTapi-properties--identifier--reviews');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-properties--identifier--reviews"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/properties/{identifier}/reviews</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>identifier</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="identifier"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="1"
+               data-component="url">
+    <br>
+<p>Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>rating</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="rating"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="1"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 5. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 120 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>comment</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="comment"                data-endpoint="POSTapi-properties--identifier--reviews"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must be at least 10 characters. Must not be greater than 1000 characters. Example: <code>g</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-properties--identifier--reviews-my">GET /api/reviews/my/{propertyId}
+Récupère l&#039;avis de l&#039;utilisateur connecté pour un bien.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-properties--identifier--reviews-my">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/properties/1/reviews/my" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/properties/1/reviews/my"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-properties--identifier--reviews-my">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-properties--identifier--reviews-my" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-properties--identifier--reviews-my"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-properties--identifier--reviews-my"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-properties--identifier--reviews-my" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-properties--identifier--reviews-my">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-properties--identifier--reviews-my" data-method="GET"
+      data-path="api/properties/{identifier}/reviews/my"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-properties--identifier--reviews-my', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-properties--identifier--reviews-my"
+                    onclick="tryItOut('GETapi-properties--identifier--reviews-my');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-properties--identifier--reviews-my"
+                    onclick="cancelTryOut('GETapi-properties--identifier--reviews-my');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-properties--identifier--reviews-my"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/properties/{identifier}/reviews/my</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-properties--identifier--reviews-my"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-properties--identifier--reviews-my"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>identifier</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="identifier"                data-endpoint="GETapi-properties--identifier--reviews-my"
+               value="1"
+               data-component="url">
+    <br>
+<p>Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-reviews--id-">PUT /api/reviews/{id}
+Modifier son propre avis.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-reviews--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost:8000/api/reviews/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"rating\": 1,
+    \"title\": \"n\",
+    \"comment\": \"g\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/reviews/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "rating": 1,
+    "title": "n",
+    "comment": "g"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-reviews--id-">
+</span>
+<span id="execution-results-PUTapi-reviews--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-reviews--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-reviews--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-reviews--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-reviews--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-reviews--id-" data-method="PUT"
+      data-path="api/reviews/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-reviews--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-reviews--id-"
+                    onclick="tryItOut('PUTapi-reviews--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-reviews--id-"
+                    onclick="cancelTryOut('PUTapi-reviews--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-reviews--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/reviews/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-reviews--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-reviews--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-reviews--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the review. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>rating</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="rating"                data-endpoint="PUTapi-reviews--id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 5. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-reviews--id-"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 120 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>comment</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="comment"                data-endpoint="PUTapi-reviews--id-"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must be at least 10 characters. Must not be greater than 1000 characters. Example: <code>g</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-reviews--id-">DELETE /api/reviews/{id}
+Supprimer son propre avis (ou admin).</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-reviews--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/reviews/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/reviews/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-reviews--id-">
+</span>
+<span id="execution-results-DELETEapi-reviews--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-reviews--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-reviews--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-reviews--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-reviews--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-reviews--id-" data-method="DELETE"
+      data-path="api/reviews/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-reviews--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-reviews--id-"
+                    onclick="tryItOut('DELETEapi-reviews--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-reviews--id-"
+                    onclick="cancelTryOut('DELETEapi-reviews--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-reviews--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/reviews/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-reviews--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-reviews--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-reviews--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the review. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-GETapi-visits">Liste des visites de l&#039;utilisateur connecté.</h2>
 
 <p>
@@ -5345,14 +11177,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/visits" \
+=======
+    --get "http://localhost:8000/api/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/visits"
+=======
+    "http://localhost:8000/api/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5360,7 +11200,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -5437,7 +11280,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-visits"
                value="application/json"
@@ -5449,7 +11295,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-visits"
                value="application/json"
@@ -5472,21 +11321,35 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/visits" \
+=======
+    "http://localhost:8000/api/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"property_id\": \"architecto\",
+<<<<<<< HEAD
     \"scheduled_at\": \"2052-04-19\",
     \"notes\": \"architecto\",
     \"fee_payment_method\": \"momo\"
+=======
+    \"scheduled_at\": \"2052-04-24\",
+    \"notes\": \"architecto\",
+    \"fee_payment_method\": \"cash\"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/visits"
+=======
+    "http://localhost:8000/api/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5496,9 +11359,15 @@ const headers = {
 
 let body = {
     "property_id": "architecto",
+<<<<<<< HEAD
     "scheduled_at": "2052-04-19",
     "notes": "architecto",
     "fee_payment_method": "momo"
+=======
+    "scheduled_at": "2052-04-24",
+    "notes": "architecto",
+    "fee_payment_method": "cash"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 };
 
 fetch(url, {
@@ -5562,7 +11431,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-visits"
                value="application/json"
@@ -5574,7 +11446,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-visits"
                value="application/json"
@@ -5587,7 +11462,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-visits"
                value="architecto"
@@ -5599,6 +11477,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>scheduled_at</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-visits"
@@ -5606,12 +11485,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="scheduled_at"                data-endpoint="POSTapi-visits"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-visits"
                value="architecto"
@@ -5623,6 +11513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>fee_payment_method</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="fee_payment_method"                data-endpoint="POSTapi-visits"
@@ -5630,6 +11521,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>momo</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="fee_payment_method"                data-endpoint="POSTapi-visits"
+               value="cash"
+               data-component="body">
+    <br>
+<p>Example: <code>cash</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>momo</code></li> <li><code>om</code></li> <li><code>card</code></li> <li><code>cash</code></li></ul>
         </div>
@@ -5640,7 +11539,11 @@ Must be one of:
 <p>
 </p>
 
+<<<<<<< HEAD
 <p>→ Si l'agent a aussi confirmé, la visite passe à "completed".</p>
+=======
+<p>→ Si l'agent a aussi confirmé, la visite passe à &quot;completed&quot;.</p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <span id="example-requests-POSTapi-visits--id--confirm">
 <blockquote>Example request:</blockquote>
@@ -5648,14 +11551,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/visits/architecto/confirm" \
+=======
+    "http://localhost:8000/api/visits/2/confirm" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/visits/architecto/confirm"
+=======
+    "http://localhost:8000/api/visits/2/confirm"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5663,7 +11574,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -5724,7 +11638,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-visits--id--confirm"
                value="application/json"
@@ -5736,7 +11653,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-visits--id--confirm"
                value="application/json"
@@ -5747,6 +11667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -5756,6 +11677,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-visits--id--confirm"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -5772,14 +11703,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/visits/architecto/cancel" \
+=======
+    "http://localhost:8000/api/visits/2/cancel" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/visits/architecto/cancel"
+=======
+    "http://localhost:8000/api/visits/2/cancel"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5787,7 +11726,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -5848,7 +11790,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-visits--id--cancel"
                value="application/json"
@@ -5860,7 +11805,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-visits--id--cancel"
                value="application/json"
@@ -5871,6 +11819,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -5880,6 +11829,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-visits--id--cancel"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -5896,14 +11855,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/rental-applications" \
+=======
+    --get "http://localhost:8000/api/rental-applications" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/rental-applications"
+=======
+    "http://localhost:8000/api/rental-applications"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -5911,7 +11878,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -5988,7 +11958,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-rental-applications"
                value="application/json"
@@ -6000,7 +11973,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-rental-applications"
                value="application/json"
@@ -6015,7 +11991,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
+<<<<<<< HEAD
 <p>Prérequis : la visite liée doit être "completed".</p>
+=======
+<p>Prérequis : la visite liée doit être &quot;completed&quot;.</p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <span id="example-requests-POSTapi-rental-applications">
 <blockquote>Example request:</blockquote>
@@ -6023,7 +12003,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/rental-applications" \
+=======
+    "http://localhost:8000/api/rental-applications" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "property_id=architecto"\
@@ -6033,12 +12017,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "has_garant=1"\
     --form "notes=architecto"\
     --form "documents[][type]=architecto"\
+<<<<<<< HEAD
     --form "documents[][file]=@C:\Users\DELL\AppData\Local\Temp\php3F1B.tmp" </code></pre></div>
+=======
+    --form "documents[][file]=@C:\Users\Admin\AppData\Local\Temp\phpA5B6.tmp" </code></pre></div>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/rental-applications"
+=======
+    "http://localhost:8000/api/rental-applications"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6117,7 +12109,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-rental-applications"
                value="multipart/form-data"
@@ -6129,7 +12124,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-rental-applications"
                value="application/json"
@@ -6142,7 +12140,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-rental-applications"
                value="architecto"
@@ -6154,7 +12155,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>visit_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="visit_id"                data-endpoint="POSTapi-rental-applications"
                value="architecto"
@@ -6166,7 +12170,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>situation_professionnelle</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="situation_professionnelle"                data-endpoint="POSTapi-rental-applications"
                value="architecto"
@@ -6178,7 +12185,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>revenus_mensuels</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="revenus_mensuels"                data-endpoint="POSTapi-rental-applications"
                value="39"
@@ -6190,7 +12200,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>has_garant</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <label data-endpoint="POSTapi-rental-applications" style="display: none">
             <input type="radio" name="has_garant"
                    value="true"
@@ -6212,7 +12225,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-rental-applications"
                value="architecto"
@@ -6226,7 +12242,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>documents</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 <br>
 
             </summary>
@@ -6234,7 +12253,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="documents.0.type"                data-endpoint="POSTapi-rental-applications"
                value="architecto"
@@ -6246,13 +12268,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="file" style="display: none"
                               name="documents.0.file"                data-endpoint="POSTapi-rental-applications"
                value=""
                data-component="body">
     <br>
+<<<<<<< HEAD
 <p>This field is required when <code>documents</code> is present. Must be a file. Must not be greater than 5120 kilobytes. Example: <code>C:\Users\DELL\AppData\Local\Temp\php3F1B.tmp</code></p>
+=======
+<p>This field is required when <code>documents</code> is present.  Must be a file. Must not be greater than 5120 kilobytes. Example: <code>C:\Users\Admin\AppData\Local\Temp\phpA5B6.tmp</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     </div>
                                     </details>
         </div>
@@ -6271,14 +12300,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/rental-applications/architecto" \
+=======
+    --get "http://localhost:8000/api/rental-applications/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/rental-applications/architecto"
+=======
+    "http://localhost:8000/api/rental-applications/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6286,7 +12323,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -6363,7 +12403,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-rental-applications--id-"
                value="application/json"
@@ -6375,7 +12418,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-rental-applications--id-"
                value="application/json"
@@ -6388,7 +12434,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-rental-applications--id-"
                value="architecto"
@@ -6411,14 +12460,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/rental-applications/architecto/sign" \
+=======
+    "http://localhost:8000/api/rental-applications/architecto/sign" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/rental-applications/architecto/sign"
+=======
+    "http://localhost:8000/api/rental-applications/architecto/sign"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6426,7 +12483,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -6487,7 +12547,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-rental-applications--id--sign"
                value="application/json"
@@ -6499,7 +12562,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-rental-applications--id--sign"
                value="application/json"
@@ -6512,7 +12578,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-rental-applications--id--sign"
                value="architecto"
@@ -6535,14 +12604,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prospect/visits" \
+=======
+    --get "http://localhost:8000/api/prospect/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits"
+=======
+    "http://localhost:8000/api/prospect/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6550,7 +12627,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -6627,7 +12707,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prospect-visits"
                value="application/json"
@@ -6639,7 +12722,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prospect-visits"
                value="application/json"
@@ -6662,19 +12748,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits" \
+=======
+    "http://localhost:8000/api/prospect/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"property_id\": 16,
+<<<<<<< HEAD
     \"scheduled_at\": \"2052-04-19\"
+=======
+    \"scheduled_at\": \"2052-04-24\"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits"
+=======
+    "http://localhost:8000/api/prospect/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6684,7 +12782,11 @@ const headers = {
 
 let body = {
     "property_id": 16,
+<<<<<<< HEAD
     "scheduled_at": "2052-04-19"
+=======
+    "scheduled_at": "2052-04-24"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 };
 
 fetch(url, {
@@ -6748,7 +12850,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-visits"
                value="application/json"
@@ -6760,7 +12865,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-visits"
                value="application/json"
@@ -6773,7 +12881,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="property_id"                data-endpoint="POSTapi-prospect-visits"
                value="16"
@@ -6785,6 +12896,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>scheduled_at</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-prospect-visits"
@@ -6792,6 +12904,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="scheduled_at"                data-endpoint="POSTapi-prospect-visits"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
         </form>
 
@@ -6808,14 +12928,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/pay" \
+=======
+    "http://localhost:8000/api/prospect/visits/2/pay" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/pay"
+=======
+    "http://localhost:8000/api/prospect/visits/2/pay"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6823,7 +12951,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -6884,7 +13015,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-visits--id--pay"
                value="application/json"
@@ -6896,7 +13030,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-visits--id--pay"
                value="application/json"
@@ -6907,6 +13044,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -6916,6 +13054,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-prospect-visits--id--pay"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -6932,14 +13080,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/confirm" \
+=======
+    "http://localhost:8000/api/prospect/visits/2/confirm" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/confirm"
+=======
+    "http://localhost:8000/api/prospect/visits/2/confirm"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -6947,7 +13103,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -7008,7 +13167,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-visits--id--confirm"
                value="application/json"
@@ -7020,7 +13182,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-visits--id--confirm"
                value="application/json"
@@ -7031,6 +13196,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -7040,6 +13206,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-prospect-visits--id--confirm"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -7056,14 +13232,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/cancel" \
+=======
+    "http://localhost:8000/api/prospect/visits/2/cancel" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/visits/architecto/cancel"
+=======
+    "http://localhost:8000/api/prospect/visits/2/cancel"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7071,7 +13255,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -7132,7 +13319,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-visits--id--cancel"
                value="application/json"
@@ -7144,7 +13334,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-visits--id--cancel"
                value="application/json"
@@ -7155,6 +13348,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -7164,6 +13358,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-prospect-visits--id--cancel"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -7180,14 +13384,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prospect/applications" \
+=======
+    --get "http://localhost:8000/api/prospect/applications" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications"
+=======
+    "http://localhost:8000/api/prospect/applications"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7195,7 +13407,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -7272,7 +13487,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prospect-applications"
                value="application/json"
@@ -7284,7 +13502,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prospect-applications"
                value="application/json"
@@ -7307,14 +13528,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications" \
+=======
+    "http://localhost:8000/api/prospect/applications" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"visit_id\": 16,
     \"situation_professionnelle\": \"sans_emploi\",
     \"revenus_mensuels\": 39,
+<<<<<<< HEAD
     \"has_garant\": false,
+=======
+    \"has_garant\": true,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"notes\": \"g\"
 }"
 </code></pre></div>
@@ -7322,7 +13551,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications"
+=======
+    "http://localhost:8000/api/prospect/applications"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7334,7 +13567,11 @@ let body = {
     "visit_id": 16,
     "situation_professionnelle": "sans_emploi",
     "revenus_mensuels": 39,
+<<<<<<< HEAD
     "has_garant": false,
+=======
+    "has_garant": true,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "notes": "g"
 };
 
@@ -7399,7 +13636,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-applications"
                value="application/json"
@@ -7411,7 +13651,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-applications"
                value="application/json"
@@ -7424,7 +13667,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>visit_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="visit_id"                data-endpoint="POSTapi-prospect-applications"
                value="16"
@@ -7436,7 +13682,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>situation_professionnelle</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="situation_professionnelle"                data-endpoint="POSTapi-prospect-applications"
                value="sans_emploi"
@@ -7450,7 +13699,10 @@ Must be one of:
             <b style="line-height: 2;"><code>revenus_mensuels</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="revenus_mensuels"                data-endpoint="POSTapi-prospect-applications"
                value="39"
@@ -7462,7 +13714,10 @@ Must be one of:
             <b style="line-height: 2;"><code>has_garant</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <label data-endpoint="POSTapi-prospect-applications" style="display: none">
             <input type="radio" name="has_garant"
                    value="true"
@@ -7478,13 +13733,20 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
+<<<<<<< HEAD
 <p>Example: <code>false</code></p>
+=======
+<p>Example: <code>true</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-prospect-applications"
                value="g"
@@ -7507,14 +13769,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prospect/applications/architecto" \
+=======
+    --get "http://localhost:8000/api/prospect/applications/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications/architecto"
+=======
+    "http://localhost:8000/api/prospect/applications/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7522,7 +13792,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -7599,7 +13872,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prospect-applications--id-"
                value="application/json"
@@ -7611,7 +13887,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prospect-applications--id-"
                value="application/json"
@@ -7624,7 +13903,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-prospect-applications--id-"
                value="architecto"
@@ -7647,6 +13929,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications/architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -7656,6 +13939,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"has_garant\": true,
     \"notes\": \"n\",
     \"signed_by_applicant\": true,
+=======
+    "http://localhost:8000/api/prospect/applications/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"situation_professionnelle\": \"cdd\",
+    \"revenus_mensuels\": 27,
+    \"has_garant\": false,
+    \"notes\": \"n\",
+    \"signed_by_applicant\": false,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"documents\": [
         {
             \"type\": \"architecto\",
@@ -7668,7 +13962,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/applications/architecto"
+=======
+    "http://localhost:8000/api/prospect/applications/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7677,11 +13975,19 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "situation_professionnelle": "etudiant",
     "revenus_mensuels": 27,
     "has_garant": true,
     "notes": "n",
     "signed_by_applicant": true,
+=======
+    "situation_professionnelle": "cdd",
+    "revenus_mensuels": 27,
+    "has_garant": false,
+    "notes": "n",
+    "signed_by_applicant": false,
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "documents": [
         {
             "type": "architecto",
@@ -7751,7 +14057,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-prospect-applications--id-"
                value="application/json"
@@ -7763,7 +14072,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-prospect-applications--id-"
                value="application/json"
@@ -7776,7 +14088,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-prospect-applications--id-"
                value="architecto"
@@ -7789,6 +14104,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>situation_professionnelle</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="situation_professionnelle"                data-endpoint="PUTapi-prospect-applications--id-"
@@ -7796,6 +14112,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>etudiant</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="situation_professionnelle"                data-endpoint="PUTapi-prospect-applications--id-"
+               value="cdd"
+               data-component="body">
+    <br>
+<p>Example: <code>cdd</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>cdi</code></li> <li><code>cdd</code></li> <li><code>independant</code></li> <li><code>etudiant</code></li> <li><code>retraite</code></li> <li><code>sans_emploi</code></li></ul>
         </div>
@@ -7803,7 +14127,10 @@ Must be one of:
             <b style="line-height: 2;"><code>revenus_mensuels</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="revenus_mensuels"                data-endpoint="PUTapi-prospect-applications--id-"
                value="27"
@@ -7815,7 +14142,10 @@ Must be one of:
             <b style="line-height: 2;"><code>has_garant</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <label data-endpoint="PUTapi-prospect-applications--id-" style="display: none">
             <input type="radio" name="has_garant"
                    value="true"
@@ -7831,13 +14161,20 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
+<<<<<<< HEAD
 <p>Example: <code>true</code></p>
+=======
+<p>Example: <code>false</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="PUTapi-prospect-applications--id-"
                value="n"
@@ -7849,7 +14186,10 @@ Must be one of:
             <b style="line-height: 2;"><code>signed_by_applicant</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <label data-endpoint="PUTapi-prospect-applications--id-" style="display: none">
             <input type="radio" name="signed_by_applicant"
                    value="true"
@@ -7865,7 +14205,11 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
+<<<<<<< HEAD
 <p>Example: <code>true</code></p>
+=======
+<p>Example: <code>false</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -7873,7 +14217,10 @@ Must be one of:
                 <b style="line-height: 2;"><code>documents</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 <br>
 
             </summary>
@@ -7881,7 +14228,10 @@ Must be one of:
                         <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="documents.0.type"                data-endpoint="PUTapi-prospect-applications--id-"
                value="architecto"
@@ -7893,7 +14243,10 @@ Must be one of:
                         <b style="line-height: 2;"><code>path</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="documents.0.path"                data-endpoint="PUTapi-prospect-applications--id-"
                value="architecto"
@@ -7918,14 +14271,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prospect/rentals" \
+=======
+    --get "http://localhost:8000/api/prospect/rentals" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/rentals"
+=======
+    "http://localhost:8000/api/prospect/rentals"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -7933,7 +14294,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8010,7 +14374,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prospect-rentals"
                value="application/json"
@@ -8022,7 +14389,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prospect-rentals"
                value="application/json"
@@ -8045,14 +14415,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prospect/rentals/architecto" \
+=======
+    --get "http://localhost:8000/api/prospect/rentals/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/rentals/architecto"
+=======
+    "http://localhost:8000/api/prospect/rentals/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8060,7 +14438,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8137,7 +14518,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prospect-rentals--id-"
                value="application/json"
@@ -8149,7 +14533,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prospect-rentals--id-"
                value="application/json"
@@ -8162,7 +14549,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-prospect-rentals--id-"
                value="architecto"
@@ -8185,14 +14575,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/prospect/rentals/architecto/pay-initial" \
+=======
+    "http://localhost:8000/api/prospect/rentals/architecto/pay-initial" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prospect/rentals/architecto/pay-initial"
+=======
+    "http://localhost:8000/api/prospect/rentals/architecto/pay-initial"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8200,7 +14598,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -8261,7 +14662,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-prospect-rentals--id--pay-initial"
                value="application/json"
@@ -8273,7 +14677,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-prospect-rentals--id--pay-initial"
                value="application/json"
@@ -8286,7 +14693,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-prospect-rentals--id--pay-initial"
                value="architecto"
@@ -8310,14 +14720,22 @@ GET /api/bailleur/dashboard</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/dashboard" \
+=======
+    --get "http://localhost:8000/api/bailleur/dashboard" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/dashboard"
+=======
+    "http://localhost:8000/api/bailleur/dashboard"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8325,7 +14743,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8402,7 +14823,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-dashboard"
                value="application/json"
@@ -8414,7 +14838,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-dashboard"
                value="application/json"
@@ -8438,14 +14865,22 @@ GET /api/bailleur/properties</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/properties" \
+=======
+    --get "http://localhost:8000/api/bailleur/properties" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/properties"
+=======
+    "http://localhost:8000/api/bailleur/properties"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8453,7 +14888,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8530,7 +14968,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-properties"
                value="application/json"
@@ -8542,7 +14983,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-properties"
                value="application/json"
@@ -8566,14 +15010,22 @@ GET /api/bailleur/profile</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/profile" \
+=======
+    --get "http://localhost:8000/api/bailleur/profile" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/profile"
+=======
+    "http://localhost:8000/api/bailleur/profile"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8581,7 +15033,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8658,7 +15113,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-profile"
                value="application/json"
@@ -8670,7 +15128,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-profile"
                value="application/json"
@@ -8694,7 +15155,11 @@ PUT /api/bailleur/profile</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/bailleur/profile" \
+=======
+    "http://localhost:8000/api/bailleur/profile" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8708,7 +15173,11 @@ PUT /api/bailleur/profile</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/profile"
+=======
+    "http://localhost:8000/api/bailleur/profile"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8784,7 +15253,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-bailleur-profile"
                value="application/json"
@@ -8796,7 +15268,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-bailleur-profile"
                value="application/json"
@@ -8809,7 +15284,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-bailleur-profile"
                value="b"
@@ -8821,7 +15299,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="PUTapi-bailleur-profile"
                value="ngzmiyvdljnikhwa"
@@ -8833,7 +15314,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="PUTapi-bailleur-profile"
                value="y"
@@ -8845,7 +15329,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>bio</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="bio"                data-endpoint="PUTapi-bailleur-profile"
                value="k"
@@ -8868,14 +15355,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/visits" \
+=======
+    --get "http://localhost:8000/api/bailleur/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/visits"
+=======
+    "http://localhost:8000/api/bailleur/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -8883,7 +15378,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -8960,7 +15458,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-visits"
                value="application/json"
@@ -8972,7 +15473,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-visits"
                value="application/json"
@@ -8995,14 +15499,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/interventions" \
+=======
+    --get "http://localhost:8000/api/bailleur/interventions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/interventions"
+=======
+    "http://localhost:8000/api/bailleur/interventions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9010,7 +15522,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -9087,7 +15602,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-interventions"
                value="application/json"
@@ -9099,7 +15617,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-interventions"
                value="application/json"
@@ -9122,18 +15643,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/bailleur/interventions/architecto/status" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"status\": \"cancelled\"
+=======
+    "http://localhost:8000/api/bailleur/interventions/architecto/status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status\": \"in_progress\"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/interventions/architecto/status"
+=======
+    "http://localhost:8000/api/bailleur/interventions/architecto/status"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9142,7 +15675,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "status": "cancelled"
+=======
+    "status": "in_progress"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 };
 
 fetch(url, {
@@ -9206,7 +15743,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-bailleur-interventions--id--status"
                value="application/json"
@@ -9218,7 +15758,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-bailleur-interventions--id--status"
                value="application/json"
@@ -9231,7 +15774,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-bailleur-interventions--id--status"
                value="architecto"
@@ -9244,6 +15790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-bailleur-interventions--id--status"
@@ -9251,6 +15798,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>cancelled</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-bailleur-interventions--id--status"
+               value="in_progress"
+               data-component="body">
+    <br>
+<p>Example: <code>in_progress</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>in_progress</code></li> <li><code>completed</code></li> <li><code>cancelled</code></li></ul>
         </div>
@@ -9270,14 +15825,22 @@ GET /api/bailleur/finances</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/finances" \
+=======
+    --get "http://localhost:8000/api/bailleur/finances" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/finances"
+=======
+    "http://localhost:8000/api/bailleur/finances"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9285,7 +15848,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -9362,7 +15928,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-finances"
                value="application/json"
@@ -9374,7 +15943,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-finances"
                value="application/json"
@@ -9398,7 +15970,11 @@ POST /api/bailleur/rentals</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/bailleur/rentals" \
+=======
+    "http://localhost:8000/api/bailleur/rentals" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -9407,7 +15983,11 @@ POST /api/bailleur/rentals</h2>
     \"tenant_email\": \"ashly64@example.com\",
     \"tenant_phone\": \"architecto\",
     \"rent\": 4326.41688,
+<<<<<<< HEAD
     \"start_date\": \"2026-03-27T10:54:13\",
+=======
+    \"start_date\": \"2026-03-31T16:07:39\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"caution_months\": 16,
     \"advance_months\": 16
 }"
@@ -9416,7 +15996,11 @@ POST /api/bailleur/rentals</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/rentals"
+=======
+    "http://localhost:8000/api/bailleur/rentals"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9430,7 +16014,11 @@ let body = {
     "tenant_email": "ashly64@example.com",
     "tenant_phone": "architecto",
     "rent": 4326.41688,
+<<<<<<< HEAD
     "start_date": "2026-03-27T10:54:13",
+=======
+    "start_date": "2026-03-31T16:07:39",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "caution_months": 16,
     "advance_months": 16
 };
@@ -9496,7 +16084,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-bailleur-rentals"
                value="application/json"
@@ -9508,7 +16099,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-bailleur-rentals"
                value="application/json"
@@ -9521,7 +16115,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-bailleur-rentals"
                value="architecto"
@@ -9533,7 +16130,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>tenant_name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="tenant_name"                data-endpoint="POSTapi-bailleur-rentals"
                value="n"
@@ -9545,7 +16145,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>tenant_email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="tenant_email"                data-endpoint="POSTapi-bailleur-rentals"
                value="ashly64@example.com"
@@ -9557,7 +16160,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>tenant_phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="tenant_phone"                data-endpoint="POSTapi-bailleur-rentals"
                value="architecto"
@@ -9569,7 +16175,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>rent</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="rent"                data-endpoint="POSTapi-bailleur-rentals"
                value="4326.41688"
@@ -9581,6 +16190,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-bailleur-rentals"
@@ -9588,12 +16198,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Example: <code>2026-03-27T10:54:13</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTapi-bailleur-rentals"
+               value="2026-03-31T16:07:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2026-03-31T16:07:39</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>caution_months</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="caution_months"                data-endpoint="POSTapi-bailleur-rentals"
                value="16"
@@ -9605,7 +16226,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>advance_months</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="advance_months"                data-endpoint="POSTapi-bailleur-rentals"
                value="16"
@@ -9629,14 +16253,22 @@ GET /api/bailleur/properties/{id}/rental-status</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/properties/1/rental-status" \
+=======
+    --get "http://localhost:8000/api/bailleur/properties/1/rental-status" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/properties/1/rental-status"
+=======
+    "http://localhost:8000/api/bailleur/properties/1/rental-status"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9644,7 +16276,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -9721,7 +16356,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-properties--id--rental-status"
                value="application/json"
@@ -9733,7 +16371,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-properties--id--rental-status"
                value="application/json"
@@ -9746,7 +16387,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-bailleur-properties--id--rental-status"
                value="1"
@@ -9770,14 +16414,22 @@ GET /api/bailleur/publication-requests</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/bailleur/publication-requests" \
+=======
+    --get "http://localhost:8000/api/bailleur/publication-requests" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/publication-requests"
+=======
+    "http://localhost:8000/api/bailleur/publication-requests"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9785,7 +16437,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -9862,7 +16517,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-bailleur-publication-requests"
                value="application/json"
@@ -9874,7 +16532,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-bailleur-publication-requests"
                value="application/json"
@@ -9898,7 +16559,11 @@ POST /api/bailleur/publication-requests</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/bailleur/publication-requests" \
+=======
+    "http://localhost:8000/api/bailleur/publication-requests" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "title=b"\
@@ -9911,12 +16576,20 @@ POST /api/bailleur/publication-requests</h2>
     --form "bedrooms=16"\
     --form "bathrooms=16"\
     --form "area=4326.41688"\
+<<<<<<< HEAD
     --form "documents[]=@C:\Users\DELL\AppData\Local\Temp\php40C2.tmp" </code></pre></div>
+=======
+    --form "documents[]=@C:\Users\Admin\AppData\Local\Temp\phpA6B1.tmp" </code></pre></div>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/bailleur/publication-requests"
+=======
+    "http://localhost:8000/api/bailleur/publication-requests"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -9998,7 +16671,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="multipart/form-data"
@@ -10010,7 +16686,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="application/json"
@@ -10023,7 +16702,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="b"
@@ -10035,7 +16717,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="sale"
@@ -10049,7 +16734,10 @@ Must be one of:
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="architecto"
@@ -10061,7 +16749,10 @@ Must be one of:
             <b style="line-height: 2;"><code>price_estimate</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="price_estimate"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="4326.41688"
@@ -10073,7 +16764,10 @@ Must be one of:
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="architecto"
@@ -10085,7 +16779,10 @@ Must be one of:
             <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="location"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="architecto"
@@ -10097,7 +16794,10 @@ Must be one of:
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="Eius et animi quos velit et."
@@ -10109,7 +16809,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bedrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bedrooms"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="16"
@@ -10121,7 +16824,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bathrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bathrooms"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="16"
@@ -10133,7 +16839,10 @@ Must be one of:
             <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="area"                data-endpoint="POSTapi-bailleur-publication-requests"
                value="4326.41688"
@@ -10145,7 +16854,10 @@ Must be one of:
             <b style="line-height: 2;"><code>documents</code></b>&nbsp;&nbsp;
 <small>file[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="file" style="display: none"
                               name="documents[0]"                data-endpoint="POSTapi-bailleur-publication-requests"
                data-component="body">
@@ -10157,6 +16869,666 @@ Must be one of:
         </div>
         </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-PUTapi-bailleur-publication-requests--id-">Mettre à jour une demande de publication existante
+PUT /api/bailleur/publication-requests/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-bailleur-publication-requests--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost:8000/api/bailleur/publication-requests/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"title\": \"b\",
+    \"type\": \"sale\",
+    \"category\": \"architecto\",
+    \"price_estimate\": 4326.41688,
+    \"city\": \"architecto\",
+    \"location\": \"architecto\",
+    \"description\": \"Eius et animi quos velit et.\",
+    \"bedrooms\": 16,
+    \"bathrooms\": 16,
+    \"area\": 4326.41688
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/bailleur/publication-requests/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "b",
+    "type": "sale",
+    "category": "architecto",
+    "price_estimate": 4326.41688,
+    "city": "architecto",
+    "location": "architecto",
+    "description": "Eius et animi quos velit et.",
+    "bedrooms": 16,
+    "bathrooms": 16,
+    "area": 4326.41688
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-bailleur-publication-requests--id-">
+</span>
+<span id="execution-results-PUTapi-bailleur-publication-requests--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-bailleur-publication-requests--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-bailleur-publication-requests--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-bailleur-publication-requests--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-bailleur-publication-requests--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-bailleur-publication-requests--id-" data-method="PUT"
+      data-path="api/bailleur/publication-requests/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-bailleur-publication-requests--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-bailleur-publication-requests--id-"
+                    onclick="tryItOut('PUTapi-bailleur-publication-requests--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-bailleur-publication-requests--id-"
+                    onclick="cancelTryOut('PUTapi-bailleur-publication-requests--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-bailleur-publication-requests--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/bailleur/publication-requests/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the publication request. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="b"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="sale"
+               data-component="body">
+    <br>
+<p>Example: <code>sale</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>rent</code></li> <li><code>sale</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="category"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>price_estimate</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="price_estimate"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="location"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="Eius et animi quos velit et."
+               data-component="body">
+    <br>
+<p>Example: <code>Eius et animi quos velit et.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>bedrooms</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="bedrooms"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="16"
+               data-component="body">
+    <br>
+<p>Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>bathrooms</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="bathrooms"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="16"
+               data-component="body">
+    <br>
+<p>Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="area"                data-endpoint="PUTapi-bailleur-publication-requests--id-"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-bailleur-publication-requests--id-">Supprimer une demande de publication
+DELETE /api/bailleur/publication-requests/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-bailleur-publication-requests--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/bailleur/publication-requests/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/bailleur/publication-requests/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-bailleur-publication-requests--id-">
+</span>
+<span id="execution-results-DELETEapi-bailleur-publication-requests--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-bailleur-publication-requests--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-bailleur-publication-requests--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-bailleur-publication-requests--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-bailleur-publication-requests--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-bailleur-publication-requests--id-" data-method="DELETE"
+      data-path="api/bailleur/publication-requests/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-bailleur-publication-requests--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-bailleur-publication-requests--id-"
+                    onclick="tryItOut('DELETEapi-bailleur-publication-requests--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-bailleur-publication-requests--id-"
+                    onclick="cancelTryOut('DELETEapi-bailleur-publication-requests--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-bailleur-publication-requests--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/bailleur/publication-requests/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-bailleur-publication-requests--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-bailleur-publication-requests--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-bailleur-publication-requests--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the publication request. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-bailleur-publication-requests--id--confirm-audit">Confirmer la présence à l&#039;audit terrain
+POST /api/bailleur/publication-requests/{id}/confirm-audit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-bailleur-publication-requests--id--confirm-audit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/bailleur/publication-requests/architecto/confirm-audit" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/bailleur/publication-requests/architecto/confirm-audit"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-bailleur-publication-requests--id--confirm-audit">
+</span>
+<span id="execution-results-POSTapi-bailleur-publication-requests--id--confirm-audit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-bailleur-publication-requests--id--confirm-audit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-bailleur-publication-requests--id--confirm-audit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-bailleur-publication-requests--id--confirm-audit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-bailleur-publication-requests--id--confirm-audit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-bailleur-publication-requests--id--confirm-audit" data-method="POST"
+      data-path="api/bailleur/publication-requests/{id}/confirm-audit"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-bailleur-publication-requests--id--confirm-audit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-bailleur-publication-requests--id--confirm-audit"
+                    onclick="tryItOut('POSTapi-bailleur-publication-requests--id--confirm-audit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-bailleur-publication-requests--id--confirm-audit"
+                    onclick="cancelTryOut('POSTapi-bailleur-publication-requests--id--confirm-audit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-bailleur-publication-requests--id--confirm-audit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/bailleur/publication-requests/{id}/confirm-audit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-bailleur-publication-requests--id--confirm-audit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-bailleur-publication-requests--id--confirm-audit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-bailleur-publication-requests--id--confirm-audit"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the publication request. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-bailleur-publication-requests--id--decline-audit">POST api/bailleur/publication-requests/{id}/decline-audit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-bailleur-publication-requests--id--decline-audit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/bailleur/publication-requests/architecto/decline-audit" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"suggested_at\": \"2052-04-24\",
+    \"notes\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/bailleur/publication-requests/architecto/decline-audit"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "suggested_at": "2052-04-24",
+    "notes": "architecto"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-bailleur-publication-requests--id--decline-audit">
+</span>
+<span id="execution-results-POSTapi-bailleur-publication-requests--id--decline-audit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-bailleur-publication-requests--id--decline-audit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-bailleur-publication-requests--id--decline-audit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-bailleur-publication-requests--id--decline-audit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-bailleur-publication-requests--id--decline-audit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-bailleur-publication-requests--id--decline-audit" data-method="POST"
+      data-path="api/bailleur/publication-requests/{id}/decline-audit"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-bailleur-publication-requests--id--decline-audit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-bailleur-publication-requests--id--decline-audit"
+                    onclick="tryItOut('POSTapi-bailleur-publication-requests--id--decline-audit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-bailleur-publication-requests--id--decline-audit"
+                    onclick="cancelTryOut('POSTapi-bailleur-publication-requests--id--decline-audit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-bailleur-publication-requests--id--decline-audit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/bailleur/publication-requests/{id}/decline-audit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-bailleur-publication-requests--id--decline-audit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-bailleur-publication-requests--id--decline-audit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-bailleur-publication-requests--id--decline-audit"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the publication request. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>suggested_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="suggested_at"                data-endpoint="POSTapi-bailleur-publication-requests--id--decline-audit"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTapi-bailleur-publication-requests--id--decline-audit"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-GETapi-tenant-dashboard">Dashboard Statistics</h2>
 
 <p>
@@ -10170,14 +17542,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/dashboard" \
+=======
+    --get "http://localhost:8000/api/tenant/dashboard" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/dashboard"
+=======
+    "http://localhost:8000/api/tenant/dashboard"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10185,7 +17565,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -10262,7 +17645,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-dashboard"
                value="application/json"
@@ -10274,7 +17660,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-dashboard"
                value="application/json"
@@ -10297,14 +17686,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/rentals" \
+=======
+    --get "http://localhost:8000/api/tenant/rentals" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/rentals"
+=======
+    "http://localhost:8000/api/tenant/rentals"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10312,7 +17709,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -10389,7 +17789,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-rentals"
                value="application/json"
@@ -10401,7 +17804,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-rentals"
                value="application/json"
@@ -10424,14 +17830,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/payments" \
+=======
+    --get "http://localhost:8000/api/tenant/payments" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/payments"
+=======
+    "http://localhost:8000/api/tenant/payments"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10439,7 +17853,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -10516,7 +17933,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-payments"
                value="application/json"
@@ -10528,7 +17948,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-payments"
                value="application/json"
@@ -10551,14 +17974,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/interventions" \
+=======
+    --get "http://localhost:8000/api/tenant/interventions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/interventions"
+=======
+    "http://localhost:8000/api/tenant/interventions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10566,7 +17997,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -10643,7 +18077,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-interventions"
                value="application/json"
@@ -10655,7 +18092,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-interventions"
                value="application/json"
@@ -10678,14 +18118,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/favorites" \
+=======
+    --get "http://localhost:8000/api/tenant/favorites" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/favorites"
+=======
+    "http://localhost:8000/api/tenant/favorites"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10693,7 +18141,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -10770,7 +18221,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-favorites"
                value="application/json"
@@ -10782,7 +18236,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-favorites"
                value="application/json"
@@ -10805,7 +18262,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/tenant/favorites/toggle" \
+=======
+    "http://localhost:8000/api/tenant/favorites/toggle" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -10816,7 +18277,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/favorites/toggle"
+=======
+    "http://localhost:8000/api/tenant/favorites/toggle"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10889,7 +18354,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-tenant-favorites-toggle"
                value="application/json"
@@ -10901,7 +18369,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-tenant-favorites-toggle"
                value="application/json"
@@ -10914,7 +18385,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-tenant-favorites-toggle"
                value="architecto"
@@ -10937,13 +18411,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/tenant/interventions" \
+=======
+    "http://localhost:8000/api/tenant/interventions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"property_id\": \"architecto\",
     \"service_id\": \"architecto\",
+<<<<<<< HEAD
     \"scheduled_at\": \"2052-04-19\",
+=======
+    \"scheduled_at\": \"2052-04-24\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"notes\": \"architecto\"
 }"
 </code></pre></div>
@@ -10951,7 +18433,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/interventions"
+=======
+    "http://localhost:8000/api/tenant/interventions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -10962,7 +18448,11 @@ const headers = {
 let body = {
     "property_id": "architecto",
     "service_id": "architecto",
+<<<<<<< HEAD
     "scheduled_at": "2052-04-19",
+=======
+    "scheduled_at": "2052-04-24",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "notes": "architecto"
 };
 
@@ -11027,7 +18517,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-tenant-interventions"
                value="application/json"
@@ -11039,7 +18532,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-tenant-interventions"
                value="application/json"
@@ -11052,7 +18548,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-tenant-interventions"
                value="architecto"
@@ -11064,7 +18563,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>service_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="service_id"                data-endpoint="POSTapi-tenant-interventions"
                value="architecto"
@@ -11076,6 +18578,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>scheduled_at</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-tenant-interventions"
@@ -11083,12 +18586,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="scheduled_at"                data-endpoint="POSTapi-tenant-interventions"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-tenant-interventions"
                value="architecto"
@@ -11111,14 +18625,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/tenant/profile" \
+=======
+    --get "http://localhost:8000/api/tenant/profile" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/profile"
+=======
+    "http://localhost:8000/api/tenant/profile"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11126,7 +18648,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -11203,7 +18728,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-tenant-profile"
                value="application/json"
@@ -11215,7 +18743,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-tenant-profile"
                value="application/json"
@@ -11238,7 +18769,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/tenant/profile" \
+=======
+    "http://localhost:8000/api/tenant/profile" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -11251,7 +18786,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/profile"
+=======
+    "http://localhost:8000/api/tenant/profile"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11326,7 +18865,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-tenant-profile"
                value="application/json"
@@ -11338,7 +18880,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-tenant-profile"
                value="application/json"
@@ -11351,7 +18896,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-tenant-profile"
                value="b"
@@ -11363,7 +18911,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="PUTapi-tenant-profile"
                value="ngzmiyvdljnikhwa"
@@ -11375,7 +18926,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="PUTapi-tenant-profile"
                value="y"
@@ -11398,12 +18952,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/tenant/book-visit" \
+=======
+    "http://localhost:8000/api/tenant/book-visit" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"property_id\": \"architecto\",
+<<<<<<< HEAD
     \"scheduled_at\": \"2052-04-19\",
+=======
+    \"scheduled_at\": \"2052-04-24\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"notes\": \"architecto\"
 }"
 </code></pre></div>
@@ -11411,7 +18973,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/book-visit"
+=======
+    "http://localhost:8000/api/tenant/book-visit"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11421,7 +18987,11 @@ const headers = {
 
 let body = {
     "property_id": "architecto",
+<<<<<<< HEAD
     "scheduled_at": "2052-04-19",
+=======
+    "scheduled_at": "2052-04-24",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "notes": "architecto"
 };
 
@@ -11486,7 +19056,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-tenant-book-visit"
                value="application/json"
@@ -11498,7 +19071,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-tenant-book-visit"
                value="application/json"
@@ -11511,7 +19087,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-tenant-book-visit"
                value="architecto"
@@ -11523,6 +19102,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>scheduled_at</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-tenant-book-visit"
@@ -11530,12 +19110,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="scheduled_at"                data-endpoint="POSTapi-tenant-book-visit"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-tenant-book-visit"
                value="architecto"
@@ -11558,12 +19149,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/tenant/apply" \
+=======
+    "http://localhost:8000/api/tenant/apply" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"property_id\": \"architecto\",
+<<<<<<< HEAD
     \"start_date\": \"2052-04-19\",
+=======
+    \"start_date\": \"2052-04-23\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"duration_months\": 22,
     \"notes\": \"architecto\"
 }"
@@ -11572,7 +19171,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/tenant/apply"
+=======
+    "http://localhost:8000/api/tenant/apply"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11582,7 +19185,11 @@ const headers = {
 
 let body = {
     "property_id": "architecto",
+<<<<<<< HEAD
     "start_date": "2052-04-19",
+=======
+    "start_date": "2052-04-23",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "duration_months": 22,
     "notes": "architecto"
 };
@@ -11648,7 +19255,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-tenant-apply"
                value="application/json"
@@ -11660,7 +19270,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-tenant-apply"
                value="application/json"
@@ -11673,7 +19286,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="property_id"                data-endpoint="POSTapi-tenant-apply"
                value="architecto"
@@ -11685,6 +19301,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-tenant-apply"
@@ -11692,12 +19309,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>today</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTapi-tenant-apply"
+               value="2052-04-23"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>today</code>. Example: <code>2052-04-23</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>duration_months</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="duration_months"                data-endpoint="POSTapi-tenant-apply"
                value="22"
@@ -11709,7 +19337,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-tenant-apply"
                value="architecto"
@@ -11732,14 +19363,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/dashboard" \
+=======
+    --get "http://localhost:8000/api/agent/dashboard" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/dashboard"
+=======
+    "http://localhost:8000/api/agent/dashboard"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11747,7 +19386,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -11824,7 +19466,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-dashboard"
                value="application/json"
@@ -11836,7 +19481,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-dashboard"
                value="application/json"
@@ -11859,14 +19507,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/properties" \
+=======
+    --get "http://localhost:8000/api/agent/properties" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/properties"
+=======
+    "http://localhost:8000/api/agent/properties"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -11874,7 +19530,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -11951,7 +19610,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-properties"
                value="application/json"
@@ -11963,7 +19625,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-properties"
                value="application/json"
@@ -11986,14 +19651,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/clients" \
+=======
+    --get "http://localhost:8000/api/agent/clients" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/clients"
+=======
+    "http://localhost:8000/api/agent/clients"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12001,7 +19674,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12078,7 +19754,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-clients"
                value="application/json"
@@ -12090,7 +19769,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-clients"
                value="application/json"
@@ -12113,14 +19795,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/missions" \
+=======
+    --get "http://localhost:8000/api/agent/missions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/missions"
+=======
+    "http://localhost:8000/api/agent/missions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12128,7 +19818,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12205,7 +19898,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-missions"
                value="application/json"
@@ -12217,7 +19913,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-missions"
                value="application/json"
@@ -12227,7 +19926,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETapi-agent-agenda">Agenda de l&#039;agent (visites confirmées à venir)</h2>
+=======
+                    <h2 id="endpoints-GETapi-agent-agenda">Agenda de l&#039;agent : liste des visites confirmées ou prévues</h2>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <p>
 </p>
@@ -12240,14 +19943,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/agenda" \
+=======
+    --get "http://localhost:8000/api/agent/agenda" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/agenda"
+=======
+    "http://localhost:8000/api/agent/agenda"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12255,7 +19966,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12332,7 +20046,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-agenda"
                value="application/json"
@@ -12344,7 +20061,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-agenda"
                value="application/json"
@@ -12354,6 +20074,193 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-POSTapi-agent-agenda-availabilities">Mettre à jour les disponibilités (horaires de travail) de l&#039;agent.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-agent-agenda-availabilities">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/agent/agenda/availabilities" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"availabilities\": [
+        {
+            \"off\": false,
+            \"start\": \"16:07\",
+            \"end\": \"16:07\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/agent/agenda/availabilities"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "availabilities": [
+        {
+            "off": false,
+            "start": "16:07",
+            "end": "16:07"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-agent-agenda-availabilities">
+</span>
+<span id="execution-results-POSTapi-agent-agenda-availabilities" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-agent-agenda-availabilities"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-agent-agenda-availabilities"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-agent-agenda-availabilities" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-agent-agenda-availabilities">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-agent-agenda-availabilities" data-method="POST"
+      data-path="api/agent/agenda/availabilities"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-agent-agenda-availabilities', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-agent-agenda-availabilities"
+                    onclick="tryItOut('POSTapi-agent-agenda-availabilities');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-agent-agenda-availabilities"
+                    onclick="cancelTryOut('POSTapi-agent-agenda-availabilities');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-agent-agenda-availabilities"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/agent/agenda/availabilities</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-agent-agenda-availabilities"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-agent-agenda-availabilities"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>availabilities</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>off</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-agent-agenda-availabilities" style="display: none">
+            <input type="radio" name="availabilities.0.off"
+                   value="true"
+                   data-endpoint="POSTapi-agent-agenda-availabilities"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-agent-agenda-availabilities" style="display: none">
+            <input type="radio" name="availabilities.0.off"
+                   value="false"
+                   data-endpoint="POSTapi-agent-agenda-availabilities"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>start</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="availabilities.0.start"                data-endpoint="POSTapi-agent-agenda-availabilities"
+               value="16:07"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>16:07</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>end</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="availabilities.0.end"                data-endpoint="POSTapi-agent-agenda-availabilities"
+               value="16:07"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>H:i</code>. Example: <code>16:07</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-GETapi-agent-visits">GET api/agent/visits</h2>
 
 <p>
@@ -12367,14 +20274,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/visits" \
+=======
+    --get "http://localhost:8000/api/agent/visits" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/visits"
+=======
+    "http://localhost:8000/api/agent/visits"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12382,7 +20297,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12459,7 +20377,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-visits"
                value="application/json"
@@ -12471,7 +20392,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-visits"
                value="application/json"
@@ -12486,7 +20410,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
+<<<<<<< HEAD
 <p>Si l'utilisateur a aussi confirmé → visite "completed" → dossier débloqué.</p>
+=======
+<p>Si l'utilisateur a aussi confirmé → visite &quot;completed&quot; → dossier débloqué.</p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <span id="example-requests-POSTapi-agent-visits--id--confirm">
 <blockquote>Example request:</blockquote>
@@ -12494,14 +20422,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/visits/architecto/confirm" \
+=======
+    "http://localhost:8000/api/agent/visits/2/confirm" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/visits/architecto/confirm"
+=======
+    "http://localhost:8000/api/agent/visits/2/confirm"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12509,7 +20445,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -12570,7 +20509,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-visits--id--confirm"
                value="application/json"
@@ -12582,7 +20524,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-visits--id--confirm"
                value="application/json"
@@ -12593,6 +20538,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -12602,6 +20548,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-agent-visits--id--confirm"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -12618,14 +20574,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/visits/architecto/cancel" \
+=======
+    "http://localhost:8000/api/agent/visits/2/cancel" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/visits/architecto/cancel"
+=======
+    "http://localhost:8000/api/agent/visits/2/cancel"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12633,7 +20597,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -12694,7 +20661,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-visits--id--cancel"
                value="application/json"
@@ -12706,7 +20676,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-visits--id--cancel"
                value="application/json"
@@ -12717,6 +20690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<<<<<<< HEAD
 <small>string</small>&nbsp;
  &nbsp;
  &nbsp;
@@ -12726,6 +20700,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of the visit. Example: <code>architecto</code></p>
+=======
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-agent-visits--id--cancel"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the visit. Example: <code>2</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             </div>
                     </form>
 
@@ -12742,14 +20726,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/applications" \
+=======
+    --get "http://localhost:8000/api/agent/applications" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/applications"
+=======
+    "http://localhost:8000/api/agent/applications"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12757,7 +20749,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12834,7 +20829,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-applications"
                value="application/json"
@@ -12846,7 +20844,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-applications"
                value="application/json"
@@ -12869,14 +20870,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/applications/architecto" \
+=======
+    --get "http://localhost:8000/api/agent/applications/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/applications/architecto"
+=======
+    "http://localhost:8000/api/agent/applications/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -12884,7 +20893,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -12961,7 +20973,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-applications--id-"
                value="application/json"
@@ -12973,7 +20988,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-applications--id-"
                value="application/json"
@@ -12986,7 +21004,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-agent-applications--id-"
                value="architecto"
@@ -13009,12 +21030,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/applications/architecto/validate" \
+=======
+    "http://localhost:8000/api/agent/applications/architecto/validate" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"advance_months\": 4,
+<<<<<<< HEAD
     \"start_date\": \"2052-04-19\",
+=======
+    \"start_date\": \"2052-04-23\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"notes\": \"architecto\"
 }"
 </code></pre></div>
@@ -13022,7 +21051,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/applications/architecto/validate"
+=======
+    "http://localhost:8000/api/agent/applications/architecto/validate"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13032,7 +21065,11 @@ const headers = {
 
 let body = {
     "advance_months": 4,
+<<<<<<< HEAD
     "start_date": "2052-04-19",
+=======
+    "start_date": "2052-04-23",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "notes": "architecto"
 };
 
@@ -13097,7 +21134,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-applications--id--validate"
                value="application/json"
@@ -13109,7 +21149,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-applications--id--validate"
                value="application/json"
@@ -13122,7 +21165,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-agent-applications--id--validate"
                value="architecto"
@@ -13135,7 +21181,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>advance_months</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="advance_months"                data-endpoint="POSTapi-agent-applications--id--validate"
                value="4"
@@ -13147,6 +21196,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="start_date"                data-endpoint="POSTapi-agent-applications--id--validate"
@@ -13154,12 +21204,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>today</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTapi-agent-applications--id--validate"
+               value="2052-04-23"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>today</code>. Example: <code>2052-04-23</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-agent-applications--id--validate"
                value="architecto"
@@ -13182,7 +21243,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/applications/architecto/reject" \
+=======
+    "http://localhost:8000/api/agent/applications/architecto/reject" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -13193,7 +21258,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/applications/architecto/reject"
+=======
+    "http://localhost:8000/api/agent/applications/architecto/reject"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13266,7 +21335,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-applications--id--reject"
                value="application/json"
@@ -13278,7 +21350,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-applications--id--reject"
                value="application/json"
@@ -13291,7 +21366,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-agent-applications--id--reject"
                value="architecto"
@@ -13304,7 +21382,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="reason"                data-endpoint="POSTapi-agent-applications--id--reject"
                value="b"
@@ -13327,14 +21408,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/rentals" \
+=======
+    --get "http://localhost:8000/api/agent/rentals" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/rentals"
+=======
+    "http://localhost:8000/api/agent/rentals"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13342,7 +21431,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -13419,7 +21511,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-rentals"
                value="application/json"
@@ -13431,7 +21526,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-rentals"
                value="application/json"
@@ -13446,7 +21544,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
+<<<<<<< HEAD
 <p>C'est ici que le rôle "locataire" est attribué.</p>
+=======
+<p>C'est ici que le rôle &quot;locataire&quot; est attribué.</p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <span id="example-requests-POSTapi-agent-rentals--id--confirm-payment">
 <blockquote>Example request:</blockquote>
@@ -13454,11 +21556,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/rentals/architecto/confirm-payment" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"payment_method\": \"momo\",
+=======
+    "http://localhost:8000/api/agent/rentals/architecto/confirm-payment" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"payment_method\": \"cash\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"notes\": \"architecto\"
 }"
 </code></pre></div>
@@ -13466,7 +21576,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/rentals/architecto/confirm-payment"
+=======
+    "http://localhost:8000/api/agent/rentals/architecto/confirm-payment"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13475,7 +21589,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "payment_method": "momo",
+=======
+    "payment_method": "cash",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "notes": "architecto"
 };
 
@@ -13540,7 +21658,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
                value="application/json"
@@ -13552,7 +21673,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
                value="application/json"
@@ -13565,7 +21689,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
                value="architecto"
@@ -13578,6 +21705,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>payment_method</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="payment_method"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
@@ -13585,6 +21713,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>momo</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="payment_method"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
+               value="cash"
+               data-component="body">
+    <br>
+<p>Example: <code>cash</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>momo</code></li> <li><code>om</code></li> <li><code>card</code></li> <li><code>cash</code></li></ul>
         </div>
@@ -13592,7 +21728,10 @@ Must be one of:
             <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="notes"                data-endpoint="POSTapi-agent-rentals--id--confirm-payment"
                value="architecto"
@@ -13615,14 +21754,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/formations" \
+=======
+    --get "http://localhost:8000/api/agent/formations" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/formations"
+=======
+    "http://localhost:8000/api/agent/formations"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13630,7 +21777,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -13707,7 +21857,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-formations"
                value="application/json"
@@ -13719,7 +21872,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-formations"
                value="application/json"
@@ -13742,14 +21898,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/publication-missions" \
+=======
+    --get "http://localhost:8000/api/agent/publication-missions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions"
+=======
+    "http://localhost:8000/api/agent/publication-missions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13757,7 +21921,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -13834,7 +22001,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-publication-missions"
                value="application/json"
@@ -13846,7 +22016,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-publication-missions"
                value="application/json"
@@ -13869,14 +22042,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/agent/publication-missions/architecto" \
+=======
+    --get "http://localhost:8000/api/agent/publication-missions/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions/architecto"
+=======
+    "http://localhost:8000/api/agent/publication-missions/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -13884,7 +22065,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -13961,7 +22145,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-agent-publication-missions--id-"
                value="application/json"
@@ -13973,7 +22160,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-agent-publication-missions--id-"
                value="application/json"
@@ -13986,7 +22176,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-agent-publication-missions--id-"
                value="architecto"
@@ -14009,11 +22202,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions/architecto/schedule" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"scheduled_at\": \"2052-04-19\",
+=======
+    "http://localhost:8000/api/agent/publication-missions/architecto/schedule" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"scheduled_at\": \"2052-04-24\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"agent_notes\": \"n\"
 }"
 </code></pre></div>
@@ -14021,7 +22222,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions/architecto/schedule"
+=======
+    "http://localhost:8000/api/agent/publication-missions/architecto/schedule"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14030,7 +22235,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "scheduled_at": "2052-04-19",
+=======
+    "scheduled_at": "2052-04-24",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "agent_notes": "n"
 };
 
@@ -14095,7 +22304,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
                value="application/json"
@@ -14107,7 +22319,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
                value="application/json"
@@ -14120,7 +22335,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
                value="architecto"
@@ -14133,6 +22351,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>scheduled_at</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="scheduled_at"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
@@ -14140,12 +22359,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-19</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="scheduled_at"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
+               value="2052-04-24"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>now</code>. Example: <code>2052-04-24</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>agent_notes</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="agent_notes"                data-endpoint="POSTapi-agent-publication-missions--id--schedule"
                value="n"
@@ -14169,12 +22399,20 @@ POST /api/agent/publication-missions/{id}/complete</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions/architecto/complete" \
+=======
+    "http://localhost:8000/api/agent/publication-missions/architecto/complete" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "title=b"\
     --form "category=architecto"\
+<<<<<<< HEAD
     --form "type=rent"\
+=======
+    --form "type=sale"\
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --form "price=4326.41688"\
     --form "city=architecto"\
     --form "location=architecto"\
@@ -14184,12 +22422,20 @@ POST /api/agent/publication-missions/{id}/complete</h2>
     --form "area=4326.41688"\
     --form "etat=architecto"\
     --form "amenities=architecto"\
+<<<<<<< HEAD
     --form "images[]=@C:\Users\DELL\AppData\Local\Temp\php442E.tmp" </code></pre></div>
+=======
+    --form "images[]=@C:\Users\Admin\AppData\Local\Temp\phpA7FB.tmp" </code></pre></div>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/agent/publication-missions/architecto/complete"
+=======
+    "http://localhost:8000/api/agent/publication-missions/architecto/complete"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14200,7 +22446,11 @@ const headers = {
 const body = new FormData();
 body.append('title', 'b');
 body.append('category', 'architecto');
+<<<<<<< HEAD
 body.append('type', 'rent');
+=======
+body.append('type', 'sale');
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 body.append('price', '4326.41688');
 body.append('city', 'architecto');
 body.append('location', 'architecto');
@@ -14273,7 +22523,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="multipart/form-data"
@@ -14285,7 +22538,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="application/json"
@@ -14298,7 +22554,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14311,7 +22570,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="b"
@@ -14323,7 +22585,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14335,6 +22600,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="type"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
@@ -14342,6 +22608,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>rent</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
+               value="sale"
+               data-component="body">
+    <br>
+<p>Example: <code>sale</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>rent</code></li> <li><code>sale</code></li></ul>
         </div>
@@ -14349,7 +22623,10 @@ Must be one of:
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="price"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="4326.41688"
@@ -14361,7 +22638,10 @@ Must be one of:
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14373,7 +22653,10 @@ Must be one of:
             <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="location"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14385,7 +22668,10 @@ Must be one of:
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="Eius et animi quos velit et."
@@ -14397,7 +22683,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bedrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bedrooms"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="16"
@@ -14409,7 +22698,10 @@ Must be one of:
             <b style="line-height: 2;"><code>bathrooms</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="bathrooms"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="16"
@@ -14421,7 +22713,10 @@ Must be one of:
             <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="area"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="4326.41688"
@@ -14433,7 +22728,10 @@ Must be one of:
             <b style="line-height: 2;"><code>etat</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="etat"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14445,7 +22743,10 @@ Must be one of:
             <b style="line-height: 2;"><code>amenities</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="amenities"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                value="architecto"
@@ -14457,7 +22758,10 @@ Must be one of:
             <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
 <small>file[]</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="file" style="display: none"
                               name="images[0]"                data-endpoint="POSTapi-agent-publication-missions--id--complete"
                data-component="body">
@@ -14482,14 +22786,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/formations" \
+=======
+    --get "http://localhost:8000/api/formations" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/formations"
+=======
+    "http://localhost:8000/api/formations"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14497,7 +22809,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -14574,7 +22889,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-formations"
                value="application/json"
@@ -14586,7 +22904,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-formations"
                value="application/json"
@@ -14609,14 +22930,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/formations/16" \
+=======
+    --get "http://localhost:8000/api/formations/16" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/formations/16"
+=======
+    "http://localhost:8000/api/formations/16"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14624,7 +22953,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -14701,7 +23033,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-formations--formation_id-"
                value="application/json"
@@ -14713,7 +23048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-formations--formation_id-"
                value="application/json"
@@ -14726,7 +23064,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>formation_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="formation_id"                data-endpoint="GETapi-formations--formation_id-"
                value="16"
@@ -14749,14 +23090,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/formations/16/purchase" \
+=======
+    "http://localhost:8000/api/formations/16/purchase" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/formations/16/purchase"
+=======
+    "http://localhost:8000/api/formations/16/purchase"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14764,7 +23113,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "POST",
     headers,
@@ -14825,7 +23177,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-formations--formation_id--purchase"
                value="application/json"
@@ -14837,7 +23192,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-formations--formation_id--purchase"
                value="application/json"
@@ -14850,7 +23208,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>formation_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="formation_id"                data-endpoint="POSTapi-formations--formation_id--purchase"
                value="16"
@@ -14873,14 +23234,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prestataire/dashboard" \
+=======
+    --get "http://localhost:8000/api/prestataire/dashboard" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prestataire/dashboard"
+=======
+    "http://localhost:8000/api/prestataire/dashboard"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -14888,7 +23257,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -14965,7 +23337,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prestataire-dashboard"
                value="application/json"
@@ -14977,7 +23352,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prestataire-dashboard"
                value="application/json"
@@ -15000,14 +23378,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prestataire/services" \
+=======
+    --get "http://localhost:8000/api/prestataire/services" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prestataire/services"
+=======
+    "http://localhost:8000/api/prestataire/services"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15015,7 +23401,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15092,7 +23481,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prestataire-services"
                value="application/json"
@@ -15104,7 +23496,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prestataire-services"
                value="application/json"
@@ -15127,14 +23522,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prestataire/interventions" \
+=======
+    --get "http://localhost:8000/api/prestataire/interventions" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prestataire/interventions"
+=======
+    "http://localhost:8000/api/prestataire/interventions"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15142,7 +23545,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15219,7 +23625,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prestataire-interventions"
                value="application/json"
@@ -15231,7 +23640,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prestataire-interventions"
                value="application/json"
@@ -15254,14 +23666,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prestataire/agenda" \
+=======
+    --get "http://localhost:8000/api/prestataire/agenda" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prestataire/agenda"
+=======
+    "http://localhost:8000/api/prestataire/agenda"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15269,7 +23689,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15346,7 +23769,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prestataire-agenda"
                value="application/json"
@@ -15358,7 +23784,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prestataire-agenda"
                value="application/json"
@@ -15381,14 +23810,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/prestataire/finances" \
+=======
+    --get "http://localhost:8000/api/prestataire/finances" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/prestataire/finances"
+=======
+    "http://localhost:8000/api/prestataire/finances"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15396,7 +23833,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15473,7 +23913,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-prestataire-finances"
                value="application/json"
@@ -15485,7 +23928,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-prestataire-finances"
                value="application/json"
@@ -15508,14 +23954,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/dashboard" \
+=======
+    --get "http://localhost:8000/api/admin/dashboard" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/dashboard"
+=======
+    "http://localhost:8000/api/admin/dashboard"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15523,7 +23977,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15600,7 +24057,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-dashboard"
                value="application/json"
@@ -15612,7 +24072,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-dashboard"
                value="application/json"
@@ -15635,14 +24098,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/users" \
+=======
+    --get "http://localhost:8000/api/admin/users" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/users"
+=======
+    "http://localhost:8000/api/admin/users"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15650,7 +24121,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -15727,7 +24201,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-users"
                value="application/json"
@@ -15739,7 +24216,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-users"
                value="application/json"
@@ -15762,7 +24242,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/admin/users/1" \
+=======
+    "http://localhost:8000/api/admin/users/1" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -15773,7 +24257,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/users/1"
+=======
+    "http://localhost:8000/api/admin/users/1"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15846,7 +24334,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-users--user_id-"
                value="application/json"
@@ -15858,7 +24349,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-users--user_id-"
                value="application/json"
@@ -15871,7 +24365,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="PUTapi-admin-users--user_id-"
                value="1"
@@ -15884,7 +24381,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-admin-users--user_id-"
                value="inactive"
@@ -15909,14 +24409,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/properties" \
+=======
+    --get "http://localhost:8000/api/admin/properties" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/properties"
+=======
+    "http://localhost:8000/api/admin/properties"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -15924,7 +24432,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16001,7 +24512,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-properties"
                value="application/json"
@@ -16013,7 +24527,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-properties"
                value="application/json"
@@ -16036,18 +24553,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
+<<<<<<< HEAD
     "http://localhost/api/admin/properties/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"status\": \"sold\"
+=======
+    "http://localhost:8000/api/admin/properties/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status\": \"pending\"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/properties/1"
+=======
+    "http://localhost:8000/api/admin/properties/1"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16056,7 +24585,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "status": "sold"
+=======
+    "status": "pending"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 };
 
 fetch(url, {
@@ -16120,7 +24653,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-admin-properties--property_id-"
                value="application/json"
@@ -16132,7 +24668,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="PUTapi-admin-properties--property_id-"
                value="application/json"
@@ -16145,7 +24684,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="property_id"                data-endpoint="PUTapi-admin-properties--property_id-"
                value="1"
@@ -16158,6 +24700,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-admin-properties--property_id-"
@@ -16165,6 +24708,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>sold</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PUTapi-admin-properties--property_id-"
+               value="pending"
+               data-component="body">
+    <br>
+<p>Example: <code>pending</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>rejected</code></li> <li><code>rented</code></li> <li><code>sold</code></li> <li><code>pending</code></li></ul>
         </div>
@@ -16183,14 +24734,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/finances" \
+=======
+    --get "http://localhost:8000/api/admin/finances" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/finances"
+=======
+    "http://localhost:8000/api/admin/finances"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16198,7 +24757,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16275,7 +24837,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-finances"
                value="application/json"
@@ -16287,7 +24852,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-finances"
                value="application/json"
@@ -16310,14 +24878,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/services" \
+=======
+    --get "http://localhost:8000/api/admin/services" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/services"
+=======
+    "http://localhost:8000/api/admin/services"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16325,7 +24901,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16402,7 +24981,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-services"
                value="application/json"
@@ -16414,7 +24996,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-services"
                value="application/json"
@@ -16438,14 +25023,22 @@ GET /api/admin/rental-stats</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/rental-stats" \
+=======
+    --get "http://localhost:8000/api/admin/rental-stats" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-stats"
+=======
+    "http://localhost:8000/api/admin/rental-stats"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16453,7 +25046,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16530,7 +25126,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-rental-stats"
                value="application/json"
@@ -16542,7 +25141,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-rental-stats"
                value="application/json"
@@ -16566,14 +25168,22 @@ GET /api/admin/rental-procedures</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/rental-procedures" \
+=======
+    --get "http://localhost:8000/api/admin/rental-procedures" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures"
+=======
+    "http://localhost:8000/api/admin/rental-procedures"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16581,7 +25191,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16658,7 +25271,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-rental-procedures"
                value="application/json"
@@ -16670,7 +25286,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-rental-procedures"
                value="application/json"
@@ -16694,14 +25313,22 @@ GET /api/admin/rental-procedures/{id}</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/rental-procedures/architecto" \
+=======
+    --get "http://localhost:8000/api/admin/rental-procedures/architecto" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures/architecto"
+=======
+    "http://localhost:8000/api/admin/rental-procedures/architecto"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16709,7 +25336,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -16786,7 +25416,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-rental-procedures--id-"
                value="application/json"
@@ -16798,7 +25431,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-rental-procedures--id-"
                value="application/json"
@@ -16811,7 +25447,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-admin-rental-procedures--id-"
                value="architecto"
@@ -16835,11 +25474,19 @@ POST /api/admin/rental-procedures/{id}/status</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures/architecto/status" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"status\": \"active\",
+=======
+    "http://localhost:8000/api/admin/rental-procedures/architecto/status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status\": \"cancelled\",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     \"reason\": \"b\"
 }"
 </code></pre></div>
@@ -16847,7 +25494,11 @@ POST /api/admin/rental-procedures/{id}/status</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures/architecto/status"
+=======
+    "http://localhost:8000/api/admin/rental-procedures/architecto/status"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -16856,7 +25507,11 @@ const headers = {
 };
 
 let body = {
+<<<<<<< HEAD
     "status": "active",
+=======
+    "status": "cancelled",
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     "reason": "b"
 };
 
@@ -16921,7 +25576,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
                value="application/json"
@@ -16933,7 +25591,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
                value="application/json"
@@ -16946,7 +25607,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
                value="architecto"
@@ -16959,6 +25623,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
@@ -16966,6 +25631,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>active</code></p>
+=======
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
+               value="cancelled"
+               data-component="body">
+    <br>
+<p>Example: <code>cancelled</code></p>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>active</code></li> <li><code>finished</code></li> <li><code>cancelled</code></li></ul>
         </div>
@@ -16973,7 +25646,10 @@ Must be one of:
             <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="reason"                data-endpoint="POSTapi-admin-rental-procedures--id--status"
                value="b"
@@ -16983,7 +25659,11 @@ Must be one of:
         </div>
         </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETapi-admin-agents">List all users with &#039;agent&#039; role</h2>
+=======
+                    <h2 id="endpoints-GETapi-admin-agents">GET api/admin/agents</h2>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 <p>
 </p>
@@ -16996,14 +25676,22 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/agents" \
+=======
+    --get "http://localhost:8000/api/admin/agents" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/agents"
+=======
+    "http://localhost:8000/api/admin/agents"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -17011,7 +25699,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -17088,7 +25779,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-agents"
                value="application/json"
@@ -17100,7 +25794,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-agents"
                value="application/json"
@@ -17110,6 +25807,145 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-GETapi-admin-agents--id--agenda">Voir l&#039;agenda d&#039;un agent spécifique (utilisé lors de l&#039;assignation par l&#039;admin)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-admin-agents--id--agenda">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/admin/agents/architecto/agenda" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/admin/agents/architecto/agenda"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-admin-agents--id--agenda">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+vary: Origin
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-admin-agents--id--agenda" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-admin-agents--id--agenda"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admin-agents--id--agenda"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-admin-agents--id--agenda" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admin-agents--id--agenda">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-admin-agents--id--agenda" data-method="GET"
+      data-path="api/admin/agents/{id}/agenda"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-admin-agents--id--agenda', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-admin-agents--id--agenda"
+                    onclick="tryItOut('GETapi-admin-agents--id--agenda');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-admin-agents--id--agenda"
+                    onclick="cancelTryOut('GETapi-admin-agents--id--agenda');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-admin-agents--id--agenda"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/admin/agents/{id}/agenda</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-admin-agents--id--agenda"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-admin-agents--id--agenda"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-admin-agents--id--agenda"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the agent. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                     <h2 id="endpoints-POSTapi-admin-properties--property_id--assign-agent">Assign an agent to a property</h2>
 
 <p>
@@ -17123,7 +25959,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/admin/properties/1/assign-agent" \
+=======
+    "http://localhost:8000/api/admin/properties/1/assign-agent" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -17134,7 +25974,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/properties/1/assign-agent"
+=======
+    "http://localhost:8000/api/admin/properties/1/assign-agent"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -17207,7 +26051,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-properties--property_id--assign-agent"
                value="application/json"
@@ -17219,7 +26066,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-properties--property_id--assign-agent"
                value="application/json"
@@ -17232,7 +26082,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>property_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="property_id"                data-endpoint="POSTapi-admin-properties--property_id--assign-agent"
                value="1"
@@ -17245,7 +26098,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>agent_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="agent_id"                data-endpoint="POSTapi-admin-properties--property_id--assign-agent"
                value="architecto"
@@ -17269,7 +26125,11 @@ POST /api/admin/rental-procedures/{visitId}/assign-agent</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures/architecto/assign-agent" \
+=======
+    "http://localhost:8000/api/admin/rental-procedures/architecto/assign-agent" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -17280,7 +26140,11 @@ POST /api/admin/rental-procedures/{visitId}/assign-agent</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/rental-procedures/architecto/assign-agent"
+=======
+    "http://localhost:8000/api/admin/rental-procedures/architecto/assign-agent"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -17353,7 +26217,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-rental-procedures--visitId--assign-agent"
                value="application/json"
@@ -17365,7 +26232,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-rental-procedures--visitId--assign-agent"
                value="application/json"
@@ -17378,7 +26248,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>visitId</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="visitId"                data-endpoint="POSTapi-admin-rental-procedures--visitId--assign-agent"
                value="architecto"
@@ -17391,7 +26264,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>agent_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="number" style="display: none"
                step="any"               name="agent_id"                data-endpoint="POSTapi-admin-rental-procedures--visitId--assign-agent"
                value="16"
@@ -17415,14 +26291,22 @@ GET /api/admin/publication-requests</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
+<<<<<<< HEAD
     --get "http://localhost/api/admin/publication-requests" \
+=======
+    --get "http://localhost:8000/api/admin/publication-requests" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/publication-requests"
+=======
+    "http://localhost:8000/api/admin/publication-requests"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -17430,7 +26314,10 @@ const headers = {
     "Accept": "application/json",
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 fetch(url, {
     method: "GET",
     headers,
@@ -17507,7 +26394,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="GETapi-admin-publication-requests"
                value="application/json"
@@ -17519,7 +26409,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="GETapi-admin-publication-requests"
                value="application/json"
@@ -17543,7 +26436,11 @@ POST /api/admin/publication-requests/{id}/assign</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
+<<<<<<< HEAD
     "http://localhost/api/admin/publication-requests/architecto/assign" \
+=======
+    "http://localhost:8000/api/admin/publication-requests/architecto/assign" \
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -17554,7 +26451,11 @@ POST /api/admin/publication-requests/{id}/assign</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
+<<<<<<< HEAD
     "http://localhost/api/admin/publication-requests/architecto/assign"
+=======
+    "http://localhost:8000/api/admin/publication-requests/architecto/assign"
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 );
 
 const headers = {
@@ -17627,7 +26528,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-admin-publication-requests--id--assign"
                value="application/json"
@@ -17639,7 +26543,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="Accept"                data-endpoint="POSTapi-admin-publication-requests--id--assign"
                value="application/json"
@@ -17652,7 +26559,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-admin-publication-requests--id--assign"
                value="architecto"
@@ -17665,7 +26575,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b style="line-height: 2;"><code>agent_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
+<<<<<<< HEAD
  &nbsp;
+=======
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
                 <input type="text" style="display: none"
                               name="agent_id"                data-endpoint="POSTapi-admin-publication-requests--id--assign"
                value="architecto"
@@ -17675,6 +26588,398 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+<<<<<<< HEAD
+=======
+                    <h2 id="endpoints-POSTapi-marketplace-services-posts">Create a new service request (User post)</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-marketplace-services-posts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/marketplace/services/posts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"category_id\": \"architecto\",
+    \"title\": \"n\",
+    \"description\": \"Eius et animi quos velit et.\",
+    \"city\": \"architecto\",
+    \"neighborhood\": \"architecto\",
+    \"urgency\": \"low\",
+    \"min_budget\": 39,
+    \"max_budget\": 84,
+    \"preferred_date\": \"2026-03-31T16:07:39\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/posts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "category_id": "architecto",
+    "title": "n",
+    "description": "Eius et animi quos velit et.",
+    "city": "architecto",
+    "neighborhood": "architecto",
+    "urgency": "low",
+    "min_budget": 39,
+    "max_budget": 84,
+    "preferred_date": "2026-03-31T16:07:39"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-marketplace-services-posts">
+</span>
+<span id="execution-results-POSTapi-marketplace-services-posts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-marketplace-services-posts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-marketplace-services-posts"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-marketplace-services-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-marketplace-services-posts">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-marketplace-services-posts" data-method="POST"
+      data-path="api/marketplace/services/posts"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-marketplace-services-posts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-marketplace-services-posts"
+                    onclick="tryItOut('POSTapi-marketplace-services-posts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-marketplace-services-posts"
+                    onclick="cancelTryOut('POSTapi-marketplace-services-posts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-marketplace-services-posts"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/marketplace/services/posts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>category_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="category_id"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the service_categories table. Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="Eius et animi quos velit et."
+               data-component="body">
+    <br>
+<p>Example: <code>Eius et animi quos velit et.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>neighborhood</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="neighborhood"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>urgency</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="urgency"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="low"
+               data-component="body">
+    <br>
+<p>Example: <code>low</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>low</code></li> <li><code>medium</code></li> <li><code>high</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>min_budget</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="min_budget"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="39"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>max_budget</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="max_budget"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="84"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>84</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>preferred_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="preferred_date"                data-endpoint="POSTapi-marketplace-services-posts"
+               value="2026-03-31T16:07:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2026-03-31T16:07:39</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-marketplace-services-posts--id--respond">Provider bids on a service request</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-marketplace-services-posts--id--respond">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/marketplace/services/posts/architecto/respond" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"message\": \"architecto\",
+    \"proposed_price\": 39
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/marketplace/services/posts/architecto/respond"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "message": "architecto",
+    "proposed_price": 39
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-marketplace-services-posts--id--respond">
+</span>
+<span id="execution-results-POSTapi-marketplace-services-posts--id--respond" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-marketplace-services-posts--id--respond"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-marketplace-services-posts--id--respond"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-marketplace-services-posts--id--respond" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-marketplace-services-posts--id--respond">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-marketplace-services-posts--id--respond" data-method="POST"
+      data-path="api/marketplace/services/posts/{id}/respond"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-marketplace-services-posts--id--respond', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-marketplace-services-posts--id--respond"
+                    onclick="tryItOut('POSTapi-marketplace-services-posts--id--respond');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-marketplace-services-posts--id--respond"
+                    onclick="cancelTryOut('POSTapi-marketplace-services-posts--id--respond');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-marketplace-services-posts--id--respond"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/marketplace/services/posts/{id}/respond</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-marketplace-services-posts--id--respond"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-marketplace-services-posts--id--respond"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-marketplace-services-posts--id--respond"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the post. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="message"                data-endpoint="POSTapi-marketplace-services-posts--id--respond"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>proposed_price</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="proposed_price"                data-endpoint="POSTapi-marketplace-services-posts--id--respond"
+               value="39"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>39</code></p>
+        </div>
+        </form>
+
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             
 
         
