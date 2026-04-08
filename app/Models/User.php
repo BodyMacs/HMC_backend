@@ -191,4 +191,24 @@ class User extends Authenticatable
             ->withPivot('status', 'progress', 'completed_at')
             ->withTimestamps();
     }
+
+    // ─── Relations Prestataire & Services ──────────────────────────────────────
+
+    /** Services offerts par ce prestataire */
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class, 'provider_id');
+    }
+
+    /** Demandes de services postées par ce client */
+    public function servicePosts(): HasMany
+    {
+        return $this->hasMany(ServicePost::class, 'client_id');
+    }
+
+    /** Offres (bids) soumises par ce prestataire sur des posts */
+    public function servicePostResponses(): HasMany
+    {
+        return $this->hasMany(ServicePostResponse::class, 'provider_id');
+    }
 }

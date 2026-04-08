@@ -150,19 +150,16 @@ class MarketplaceController extends Controller
             ['id' => 'all', 'name' => 'Tout', 'icon' => 'fas fa-th-large'],
         ])->concat($productCats);
 
-        // Add service categories from table if any
+        // Add real service categories from database
         $serviceCats = ServiceCategory::all()->map(fn ($sc) => [
-            'id' => 'services', // Map all services to 'services' tab or keep them separate
+            'id' => $sc->id,
             'name' => $sc->name,
             'icon' => $sc->icon ?: 'fas fa-tools',
         ]);
 
-        // Let's keep it simple for now as requested by the UI
-        $cats->push(['id' => 'services', 'name' => 'Services', 'icon' => 'fas fa-tools']);
-
         return response()->json([
             'success' => true,
-            'data' => $cats->unique('id')->values(),
+            'data' => $cats->concat($serviceCats)->unique('id')->values(),
         ]);
     }
 

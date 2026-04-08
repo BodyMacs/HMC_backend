@@ -21,6 +21,8 @@ use App\Http\Controllers\Api\VisiteController;
 use App\Http\Controllers\Api\MetaController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PropertyReviewController;
+use App\Http\Controllers\Api\ServiceRequestController;
+use App\Http\Controllers\Api\ProviderDirectoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,14 @@ Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
 Route::get('/marketplace/items/{id}', [MarketplaceController::class, 'show']);
 Route::get('/marketplace/categories', [MarketplaceController::class, 'categories']);
 Route::get('/settings', [MetaController::class, 'settings']);
+
+// ── Service Marketplace (Public) ─────────────────────────────────────────────
+Route::group(['prefix' => 'marketplace/services'], function (): void {
+    Route::get('/posts', [ServiceRequestController::class, 'index']);
+    Route::get('/posts/{id}', [ServiceRequestController::class, 'show']);
+    Route::get('/providers', [ProviderDirectoryController::class, 'index']);
+    Route::get('/providers/{id}', [ProviderDirectoryController::class, 'show']);
+});
 
 // NotchPay Callback
 Route::get('/notchpay/callback', [PaymentController::class, 'callback'])->name('notchpay.callback');
@@ -257,9 +267,24 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/agents/{id}/agenda',                        [AdminController::class, 'agentAgenda']);
         Route::post('/properties/{property}/assign-agent',       [AdminController::class, 'assignAgentToProperty']);
         Route::post('/rental-procedures/{visitId}/assign-agent', [AdminController::class, 'assignAgent']);
-
         // — Gestion des demandes de publication
         Route::get('/publication-requests',              [AdminController::class, 'listPublicationRequests']);
         Route::post('/publication-requests/{id}/assign', [AdminController::class, 'assignAgentToPublicationRequest']);
+    });
+
+    // ── Service Marketplace (Protected) ──────────────────────────────────────
+    Route::group(['prefix' => 'marketplace/services'], function (): void {
+        Route::post('/posts', [ServiceRequestController::class, 'store']);
+        Route::post('/posts/{id}/respond', [ServiceRequestController::class, 'respond']);
+        Route::post('/posts/{id}/responses/{responseId}/accept', [ServiceRequestController::class, 'acceptResponse']);
+        Route::post('/providers/{id}/contact', [App\Http\Controllers\Api\ProviderContactController::class, 'contact']);
+    });
+
+    // ── Chat / Messagerie ───────────────────────────────────────────────────
+    Route::group(['prefix' => 'chat'], function (): void {
+        Route::get('/conversations', [App\Http\Controllers\Api\ChatController::class, 'index']);
+        Route::get('/conversations/{id}', [App\Http\Controllers\Api\ChatController::class, 'show']);
+        Route::post('/conversations/{id}/messages', [App\Http\Controllers\Api\ChatController::class, 'sendMessage']);
+        Route::post('/conversations/{id}/read', [App\Http\Controllers\Api\ChatController::class, 'markAsRead']);
     });
 });
