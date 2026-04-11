@@ -7031,8 +7031,6 @@
             "time": "2026-02-07T07:09:04+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "erusev/parsedown",
             "version": "1.7.4",
             "source": {
@@ -7146,7 +7144,6 @@
             "time": "2024-11-21T13:46:39+00:00"
         },
         {
->>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             "name": "fidry/cpu-core-counter",
             "version": "1.3.0",
             "source": {
@@ -10684,8 +10681,6 @@
             "time": "2024-10-20T05:08:20+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "symfony/var-exporter",
             "version": "v7.4.0",
             "source": {
@@ -10843,7 +10838,6 @@
             "time": "2026-02-09T09:33:46+00:00"
         },
         {
->>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
             "name": "ta-tikoma/phpunit-architecture-test",
             "version": "0.8.7",
             "source": {
