@@ -1,18 +1,9 @@
 <?php
 
-<<<<<<< HEAD
-use Knuckles\Scribe\Config\AuthIn;
-use Knuckles\Scribe\Config\Defaults;
-use Knuckles\Scribe\Extracting\Strategies;
-
-use function Knuckles\Scribe\Config\configureStrategy;
-use function Knuckles\Scribe\Config\removeStrategies;
-=======
 use Knuckles\Scribe\Extracting\Strategies;
 use Knuckles\Scribe\Config\Defaults;
 use Knuckles\Scribe\Config\AuthIn;
 use function Knuckles\Scribe\Config\{removeStrategies, configureStrategy};
->>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 
 // Only the most common configs are shown. See the https://scribe.knuckles.wtf/laravel/reference/config for all.
 
