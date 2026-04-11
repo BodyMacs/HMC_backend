@@ -3,7 +3,11 @@
 
 
 <aside>
+<<<<<<< HEAD
+    <strong>Base URL</strong>: <code>http://localhost</code>
+=======
     <strong>Base URL</strong>: <code>http://localhost:8000</code>
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 </aside>
 
     This documentation aims to provide all the information you need to work with our API.

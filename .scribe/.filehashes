@@ -1,4 +1,8 @@
 # GENERATED. YOU SHOULDN'T MODIFY OR DELETE THIS FILE.
 # Scribe uses this file to know when you change something manually in your docs.
+<<<<<<< HEAD
+.scribe/intro.md=4bf90470e636417926ae5d9227747d45
+=======
 .scribe/intro.md=dc8b5fa62d628cdbb0da22520ba8a63d
+>>>>>>> 783af9a097f0bf00555b9d83d38e0d4b1aebecc2
 .scribe/auth.md=9bee2b1ef8a238b2e58613fa636d5f39
