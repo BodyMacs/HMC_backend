@@ -14,7 +14,6 @@
         "notchpay/notchpay-php": "^2.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^4.2",
         "fakerphp/faker": "^1.23",
         "knuckleswtf/scribe": "5.1",
         "larastan/larastan": "*",
