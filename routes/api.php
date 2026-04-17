@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TenantController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\VisiteController;
+use App\Http\Controllers\Api\FeedController;
 use App\Http\Controllers\Api\MetaController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PropertyReviewController;
@@ -42,6 +43,7 @@ Route::post('/properties/{id}/share', [PropertyController::class, 'incrementShar
 // Avis publics (lecture seule sans auth)
 Route::get('/properties/{identifier}/reviews', [PropertyReviewController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/feed', [FeedController::class, 'index']);
 Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
 Route::get('/marketplace/items/{id}', [MarketplaceController::class, 'show']);
 Route::get('/marketplace/categories', [MarketplaceController::class, 'categories']);
