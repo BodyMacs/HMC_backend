@@ -70,21 +70,28 @@ class User extends Authenticatable
 
     protected $appends = ['avatar_url'];
 
-    public function getAvatarUrlAttribute()
-    {
-        if ($this->avatar) {
-            return asset('storage/' . $this->avatar);
-        }
-
-        if ($this->role === 'agent') {
-            // Assign a consistent image based on ID
-            $num = ($this->id % 4) + 1;
-            return asset('storage/user_profil/agent' . $num . '.jpg');
-        }
-
-        return asset('images/avatar/default.png');
+public function getAvatarUrlAttribute()
+{
+    // Cas 1: L'avatar est déjà une URL complète (https, http, data:image)
+    if ($this->avatar && filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+        return $this->avatar;
     }
-
+    
+    // Cas 2: L'avatar est stocké localement (dans storage)
+    if ($this->avatar) {
+        return asset('storage/' . $this->avatar);
+    }
+    
+    // Cas 3: Avatar par défaut selon le rôle
+    if ($this->role === 'agent') {
+        // Assign a consistent image based on ID
+        $num = ($this->id % 4) + 1;
+        return asset('storage/user_profil/agent' . $num . '.jpg');
+    }
+    
+    // Cas 4: Avatar par défaut générique
+    return asset('images/avatar/default.png');
+}
     /**
      * Check if user has a specific role in their roles list.
      */

@@ -100,7 +100,9 @@ class AuthController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => array_merge($user->toArray(), ['notifications_unread' => $unreadCount]),
+            'data'    => array_merge($user->toArray()
+            , ['notifications_unread' => $unreadCount]
+        ),
         ]);
     }
 }
