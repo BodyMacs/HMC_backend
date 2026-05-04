@@ -12,6 +12,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class MarketplaceController extends Controller
 {
@@ -35,18 +38,20 @@ class MarketplaceController extends Controller
         }
 
         $products = $productsQuery->latest()->get()->map(fn ($p) => [
-            'id' => $p->id,
-            'name' => $p->name,
-            'price' => $p->price,
+            'id'       => $p->id,
+            'name'     => $p->name,
+            'price'    => $p->price,
             'oldPrice' => $p->old_price,
-            'image' => $p->image,
+            'image'    => $p->image,
             'category' => $p->category,
-            'rating' => $p->rating,
-            'reviews' => $p->reviews_count,
+            'condition'=> $p->condition ?? 'Neuf',
+            'stock'    => $p->stock ?? 1,
+            'rating'   => $p->rating,
+            'reviews'  => $p->reviews_count,
             'location' => $p->location,
-            'isNew' => $p->is_new,
+            'isNew'    => $p->is_new,
             'discount' => $p->old_price ? round((($p->old_price - $p->price) / $p->old_price) * 100) : null,
-            'type' => 'product',
+            'type'     => 'product',
         ]);
 
         // Services query
@@ -129,25 +134,87 @@ class MarketplaceController extends Controller
             }
 
             $data = [
-                'id' => $item->id,
-                'name' => $item->name,
+                'id'          => $item->id,
+                'name'        => $item->name,
                 'description' => $item->description,
-                'price' => $item->price,
-                'oldPrice' => $item->old_price,
-                'image' => $item->image,
-                'category' => $item->category,
-                'location' => $item->location,
-                'isNew' => $item->is_new,
-                'type' => 'product',
-                'rating' => $item->rating,
-                'reviews' => [],
+                'price'       => $item->price,
+                'oldPrice'    => $item->old_price,
+                'image'       => $item->image,
+                'category'    => $item->category,
+                'condition'   => $item->condition ?? 'Neuf',
+                'stock'       => $item->stock ?? 1,
+                'location'    => $item->location,
+                'isNew'       => $item->is_new,
+                'type'        => 'product',
+                'rating'      => $item->rating,
+                'reviews'     => [],
+                'seller'      => $item->user ? [
+                    'name'   => $item->user->name,
+                    'avatar' => $item->user->avatar,
+                ] : null,
             ];
         }
 
         return response()->json([
             'success' => true,
-            'data' => $data,
+            'data'    => $data,
         ]);
+    }
+
+    /**
+     * Créer un nouveau produit (utilisateur authentifié)
+     */
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'required|string|min:20',
+            'price'       => 'required|numeric|min:0',
+            'old_price'   => 'nullable|numeric|min:0',
+            'category'    => 'required|string|max:100',
+            'condition'   => 'required|in:Neuf,Occasion,Reconditionné,Excellent,Bon état',
+            'stock'       => 'required|integer|min:0',
+            'location'    => 'required|string|max:150',
+            'image'       => 'nullable|image|max:5120',  // 5 MB max
+            'contact_phone'  => 'nullable|string|max:30',
+            'contact_whatsapp' => 'nullable|string|max:30',
+            'delivery_available' => 'nullable|boolean',
+            'delivery_fee'   => 'nullable|numeric|min:0',
+        ]);
+
+        // Upload image
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = 'products/' . Str::uuid() . '.' . $file->extension();
+            $imagePath = $file->storePublicly($filename, 'public');
+            $imagePath = Storage::url($imagePath);
+        }
+
+        $product = Product::create([
+            'name'        => $validated['name'],
+            'description' => $validated['description'],
+            'price'       => $validated['price'],
+            'old_price'   => $validated['old_price'] ?? null,
+            'category'    => $validated['category'],
+            'condition'   => $validated['condition'],
+            'stock'       => $validated['stock'],
+            'location'    => $validated['location'],
+            'image'       => $imagePath,
+            'user_id'     => Auth::id(),
+            'status'      => 'active',
+            'is_new'      => true,
+            'contact_phone'      => $validated['contact_phone'] ?? null,
+            'contact_whatsapp'   => $validated['contact_whatsapp'] ?? null,
+            'delivery_available' => $validated['delivery_available'] ?? false,
+            'delivery_fee'       => $validated['delivery_fee'] ?? null,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Produit publié avec succès !',
+            'data'    => ['id' => $product->id],
+        ], 201);
     }
 
     public function categories(): JsonResponse
