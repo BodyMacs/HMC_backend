@@ -274,6 +274,16 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::post('/publication-requests/{id}/assign', [AdminController::class, 'assignAgentToPublicationRequest']);
     });
 
+    // ── Marketplace (Protected) ──────────────────────────────────────────────
+    Route::prefix('marketplace')->group(function (): void {
+        Route::post('/items', [MarketplaceController::class, 'store']);
+        Route::post('/checkout', [MarketplaceController::class, 'checkout']);
+        Route::post('/checkout-cart', [MarketplaceController::class, 'checkoutCart']);
+        Route::get('/orders', [MarketplaceController::class, 'myOrders']);
+        Route::get('/sales', [MarketplaceController::class, 'mySales']);
+        Route::post('/orders/{id}/confirm-delivery', [MarketplaceController::class, 'confirmDelivery']);
+    });
+
     // ── Service Marketplace (Protected) ──────────────────────────────────────
     Route::group(['prefix' => 'marketplace/services'], function (): void {
         Route::post('/posts', [ServiceRequestController::class, 'store']);

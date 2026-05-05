@@ -139,6 +139,50 @@ class NotchPayService
                         ]);
                     }
                     break;
+
+                case 'marketplace_purchase':
+                    $orderId = $metadata['order_id'];
+                    $order = \App\Models\MarketplaceOrder::find($orderId);
+                    if ($order) {
+                        $order->update([
+                            'status' => 'paid_escrow',
+                        ]);
+                        // Optionnel : Réduire le stock ici ou à l'initialisation
+                        $product = $order->product;
+                        if ($product && $product->stock >= $order->quantity) {
+                            $product->decrement('stock', $order->quantity);
+                        }
+                        
+                        // Notifier le vendeur
+                        \App\Models\Notification::create([
+                            'user_id' => $product->user_id,
+                            'title' => 'Nouvelle commande !',
+                            'message' => "Un client a acheté {$order->quantity}x {$product->name}. Le paiement est sécurisé en séquestre.",
+                            'type' => 'success',
+                        ]);
+                    }
+                    break;
+
+                case 'marketplace_cart_purchase':
+                    $orderIds = $metadata['order_ids'];
+                    foreach ($orderIds as $orderId) {
+                        $order = \App\Models\MarketplaceOrder::find($orderId);
+                        if ($order) {
+                            $order->update(['status' => 'paid_escrow']);
+                            $product = $order->product;
+                            if ($product && $product->stock >= $order->quantity) {
+                                $product->decrement('stock', $order->quantity);
+                            }
+                            // Notification au vendeur
+                            \App\Models\Notification::create([
+                                'user_id' => $product->user_id,
+                                'title' => 'Nouvelle commande (Panier) !',
+                                'message' => "Un client a acheté {$order->quantity}x {$product->name}. Le paiement est sécurisé en séquestre.",
+                                'type' => 'success',
+                            ]);
+                        }
+                    }
+                    break;
             }
             Log::info("Transaction $transaction->reference fulfilled successfully.");
         } catch (\Exception $e) {

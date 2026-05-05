@@ -8,16 +8,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\MarketplaceOrder;
+use App\Models\Transaction;
+use App\Services\NotchPayService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class MarketplaceController extends Controller
 {
+    protected $notchPayService;
+
+    public function __construct(NotchPayService $notchPayService)
+    {
+        $this->notchPayService = $notchPayService;
+    }
+
     public function index(Request $request): JsonResponse
     {
         $category = $request->query('category', 'all');
@@ -50,7 +61,7 @@ class MarketplaceController extends Controller
             'reviews'  => $p->reviews_count,
             'location' => $p->location,
             'isNew'    => $p->is_new,
-            'discount' => $p->old_price ? round((($p->old_price - $p->price) / $p->old_price) * 100) : null,
+            'discount' => $p->old_price ? round((($p->old_price - (float)$p->price) / (float)$p->old_price) * 100) : null,
             'type'     => 'product',
         ]);
 
@@ -71,10 +82,10 @@ class MarketplaceController extends Controller
                 'name' => $s->title,
                 'price' => $s->base_price,
                 'oldPrice' => null,
-                'image' => $s->category ? $s->category->icon : 'fas fa-tools', // UI uses image or icon
+                'image' => $s->category ? $s->category->icon : 'fas fa-tools',
                 'category' => $s->category ? $s->category->name : 'Services',
-                'rating' => 5.0, // Placeholder
-                'reviews' => 0, // Placeholder
+                'rating' => 5.0,
+                'reviews' => 0,
                 'location' => $s->provider ? $s->provider->city : 'Cameroun',
                 'isNew' => false,
                 'discount' => null,
@@ -85,7 +96,7 @@ class MarketplaceController extends Controller
         // Merge and sort
         $allItems = $products->concat($services)->sortByDesc('id');
 
-        // Pagination manuelle
+        // Pagination
         $perPage = (int) $request->query('per_page', 12);
         $page = (int) $request->query('page', 1);
         $offset = ($page - 1) * $perPage;
@@ -161,9 +172,6 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    /**
-     * Créer un nouveau produit (utilisateur authentifié)
-     */
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
@@ -172,17 +180,16 @@ class MarketplaceController extends Controller
             'price'       => 'required|numeric|min:0',
             'old_price'   => 'nullable|numeric|min:0',
             'category'    => 'required|string|max:100',
-            'condition'   => 'required|in:Neuf,Occasion,Reconditionné,Excellent,Bon état',
+            'condition'   => 'required|in:Neuf,Excellent,Bon état,Occasion',
             'stock'       => 'required|integer|min:0',
             'location'    => 'required|string|max:150',
-            'image'       => 'nullable|image|max:5120',  // 5 MB max
+            'image'       => 'nullable|image|max:5120',
             'contact_phone'  => 'nullable|string|max:30',
             'contact_whatsapp' => 'nullable|string|max:30',
             'delivery_available' => 'nullable|boolean',
             'delivery_fee'   => 'nullable|numeric|min:0',
         ]);
 
-        // Upload image
         $imagePath = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -217,21 +224,219 @@ class MarketplaceController extends Controller
         ], 201);
     }
 
-    public function categories(): JsonResponse
+    public function checkout(Request $request): JsonResponse
     {
-        // Get unique product categories
-        $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
-            'id' => $c,
-            'name' => ucfirst($c),
-            'icon' => $this->getIconForCategory($c),
+        $validated = $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'quantity'   => 'required|integer|min:1',
+            'delivery_fee' => 'nullable|numeric|min:0',
         ]);
 
-        // Add services special category
+        $product = Product::find($validated['product_id']);
+        
+        if ($product->stock < $validated['quantity']) {
+            return response()->json(['success' => false, 'message' => 'Stock insuffisant'], 400);
+        }
+
+        $totalAmount = ($product->price * $validated['quantity']) + ($validated['delivery_fee'] ?? 0);
+        $reference = 'MKT-' . strtoupper(Str::random(12));
+
+        try {
+            return DB::transaction(function () use ($product, $validated, $totalAmount, $reference) {
+                $order = MarketplaceOrder::create([
+                    'buyer_id'    => Auth::id(),
+                    'product_id'  => $product->id,
+                    'quantity'    => $validated['quantity'],
+                    'amount'      => $totalAmount,
+                    'delivery_fee'=> $validated['delivery_fee'] ?? 0,
+                    'status'      => 'pending',
+                    'transaction_reference' => $reference,
+                    'metadata'    => ['product_name' => $product->name]
+                ]);
+
+                Transaction::create([
+                    'user_id'    => Auth::id(),
+                    'reference'  => $reference,
+                    'type'       => 'payment',
+                    'amount'     => $totalAmount,
+                    'status'     => 'pending',
+                    'payment_method' => 'momo',
+                    'metadata'   => [
+                        'action'   => 'marketplace_purchase',
+                        'order_id' => $order->id,
+                        'product_id' => $product->id
+                    ]
+                ]);
+
+                $payment = $this->notchPayService->initializePayment([
+                    'amount'      => $totalAmount,
+                    'email'       => Auth::user()->email,
+                    'reference'   => $reference,
+                    'description' => "Achat Marketplace: {$product->name}",
+                    'metadata'    => [
+                        'action'   => 'marketplace_purchase',
+                        'order_id' => $order->id
+                    ]
+                ]);
+
+                return response()->json([
+                    'success' => true,
+                    'data'    => [
+                        'order_id'    => $order->id,
+                        'reference'   => $reference,
+                        'payment_url' => $payment->authorization_url,
+                    ]
+                ]);
+            });
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function checkoutCart(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'items' => 'required|array|min:1',
+            'items.*.id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|integer|min:1',
+        ]);
+
+        $reference = 'CART-' . strtoupper(Str::random(12));
+        $totalAmount = 0;
+        $orderData = [];
+
+        try {
+            return DB::transaction(function () use ($validated, $reference, &$totalAmount, &$orderData) {
+                foreach ($validated['items'] as $cartItem) {
+                    $product = Product::find($cartItem['id']);
+                    
+                    if ($product->stock < $cartItem['quantity']) {
+                        throw new \Exception("Stock insuffisant pour le produit: {$product->name}");
+                    }
+
+                    $itemTotal = $product->price * $cartItem['quantity'];
+                    $totalAmount += $itemTotal;
+
+                    // Créer l'ordre individuel
+                    $order = MarketplaceOrder::create([
+                        'buyer_id'    => Auth::id(),
+                        'product_id'  => $product->id,
+                        'quantity'    => $cartItem['quantity'],
+                        'amount'      => $itemTotal,
+                        'delivery_fee'=> 0, // À raffiner si besoin par item
+                        'status'      => 'pending',
+                        'transaction_reference' => $reference,
+                        'metadata'    => ['product_name' => $product->name, 'is_cart' => true]
+                    ]);
+
+                    $orderData[] = $order->id;
+                }
+
+                // 2. Créer la transaction globale unique
+                Transaction::create([
+                    'user_id'    => Auth::id(),
+                    'reference'  => $reference,
+                    'type'       => 'payment',
+                    'amount'     => $totalAmount,
+                    'status'     => 'pending',
+                    'payment_method' => 'momo',
+                    'metadata'   => [
+                        'action'   => 'marketplace_cart_purchase',
+                        'order_ids' => $orderData,
+                    ]
+                ]);
+
+                // 3. Initialiser NotchPay
+                $payment = $this->notchPayService->initializePayment([
+                    'amount'      => $totalAmount,
+                    'email'       => Auth::user()->email,
+                    'reference'   => $reference,
+                    'description' => "Commande Panier Marketplace (" . count($orderData) . " articles)",
+                    'metadata'    => [
+                        'action'   => 'marketplace_cart_purchase',
+                        'order_ids' => $orderData
+                    ]
+                ]);
+
+                return response()->json([
+                    'success' => true,
+                    'data'    => [
+                        'order_ids'   => $orderData,
+                        'reference'   => $reference,
+                        'payment_url' => $payment->authorization_url,
+                    ]
+                ]);
+            });
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function myOrders(): JsonResponse
+    {
+        $orders = MarketplaceOrder::with('product')
+            ->where('buyer_id', Auth::id())
+            ->latest()
+            ->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data'    => $orders
+        ]);
+    }
+
+    public function mySales(): JsonResponse
+    {
+        $orders = MarketplaceOrder::with(['product', 'buyer'])
+            ->whereHas('product', function($q) {
+                $q->where('user_id', Auth::id());
+            })
+            ->latest()
+            ->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data'    => $orders
+        ]);
+    }
+
+    public function confirmDelivery($id): JsonResponse
+    {
+        $order = MarketplaceOrder::where('id', $id)
+            ->where('buyer_id', Auth::id())
+            ->firstOrFail();
+
+        if ($order->status !== 'paid_escrow' && $order->status !== 'shipped') {
+            return response()->json(['success' => false, 'message' => 'Statut invalide pour confirmation'], 400);
+        }
+
+        $order->update(['status' => 'delivered']);
+
+        \App\Models\Notification::create([
+            'user_id' => $order->product->user_id,
+            'title'   => 'Produit reçu !',
+            'message' => "Le client a confirmé la réception de {$order->product->name}. Vos fonds seront libérés sous peu.",
+            'type'    => 'success',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Réception confirmée avec succès.'
+        ]);
+    }
+
+    public function categories(): JsonResponse
+    {
+        $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
+            'id' => $c,
+            'name' => ucfirst((string)$c),
+            'icon' => $this->getIconForCategory((string)$c),
+        ]);
+
         $cats = collect([
             ['id' => 'all', 'name' => 'Tout', 'icon' => 'fas fa-th-large'],
         ])->concat($productCats);
 
-        // Add real service categories from database
         $serviceCats = ServiceCategory::all()->map(fn ($sc) => [
             'id' => $sc->id,
             'name' => $sc->name,
@@ -244,7 +449,7 @@ class MarketplaceController extends Controller
         ]);
     }
 
-    private function getIconForCategory($c)
+    private function getIconForCategory(string $c): string
     {
         $map = [
             'meubles' => 'fas fa-couch',

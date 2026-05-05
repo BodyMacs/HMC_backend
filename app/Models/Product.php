@@ -27,6 +27,12 @@ class Product extends Model
         'reviews_count',
         'badge',
         'status',
+        'condition',
+        'stock',
+        'contact_phone',
+        'contact_whatsapp',
+        'delivery_available',
+        'delivery_fee',
     ];
 
     public function user(): BelongsTo
