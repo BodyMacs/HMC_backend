@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PropertyReviewController;
 use App\Http\Controllers\Api\ServiceRequestController;
 use App\Http\Controllers\Api\ProviderDirectoryController;
+use App\Http\Controllers\Api\AIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,9 @@ Route::get('/feed', [FeedController::class, 'index']);
 Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
 Route::get('/marketplace/items/{id}', [MarketplaceController::class, 'show']);
 Route::get('/marketplace/categories', [MarketplaceController::class, 'categories']);
+Route::get('/marketplace/vendors/{id}', [MarketplaceController::class, 'vendorProfile']);
 Route::get('/settings', [MetaController::class, 'settings']);
+Route::post('/ai/chat', [AIController::class, 'chat']);
 
 // ── Service Marketplace (Public) ─────────────────────────────────────────────
 Route::group(['prefix' => 'marketplace/services'], function (): void {
@@ -277,11 +280,18 @@ Route::middleware('auth:sanctum')->group(function (): void {
     // ── Marketplace (Protected) ──────────────────────────────────────────────
     Route::prefix('marketplace')->group(function (): void {
         Route::post('/items', [MarketplaceController::class, 'store']);
+        Route::put('/items/{id}', [MarketplaceController::class, 'updateProduct']);
+        Route::delete('/items/{id}', [MarketplaceController::class, 'deleteProduct']);
         Route::post('/checkout', [MarketplaceController::class, 'checkout']);
         Route::post('/checkout-cart', [MarketplaceController::class, 'checkoutCart']);
         Route::get('/orders', [MarketplaceController::class, 'myOrders']);
         Route::get('/sales', [MarketplaceController::class, 'mySales']);
+        Route::get('/navigation-stats', [MarketplaceController::class, 'navigationStats']);
         Route::post('/orders/{id}/confirm-delivery', [MarketplaceController::class, 'confirmDelivery']);
+        // ── Espace Vendeur ────────────────────────────────────────────────────
+        Route::get('/vendor/my-products', [MarketplaceController::class, 'myProducts']);
+        Route::get('/vendor/stats', [MarketplaceController::class, 'vendorStats']);
+        Route::post('/vendor/orders/{id}/expedier', [MarketplaceController::class, 'expedierCommande']);
     });
 
     // ── Service Marketplace (Protected) ──────────────────────────────────────

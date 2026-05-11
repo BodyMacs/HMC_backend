@@ -425,6 +425,180 @@ class MarketplaceController extends Controller
         ]);
     }
 
+    // ── Espace Vendeur ────────────────────────────────────────────────────────
+
+    public function myProducts(Request $request): JsonResponse
+    {
+        $query = Product::where('user_id', Auth::id())
+            ->where('status', '!=', 'deleted');
+
+        if ($request->query('statut')) {
+            $query->where('status', $request->query('statut'));
+        }
+
+        $products = $query->latest()->paginate((int) $request->query('per_page', 10));
+
+        $products->getCollection()->transform(fn ($p) => [
+            'id'                 => $p->id,
+            'name'               => $p->name,
+            'price'              => $p->price,
+            'old_price'          => $p->old_price,
+            'category'           => $p->category,
+            'condition'          => $p->condition,
+            'stock'              => $p->stock,
+            'status'             => $p->status,
+            'image'              => $p->image,
+            'location'           => $p->location,
+            'delivery_available' => $p->delivery_available,
+            'created_at'         => $p->created_at,
+            'commandes'          => MarketplaceOrder::where('product_id', $p->id)->count(),
+        ]);
+
+        return response()->json(['success' => true, 'data' => $products]);
+    }
+
+    public function updateProduct(Request $request, int $id): JsonResponse
+    {
+        $product = Product::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+
+        $validated = $request->validate([
+            'name'               => 'sometimes|string|max:255',
+            'description'        => 'sometimes|string|min:20',
+            'price'              => 'sometimes|numeric|min:0',
+            'old_price'          => 'nullable|numeric|min:0',
+            'category'           => 'sometimes|string|max:100',
+            'condition'          => 'sometimes|in:Neuf,Excellent,Bon état,Occasion',
+            'stock'              => 'sometimes|integer|min:0',
+            'location'           => 'sometimes|string|max:150',
+            'image'              => 'nullable|image|max:5120',
+            'contact_phone'      => 'nullable|string|max:30',
+            'contact_whatsapp'   => 'nullable|string|max:30',
+            'delivery_available' => 'nullable|boolean',
+            'delivery_fee'       => 'nullable|numeric|min:0',
+            'status'             => 'nullable|in:active,inactive',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = 'products/' . Str::uuid() . '.' . $file->extension();
+            $imagePath = $file->storePublicly($filename, 'public');
+            $validated['image'] = Storage::url($imagePath);
+        }
+
+        $product->update($validated);
+
+        return response()->json(['success' => true, 'message' => 'Produit mis à jour avec succès.', 'data' => ['id' => $product->id]]);
+    }
+
+    public function deleteProduct(int $id): JsonResponse
+    {
+        $product = Product::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+        $product->update(['status' => 'deleted']);
+
+        return response()->json(['success' => true, 'message' => 'Produit supprimé avec succès.']);
+    }
+
+    public function vendorStats(): JsonResponse
+    {
+        $userId = Auth::id();
+
+        $produits_actifs = Product::where('user_id', $userId)->where('status', 'active')->count();
+
+        $commandes = MarketplaceOrder::whereHas('product', fn ($q) => $q->where('user_id', $userId))->get();
+
+        $revenus_totaux   = $commandes->whereIn('status', ['delivered', 'paid_escrow'])->sum('amount');
+        $total_ventes     = $commandes->where('status', 'delivered')->count();
+        $commandes_attente = $commandes->whereIn('status', ['pending', 'paid_escrow'])->count();
+
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'produits_actifs'   => $produits_actifs,
+                'revenus_totaux'    => $revenus_totaux,
+                'total_ventes'      => $total_ventes,
+                'commandes_attente' => $commandes_attente,
+            ],
+        ]);
+    }
+
+    public function navigationStats(): JsonResponse
+    {
+        $userId = Auth::id();
+
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'purchases_count' => MarketplaceOrder::where('buyer_id', $userId)->count(),
+                'sales_count'     => MarketplaceOrder::whereHas('product', fn ($q) => $q->where('user_id', $userId))->count(),
+            ],
+        ]);
+    }
+
+    public function expedierCommande(int $id): JsonResponse
+    {
+        $order = MarketplaceOrder::whereHas('product', fn ($q) => $q->where('user_id', Auth::id()))
+            ->where('id', $id)
+            ->firstOrFail();
+
+        if ($order->status !== 'paid_escrow') {
+            return response()->json(['success' => false, 'message' => 'Cette commande ne peut pas être expédiée (statut invalide).'], 400);
+        }
+
+        $order->update(['status' => 'shipped']);
+
+        \App\Models\Notification::create([
+            'user_id' => $order->buyer_id,
+            'title'   => 'Commande expédiée !',
+            'message' => "Votre commande « {$order->product->name} » a été expédiée. Confirmez la réception une fois livré.",
+            'type'    => 'info',
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Commande marquée comme expédiée.']);
+    }
+
+    public function vendorProfile(int $id): JsonResponse
+    {
+        $seller = \App\Models\User::findOrFail($id);
+
+        $products = Product::where('user_id', $id)
+            ->where('status', 'active')
+            ->latest()
+            ->take(20)
+            ->get()
+            ->map(fn ($p) => [
+                'id'        => $p->id,
+                'name'      => $p->name,
+                'price'     => $p->price,
+                'old_price' => $p->old_price,
+                'image'     => $p->image,
+                'category'  => $p->category,
+                'condition' => $p->condition,
+                'location'  => $p->location,
+                'type'      => 'product',
+            ]);
+
+        $stats = [
+            'produits_actifs' => Product::where('user_id', $id)->where('status', 'active')->count(),
+            'ventes'          => MarketplaceOrder::whereHas('product', fn ($q) => $q->where('user_id', $id))
+                ->where('status', 'delivered')->count(),
+        ];
+
+        return response()->json([
+            'success' => true,
+            'data'    => [
+                'seller'   => [
+                    'id'     => $seller->id,
+                    'name'   => $seller->name,
+                    'avatar' => $seller->avatar,
+                    'city'   => $seller->city ?? null,
+                    'since'  => $seller->created_at->format('M Y'),
+                ],
+                'stats'    => $stats,
+                'products' => $products,
+            ],
+        ]);
+    }
+
     public function categories(): JsonResponse
     {
         $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
