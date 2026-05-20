@@ -109,6 +109,11 @@ class Property extends Model
         return $this->hasMany(PropertyReview::class)->where('status', 'approved');
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(PropertyComment::class);
+    }
+
     // ─── Helpers ──────────────────────────────────────────────────────────────
 
     public function isAvailable(): bool

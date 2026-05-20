@@ -26,7 +26,7 @@ class FeedController extends Controller
 
         // ── 1. Biens immobiliers récents ─────────────────────────────────────
         $properties = Property::with(['primaryImage', 'images'])
-            ->withCount(['favorites', 'reviews'])
+            ->withCount(['favorites', 'reviews', 'comments'])
             ->withAvg('reviews', 'rating')
             ->latest()
             ->skip(($page - 1) * 2)
@@ -39,7 +39,8 @@ class FeedController extends Controller
                 'title'          => $p->title,
                 'price'          => $p->price,
                 'city'           => $p->city,
-                'neighborhood'   => $p->neighborhood ?? null,
+                'etat'           => $p->etat,
+                'location'   => $p->location ?? null,
                 'category'       => $p->category ?? 'Immobilier',
                 'bedrooms'       => $p->bedrooms ?? 0,
                 'bathrooms'      => $p->bathrooms ?? 0,
@@ -50,6 +51,7 @@ class FeedController extends Controller
                 'shares_count'   => $p->shares_count ?? 0,
                 'rating'         => round((float)($p->reviews_avg_rating ?? 0), 1),
                 'review_count'   => $p->reviews_count ?? 0,
+                'comment_count'  => $p->comments_count ?? 0,
                 'date'           => $p->created_at?->diffForHumans() ?? 'Récemment',
                 'status'         => $p->status ?? 'available',
             ]);
@@ -130,17 +132,18 @@ class FeedController extends Controller
             ]);
 
         // ── 5. Stories — 6 biens récents pour la barre de stories ─────────
-        $stories = Property::with(['primaryImage'])
+        $stories = Property::with(['primaryImage', 'agent', 'owner'])
             ->latest()
             ->take(8)
             ->get()
             ->map(fn ($p) => [
-                'id'    => $p->id,
-                'slug'  => $p->slug,
-                'title' => $p->title,
-                'city'  => $p->city,
-                'image' => $p->primaryImage?->path ?? null,
-                'price' => $p->price,
+                'id'           => $p->id,
+                'slug'         => $p->slug,
+                'title'        => $p->title,
+                'city'         => $p->city,
+                'image'        => $p->primaryImage?->path ?? null,
+                'price'        => $p->price,
+                'agent_avatar' => $p->agent?->avatar ?? $p->owner?->avatar ?? null,
             ]);
 
         // ── 6. Stats globales de la plateforme ────────────────────────────

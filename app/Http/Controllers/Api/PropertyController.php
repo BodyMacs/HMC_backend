@@ -23,7 +23,7 @@ class PropertyController extends Controller
     {
         $query = Property::with(['owner:id,name,avatar', 'primaryImage', 'images'])
             ->withAvg('reviews', 'rating')
-            ->withCount(['reviews', 'favorites'])
+            ->withCount(['reviews', 'favorites', 'comments'])
             ->where('status', 'active');
 
         // Filters
@@ -129,6 +129,7 @@ class PropertyController extends Controller
             $p->rooms        = $p->bedrooms ?? 0;
             $p->avg_rating   = round((float) ($p->reviews_avg_rating ?? 0), 1);
             $p->review_count = (int) ($p->reviews_count ?? 0);
+            $p->comment_count = (int) ($p->comments_count ?? 0);
             $p->favorites_count = (int) ($p->favorites_count ?? 0);
             $p->shares_count = (int) ($p->shares_count ?? 0);
             $p->all_images   = $p->images->map(fn($img) => $img->path)->toArray();
@@ -255,7 +256,7 @@ class PropertyController extends Controller
     {
         $property = Property::with(['owner:id,name,email,avatar,phone', 'images'])
             ->withAvg('reviews', 'rating')
-            ->withCount(['reviews', 'favorites'])
+            ->withCount(['reviews', 'favorites', 'comments'])
             ->where(function ($query) use ($identifier) {
                 if (is_numeric($identifier)) {
                     $query->where('id', $identifier);
@@ -323,7 +324,7 @@ class PropertyController extends Controller
 
         // Biens similaires ...
         $similar = Property::with(['primaryImage'])
-            ->withCount(['reviews', 'favorites'])
+            ->withCount(['reviews', 'favorites', 'comments'])
             ->where('status', 'active')
             ->where('id', '!=', $property->id)
             ->where(function ($q) use ($property): void {
@@ -342,6 +343,7 @@ class PropertyController extends Controller
                 $p->rooms = $p->bedrooms ?? 0;
                 $p->favorites_count = (int) ($p->favorites_count ?? 0);
                 $p->review_count = (int) ($p->reviews_count ?? 0);
+                $p->comment_count = (int) ($p->comments_count ?? 0);
                 $p->shares_count = (int) ($p->shares_count ?? 0);
                 $p->is_favorite = in_array($p->id, $favoriteIds);
 

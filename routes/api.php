@@ -22,9 +22,11 @@ use App\Http\Controllers\Api\FeedController;
 use App\Http\Controllers\Api\MetaController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PropertyReviewController;
+use App\Http\Controllers\Api\PropertyCommentController;
 use App\Http\Controllers\Api\ServiceRequestController;
 use App\Http\Controllers\Api\ProviderDirectoryController;
 use App\Http\Controllers\Api\AIController;
+use App\Http\Controllers\Api\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,8 @@ Route::get('/properties/{slug}', [PropertyController::class, 'show']);
 Route::post('/properties/{id}/share', [PropertyController::class, 'incrementShare']);
 // Avis publics (lecture seule sans auth)
 Route::get('/properties/{identifier}/reviews', [PropertyReviewController::class, 'index']);
+// Commentaires publics
+Route::get('/properties/{identifier}/comments', [PropertyCommentController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/feed', [FeedController::class, 'index']);
 Route::get('/marketplace/items', [MarketplaceController::class, 'index']);
@@ -51,6 +55,7 @@ Route::get('/marketplace/categories', [MarketplaceController::class, 'categories
 Route::get('/marketplace/vendors/{id}', [MarketplaceController::class, 'vendorProfile']);
 Route::get('/settings', [MetaController::class, 'settings']);
 Route::post('/ai/chat', [AIController::class, 'chat']);
+Route::get('/search/suggest', [SearchController::class, 'suggest']);
 
 // ── Service Marketplace (Public) ─────────────────────────────────────────────
 Route::group(['prefix' => 'marketplace/services'], function (): void {
@@ -104,6 +109,11 @@ Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('/properties/{identifier}/reviews/my', [PropertyReviewController::class, 'myReview']);
     Route::put('/reviews/{id}', [PropertyReviewController::class, 'update']);
     Route::delete('/reviews/{id}', [PropertyReviewController::class, 'destroy']);
+
+    // ── Commentaires sur les biens ──────────────────────────────────────────
+    Route::post('/properties/{identifier}/comments', [PropertyCommentController::class, 'store']);
+    Route::delete('/comments/{id}', [PropertyCommentController::class, 'destroy']);
+    Route::put('/comments/{id}', [PropertyCommentController::class, 'update']);
 
     // ════════════════════════════════════════════════════════════════════════
     // PROCESSUS LOCATIF — VISITES (accessible à tout user authentifié)
