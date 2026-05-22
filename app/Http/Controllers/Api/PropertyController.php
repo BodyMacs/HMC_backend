@@ -66,22 +66,41 @@ class PropertyController extends Controller
         if ($request->filled('min_rooms') && $request->min_rooms > 0) {
             $query->where('bedrooms', '>=', $request->min_rooms);
         }
-        // Filtre état du bien (CSV ou unique)
-        if ($request->filled('etats')) {
-            $etats = array_filter(array_map('trim', explode(',', $request->etats)));
-            if (! empty($etats)) {
-                $query->whereIn('etat', $etats);
-            }
-        } elseif ($request->filled('etat')) {
-            $query->where('etat', $request->etat);
+        if ($request->filled('min_bathrooms')) {
+            $query->where('bathrooms', '>=', $request->min_bathrooms);
         }
-        // Filtre commodités (JSON contains) — OR logique : au moins une
+        if ($request->filled('min_area')) {
+            $query->where('area', '>=', $request->min_area);
+        }
+        if ($request->filled('max_area')) {
+            $query->where('area', '<=', $request->max_area);
+        }
+        if ($request->has('is_furnished') && $request->is_furnished !== '') {
+            $query->where('is_furnished', $request->boolean('is_furnished'));
+        }
+        if ($request->filled('region')) {
+            $query->where('region', 'like', '%' . $request->region . '%');
+        }
+
+        // Filtre équipements (amenities)
         if ($request->filled('amenities')) {
             $amens = array_filter(array_map('trim', explode(',', $request->amenities)));
             if (! empty($amens)) {
                 $query->where(function ($q) use ($amens): void {
                     foreach ($amens as $a) {
                         $q->orWhere('amenities', 'like', '%' . $a . '%');
+                    }
+                });
+            }
+        }
+
+        // Filtre commodités (commodites)
+        if ($request->filled('commodites')) {
+            $comms = array_filter(array_map('trim', explode(',', $request->commodites)));
+            if (! empty($comms)) {
+                $query->where(function ($q) use ($comms): void {
+                    foreach ($comms as $c) {
+                        $q->orWhere('commodites', 'like', '%' . $c . '%');
                     }
                 });
             }
@@ -158,13 +177,7 @@ class PropertyController extends Controller
             ->get()
             ->map(fn($c) => ['label' => $c->value, 'value' => $c->value, 'count' => $c->count]);
 
-        $etatAggregates = (clone $baseQuery)
-            ->whereNotNull('etat')
-            ->selectRaw('etat as value, count(*) as count')
-            ->groupBy('etat')
-            ->get()
-            ->map(fn($e) => ['label' => $e->value, 'value' => $e->value, 'count' => $e->count]);
-
+      
         // Commodités : on agrège depuis le JSON amenities
         $allAmenities = [
             'Climatisation',
@@ -185,14 +198,32 @@ class PropertyController extends Controller
             return ['label' => $a, 'value' => $a, 'count' => $count];
         })->filter(fn($a) => $a['count'] > 0)->values();
 
+        // Commodités : on agrège depuis le JSON commodites
+        $allCommodites = [
+            'École',
+            'Hôpital',
+            'Supermarché',
+            'Restaurant',
+            'Pharmacie',
+            'Banque',
+            'Marché',
+            'Transport public',
+        ];
+
+        $commoditeAggregates = collect($allCommodites)->map(function ($c) use ($baseQuery) {
+            $count = (clone $baseQuery)->where('commodites', 'like', '%' . $c . '%')->count();
+
+            return ['label' => $c, 'value' => $c, 'count' => $count];
+        })->filter(fn($c) => $c['count'] > 0)->values();
+
         return response()->json([
             'success' => true,
             'data' => $properties,
             'aggregates' => [
                 'types' => $typeAggregates,
                 'cities' => $cityAggregates,
-                'etats' => $etatAggregates,
                 'amenities' => $amenityAggregates,
+                'commodites' => $commoditeAggregates,
             ],
         ]);
     }
@@ -213,7 +244,6 @@ class PropertyController extends Controller
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
             'area' => 'nullable|numeric',
-            'etat' => 'nullable|string',
             'amenities' => 'nullable', // Can be CSV string or array
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:5120',
@@ -379,8 +409,7 @@ class PropertyController extends Controller
             'bedrooms',
             'bathrooms',
             'area',
-            'etat',
-            'amenities',
+                    'amenities',
             'features',
         ]));
 

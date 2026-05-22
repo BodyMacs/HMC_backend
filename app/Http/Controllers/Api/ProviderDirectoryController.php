@@ -26,11 +26,21 @@ class ProviderDirectoryController extends Controller
             $query->where('city', 'like', "%{$request->city}%");
         }
 
-        // Filter by Category (via their services)
+        // Filter by Neighborhood
+        if ($request->has('neighborhood')) {
+            $query->where('neighborhood', 'like', "%{$request->neighborhood}%");
+        }
+
+        // Filter by Category_id (Expertise)
         if ($request->has('category_id')) {
             $query->whereHas('services', function ($q) use ($request): void {
                 $q->where('category_id', $request->category_id);
             });
+        }
+
+        // Filter by Verification (Identity)
+        if ($request->has('is_verified')) {
+            $query->where('is_verified', $request->boolean('is_verified'));
         }
 
         // Search by name
@@ -38,7 +48,21 @@ class ProviderDirectoryController extends Controller
             $query->where('name', 'like', "%{$request->search}%");
         }
 
-        $providers = $query->latest()->paginate(12);
+        // Sort by
+        $sort = $request->query('sort', 'recent');
+        switch ($sort) {
+            case 'top-rated':
+                $query->orderByDesc('rating');
+                break;
+            case 'experienced':
+                $query->orderByDesc('experience_years');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $providers = $query->paginate(12);
 
         return response()->json([
             'success' => true,

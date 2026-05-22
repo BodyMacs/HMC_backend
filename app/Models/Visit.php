@@ -15,7 +15,7 @@ class Visit extends Model
 
     public static function getVisitFee(): float
     {
-        return (float) env('VISIT_FEE', 10);
+        return (float) env('VISIT_FEE', 4500);
     }
 
     protected $guarded = ['id'];

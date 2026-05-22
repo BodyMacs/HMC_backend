@@ -160,6 +160,7 @@ class TenantController extends Controller
         return response()->json([
             'success' => true,
             'status' => $status,
+            'favorites_count' => Favorite::where('property_id', $request->property_id)->count(),
         ]);
     }
 

@@ -18,10 +18,13 @@ class Property extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'price'     => 'decimal:2',
-        'area'      => 'integer',
-        'amenities' => 'array',
-        'features'  => 'array',
+        'price'        => 'decimal:2',
+        'area'         => 'integer',
+        'is_furnished' => 'boolean',
+        'available_at' => 'date',
+        'amenities'    => 'array',
+        'features'     => 'array',
+        'commodites'   => 'array',
     ];
 
     /**
@@ -51,6 +54,20 @@ class Property extends Model
     }
 
     public function getFeaturesAttribute($value): array
+    {
+        return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
+    }
+
+    public function setCommoditesAttribute($value): void
+    {
+        if (is_string($value)) {
+            $value = array_filter(array_map('trim', explode(',', $value)));
+        }
+
+        $this->attributes['commodites'] = json_encode($value ?: [], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getCommoditesAttribute($value): array
     {
         return is_string($value) ? (json_decode($value, true) ?? []) : ($value ?? []);
     }

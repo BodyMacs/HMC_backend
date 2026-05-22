@@ -55,7 +55,8 @@ class PropertySeeder extends Seeder
             'location' => 'Makepe, Douala',
             'region' => 'Littoral',
             'category' => 'Chambre',
-            'etat' => 'Bon état',
+            'is_furnished' => false,
+            'available_at' => now()->addWeeks(1)->toDateString(),
             'price' => 25000,
             'bedrooms' => 1,
             'bathrooms' => 1,
@@ -69,7 +70,7 @@ class PropertySeeder extends Seeder
             'location' => 'Akwa, Douala',
             'region' => 'Littoral',
             'category' => 'Chambre',
-            'etat' => 'Meublé',
+            'is_furnished' => true,
             'price' => 30000,
             'bedrooms' => 1,
             'bathrooms' => 1,
@@ -83,7 +84,7 @@ class PropertySeeder extends Seeder
             'location' => 'Bonanjo, Douala',
             'region' => 'Littoral',
             'category' => 'Studio',
-            'etat' => 'Neuf',
+            'is_furnished' => false,
             'price' => 75000,
             'bedrooms' => 1,
             'bathrooms' => 1,
@@ -97,7 +98,7 @@ class PropertySeeder extends Seeder
             'location' => 'Deido, Douala',
             'region' => 'Littoral',
             'category' => 'Studio',
-            'etat' => 'Rénové',
+            'is_furnished' => false,
             'price' => 55000,
             'bedrooms' => 1,
             'bathrooms' => 1,
@@ -244,7 +245,7 @@ class PropertySeeder extends Seeder
             'bedrooms' => 5,
             'bathrooms' => 3,
             'area' => 180,
-            'description' => 'Belle maison familiale à Nsimeyong avec grand séjour, 5 chambres, 3 douches et grande cour clôturée. Quartier calme, idéal pour expatriés.',
+            'description' => 'Belle maison familiale à Nsimeyong avec grand séjour, 5 chambres, 3 douches and grande cour clôturée. Quartier calme, idéal pour expatriés.',
             'amenities' => ['Eau courante', 'Électricité permanente', 'Jardin', 'Parking', 'Gardiennage'],
         ],
         [
@@ -458,7 +459,7 @@ class PropertySeeder extends Seeder
                 'type' => 'rent',
                 'status' => 'active',
                 'category' => $data['category'],
-                'etat' => $data['etat'],
+                'is_furnished' => $data['is_furnished'],
                 'amenities' => $data['amenities'],
                 'features' => $data['amenities'],
                 'price' => $data['price'],
@@ -472,6 +473,7 @@ class PropertySeeder extends Seeder
                 'area' => $data['area'],
                 'construction_year' => rand(2010, 2024),
                 'views_count' => rand(10, 800),
+                'commodites' => $this->getRandomCommodites(),
             ]);
 
             // Image réaliste par catégorie
@@ -487,5 +489,18 @@ class PropertySeeder extends Seeder
         }
 
         $this->command->info('✅ '.count($this->properties).' annonces camerounaises créées avec succès !');
+    }
+
+    private function getRandomCommodites(): array
+    {
+        $all = [
+            'École', 'Hôpital', 'Clinique', 'Supermarché', 'Marché', 
+            'Restaurant', 'Pharmacie', 'Station service', 'Banque', 
+            'Lycée', 'Université', 'Boulangerie', 'Arrêt de bus',
+            'Poste de police', 'Espace vert', 'Gym'
+        ];
+        
+        shuffle($all);
+        return array_slice($all, 0, rand(3, 6));
     }
 }

@@ -21,15 +21,58 @@ class ServiceRequestController extends Controller
         $query = ServicePost::with(['client', 'category'])
             ->where('status', 'open');
 
-        // Simple filtering by city or category
+        // Filter by City
         if ($request->has('city')) {
             $query->where('city', 'like', "%{$request->city}%");
         }
+
+        // Filter by Neighborhood
+        if ($request->has('neighborhood')) {
+            $query->where('neighborhood', 'like', "%{$request->neighborhood}%");
+        }
+
+        // Filter by Category
         if ($request->has('category_id')) {
             $query->where('category_id', $request->category_id);
         }
 
-        $posts = $query->latest()->paginate(15);
+        // Filter by Urgency
+        if ($request->has('urgency')) {
+            $query->where('urgency', $request->urgency);
+        }
+
+        // Filter by Budget Range
+        if ($request->has('min_budget')) {
+            $query->where('max_budget', '>=', $request->min_budget);
+        }
+        if ($request->has('max_budget')) {
+            $query->where('min_budget', '<=', $request->max_budget);
+        }
+
+        // Search by Title/Description
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search): void {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        // Sort by
+        $sort = $request->query('sort', 'recent');
+        switch ($sort) {
+            case 'urgent':
+                $query->orderByRaw("FIELD(urgency, 'high', 'medium', 'low')");
+                break;
+            case 'budget-desc':
+                $query->orderByDesc('max_budget');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+
+        $posts = $query->paginate(12);
 
         return response()->json([
             'success' => true,

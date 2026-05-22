@@ -34,8 +34,13 @@ class MarketplaceController extends Controller
         $category = $request->query('category', 'all');
         $search = $request->query('search');
 
-        // Products query
         $productsQuery = Product::where('status', 'active');
+        $search = $request->query('search');
+        $minPrice = $request->query('min_price');
+        $maxPrice = $request->query('max_price');
+        $condition = $request->query('condition');
+        $city = $request->query('city');
+        $sort = $request->query('sort', 'recent');
 
         if ($search) {
             $productsQuery->where(function ($q) use ($search): void {
@@ -48,7 +53,34 @@ class MarketplaceController extends Controller
             $productsQuery->where('category', $category);
         }
 
-        $products = $productsQuery->latest()->get()->map(fn ($p) => [
+        if ($minPrice) {
+            $productsQuery->where('price', '>=', $minPrice);
+        }
+        if ($maxPrice) {
+            $productsQuery->where('price', '<=', $maxPrice);
+        }
+        if ($condition) {
+            $conditionsArr = explode(',', $condition);
+            $productsQuery->whereIn('condition', $conditionsArr);
+        }
+        if ($city) {
+            $productsQuery->where('location', 'like', "%{$city}%");
+        }
+
+        // Apply Sorting
+        switch ($sort) {
+            case 'price-asc':
+                $productsQuery->orderBy('price', 'asc');
+                break;
+            case 'price-desc':
+                $productsQuery->orderBy('price', 'desc');
+                break;
+            default:
+                $productsQuery->latest();
+                break;
+        }
+
+        $products = $productsQuery->get()->map(fn ($p) => [
             'id'       => $p->id,
             'name'     => $p->name,
             'price'    => $p->price,
@@ -77,7 +109,26 @@ class MarketplaceController extends Controller
                 });
             }
 
-            $services = $servicesQuery->latest()->get()->map(fn ($s) => [
+            if ($city) {
+                $servicesQuery->whereHas('provider', function ($q) use ($city): void {
+                    $q->where('city', 'like', "%{$city}%");
+                });
+            }
+
+            // Apply Sorting for services
+            switch ($sort) {
+                case 'price-asc':
+                    $servicesQuery->orderBy('base_price', 'asc');
+                    break;
+                case 'price-desc':
+                    $servicesQuery->orderBy('base_price', 'desc');
+                    break;
+                default:
+                    $servicesQuery->latest();
+                    break;
+            }
+
+            $services = $servicesQuery->get()->map(fn ($s) => [
                 'id' => $s->id,
                 'name' => $s->title,
                 'price' => $s->base_price,
@@ -93,8 +144,20 @@ class MarketplaceController extends Controller
             ]);
         }
 
-        // Merge and sort
-        $allItems = $products->concat($services)->sortByDesc('id');
+        // Merge and sort again for the combined collection
+        $allItems = $products->concat($services);
+        
+        switch ($sort) {
+            case 'price-asc':
+                $allItems = $allItems->sortBy('price');
+                break;
+            case 'price-desc':
+                $allItems = $allItems->sortByDesc('price');
+                break;
+            default:
+                $allItems = $allItems->sortByDesc('id');
+                break;
+        }
 
         // Pagination
         $perPage = (int) $request->query('per_page', 12);
