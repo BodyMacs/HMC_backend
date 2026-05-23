@@ -118,12 +118,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
     // ════════════════════════════════════════════════════════════════════════
     // PROCESSUS LOCATIF — VISITES (accessible à tout user authentifié)
     // ════════════════════════════════════════════════════════════════════════
-    Route::prefix('visits')->name('visits.')->group(function (): void {
-        Route::get('/', [VisiteController::class, 'myVisits']);          // Mes visites
-        Route::post('/', [VisiteController::class, 'book']);              // Réserver une visite
-        Route::post('/{id}/confirm', [VisiteController::class, 'userConfirm']); // User confirme
-        Route::post('/{id}/cancel', [VisiteController::class, 'cancel']); // Annuler
-    });
+    // Note: Les routes sont désormais consolidées sous /api/prospect/visits
 
     // ════════════════════════════════════════════════════════════════════════
     // PROCESSUS LOCATIF — DOSSIERS (accessible à tout user authentifié)

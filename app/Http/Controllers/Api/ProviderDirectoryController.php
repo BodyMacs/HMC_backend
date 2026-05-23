@@ -17,7 +17,9 @@ class ProviderDirectoryController extends Controller
     public function index(Request $request): JsonResponse
     {
         // Find users who have 'prestataire' in their roles list
-        $query = User::with(['services.category'])
+        $query = User::with(['services' => function ($q) {
+                $q->orderBy('created_at', 'asc')->with('category');
+            }])
             ->whereJsonContains('roles', 'prestataire')
             ->where('status', 'active');
 
@@ -64,6 +66,20 @@ class ProviderDirectoryController extends Controller
 
         $providers = $query->paginate(12);
 
+        // Append computed experience_years based on first service creation date
+        $providers->getCollection()->transform(function (User $user) {
+            $firstService = $user->services->sortBy('created_at')->first();
+            if ($firstService) {
+                $user->experience_years = (int) $firstService->created_at->diffInYears(now());
+                if ($user->experience_years === 0) {
+                    $user->experience_years = '< 1';
+                }
+            } else {
+                $user->experience_years = null;
+            }
+            return $user;
+        });
+
         return response()->json([
             'success' => true,
             'data' => $providers
@@ -75,7 +91,9 @@ class ProviderDirectoryController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $provider = User::with(['services.category', 'formations'])
+        $provider = User::with(['services' => function ($q) {
+                $q->orderBy('created_at', 'asc')->with('category');
+            }, 'formations'])
             ->whereJsonContains('roles', 'prestataire')
             ->find($id);
 
@@ -84,6 +102,15 @@ class ProviderDirectoryController extends Controller
                 'success' => false,
                 'message' => 'Prestataire non trouvé'
             ], 404);
+        }
+
+        // Compute experience_years from first service creation date
+        $firstService = $provider->services->sortBy('created_at')->first();
+        if ($firstService) {
+            $years = (int) $firstService->created_at->diffInYears(now());
+            $provider->experience_years = $years === 0 ? '< 1' : $years;
+        } else {
+            $provider->experience_years = null;
         }
 
         return response()->json([

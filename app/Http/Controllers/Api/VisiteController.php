@@ -53,9 +53,10 @@ class VisiteController extends Controller
             'user_id'            => $user->id,
             'agent_id'           => $property->agent_id,
             'scheduled_at'       => $request->scheduled_at,
+            'visit_type'         => $request->visit_type ?? 'physical',
             'status'             => 'pending',
             'notes'              => $request->notes,
-            'visit_fee'          => Visit::getVisitFee(),
+            'visit_fee'          => Visit::getVisitFee($request->visit_type ?? 'physical'),
             'fee_payment_status' => $request->fee_payment_method ? 'paid' : 'pending',
             'fee_payment_method' => $request->fee_payment_method,
         ]);

@@ -13,8 +13,11 @@ class Visit extends Model
 {
     use HasFactory;
 
-    public static function getVisitFee(): float
+    public static function getVisitFee(string $type = 'physical'): float
     {
+        if ($type === 'online') {
+            return 1000.0;
+        }
         return (float) env('VISIT_FEE', 4500);
     }
 
@@ -26,6 +29,7 @@ class Visit extends Model
         'confirmed_by_user'  => 'boolean',
         'confirmed_by_agent' => 'boolean',
         'visit_fee'          => 'decimal:2',
+        'visit_type'         => 'string',
     ];
 
     // ─── Relations ────────────────────────────────────────────────────────────

@@ -50,46 +50,59 @@ class ProspectController extends Controller
      */
     public function bookVisit(Request $request): JsonResponse
     {
-        $request->validate([
-            'property_id'  => 'required|integer|exists:properties,id',
-            'scheduled_at' => 'required|date|after:now',
-        ]);
+        try {
+            \Illuminate\Support\Facades\Log::info('Tentative booking visite', $request->all());
 
-        $user     = $request->user();
-        $property = Property::where('id', $request->property_id)
-            ->where('status', 'active')
-            ->with('agent:id,name,phone')
-            ->firstOrFail();
+            $request->validate([
+                'property_id'  => 'required|integer|exists:properties,id',
+                'scheduled_at' => 'required|date|after:now',
+                'visit_type'   => 'nullable|string|in:physical,online',
+            ]);
 
-        // Vérifier qu'il n'a pas déjà une visite en cours pour ce bien
-        $existing = Visit::where('property_id', $request->property_id)
-            ->where('user_id', $user->id)
-            ->whereIn('status', ['pending', 'confirmed'])
-            ->first();
+            $user     = $request->user();
+            $property = Property::where('id', $request->property_id)
+                ->with('agent:id,name,phone')
+                ->first();
 
-        if ($existing) {
+            if (!$property) {
+                \Illuminate\Support\Facades\Log::error('Propriété non trouvée ou inactive', ['id' => $request->property_id]);
+                return response()->json(['success' => false, 'message' => 'Bien immobilier non trouvé.'], 404);
+            }
+
+            // Vérifier qu'il n'a pas déjà une visite en cours pour ce bien
+            $existing = Visit::where('property_id', $request->property_id)
+                ->where('user_id', $user->id)
+                ->whereIn('status', ['pending', 'confirmed'])
+                ->first();
+
+            if ($existing) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Vous avez déjà une visite planifiée pour ce bien.',
+                    'data'    => $existing,
+                ], 422);
+            }
+
+            $visit = Visit::create([
+                'property_id'  => $request->property_id,
+                'user_id'      => $user->id,
+                'agent_id'     => $property->agent_id,
+                'scheduled_at' => $request->scheduled_at,
+                'visit_type'   => $request->visit_type ?? 'physical',
+                'status'       => 'pending',
+                'visit_fee'    => Visit::getVisitFee($request->visit_type ?? 'physical'),
+                'fee_payment_status' => 'pending',
+            ]);
+
             return response()->json([
-                'success' => false,
-                'message' => 'Vous avez déjà une visite planifiée pour ce bien.',
-                'data'    => $existing,
-            ], 422);
+                'success' => true,
+                'message' => 'Visite réservée. Veuillez régler les frais de visite pour la confirmer.',
+                'data'    => $visit->load(['property:id,title,city', 'agent:id,name,phone']),
+            ], 201);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erreur bookVisit: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
+            return response()->json(['success' => false, 'message' => 'Erreur lors de la réservation: ' . $e->getMessage()], 500);
         }
-
-        $visit = Visit::create([
-            'property_id'  => $request->property_id,
-            'user_id'      => $user->id,
-            'agent_id'     => $property->agent_id,
-            'scheduled_at' => $request->scheduled_at,
-            'status'       => 'pending',
-            'visit_fee'    => Visit::getVisitFee(),
-            'fee_payment_status' => 'pending',
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Visite réservée. Veuillez régler les frais de visite pour la confirmer.',
-            'data'    => $visit->load(['property:id,title,city', 'agent:id,name,phone']),
-        ], 201);
     }
 
     /**

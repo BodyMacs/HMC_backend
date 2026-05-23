@@ -23,23 +23,24 @@ class ServiceSeeder extends Seeder
         }
 
         // ─── PRESTATAIRES RÉALISTES (16) ───────────────────────────────────────
+        // 'exp' = years ago when the provider created their first service (for experience_years calculation)
         $providers = [
-            ['name' => 'Jean-Paul Kamga Talla',    'city' => 'Douala',    'specialty' => 'Plombier Sanitaire Certifié',         'cat' => 'Plomberie',      'price' => 15000, 'avatar' => 'https://i.pravatar.cc/150?img=5'],
-            ['name' => 'Saliou Bello Hamadou',     'city' => 'Yaoundé',   'specialty' => 'Électricien Bâtiment & Industriel',   'cat' => 'Électricité',    'price' => 20000, 'avatar' => 'https://i.pravatar.cc/150?img=6'],
-            ['name' => 'Moussa Ibrahim Waziri',    'city' => 'Garoua',    'specialty' => 'Technicien Froid & Clim',              'cat' => 'Climatisation',  'price' => 25000, 'avatar' => 'https://i.pravatar.cc/150?img=7'],
-            ['name' => 'Christian Tchakounté',     'city' => 'Douala',    'specialty' => 'Peintre Décorateur Intérieur',         'cat' => 'Peinture',       'price' => 18000, 'avatar' => 'https://i.pravatar.cc/150?img=8'],
-            ['name' => 'Fabrice Ndumbe Epée',      'city' => 'Douala',    'specialty' => 'Menuisier Aluminium & PVC',            'cat' => 'Menuiserie',     'price' => 22000, 'avatar' => 'https://i.pravatar.cc/150?img=9'],
-            ['name' => 'Erika Mbianda Nkolo',      'city' => 'Yaoundé',   'specialty' => 'Agent de Nettoyage Professionnel',     'cat' => 'Nettoyage',      'price' => 10000, 'avatar' => 'https://i.pravatar.cc/150?img=26'],
-            ['name' => 'Hervé Kotto Bonono',       'city' => 'Douala',    'specialty' => 'Maçon Finisseur & Carreleur',          'cat' => 'Maçonnerie',     'price' => 20000, 'avatar' => 'https://i.pravatar.cc/150?img=13'],
-            ['name' => 'Samuel Wandji Ngafou',     'city' => 'Bafoussam', 'specialty' => 'Électricien Réseau & Domotique',       'cat' => 'Électricité',    'price' => 25000, 'avatar' => 'https://i.pravatar.cc/150?img=15'],
-            ['name' => 'André Batum Ngapout',      'city' => 'Douala',    'specialty' => 'Plombier Sanitaire & Forage',          'cat' => 'Plomberie',      'price' => 18000, 'avatar' => 'https://i.pravatar.cc/150?img=17'],
-            ['name' => 'Gisèle Ngo Nouga',         'city' => 'Yaoundé',   'specialty' => 'Paysagiste & Jardinière Certifiée',    'cat' => 'Jardinage',      'price' => 12000, 'avatar' => 'https://i.pravatar.cc/150?img=31'],
-            ['name' => 'Blaise Tsafack Nguemo',    'city' => 'Bafoussam', 'specialty' => 'Technicien Clim & Réfrigération',      'cat' => 'Climatisation',  'price' => 30000, 'avatar' => 'https://i.pravatar.cc/150?img=18'],
-            ['name' => 'Raoul Nkoumou Biyogue',    'city' => 'Douala',    'specialty' => 'Peintre Décorateur Façades',           'cat' => 'Peinture',       'price' => 22000, 'avatar' => 'https://i.pravatar.cc/150?img=19'],
-            ['name' => 'Yasmine Abena Kollo',      'city' => 'Yaoundé',   'specialty' => 'Femme de Ménage & Organisation',       'cat' => 'Nettoyage',      'price' => 8000,  'avatar' => 'https://i.pravatar.cc/150?img=32'],
-            ['name' => 'Eric Mvondo Ateba',        'city' => 'Douala',    'specialty' => 'Maçon Spécialiste Piscines',           'cat' => 'Maçonnerie',     'price' => 35000, 'avatar' => 'https://i.pravatar.cc/150?img=20'],
-            ['name' => 'Didier Fotso Taboh',       'city' => 'Bafoussam', 'specialty' => 'Menuisier Bois Massif & Sculpture',    'cat' => 'Menuiserie',     'price' => 28000, 'avatar' => 'https://i.pravatar.cc/150?img=22'],
-            ['name' => 'Patrick Edouard Nkoa',     'city' => 'Douala',    'specialty' => 'Électricien Solaire & Photovoltaïque', 'cat' => 'Électricité',    'price' => 40000, 'avatar' => 'https://i.pravatar.cc/150?img=23'],
+            ['name' => 'Jean-Paul Kamga Talla',    'city' => 'Douala',    'specialty' => 'Plombier Sanitaire Certifié',         'cat' => 'Plomberie',      'price' => 15000, 'avatar' => 'https://i.pravatar.cc/150?img=5',  'exp' => 7],
+            ['name' => 'Saliou Bello Hamadou',     'city' => 'Yaoundé',   'specialty' => 'Électricien Bâtiment & Industriel',   'cat' => 'Électricité',    'price' => 20000, 'avatar' => 'https://i.pravatar.cc/150?img=6',  'exp' => 5],
+            ['name' => 'Moussa Ibrahim Waziri',    'city' => 'Garoua',    'specialty' => 'Technicien Froid & Clim',              'cat' => 'Climatisation',  'price' => 25000, 'avatar' => 'https://i.pravatar.cc/150?img=7',  'exp' => 4],
+            ['name' => 'Christian Tchakounté',     'city' => 'Douala',    'specialty' => 'Peintre Décorateur Intérieur',         'cat' => 'Peinture',       'price' => 18000, 'avatar' => 'https://i.pravatar.cc/150?img=8',  'exp' => 6],
+            ['name' => 'Fabrice Ndumbe Epée',      'city' => 'Douala',    'specialty' => 'Menuisier Aluminium & PVC',            'cat' => 'Menuiserie',     'price' => 22000, 'avatar' => 'https://i.pravatar.cc/150?img=9',  'exp' => 3],
+            ['name' => 'Erika Mbianda Nkolo',      'city' => 'Yaoundé',   'specialty' => 'Agent de Nettoyage Professionnel',     'cat' => 'Nettoyage',      'price' => 10000, 'avatar' => 'https://i.pravatar.cc/150?img=26', 'exp' => 2],
+            ['name' => 'Hervé Kotto Bonono',       'city' => 'Douala',    'specialty' => 'Maçon Finisseur & Carreleur',          'cat' => 'Maçonnerie',     'price' => 20000, 'avatar' => 'https://i.pravatar.cc/150?img=13', 'exp' => 5],
+            ['name' => 'Samuel Wandji Ngafou',     'city' => 'Bafoussam', 'specialty' => 'Électricien Réseau & Domotique',       'cat' => 'Électricité',    'price' => 25000, 'avatar' => 'https://i.pravatar.cc/150?img=15', 'exp' => 4],
+            ['name' => 'André Batum Ngapout',      'city' => 'Douala',    'specialty' => 'Plombier Sanitaire & Forage',          'cat' => 'Plomberie',      'price' => 18000, 'avatar' => 'https://i.pravatar.cc/150?img=17', 'exp' => 3],
+            ['name' => 'Gisèle Ngo Nouga',         'city' => 'Yaoundé',   'specialty' => 'Paysagiste & Jardinière Certifiée',    'cat' => 'Jardinage',      'price' => 12000, 'avatar' => 'https://i.pravatar.cc/150?img=31', 'exp' => 1],
+            ['name' => 'Blaise Tsafack Nguemo',    'city' => 'Bafoussam', 'specialty' => 'Technicien Clim & Réfrigération',      'cat' => 'Climatisation',  'price' => 30000, 'avatar' => 'https://i.pravatar.cc/150?img=18', 'exp' => 6],
+            ['name' => 'Raoul Nkoumou Biyogue',    'city' => 'Douala',    'specialty' => 'Peintre Décorateur Façades',           'cat' => 'Peinture',       'price' => 22000, 'avatar' => 'https://i.pravatar.cc/150?img=19', 'exp' => 2],
+            ['name' => 'Yasmine Abena Kollo',      'city' => 'Yaoundé',   'specialty' => 'Femme de Ménage & Organisation',       'cat' => 'Nettoyage',      'price' => 8000,  'avatar' => 'https://i.pravatar.cc/150?img=32', 'exp' => 3],
+            ['name' => 'Eric Mvondo Ateba',        'city' => 'Douala',    'specialty' => 'Maçon Spécialiste Piscines',           'cat' => 'Maçonnerie',     'price' => 35000, 'avatar' => 'https://i.pravatar.cc/150?img=20', 'exp' => 7],
+            ['name' => 'Didier Fotso Taboh',       'city' => 'Bafoussam', 'specialty' => 'Menuisier Bois Massif & Sculpture',    'cat' => 'Menuiserie',     'price' => 28000, 'avatar' => 'https://i.pravatar.cc/150?img=22', 'exp' => 5],
+            ['name' => 'Patrick Edouard Nkoa',     'city' => 'Douala',    'specialty' => 'Électricien Solaire & Photovoltaïque', 'cat' => 'Électricité',    'price' => 40000, 'avatar' => 'https://i.pravatar.cc/150?img=23', 'exp' => 4],
         ];
 
         $providerUsers = [];
@@ -65,8 +66,9 @@ class ServiceSeeder extends Seeder
             );
             $providerUsers[] = $user;
 
-            // Service principal lié à la spécialité
-            Service::updateOrCreate(
+            // Service principal lié à la spécialité — backdaté pour expérience réelle
+            $firstServiceDate = now()->subYears($data['exp'])->subDays(rand(0, 90));
+            $firstService = Service::updateOrCreate(
                 ['provider_id' => $user->id, 'category_id' => $cat->id],
                 [
                     'title'       => $data['specialty'],
@@ -75,6 +77,10 @@ class ServiceSeeder extends Seeder
                     'status'      => 'active',
                 ]
             );
+            // Mise à jour de la date de création pour simuler l'ancienneté
+            $firstService->created_at = $firstServiceDate;
+            $firstService->updated_at = now()->subDays(rand(1, 30));
+            $firstService->saveQuietly();
 
             // 1 service secondaire dans une catégorie connexe
             $secondaryCat = $categories->where('id', '!=', $cat->id)->random();

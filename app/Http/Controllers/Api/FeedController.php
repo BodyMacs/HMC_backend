@@ -107,29 +107,38 @@ class FeedController extends Controller
             ]);
 
         // ── 4. Prestataires recommandés (profils) ────────────────────────
-        $providers = User::with(['services.category'])
+        $providers = User::with(['services' => fn ($q) => $q->orderBy('created_at', 'asc')->with('category')])
             ->whereJsonContains('roles', 'prestataire')
             ->where('status', 'active')
             ->latest()
             ->skip(($page - 1) * 1)
             ->take(1)
             ->get()
-            ->map(fn ($u) => [
-                'id'              => $u->id,
-                'feed_type'       => 'provider',
-                'name'            => $u->name,
-                'city'            => $u->city ?? 'Cameroun',
-                'avatar'          => $u->avatar ?? null,
-                'bio'             => $u->bio ?? null,
-                'services'        => $u->services->map(fn ($s) => [
-                    'title'    => $s->title,
-                    'category' => $s->category?->name ?? 'Service',
-                    'icon'     => $s->category?->icon ?? 'fas fa-tools',
-                ])->take(3)->toArray(),
-                'services_count'  => $u->services->count(),
-                'rating'          => 4.5, // placeholder — à remplacer par avg reviews
-                'date'            => $u->created_at?->diffForHumans() ?? 'Récemment',
-            ]);
+            ->map(function ($u) {
+                $firstService = $u->services->sortBy('created_at')->first();
+                $years = null;
+                if ($firstService) {
+                    $diff = (int) $firstService->created_at->diffInYears(now());
+                    $years = $diff === 0 ? '< 1' : $diff;
+                }
+                return [
+                    'id'              => $u->id,
+                    'feed_type'       => 'provider',
+                    'name'            => $u->name,
+                    'city'            => $u->city ?? 'Cameroun',
+                    'avatar'          => $u->avatar ?? null,
+                    'bio'             => $u->bio ?? null,
+                    'services'        => $u->services->map(fn ($s) => [
+                        'title'    => $s->title,
+                        'category' => $s->category?->name ?? 'Service',
+                        'icon'     => $s->category?->icon ?? 'fas fa-tools',
+                    ])->take(3)->toArray(),
+                    'services_count'  => $u->services->count(),
+                    'experience_years'=> $years,
+                    'rating'          => 4.5, // placeholder — à remplacer par avg reviews
+                    'date'            => $u->created_at?->diffForHumans() ?? 'Récemment',
+                ];
+            });
 
         // ── 5. Stories — 6 biens récents pour la barre de stories ─────────
         $stories = Property::with(['primaryImage', 'agent', 'owner'])
