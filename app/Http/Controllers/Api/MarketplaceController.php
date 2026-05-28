@@ -33,14 +33,13 @@ class MarketplaceController extends Controller
     {
         $category = $request->query('category', 'all');
         $search = $request->query('search');
-
-        $productsQuery = Product::where('status', 'active');
-        $search = $request->query('search');
         $minPrice = $request->query('min_price');
         $maxPrice = $request->query('max_price');
         $condition = $request->query('condition');
         $city = $request->query('city');
         $sort = $request->query('sort', 'recent');
+
+        $productsQuery = Product::where('status', 'active');
 
         if ($search) {
             $productsQuery->where(function ($q) use ($search): void {
@@ -49,7 +48,7 @@ class MarketplaceController extends Controller
             });
         }
 
-        if ($category !== 'all' && $category !== 'services') {
+        if ($category !== 'all') {
             $productsQuery->where('category', $category);
         }
 
@@ -80,7 +79,11 @@ class MarketplaceController extends Controller
                 break;
         }
 
-        $products = $productsQuery->get()->map(fn ($p) => [
+        $perPage = (int) $request->query('per_page', 12);
+        
+        $products = $productsQuery->paginate($perPage);
+
+        $products->getCollection()->transform(fn ($p) => [
             'id'       => $p->id,
             'name'     => $p->name,
             'price'    => $p->price,
@@ -97,137 +100,41 @@ class MarketplaceController extends Controller
             'type'     => 'product',
         ]);
 
-        // Services query
-        $services = collect();
-        if ($category === 'all' || $category === 'services') {
-            $servicesQuery = Service::with('category', 'provider')->where('status', 'active');
-
-            if ($search) {
-                $servicesQuery->where(function ($q) use ($search): void {
-                    $q->where('title', 'like', "%{$search}%")
-                        ->orWhere('description', 'like', "%{$search}%");
-                });
-            }
-
-            if ($city) {
-                $servicesQuery->whereHas('provider', function ($q) use ($city): void {
-                    $q->where('city', 'like', "%{$city}%");
-                });
-            }
-
-            // Apply Sorting for services
-            switch ($sort) {
-                case 'price-asc':
-                    $servicesQuery->orderBy('base_price', 'asc');
-                    break;
-                case 'price-desc':
-                    $servicesQuery->orderBy('base_price', 'desc');
-                    break;
-                default:
-                    $servicesQuery->latest();
-                    break;
-            }
-
-            $services = $servicesQuery->get()->map(fn ($s) => [
-                'id' => $s->id,
-                'name' => $s->title,
-                'price' => $s->base_price,
-                'oldPrice' => null,
-                'image' => $s->category ? $s->category->icon : 'fas fa-tools',
-                'category' => $s->category ? $s->category->name : 'Services',
-                'rating' => 5.0,
-                'reviews' => 0,
-                'location' => $s->provider ? $s->provider->city : 'Cameroun',
-                'isNew' => false,
-                'discount' => null,
-                'type' => 'service',
-            ]);
-        }
-
-        // Merge and sort again for the combined collection
-        $allItems = $products->concat($services);
-        
-        switch ($sort) {
-            case 'price-asc':
-                $allItems = $allItems->sortBy('price');
-                break;
-            case 'price-desc':
-                $allItems = $allItems->sortByDesc('price');
-                break;
-            default:
-                $allItems = $allItems->sortByDesc('id');
-                break;
-        }
-
-        // Pagination
-        $perPage = (int) $request->query('per_page', 12);
-        $page = (int) $request->query('page', 1);
-        $offset = ($page - 1) * $perPage;
-
-        $paginatedItems = new LengthAwarePaginator(
-            $allItems->slice($offset, $perPage)->values(),
-            $allItems->count(),
-            $perPage,
-            $page,
-            ['path' => Paginator::resolveCurrentPath(), 'query' => $request->query()]
-        );
-
         return response()->json([
             'success' => true,
-            'data' => $paginatedItems,
+            'data' => $products,
         ]);
     }
 
     public function show($id, Request $request): JsonResponse
     {
-        $type = $request->query('type', 'product');
-
-        if ($type === 'service') {
-            $item = Service::with('category', 'provider')->find($id);
-            if (! $item) {
-                return response()->json(['success' => false, 'message' => 'Service non trouvé'], 404);
-            }
-
-            $data = [
-                'id' => $item->id,
-                'name' => $item->title,
-                'description' => $item->description,
-                'price' => $item->base_price,
-                'image' => $item->category ? $item->category->icon : 'fas fa-tools',
-                'category' => $item->category ? $item->category->name : 'Services',
-                'location' => $item->provider ? $item->provider->city : 'Cameroun',
-                'provider' => $item->provider,
-                'type' => 'service',
-                'rating' => 5.0,
-                'reviews' => [],
-            ];
-        } else {
-            $item = Product::find($id);
-            if (! $item) {
-                return response()->json(['success' => false, 'message' => 'Produit non trouvé'], 404);
-            }
-
-            $data = [
-                'id'          => $item->id,
-                'name'        => $item->name,
-                'description' => $item->description,
-                'price'       => $item->price,
-                'oldPrice'    => $item->old_price,
-                'image'       => $item->image,
-                'category'    => $item->category,
-                'condition'   => $item->condition ?? 'Neuf',
-                'stock'       => $item->stock ?? 1,
-                'location'    => $item->location,
-                'isNew'       => $item->is_new,
-                'type'        => 'product',
-                'rating'      => $item->rating,
-                'reviews'     => [],
-                'seller'      => $item->user ? [
-                    'name'   => $item->user->name,
-                    'avatar' => $item->user->avatar,
-                ] : null,
-            ];
+        $item = Product::find($id);
+        
+        if (! $item) {
+            return response()->json(['success' => false, 'message' => 'Produit non trouvé'], 404);
         }
+
+        $data = [
+            'id'          => $item->id,
+            'name'        => $item->name,
+            'description' => $item->description,
+            'price'       => $item->price,
+            'oldPrice'    => $item->old_price,
+            'image'       => $item->image,
+            'category'    => $item->category,
+            'condition'   => $item->condition ?? 'Neuf',
+            'stock'       => $item->stock ?? 1,
+            'location'    => $item->location,
+            'isNew'       => $item->is_new,
+            'type'        => 'product',
+            'rating'      => $item->rating,
+            'reviews'     => [],
+            'seller'      => $item->user ? [
+                'id'     => $item->user->id,
+                'name'   => $item->user->name,
+                'avatar' => $item->user->avatar,
+            ] : null,
+        ];
 
         return response()->json([
             'success' => true,
@@ -664,25 +571,23 @@ class MarketplaceController extends Controller
 
     public function categories(): JsonResponse
     {
-        $productCats = Product::select('category')->distinct()->pluck('category')->map(fn ($c) => [
-            'id' => $c,
-            'name' => ucfirst((string)$c),
-            'icon' => $this->getIconForCategory((string)$c),
-        ]);
+        $productCats = Product::where('status', 'active')
+            ->select('category')
+            ->distinct()
+            ->pluck('category')
+            ->map(fn ($c) => [
+                'id' => $c,
+                'name' => ucfirst((string)$c),
+                'icon' => $this->getIconForCategory((string)$c),
+            ]);
 
         $cats = collect([
             ['id' => 'all', 'name' => 'Tout', 'icon' => 'fas fa-th-large'],
         ])->concat($productCats);
 
-        $serviceCats = ServiceCategory::all()->map(fn ($sc) => [
-            'id' => $sc->id,
-            'name' => $sc->name,
-            'icon' => $sc->icon ?: 'fas fa-tools',
-        ]);
-
         return response()->json([
             'success' => true,
-            'data' => $cats->concat($serviceCats)->unique('id')->values(),
+            'data' => $cats->unique('id')->values(),
         ]);
     }
 

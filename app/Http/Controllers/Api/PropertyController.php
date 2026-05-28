@@ -145,7 +145,8 @@ class PropertyController extends Controller
             } else {
                 $p->image = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
             }
-            $p->rooms        = $p->bedrooms ?? 0;
+            $p->rooms        = (int) ($p->rooms ?? 0);
+            $p->living_rooms = (int) ($p->living_rooms ?? 0);
             $p->avg_rating   = round((float) ($p->reviews_avg_rating ?? 0), 1);
             $p->review_count = (int) ($p->reviews_count ?? 0);
             $p->comment_count = (int) ($p->comments_count ?? 0);
@@ -242,6 +243,8 @@ class PropertyController extends Controller
             'city' => 'required|string',
             'description' => 'nullable|string',
             'bedrooms' => 'nullable|integer',
+            'rooms' => 'nullable|integer',
+            'living_rooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
             'area' => 'nullable|numeric',
             'amenities' => 'nullable', // Can be CSV string or array
@@ -370,7 +373,8 @@ class PropertyController extends Controller
                 $p->image = $path
                     ? (str_starts_with($path, 'http') ? $path : asset('storage/' . $path))
                     : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800';
-                $p->rooms = $p->bedrooms ?? 0;
+                $p->rooms = (int) ($p->rooms ?? 0);
+                $p->living_rooms = (int) ($p->living_rooms ?? 0);
                 $p->favorites_count = (int) ($p->favorites_count ?? 0);
                 $p->review_count = (int) ($p->reviews_count ?? 0);
                 $p->comment_count = (int) ($p->comments_count ?? 0);
@@ -407,6 +411,8 @@ class PropertyController extends Controller
             'city',
             'description',
             'bedrooms',
+            'rooms',
+            'living_rooms',
             'bathrooms',
             'area',
                     'amenities',

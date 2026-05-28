@@ -18,3 +18,4 @@ WHERE city = 'Yaoundé' AND (commodites IS NULL OR commodites = '[]');
 UPDATE properties 
 SET is_furnished = 1 
 WHERE title LIKE '%meublé%' OR description LIKE '%meublé%';
+php artisan db:seed --class=ServiceSeeder
