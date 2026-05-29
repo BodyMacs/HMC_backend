@@ -18,7 +18,7 @@ class Visit extends Model
         if ($type === 'online') {
             return 1000.0;
         }
-        return (float) env('VISIT_FEE', 4500);
+        return (float) env('VISIT_FEE', 3000.0);
     }
 
     protected $guarded = ['id'];

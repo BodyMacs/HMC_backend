@@ -136,9 +136,30 @@ class MarketplaceController extends Controller
             ] : null,
         ];
 
+        // Produits similaires
+        $similar = Product::where('category', $item->category)
+            ->where('id', '!=', $item->id)
+            ->where('status', 'active')
+            ->latest()
+            ->take(8)
+            ->get()
+            ->map(fn ($p) => [
+                'id'       => $p->id,
+                'name'     => $p->name,
+                'price'    => $p->price,
+                'oldPrice' => $p->old_price,
+                'image'    => $p->image,
+                'category' => $p->category,
+                'condition'=> $p->condition ?? 'Neuf',
+                'stock'    => $p->stock ?? 1,
+                'location' => $p->location,
+                'type'     => 'product',
+            ]);
+
         return response()->json([
             'success' => true,
             'data'    => $data,
+            'similar' => $similar,
         ]);
     }
 

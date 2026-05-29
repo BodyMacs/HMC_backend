@@ -48,18 +48,30 @@ class UserController extends Controller
         $user = $request->user();
 
         if ($request->hasFile('avatar')) {
-            // Supprimer l'ancien avatar s'il existe et n'est pas une image par défaut
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
+            $user = $request->user();
+            
+            // Supprimer l'ancien avatar s'il existe dans le dossier public
+            if ($user->avatar && file_exists(public_path($user->avatar))) {
+                unlink(public_path($user->avatar));
             }
 
-            $path = $request->file('avatar')->store('avatars', 'public');
+            $file = $request->file('avatar');
+            $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
+            
+            // S'assurer que le dossier existe
+            if (!file_exists(public_path('storage/avatars'))) {
+                mkdir(public_path('storage/avatars'), 0755, true);
+            }
+
+            $file->move(public_path('storage/avatars'), $filename);
+            
+            $path = 'avatars/' . $filename;
             $user->update(['avatar' => $path]);
 
             return response()->json([
                 'success'    => true,
                 'message'    => 'Photo de profil mise à jour.',
-                'avatar_url' => asset('storage/' . $path),
+                'avatar_url' => asset($path),
                 'user'       => $user->fresh(),
             ]);
         }
